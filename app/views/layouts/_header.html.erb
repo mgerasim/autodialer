@@ -3,6 +3,11 @@
     <%= link_to "sample app", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+              <li>
+                <%= link_to "Выход", logout_path, method: :delete %>
+              </li>
+      <% end %>
       </ul>
     </nav>
   </div>
