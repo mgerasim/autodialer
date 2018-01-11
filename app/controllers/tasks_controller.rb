@@ -22,37 +22,36 @@ class TasksController < ApplicationController
   end
 
   # POST /tasks
-  # POST /tasks.json
+  # POST /tasks.json]
   def create
-
-   Rails.logger.info('create')
-
-
-    @task = Task.new(task_params)
-
-
-    respond_to do |format|
-      if @task.save
- 
-        File.foreach(params[:file].path) {}
-   count = $.
-
-    @task.name = @task.name + ' ' + count.to_s
-
-   File.foreach(params[:file].path) {|line|
-     Rails.logger.info(line)
-     @contact = @task.contacts.create(phone: line, status: "INSERTED")
-   }
-
-
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
-      else
-        format.html { render :new }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+    begin
+      @task = Task.new(task_params)
+      
+      Rails.logger.error @task.csv_upload
+      
+      respond_to do |format|
+        if @task.save
+        #  File.foreach(@task.csv_upload.path) {}
+        #  count = $.
+        #  @task.name = @task.name + ' ' + count.to_s        
+        #  File.foreach(@task.csv_upload.path) {|line|     Rails.logger.info(line) 
+        #  @contact = @task.contacts.create(phone: line, status: "INSERTED")
+        #  }
+          format.html { redirect_to @task, notice: 'Task was successfully created.' }
+          format.json { render :show, status: :created, location: @task }
+        else
+          format.html { render :new }
+          format.json { render json: @task.errors, status: :unprocessable_entity }
+        end
       end
+    rescue => ex
+      Rails.logger.error "controller"
+      Rails.logger.error ex.message
+      Rails.logger.error ex.backtrace.join("\n")
+       redirect_to @task
     end
   end
+
 
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
@@ -86,6 +85,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name)
+      params.require(:task).permit(:name, :csv_upload)
     end
 end

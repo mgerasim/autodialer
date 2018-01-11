@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
-  test "Д.б. форма авторизации" do
+  test "Наличие формы авторизации" do
     get login_path
     assert_response :success
     assert_select "title", "Авторизация | Telecontact"
   end
 
-  test "should get home" do
+  test "Наличие формы домашней страницы как форма авторизации" do
     get root_path
     assert_response :success
     assert_select "title", "Авторизация | Telecontact"
