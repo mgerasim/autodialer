@@ -1,3 +1,7 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+
 <%= form_with(model: task, local: true, multipart: true) do |form| %>
   <% if task.errors.any? %>
     <div id="error_explanation">
@@ -13,15 +17,16 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :task_name %>
+    <%= form.text_field :name, id: :task_name, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label "Файл абонентов" %>
-    <%= form.file_field :csv_upload %>
+    <%= form.file_field :csv_upload, class: 'form-control' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
 <% end %>
+
+</div>
+</div>

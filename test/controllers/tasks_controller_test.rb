@@ -30,7 +30,32 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to task_url(Task.last)
-  end
+
+    
+
+
+  assert_difference('Task.count') do
+      file = Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/contacts_invalid.txt"), "plain/text")
+      post tasks_url, params: { task: { name: 'Test', :csv_upload => file  } }
+      #post :create, :task => {:name => "Test"}
+          end
+      #
+              assert_redirected_to task_url(Task.last)
+      
+
+assert_difference('Task.count') do
+      file = Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/contacts_invalid_one.txt"), "plain/text")
+      post tasks_url, params: { task: { name: 'Test', :csv_upload => file  } }
+      
+                end
+      
+                                    assert_redirected_to task_url(Task.last)
+      
+
+      
+      end
+      #
+
 
   test "should show task" do
     get task_url(@task)

@@ -69,6 +69,8 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     erubi (1.7.0)
+    et-orbi (1.0.8)
+      tzinfo
     execjs (2.7.0)
     ffi (1.9.18)
     formatador (0.2.5)
@@ -112,6 +114,7 @@ GEM
       minitest (>= 5.0)
       ruby-progressbar
     multi_json (1.12.2)
+    mysql2 (0.4.10)
     nenv (0.3.0)
     nio4r (2.2.0)
     nokogiri (1.8.1)
@@ -160,6 +163,8 @@ GEM
       ffi (>= 0.5.0, < 2)
     ruby-progressbar (1.9.0)
     ruby_dep (1.5.0)
+    rufus-scheduler (3.4.2)
+      et-orbi (~> 1.0)
     sass (3.5.5)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -220,9 +225,11 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   minitest-reporters (= 1.1.14)
+  mysql2
   puma (~> 3.7)
   rails (~> 5.1.4)
   rails-controller-testing (= 1.0.2)
+  rufus-scheduler
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

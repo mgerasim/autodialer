@@ -33,4 +33,26 @@ class TaskTest < ActiveSupport::TestCase
    assert_equal @task.contacts.count, 2
   end
 
+  test "Проверка добавления ошибочных телефонов при сохранении" do
+    uploaded_file_invalid = ActionDispatch::Http::UploadedFile.new({
+    :tempfile => File.new(Rails.root.join("test/fixtures/files/contacts_invalid.txt"))
+})
+    task = Task.new(name: 'Test', csv_upload: uploaded_file_invalid)
+ 
+    task.save
+    assert_equal task.contacts.count, 2
+
+  end
+
+  test "Проверка отсутствия правильнных телефонных номеров" do
+    uploaded_file_invalid_one = ActionDispatch::Http::UploadedFile.new({
+    :tempfile => File.new(Rails.root.join("test/fixtures/files/contacts_invalid_one.txt"))
+})
+    task = Task.new(name: 'Test', csv_upload: uploaded_file_invalid_one)
+
+    task.save
+    assert_equal task.contacts.count, 0
+
+  end
+
 end

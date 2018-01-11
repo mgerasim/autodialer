@@ -20,6 +20,18 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+#production:
+#  <<: *default
+#  database: db/production.sqlite3
 production:
-  <<: *default
-  database: db/production.sqlite3
+ adapter: mysql2
+ encoding: utf8
+ pool: 5
+ min_messages: warning
+ timeout: 5000
+ reconnect: false
+ database: telecontactdb
+ pool: 5
+ username: telecontact
+ password: telecontact
+ socket: /var/lib/mysql/mysql.sock

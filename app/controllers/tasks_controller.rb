@@ -31,6 +31,7 @@ class TasksController < ApplicationController
       
       respond_to do |format|
         if @task.save
+         TaskDailingJob.perform_later @task 
         #  File.foreach(@task.csv_upload.path) {}
         #  count = $.
         #  @task.name = @task.name + ' ' + count.to_s        

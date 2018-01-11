@@ -1,0 +1,7 @@
+require 'rufus-scheduler'
+
+scheduler = Rufus::Scheduler::singleton
+
+scheduler.every '5s' do
+  File.create('/tmp/2.txt')
+end
