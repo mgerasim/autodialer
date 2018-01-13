@@ -1,4 +1,5 @@
 class Contact < ApplicationRecord
+  before_save { self.phone = phone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '') }
   default_scope { order(created_at: :desc) }
   belongs_to :task
   validates :task_id, presence: true
