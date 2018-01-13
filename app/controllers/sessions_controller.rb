@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, :only => [:new, :create, :destroy]
   def new
     if logged_in?
       redirect_to tasks_path
