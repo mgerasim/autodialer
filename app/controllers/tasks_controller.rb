@@ -38,7 +38,7 @@ class TasksController < ApplicationController
         #  File.foreach(@task.csv_upload.path) {|line|     Rails.logger.info(line) 
         #  @contact = @task.contacts.create(phone: line, status: "INSERTED")
         #  }
-          format.html { redirect_to @task, notice: 'Task was successfully created.' }
+          format.html { redirect_to @task, notice: 'Задание успешно создано' }
           format.json { render :show, status: :created, location: @task }
         else
           format.html { render :new }
