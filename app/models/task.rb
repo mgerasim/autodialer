@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  default_scope { order(created_at: :desc) }
   after_create :read_upload
   attr_accessor :csv_upload
   has_many :contacts, dependent: :delete_all

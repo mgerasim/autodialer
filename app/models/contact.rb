@@ -1,4 +1,5 @@
 class Contact < ApplicationRecord
+  default_scope { order(created_at: :desc) }
   belongs_to :task
   validates :task_id, presence: true
   validates :status, presence: true, length: { maximum: 15 }
