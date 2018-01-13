@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   after_create :read_upload
   attr_accessor :csv_upload
-  has_many :contacts
+  has_many :contacts, dependent: :delete_all
   validates :name, presence: true, length: { maximum: 50 }
   validates :csv_upload, presence: true
 

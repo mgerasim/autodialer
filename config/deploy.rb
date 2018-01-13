@@ -2,10 +2,11 @@
 server '151.248.121.50', roles: [:web, :app, :db], primary: true
 
 #set :repo_url,        'git@example.com:username/appname.git'
+set  :repo_url,        'file:///home/deploy/repos/avtodailer.git'
 
-set :scm, :none
-set :repository, "."
-set :deploy_via, :copy
+#set :scm, :none
+#set :repository, "."
+#set :deploy_via, :copy
 
 #set :deploy_via, :copy
 #set :use_sudo, false    
@@ -76,6 +77,12 @@ task :initial do
 on roles(:app) do
 before 'deploy:restart', 'puma:start'
 invoke 'deploy'
+end
+end
+
+task :cleanup do
+on roles(:app) do
+  execute "env"
 end
 end
 
