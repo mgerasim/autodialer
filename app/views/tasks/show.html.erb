@@ -9,6 +9,7 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>#</th>
       <th>Номер</th>
       <th>Статус</th>
     </tr>
@@ -17,6 +18,7 @@
     
     <% @task.contacts.each do |contact| %>
       <tr>
+         <td><%= contact.id %></td>
          <td><%= contact.phone %></td>
          <td><%= contact.status %></td>
       </tr>
