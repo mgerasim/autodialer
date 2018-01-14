@@ -17,7 +17,7 @@ class TaskDailingJob < ApplicationJob
        f.puts("Extension: s")
        f.puts("Priority: 1")
        
-       contact.update_attribute(:status, "DIALED") 
+       contact.update_attribute(:status, "DIALING") 
 
        FileUtils.mv(f.path, '/var/spool/asterisk/outgoing/' + File.basename(f.path))
       end

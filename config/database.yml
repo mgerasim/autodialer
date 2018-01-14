@@ -35,3 +35,18 @@ production:
  username: telecontact
  password: telecontact
  socket: /var/lib/mysql/mysql.sock
+
+
+asteriskcdrdb:
+ adapter: mysql2
+ encoding: utf8
+ pool: 5
+ min_messages: warning
+ timeout: 5000
+ reconnect: false
+ database: asteriskcdrdb
+ pool: 5
+ username: asteriskcdr
+ password: asteriskcdrdb
+ socket: /var/lib/mysql/mysql.sock
+
