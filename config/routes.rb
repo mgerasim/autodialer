@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :settings
+  #get 'settings/show'
+  #get 'settings/edit'
+  #post 'settings/edit'
+  #get '/settings', to: 'settings#show'
   resources :tasks
   root 'sessions#new'
   get 'sessions/new'

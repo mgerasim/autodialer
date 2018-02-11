@@ -31,7 +31,7 @@ class TasksController < ApplicationController
       
       respond_to do |format|
         if @task.save
-         TaskDailingJob.perform_later @task 
+    
         #  File.foreach(@task.csv_upload.path) {}
         #  count = $.
         #  @task.name = @task.name + ' ' + count.to_s        
@@ -40,6 +40,8 @@ class TasksController < ApplicationController
         #  }
           format.html { redirect_to @task, notice: 'Задание успешно создано' }
           format.json { render :show, status: :created, location: @task }
+          
+               TaskDailingJob.perform_later @task 
         else
           format.html { render :new }
           format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -72,7 +74,12 @@ class TasksController < ApplicationController
   # DELETE /tasks/1.json
   def destroy
     
-    TaskDeleteJob.perform_later @task
+#    TaskDeleteJob.perform_later @task
+
+    Asteriskcdr.where(:accountcode => @task.id.to_s).destroy_all
+
+     @task.destroy
+
 
     respond_to do |format|
       format.html { redirect_to tasks_url, notice: 'Процесс удаления задания запущен ....' }

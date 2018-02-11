@@ -1,0 +1,27 @@
+<%= form_with(model: setting, local: true) do |form| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :callcount %>
+    <%= form.number_field :callcount, id: :setting_callcount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sipnames %>
+    <%= form.text_area :sipnames, id: :setting_sipnames %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

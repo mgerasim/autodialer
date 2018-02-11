@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Callcount:</strong>
+  <%= @setting.callcount %>
+</p>
+
+<p>
+  <strong>Sipnames:</strong>
+  <%= @setting.sipnames %>
+</p>
+
+<%= link_to 'Edit', edit_setting_path(Setting.first) %> |
+<%= link_to 'Back', root_path %>

@@ -3,6 +3,13 @@ require 'test_helper'
 class TasksControllerTest < ActionDispatch::IntegrationTest
   setup do
     
+    get login_path
+    post login_path, params: { session: { password: ENV['TELECONTACT_PASSWORD'] } }
+    
+
+
+    
+    
     @uploaded_file = ActionDispatch::Http::UploadedFile.new({
       :tempfile => File.new(Rails.root.join("test/fixtures/files/contacts.txt"))
     })
@@ -23,6 +30,11 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create task" do
+  
+#    get login_path
+#    post login_path, params: { session: { password: ENV['TELECONTACT_PASSWORD'] } }
+    
+  
     assert_difference('Task.count') do
       file = Rack::Test::UploadedFile.new(Rails.root.join("test/fixtures/files/contacts.txt"), "plain/text")
       post tasks_url, params: { task: { name: 'Test', :csv_upload => file  } }
@@ -73,6 +85,9 @@ assert_difference('Task.count') do
  # end
 
   test "should destroy task" do
+  
+    
+  
     assert_difference('Task.count', -1) do
       delete task_url(@task)
     end
