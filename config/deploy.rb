@@ -1,5 +1,5 @@
 # Change these
-server '151.248.121.50', roles: [:web, :app, :db], primary: true
+server '193.124.93.198', roles: [:web, :app, :db], primary: true
 
 #set :repo_url,        'git@example.com:username/appname.git'
 set  :repo_url,        'file:///home/deploy/repos/avtodailer.git'
