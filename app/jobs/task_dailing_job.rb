@@ -20,6 +20,14 @@ class TaskDailingJob < ApplicationJob
        contact.update_attribute(:status, "DIALING") 
 
        FileUtils.mv(f.path, '/var/spool/asterisk/outgoing/' + File.basename(f.path))
+       
+       dir = '/var/spool/asterisk/outgoing/'
+       count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
+       
+       #count = 0
+       while count > 30 do
+         count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
+       end
       end
     end
 
