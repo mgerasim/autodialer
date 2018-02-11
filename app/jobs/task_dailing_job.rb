@@ -7,7 +7,7 @@ class TaskDailingJob < ApplicationJob
 
     task.contacts.each do |contact| 
       File.open(Dir::Tmpname.create(['tmp', '.call']) { }.to_s, "w+") do |f|
-       f.puts("Channel: SIP/" + contact.phone +  "@mtt")
+       f.puts("Channel: SIP/" + contact.phone +  "@mtt2")
        f.puts("Callerid: " + contact.id.to_s)
        f.puts("Account: " + task.id.to_s)
        f.puts("MaxRetries: 0")
