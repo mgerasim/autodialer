@@ -1,13 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Callcount:</strong>
+  <strong>Лимит исходящих:</strong>
   <%= @setting.callcount %>
 </p>
 
 <p>
-  <strong>Sipnames:</strong>
+  <strong>Каналы вызовов:</strong>
   <%= @setting.sipnames %>
+</p>
+
+
+<p>
+  <strong>Каталог исходящих:</strong>
+  <%= @setting.outgoing %>
+</p>
+
+<p>
+  <strong>Количество исходящих:</strong>
+  <%= @setting.currentcount %>
 </p>
 
 <%= link_to 'Edit', edit_setting_path(Setting.first) %> |

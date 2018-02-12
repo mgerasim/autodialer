@@ -20,6 +20,18 @@
     <%= form.label :sipnames %>
     <%= form.text_area :sipnames, id: :setting_sipnames %>
   </div>
+  
+  <div class="field">
+    <%= form.label :currentcount %>
+    <%= form.number_field :currentcount %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :outgoing %>
+    <%= form.text_field :outgoing %>
+  </div>
+  
+  
 
   <div class="actions">
     <%= form.submit %>
