@@ -1,0 +1,14 @@
+<h1>Конфигурация SIP</h1>
+
+<%= form_for @sip do |f| %>
+    <div class="field">
+	<%= f.label :sipconf %><br>
+	<%= f.text_area :sipconf %>
+    </div>
+    
+    <div class="actions">
+       <%= f.submit %>
+    </div>
+    
+<% end %>
+

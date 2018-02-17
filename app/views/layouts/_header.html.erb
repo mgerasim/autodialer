@@ -4,6 +4,8 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
+            <li>
+        	<%= link_to "SIP", sip_show_path %>
 	    <li>
 	       <%= link_to "Настройки", settings_path %>
 	    </li>

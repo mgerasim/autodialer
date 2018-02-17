@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :sips
+  get 'sip/show'
+
+  get 'sip/edit'
+  
+  post 'sip/save'
+
   resources :settings
   #get 'settings/show'
   #get 'settings/edit'
