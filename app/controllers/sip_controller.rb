@@ -5,6 +5,8 @@ class SipController < ApplicationController
    @sip = data
    #@showpeers = `asterisk -rvx "sip show peers"`
    @showpeers = %x[asterisk -rvx "sip show peers"]
+   logger.debug "test"
+   logger.debug @showpeers
   end
 
   def edit   
