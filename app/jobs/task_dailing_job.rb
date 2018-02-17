@@ -15,7 +15,7 @@ class TaskDailingJob < ApplicationJob
             f.puts("Account: " + task.id.to_s)
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
-            f.puts("WaitTime: 10")
+            f.puts("WaitTime: 5")
             f.puts("Context: outgoing")
             f.puts("Extension: s")
             f.puts("Priority: 1")
@@ -38,6 +38,7 @@ class TaskDailingJob < ApplicationJob
        call_count = Setting.first.callcount
        while count > call_count do
          count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
+         sleep 1
        end
        
        
