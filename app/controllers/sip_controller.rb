@@ -3,7 +3,8 @@ class SipController < ApplicationController
   def show
    data = File.read("/etc/asterisk/sip.conf")
    @sip = data
-   @showpeers = `asterisk -rvx "sip show peers"`
+   #@showpeers = `asterisk -rvx "sip show peers"`
+   @showpeers = %x[asterisk -rvx "sip show peers"]
   end
 
   def edit   
