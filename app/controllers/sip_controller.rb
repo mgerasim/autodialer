@@ -4,11 +4,7 @@ class SipController < ApplicationController
    data = File.read("/etc/asterisk/sip.conf")
    @sip = data
    system('asterisk -rvx "sip show peers" > /tmp/1.txt')
-   @showpeers = File.read("/tmp/1.txt") 
-	
-#   @showpeers = %x[asterisk -rvx "sip show peers"]
-   logger.debug "test"
-   logger.debug @showpeers
+   @showpeers = File.read("/tmp/1.txt")
   end
 
   def edit   

@@ -5,12 +5,23 @@ class TaskDailingJob < ApplicationJob
 
   def perform(task)
 
+    n = 0
     task.contacts.each do |contact| 
     
+       n = n + 1
+       
        f_path = ""
+       
+       setting = Setting.first
+       
+       peers_str = setting.sipnames
+       
+       peers = peers_str.split('|')
+       
+       i = n % peers.count
     
-       File.open(Dir::Tmpname.create(['tmp', '.call']) { }.to_s, "w+") do |f|
-    	    f.puts("Channel: SIP/" + contact.phone +  "@mtt2")
+       File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
+    	    f.puts("Channel: SIP/" + contact.phone +  "@" + peers[i])
             f.puts("Callerid: " + contact.id.to_s)
             f.puts("Account: " + task.id.to_s)
             f.puts("MaxRetries: 0")
@@ -23,9 +34,9 @@ class TaskDailingJob < ApplicationJob
             f_path = f.path
        end
        
-       contact.update_attribute(:status, "DIALING") 
-
-       setting = Setting.first
+       
+       
+       contact.update_attributes(:status => "DIALING", :peer => peers[i]) 
        
        FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
        

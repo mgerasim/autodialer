@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212132540) do
+ActiveRecord::Schema.define(version: 20180218112803) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "phone"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180212132540) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
+    t.string "peer"
     t.index ["task_id", "created_at"], name: "index_contacts_on_task_id_and_created_at"
     t.index ["task_id"], name: "index_contacts_on_task_id"
   end
