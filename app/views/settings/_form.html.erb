@@ -12,28 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :callcount %>
+    <%= form.label "Максимальное количество вызовов:" %>
     <%= form.number_field :callcount, id: :setting_callcount %>
   </div>
 
   <div class="field">
-    <%= form.label :sipnames %>
+    <%= form.label "Рабочие каналы:" %>
     <%= form.text_area :sipnames, id: :setting_sipnames %>
   </div>
   
   <div class="field">
-    <%= form.label :currentcount %>
+    <%= form.label "Текущее количестов вызовов:" %>
     <%= form.number_field :currentcount %>
   </div>
   
   <div class="field">
-    <%= form.label :outgoing %>
+    <%= form.label "Время на обработку (сек):" %>
+    <%= form.number_field :sleep %>
+  </div>
+  
+  <div class="field">
+    <%= form.label "Директория исходящих вызовов:" %>
     <%= form.text_field :outgoing %>
   </div>
   
   
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Сохранить" %>
   </div>
 <% end %>

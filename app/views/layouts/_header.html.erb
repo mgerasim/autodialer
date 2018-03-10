@@ -1,13 +1,17 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Telecontact", root_path, id: "logo" %>
+    <%= link_to "Автообзвон", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
-            <li>
-        	<%= link_to "SIP", sip_show_path %>
+    	    <li>
+    		<%= link_to "Создать задание", new_task_path %>
+    	    </li>
+    	    <li>
+    		<%= link_to "Задания", tasks_path %>
+    	    </li>
 	    <li>
-	       <%= link_to "Настройки", settings_path %>
+	       <%= link_to "Настройки", edit_setting_path(Setting.first) %>
 	    </li>
               <li>                
                 <%= link_to "Выход", logout_path, method: :delete %>

@@ -16,12 +16,12 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
+    <%= form.label "Наименование:" %>
     <%= form.text_field :name, id: :task_name, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= form.label "Файл абонентов" %>
+    <%= form.label "Файл абонентов:" %>
     <%= form.file_field :csv_upload, class: 'form-control' %>
   </div>
 

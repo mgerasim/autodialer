@@ -42,7 +42,7 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update(setting_params)
-        format.html { redirect_to settings_path, notice: 'Setting was successfully updated.' }
+        format.html { redirect_to tasks_url, notice: 'Настройки обновлены' }
         format.json { render :show, status: :ok, location: @setting }
       else
         format.html { render :edit }
@@ -76,6 +76,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:callcount, :sipnames, :currentcount, :outgoing)
+      params.require(:setting).permit(:callcount, :sipnames, :currentcount, :outgoing, :sleep)
     end
 end

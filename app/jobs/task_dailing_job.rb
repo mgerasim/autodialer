@@ -6,9 +6,11 @@ class TaskDailingJob < ApplicationJob
   def perform(task)
 
     n = 0
+    j = 0
     task.contacts.each do |contact| 
     
        n = n + 1
+       j = j + 1
        
        f_path = ""
        
@@ -47,12 +49,12 @@ class TaskDailingJob < ApplicationJob
        setting.update(currentcount: count)
        
        call_count = Setting.first.callcount
-       while count > call_count do
+       while count > 0 and j > call_count do
          count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
-         sleep 1
+         sleep setting.sleep
        end
        
-       
+       j = 0
     
 #      File.open(Dir::Tmpname.create(['tmp', '.call']) { }.to_s, "w+") do |f|
 #       f.puts("Channel: SIP/" + contact.phone +  "@mtt2")
