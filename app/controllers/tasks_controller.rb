@@ -31,6 +31,8 @@ class TasksController < ApplicationController
       
       respond_to do |format|
         if @task.save
+        
+           @task.update(:status => 'LOADING')
     
         #  File.foreach(@task.csv_upload.path) {}
         #  count = $.
@@ -41,7 +43,8 @@ class TasksController < ApplicationController
           format.html { redirect_to @task, notice: 'Задание успешно создано' }
           format.json { render :show, status: :created, location: @task }
           
-               TaskDailingJob.perform_later @task 
+          TaskLoadingJob.perform_later( @task, @task.csv_upload.path)
+        #       TaskDailingJob.perform_later @task 
         else
           format.html { render :new }
           format.json { render json: @task.errors, status: :unprocessable_entity }
