@@ -54,7 +54,9 @@ class TaskDailingJob < ApplicationJob
          sleep setting.sleep
        end
        
-       j = 0
+       if (j > call_count)
+           j = 0
+       end
     
 #      File.open(Dir::Tmpname.create(['tmp', '.call']) { }.to_s, "w+") do |f|
 #       f.puts("Channel: SIP/" + contact.phone +  "@mtt2")
