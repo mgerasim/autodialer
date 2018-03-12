@@ -22,5 +22,5 @@
 set :output, "log/cron_log.log"
 
 every :minute do
-  rake "cdr:update"
+  rake "outgoing:dialing"
 end
