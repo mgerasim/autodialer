@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+
+<%= form_with(model: outgoing, local: true, multipart: true) do |form| %>
+  <% if outgoing.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(outgoing.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% outgoing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= form.label "Файл абонентов:" %>
+    <%= form.file_field :csv_upload, class: 'form-control' %>
+  </div>
+
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
+<% end %>
+
+</div>
+</div>

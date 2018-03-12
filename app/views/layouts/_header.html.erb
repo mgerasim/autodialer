@@ -5,10 +5,10 @@
       <ul class="nav navbar-nav navbar-right">
       <% if logged_in? %>
     	    <li>
-    		<%= link_to "Создать задание", new_task_path %>
+    		<%= link_to "Добавить телефоны", new_outgoing_path %>
     	    </li>
     	    <li>
-    		<%= link_to "Задания", tasks_path %>
+    		<%= link_to "Исходящие", outgoings_path %>
     	    </li>
 	    <li>
 	       <%= link_to "Настройки", edit_setting_path(Setting.first) %>

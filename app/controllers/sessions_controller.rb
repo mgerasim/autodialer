@@ -5,15 +5,15 @@ class SessionsController < ApplicationController
       Setting.new.save
     end
     if logged_in?
-      redirect_to tasks_path
+      redirect_to outgoings_path
     end
   end
   def create
  
     if authenticate?(params[:session][:password]) 
       log_in
-      flash[:success] = "Добро пожаловать в систему авто обзвона!"
-      redirect_to tasks_path
+      flash[:success] = "Добро пожаловать в систему автообзвона!"
+      redirect_to outgoings_path
     else
       flash.now[:danger] = 'Не верно указан пароль' # Not quite rig
       render 'new'

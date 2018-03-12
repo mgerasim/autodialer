@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311090612) do
+ActiveRecord::Schema.define(version: 20180312121504) do
 
   create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "phone"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20180311090612) do
     t.index ["task_id"], name: "index_contacts_on_task_id"
   end
 
+  create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "status"
+    t.datetime "date_created"
+  end
+
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer "callcount"
     t.text "sipnames"
@@ -31,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180311090612) do
     t.integer "currentcount"
     t.string "outgoing"
     t.integer "sleep"
+    t.boolean "is_enabled"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|

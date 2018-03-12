@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>База исходящих вызовов</h1>
+
+<table>
+  <tbody>
+      <tr>
+        <td>Количество номеров:</td>
+        <td><%= Outgoing.count %></td>
+        <td><%= link_to 'Удалить', :action => :outgoing_destroy_all, :controller => :help %></td>
+      </tr>
+      
+      <tr>
+    	<td>В очереде:</td>
+    	<td><%= Outgoing.where(status: "INSERTED").count %></td>
+    	<td></td>
+      </tr>
+      <tr>
+    	<td>Обработано:</td>
+    	<td><%= Outgoing.where.not(status: "INSERTED").count %></td>
+    	<td></td>
+      </tr>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Outgoing', new_outgoing_path %>
