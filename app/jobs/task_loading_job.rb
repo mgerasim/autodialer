@@ -1,3 +1,6 @@
+require "activerecord-import/base"
+ActiveRecord::Import.require_adapter('mysql2')
+  
 class TaskLoadingJob < ApplicationJob
   queue_as :default
 
@@ -15,9 +18,14 @@ class TaskLoadingJob < ApplicationJob
     
     task.csv_upload = uploaded_file
     
+    contacts = []
     File.foreach(task.csv_upload.path) {|line|     Rails.logger.info(line)
-	contact = task.contacts.create(phone: line, status: "INSERTED")
+#	contact = task.contacts.create(phone: line, status: "INSERTED")
+	contacts << Contact.new(task: task, phone: line, status: "INSERTED")
     } 
+    
+    Contact.import(contacts, validate: true)
+    
     
     
     task.status = "LOADED"
