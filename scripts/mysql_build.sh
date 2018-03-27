@@ -1,0 +1,1 @@
+mysql -u asteriskcdr -p asteriskcdrdb -D asteriskcdrdb < mysql_create_function.sql

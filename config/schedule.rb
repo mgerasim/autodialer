@@ -22,5 +22,9 @@
 set :output, "log/cron_log.log"
 
 every :minute do
-  rake "outgoings:dialing"
+  rake "dial:run"
+end
+
+every 1.day, at: '4:30 am' do
+  rake "dial:clear"
 end
