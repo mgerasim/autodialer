@@ -38,9 +38,7 @@ namespace :dial do
         
         Outgoing.limit(setting.callcount).each do |contact|
         
-            puts contact.id
-            
-            
+                    
             contact.delete
             
        
@@ -57,9 +55,17 @@ namespace :dial do
     
 	    telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '') 
     
+            
+	if (telephone.length == 11)
+	    telephone.slice!(0)
+	end
+    
+    
             if (telephone.length == 10) 
               telephone = '7' + telephone
             end
+            
+        puts telephone
     
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
     	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])

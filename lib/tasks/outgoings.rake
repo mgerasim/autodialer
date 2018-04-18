@@ -51,6 +51,10 @@ namespace :outgoings do
     
 	telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '') 
     
+	if (telephone.length == 11)
+	    telephone = telephone.slice(0)
+	end
+    
         if (telephone.length == 10) 
             telephone = '7' + telephone
         end
