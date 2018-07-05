@@ -30,7 +30,12 @@
     <%= form.label "Время на обработку (сек):" %>
     <%= form.number_field :sleep %>
   </div>
-  
+
+ <div class="field">
+   <%= form.label "Время длительности вызова (сек) " %>
+   <%= form.number_field :waittime %>
+ </div> 
+
   <div class="field">
     <%= form.label "Директория исходящих вызовов:" %>
     <%= form.text_field :outgoing %>

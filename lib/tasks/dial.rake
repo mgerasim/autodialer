@@ -4,7 +4,7 @@ namespace :dial do
     `rm -rf /var/log/asterisk/cdr-csv/`
     `mkdir /var/log/asterisk/cdr-csv/`
   end
-  
+ 
   desc "TODO"
   task run: :environment do
   
@@ -59,28 +59,39 @@ namespace :dial do
 	if (telephone.length == 11)
 	    telephone.slice!(0)
 	end
-    
+   
     
             if (telephone.length == 10) 
               telephone = '7' + telephone
             end
             
         puts telephone
-    
+   
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
-    	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
-            f.puts("Callerid: " + contact.id.to_s)
-            f.puts("Account: " + telephone)
+    	    f.puts("Channel: SIP/" + telephone +  "@goldmedia2")
+            f.puts("Callerid: " + peers[i])
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
-            f.puts("WaitTime: 5")
+            f.puts("WaitTime: 7")
             f.puts("Context: outgoing")
             f.puts("Extension: s")
-            f.puts("Priority: 1")
-       
+            f.puts("Priority: 1")       
             f_path = f.path
        end
-       
+
+#       File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
+ #               f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
+  #                          f.puts("Callerid: " + contact.id.to_s)
+   #                                     f.puts("Account: " + telephone)
+    #                                                f.puts("MaxRetries: 0")
+     #                                                           f.puts("RetryTime: 20")
+      #                                                                      f.puts("WaitTime: 5")
+       #                                                                                 f.puts("Context: outgoing")
+        #                                                                                            f.puts("Extension: s")
+         #                                                                                                       f.puts("Priority: 1")
+                                                                                                                       
+          #                                                                                                                         f_path = f.path
+           #                                                                                                                        end       
        
            FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
        
