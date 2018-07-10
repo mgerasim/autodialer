@@ -72,7 +72,7 @@ namespace :dial do
             f.puts("Callerid: " + peers[i])
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
-            f.puts("WaitTime: 7")
+            f.puts("WaitTime: " + setting.waittime.to_s)
             f.puts("Context: outgoing")
             f.puts("Extension: s")
             f.puts("Priority: 1")       

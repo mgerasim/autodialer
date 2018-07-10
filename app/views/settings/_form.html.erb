@@ -12,12 +12,17 @@
   <% end %>
 
   <div class="field">
+    <%= form.label "Рабочие каналы:" %>
+    <%= form.text_area :trank, id: :setting_trank %>
+  </div>
+
+  <div class="field">
     <%= form.label "Максимальное количество вызовов:" %>
     <%= form.number_field :callcount, id: :setting_callcount %>
   </div>
 
   <div class="field">
-    <%= form.label "Рабочие каналы:" %>
+    <%= form.label "Исходящие номера:" %>
     <%= form.text_area :sipnames, id: :setting_sipnames %>
   </div>
   
