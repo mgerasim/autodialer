@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Рабочие каналы</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>Исходящий номер</th>
+      <th>Время длительности вызова</th>
+      <th>Максимальное количество вызовов</th>
+      <th>Активное состояние</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tranks.each do |trank| %>
+      <tr>
+        <td><%= trank.name %></td>
+        <td><%= trank.callerid %></td>
+        <td><%= trank.waittime %></td>
+        <td><%= trank.callcount %></td>
+        <td><%= trank.enabled %></td>
+        <td><%= link_to 'Показать', trank %></td>
+        <td><%= link_to 'Редактировать', edit_trank_path(trank) %></td>
+        <td><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить', new_trank_path, :class => 'btn btn-primary' %>

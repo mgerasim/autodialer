@@ -1,0 +1,28 @@
+
+<p>
+  <strong>Наименование:</strong>
+  <%= @trank.name %>
+</p>
+
+<p>
+  <strong>Исходящий номер:</strong>
+  <%= @trank.callerid %>
+</p>
+
+<p>
+  <strong>Длительность вызова:</strong>
+  <%= @trank.waittime %>
+</p>
+
+<p>
+  <strong>Максимальное количество вызовов:</strong>
+  <%= @trank.callcount %>
+</p>
+
+<p>
+  <strong>Активное состояние:</strong>
+  <%= @trank.enabled %>
+</p>
+
+<%= link_to 'Редактировать', edit_trank_path(@trank) %> |
+<%= link_to 'Назад', tranks_path %>

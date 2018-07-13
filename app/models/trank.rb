@@ -1,0 +1,2 @@
+class Trank < ApplicationRecord
+end

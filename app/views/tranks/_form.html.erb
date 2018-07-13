@@ -1,0 +1,42 @@
+<%= form_with(model: trank, local: true) do |form| %>
+  <% if trank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trank.errors.count, "error") %> prohibited this trank from being saved:</h2>
+
+      <ul>
+      <% trank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Наименование:" %>
+    <%= form.text_field :name, id: :trank_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Исходящий номер:" %>
+    <%= form.text_field :callerid, id: :trank_callerid %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Длительность вызова:" %>
+    <%= form.number_field :waittime, id: :trank_waittime %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Максимальное количество вызовов:" %>
+    <%= form.number_field :callcount, id: :trank_callcount %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Активное состояние:" %>
+    <%= form.check_box :enabled, id: :trank_enabled %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Сохранить", :class => "btn btn-primary" %>
+  </div>
+<% end %>
