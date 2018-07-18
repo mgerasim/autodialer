@@ -20,6 +20,11 @@
     <%= form.label "Исходящий номер:" %>
     <%= form.text_field :callerid, id: :trank_callerid %>
   </div>
+ 
+  <div class="field">
+    <%= form.label "Префикс:" %>
+    <%= form.text_field :prefix, id: :trank_prefix %>
+  </div>
 
   <div class="field">
     <%= form.label "Длительность вызова:" %>

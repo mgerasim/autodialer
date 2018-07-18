@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180713053537) do
+ActiveRecord::Schema.define(version: 20180718115104) do
 
   create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "phone"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180713053537) do
     t.boolean "enabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prefix", default: ""
   end
 
   add_foreign_key "contacts", "tasks"

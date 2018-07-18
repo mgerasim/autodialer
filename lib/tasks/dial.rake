@@ -24,7 +24,7 @@ namespace :dial do
         wc = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
         puts wc
         next if (wc == 2 and wc1 == 2)
-        next if (setting.is_enabled != true)
+  #     next if (setting.is_enabled != true)
 
         Trank.all.each do |trank|
             puts "#{trank.name}"
@@ -53,6 +53,8 @@ namespace :dial do
                 if (telephone.length == 10) 
                     telephone = '7' + telephone
                 end
+
+                telephone = trank.prefix + telephone
             
                 puts telephone
   
