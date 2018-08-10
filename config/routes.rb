@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'register/status'
+
+  get 'register/reload'
+
+  get 'register',	to: 'register#status'
+  
+  get 'register_reload', to: 'register_reload#reload'
+
   resources :tranks
   get 'help/outgoing_destroy_all'
 
