@@ -13,6 +13,13 @@ namespace :dial do
     wc1 = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
     
     setting = Setting.first
+    
+    puts Time.now.hour
+    
+    if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
+	exit
+    end
+    
     total = (60 / setting.sleep).floor
     
     for t in 0..total 

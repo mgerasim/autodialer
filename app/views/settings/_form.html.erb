@@ -11,46 +11,16 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= form.label "Рабочие каналы:" %>
-    <%= form.text_area :trank, id: :setting_trank %>
+    <%= form.label "Час начало работы:" %>
+    <%= form.number_field :hour_bgn, id: :setting_hour_bgn %>
   </div>
 
   <div class="field">
-    <%= form.label "Максимальное количество вызовов:" %>
-    <%= form.number_field :callcount, id: :setting_callcount %>
+    <%= form.label "Час завершения работы:" %>
+    <%= form.number_field :hour_end, id: :setting_hour_end %>
   </div>
-
-  <div class="field">
-    <%= form.label "Исходящие номера:" %>
-    <%= form.text_area :sipnames, id: :setting_sipnames %>
-  </div>
-  
-  <div class="field">
-    <%= form.label "Текущее количестов вызовов:" %>
-    <%= form.number_field :currentcount %>
-  </div>
-  
-  <div class="field">
-    <%= form.label "Время на обработку (сек):" %>
-    <%= form.number_field :sleep %>
-  </div>
-
- <div class="field">
-   <%= form.label "Время длительности вызова (сек) " %>
-   <%= form.number_field :waittime %>
- </div> 
-
-  <div class="field">
-    <%= form.label "Директория исходящих вызовов:" %>
-    <%= form.text_field :outgoing %>
-  </div>
-  
-  <div class="filed">
-    <%= form.label "Активное состояние:" %>
-    <%= form.check_box :is_enabled %>
-  </div>
-  
   
 
   <div class="actions">
