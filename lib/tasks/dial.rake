@@ -4,6 +4,11 @@ namespace :dial do
     `rm -rf /var/log/asterisk/cdr-csv/`
     `mkdir /var/log/asterisk/cdr-csv/`
   end
+
+  task :answer, [:contact] => :environment do |t, args|
+    puts args.contact
+    
+  end
  
   desc "TODO"
   task run: :environment do
@@ -66,17 +71,21 @@ namespace :dial do
                 puts telephone
   
                 File.open(Dir::Tmpname.create(['tmp_' + peers[i] + "_#{trank.name}_", '.call']) { }.to_s, "w+") do |f|
+                    f.chmod(0666)
     	            f.puts("Channel: SIP/" + telephone +  "@#{trank.name}")
                     f.puts("Callerid: " + peers[i])
-                    f.puts("MaxRetries: 0")
+                    f.puts("MaxRetries: 1")
                     f.puts("RetryTime: 20")
                     f.puts("WaitTime: " + trank.waittime.to_s)
-                    f.puts("Context: outgoing")
+                    f.puts("Context: from-trunk")
                     f.puts("Extension: s")
-                    f.puts("Priority: 1")       
+                    f.puts("Priority: 1")
+                    f.puts("Set: __num=" + telephone)
                     f_path = f.path
                 end
                 puts f_path
+                
+            #    system('')
 
                 FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
        
