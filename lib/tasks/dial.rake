@@ -19,6 +19,15 @@ namespace :dial do
     
     setting = Setting.first
     
+    if (setting == nil)    
+	setting = Setting.new
+	setting.hour_bgn = 0
+	setting.hour_end = 24
+	setting.sleep = 1
+	setting.outgoing = '/var/spool/asterisk/outgoing'
+	setting.save
+    end
+    
     puts Time.now.hour
     
     if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
@@ -36,7 +45,6 @@ namespace :dial do
         wc = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
         puts wc
         next if (wc == 2 and wc1 == 2)
-  #     next if (setting.is_enabled != true)
 
         Trank.all.each do |trank|
             puts "#{trank.name}"
@@ -84,8 +92,6 @@ namespace :dial do
                     f_path = f.path
                 end
                 puts f_path
-                
-            #    system('')
 
                 FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
        
