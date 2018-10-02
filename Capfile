@@ -35,7 +35,8 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/passenger"
 require 'capistrano/rails'
 require 'capistrano/bundler'
-require 'capistrano/rvm'
+# require 'capistrano/rvm'
+require 'capistrano/rbenv'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma
 require 'capistrano/scm/git'
