@@ -82,13 +82,14 @@ namespace :dial do
                     f.chmod(0666)
     	            f.puts("Channel: SIP/" + telephone +  "@#{trank.name}")
                     f.puts("Callerid: " + peers[i])
-                    f.puts("MaxRetries: 1")
+                    f.puts("MaxRetries: 0")
                     f.puts("RetryTime: 20")
                     f.puts("WaitTime: " + trank.waittime.to_s)
                     f.puts("Context: from-trunk")
                     f.puts("Extension: s")
                     f.puts("Priority: 1")
-                    f.puts("Set: __num=" + telephone)
+                    f.puts("Account: " + contact.id.to_s)
+                    f.puts("Set: CDR(num)=" + telephone)
                     f_path = f.path
                 end
                 puts f_path
