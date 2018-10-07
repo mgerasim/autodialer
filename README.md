@@ -1,4 +1,22 @@
 # Настройка хранения данных о вызовах
+
+## 1. Создать базу данных 
+
+```
+CREATE DATABASE asteriskcdrdb default charset utf8;
+```
+
+## 2. Предоставить привелегии 
+
+```
+GRANT ALL PRIVILEGES ON asteriskcdrdb.* TO 'asteriskcdruser'@'localhost';
+```
+Если сервер с БД и Asterisk на разных хостах, то:
+```
+GRANT ALL PRIVILEGES ON asteriskcdrdb.* TO 'asteriskuser'@'IP адрес сервера Asterisk' identified by 'Your-Password';
+FLUSH PRIVILEGES;
+```
+
 ## 1. Настроить хранение данных о вызовах
 ```
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
