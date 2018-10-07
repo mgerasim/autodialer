@@ -1,5 +1,19 @@
 # Настройка хранения данных о вызовах
 
+## 1. Настроить подключение через драйвер ODBC
+```
+ast02 ~$cat /etc/odbc.ini
+[asteriskcdrdb]
+Description=MySQL Asterisk database         ;Любое описание
+Driver=MySQL                                ; Используемый драйвер
+Server=127.0.0.1                            ; Сервер, где установлен MySQL
+User=asteriskcdr                        ; Пользователь БД для CDR
+Password=**************        ; Пароль пользователя БД
+Database=asteriskcdrdb                      ; База данных MySQL
+Port=3306
+Socket=/va
+```
+
 ## 1. Создать базу данных 
 
 ```
