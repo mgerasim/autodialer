@@ -20,6 +20,25 @@ Add-ons => cdr_mysql
 make
 make install
 ```
+## 2. Настройка asterisk для работы с MySQL Server
+```
+vi /etc/asterisk/cdr_mysql.conf
+
+[global]
+
+hostname=192.168.1.1 ; хост, где находится mysql сервер (может быть localhost или 127.0.0.1
+dbname=asteriskcdr   ; имя базы данных asterisk
+table=cdr            ; имя таблицы asterisk
+user=asterisk_user   ; имя пользователя для базы данных sql
+password=ast_password; пароль для пользователя asterisk_user
+;timezone=UTC        ; часовой пояс (раньше называлась usegmtime)
+;charset=UTF-8       ; кодировка базы данных, ее можно узнать в процессе настройки MySQL(необязательный параметр)
+
+```
+```
+asterisk -rvvv
+reload cdr
+```
 
 ## 1. Настроить подключение через драйвер ODBC
 ```
