@@ -140,3 +140,23 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=207114;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 ```
+
+## 2. Подправить файл /etc/asterisk/cdr_mysql.conf
+```
+[global]
+usegmtime=no
+cdrzone=Europe/Moscow
+
+[columns]
+alias start => calldate
+alias realdst => realdst
+alias remoteip => remoteip
+alias start => calldate
+alias hangupcause => hangupcause
+alias peerip => peerip
+alias recvip => recvip
+alias fromuri => fromuri
+alias useragent => useragent
+alias filename => filename
+alias realsrc => realsrc
+```
