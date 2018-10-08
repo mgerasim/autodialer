@@ -49,6 +49,8 @@ namespace :dial do
         Trank.all.each do |trank|
             puts "#{trank.name}"
             next if (!trank.enabled)
+               
+            puts "Этот транк активный"
 
             dir = setting.outgoing + '/'
             count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
@@ -90,6 +92,7 @@ namespace :dial do
                     f.puts("Priority: 1")
                     f.puts("Account: " + contact.id.to_s)
                     f.puts("Set: CDR(num)=" + telephone)
+                   # f.puts("Set: __num=" + telephone)
                     f_path = f.path
                 end
                 puts f_path

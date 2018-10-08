@@ -79,5 +79,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rufus-scheduler'
 gem "twitter-bootstrap-rails"
-
+gem "rack-timeout"
 gem 'activerecord-import'
