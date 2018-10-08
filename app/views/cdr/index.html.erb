@@ -1,0 +1,26 @@
+<h1>Статистика звонков</h1>
+
+
+<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv) %>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Дата вызова</th>
+      <th>Телефон</th>
+      <th>Статус</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cdr.each do |cdr| %>
+      <tr>
+        <td><%= cdr.calldate %></td>
+        <td><%= cdr.userfield %></td>
+        <td><%= cdr.disposition %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv) %>

@@ -55,7 +55,7 @@ asteriskcdrdb:
  reconnect: false
  database: asteriskcdrdb
  pool: 5
- username: asteriskcdr
- password: asteriskcdrdb
+ username: freepbxuser
+ password: ArvqHJChr35h
  socket: /var/lib/mysql/mysql.sock
 

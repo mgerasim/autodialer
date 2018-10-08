@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cdr/index'
+
   resources :answers
   get 'register/status'
 
