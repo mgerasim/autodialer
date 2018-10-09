@@ -1,12 +1,15 @@
 <h1>Статистика звонков</h1>
 
 
-<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv) %>
+<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv), :class => "btn" %>
+<br>
+<br>
 
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>Дата вызова</th>
+      <th>Время вызова</th>
       <th>Телефон</th>
       <th>Статус</th>
     </tr>
@@ -15,7 +18,8 @@
   <tbody>
     <% @cdr.each do |cdr| %>
       <tr>
-        <td><%= cdr.calldate %></td>
+        <td><%= cdr.shown_date_created_at %></td>
+        <td><%= cdr.shown_time_created_at %></td>
         <td><%= cdr.userfield %></td>
         <td><%= cdr.disposition %></td>
       </tr>
@@ -23,4 +27,10 @@
   </tbody>
 </table>
 
-<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv) %>
+<%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv), :class => "btn" %>
+
+<br>
+<br>
+<br>
+
+<%= link_to "Удалить всё", help_outgoing_destroy_all_url, :class => "btn btn-primary" %>

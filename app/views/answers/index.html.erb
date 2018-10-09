@@ -1,13 +1,15 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Ответы</h1>
 
-<%= link_to "Выгрузить в CSV", answers_path(:format => :csv) %>
+<%= link_to "Выгрузить в CSV", answers_path(:format => :csv), :class => "btn" %>
+<br>
+<br>
 
 <table class="table table-bordered">
   <thead>
     <tr>
       <th>Дата создания</th>
+      <th>Время создания</th>
       <th>Телефон</th>
       <th></th>
     </tr>
@@ -16,7 +18,8 @@
   <tbody>
     <% @answers.each do |answer| %>
       <tr>
-        <td><%= answer.created_at %></td>
+        <td><%= answer.shown_date_created_at %></td>
+        <td><%= answer.shown_time_created_at %></td>
         <td><%= answer.contact %></td>
         <td><%= link_to 'Удалить', answer, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
       </tr>
@@ -24,11 +27,13 @@
   </tbody>
 </table>
 
-<%= link_to "Выгрузить в CSV", answers_path(:format => :csv) %>
+<%= link_to "Выгрузить в CSV", answers_path(:format => :csv), :class => "btn" %>
 
 <br>
+<br>
+<br>
 
-<%= link_to "Удалить все", help_answers_destroy_all_url, :confirm=>'Подтвердить операцию?'  %>
+<%= link_to "Удалить все", help_answers_destroy_all_url, :data => { :confirm=>'Подтвердить операцию?' }, :class => "btn btn-primary" %>
 
 <br>
 

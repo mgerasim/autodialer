@@ -8,10 +8,9 @@ class Asteriskcdr < ActiveRecord::Base
   default_scope { order(calldate: :desc) }
 
   def self.to_csv
-	attributes = %w{calldate disposition userfield}
+	attributes = %w{shown_date_created_at shown_time_created_at disposition userfield}
 	
-	CSV.generate(headers: true) do |csv|
-	    csv << attributes
+	CSV.generate({:headers => false, :col_sep => ';'}) do |csv|
 	    
 	    all.each do |cdr|
 	        csv << attributes.map{ |attr| cdr.send(attr) }
@@ -19,5 +18,14 @@ class Asteriskcdr < ActiveRecord::Base
 	    
 	end
     end
+
+    def shown_date_created_at
+        calldate.strftime("%Y-%m-%d")
+    end
+
+    def shown_time_created_at
+        calldate.strftime("%H:%M:%S")
+    end
+	
 
 end
