@@ -232,3 +232,10 @@ alias useragent => useragent
 alias filename => filename
 alias realsrc => realsrc
 ```
+
+# Исправление ошибок, связанных со сбросом прав доступов
+====================================================
+* ```chmod a+x /home/asterisk/bin/record_num.sh```
+* ```chmod 0777  /var/spool/asterisk/outgoing/```
+
+
