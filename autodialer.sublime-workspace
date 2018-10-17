@@ -1,0 +1,422 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"re",
+				"recommendations"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"д",
+				"Дополнения"
+			],
+			[
+				"col",
+				"col-sm-3"
+			],
+			[
+				"col-sm",
+				"col-sm-6"
+			],
+			[
+				"form",
+				"form-group"
+			],
+			[
+				"d",
+				"document"
+			],
+			[
+				"state_data_l",
+				"state_data_language_id"
+			],
+			[
+				"for",
+				"form-group"
+			],
+			[
+				"c",
+				"col-sm-12"
+			],
+			[
+				"be",
+				"belongs_to"
+			],
+			[
+				"clss",
+				"class_name"
+			],
+			[
+				"Document",
+				"DocumentsHelper"
+			],
+			[
+				"date",
+				"date_bgn"
+			],
+			[
+				"whe",
+				"where"
+			],
+			[
+				"o",
+				"object"
+			],
+			[
+				"disp",
+				"dispatcher_id"
+			],
+			[
+				"auth",
+				"auth_in"
+			],
+			[
+				"pa",
+				"patient_call_count_eq_0"
+			],
+			[
+				"radio",
+				"radio_button"
+			],
+			[
+				"patient_last",
+				"patient_last_date_call"
+			],
+			[
+				"sex",
+				"patient_sex_male"
+			],
+			[
+				"in",
+				"integer"
+			],
+			[
+				"e",
+				"ea\teach { |e| .. }"
+			],
+			[
+				"mar",
+				"margin-right\tproperty"
+			],
+			[
+				"padd",
+				"padding-right\tproperty"
+			],
+			[
+				"modal",
+				"modal-dialog"
+			],
+			[
+				"sel",
+				"self"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/mgerasim/Projects/web/autodialer"
+	],
+	"file_history":
+	[
+		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825170958_add_call_ambulance_to_documents.rb",
+		"/Users/mgerasim/Projects/web/docman/app/views/documents/_call_address.html.erb",
+		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825021209_delete_state_data_anisocoria.rb",
+		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825021306_insert_new_state_data_anisocoria.rb",
+		"/Users/mgerasim/Projects/web/docman/app/views/documents/show.html.erb",
+		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825164257_remove_recommendation_from_documents.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_form.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/helpers/auth_helper.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/models/document.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/show.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_state_data.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/documents_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/helpers/documents_helper.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180813191230_add_call_end_state_spo2_as_float_to_doraients.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180812115502_insert_recommendation.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180812112257_insert_call_end_state.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180812062558_insert_actim_pancreatitis.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811220637_insert_state_data_stomach.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811115613_insert_state_data_peritoneum_irritation_symptom.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811114312_insert_state_data_liver_breath.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811094031_insert_state_data_language.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811111840_insert_state_data_liver.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811073734_insert_state_data_pulse.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811072252_insert_state_data_noise.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811071510_insert_state_data_heart_sound.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811070839_insert_state_data_dyspnea.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811065741_insert_state_data_rale.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811043916_insert_state_data_breath.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811040649_insert_state_data_rash.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811034238_insert_state_data_shade.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811033100_insert_state_data_marbling.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811032130_insert_state_data_acrocyanosis.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811021752_insert_state_data_integument.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811021239_insert_state_data_integument.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811015617_insert_state_data_light_reaction.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811014813_insert_state_data_nystagmu.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811013152_insert_state_data_anisocoria.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/index.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811012330_insert_state_data_pupils.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811002124_create_state_data_consciousnesses.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811000905_create_state_data_behaviors.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811011052_insert_state_data_meningealsigns.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811002435_insert_state_data_consciousness.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180811001024_insert_state_data_behavior.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/config/routes.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180810230144_insert_state_data.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/helpers/state_datum_helper.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/state_datum_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180810224259_create_state_datum.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/models/state_datum.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180810211354_add_brigade_fields_to_documents.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_anamnesis.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_complaints.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_status.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/layouts/_authheader.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/layouts/admin.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/assets/stylesheets/application.scss",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/assets/stylesheets/custom.css",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/layouts/_footer.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/Gemfile",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/config/application.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/layouts/application.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/test/helpers/documents_helper_test.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/test/fixtures/documents.yml",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/test/fixtures/employees.yml",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/test/fixtures/jobpositions.yml",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180608083736_add_dispetcher_fields_to_document.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_brigade.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/application_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/auth_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/models/employee.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_call_address.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/layouts/_adminheader.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180615223506_add_employees_to_documents.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/_patient.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/jobpositions/_form.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/jobpositions_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/controllers/employees_controller.rb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/new.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/documents/edit.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/config/database.yml",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/employees/new.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/employees/_form.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/employees/edit.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/jobpositions/new.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/app/views/jobpositions/edit.html.erb",
+		"/Users/mgerasim/Documents/projects/docman/web/docman/db/migrate/20180508021817_change_encoding.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/app/controllers/cryptocurrencies_controller.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/config/routes.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/db/migrate/20180529074632_create_burses.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/db/migrate/20180530064038_add_poloniex_to_burse.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/app/views/courses/index.html.erb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/db/migrate/20180530145106_add_livecoin_to_burse.rb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/lib/tasks/course.rake",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/db/migrate/20180531075404_add_binance_to_burse.rb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/assets/stylesheets/kassacc.css",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/views/welcome/_modalInstructions.html.erb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/assets/javascripts/application.js",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/assets/javascripts/kassacc.js",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/Gemfile",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/assets/stylesheets/application.scss",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/views/layouts/application.html.erb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/web/app/views/welcome/_input.html.erb",
+		"/Users/mgerasim/Documents/projects/devdevelop/obmen/web/webapp/app/views/layouts/_footer.html.erb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/app/views/admin/sessions/new.html.erb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/config/routes.rb",
+		"/Users/mgerasim/Documents/projects/cryptoobmen/app/views/layouts/admin.html.erb"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 36.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "autodialer.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 583.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
