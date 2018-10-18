@@ -16,10 +16,10 @@ class Answer < ApplicationRecord
     end
 
     def shown_date_created_at
-        created_at.strftime("%Y-%m-%d")
+        (created_at - 3.hours).strftime("%Y-%m-%d")
     end
 
     def shown_time_created_at
-        created_at.strftime("%H:%M:%S")
+        (created_at - 3.hours).strftime("%H:%M:%S")
     end
 end

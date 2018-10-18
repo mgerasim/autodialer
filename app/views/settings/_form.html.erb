@@ -23,6 +23,17 @@
   </div>
   
 
+  <div class="field">
+    <%= form.label "Максимальное количество попыток на повторный звонок:" %>
+    <%= form.number_field :attempt_max_count, id: :setting_attempt_max_count %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label "Интервал между попыками в мин:" %>
+    <%= form.number_field :attempt_interval, id: :setting_atempt_interval %>
+  </div>
+
   <div class="actions">
     <%= form.submit "Сохранить" %>
   </div>

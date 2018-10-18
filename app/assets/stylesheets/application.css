@@ -14,19 +14,6 @@
  *= require_self
  */
 
-body {
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-}
-
-footer {
-  flex-shrink: 0;
-}
-
-.container {
-  flex: 1 0 auto;
-}
 /*
 https://philipwalton.com/articles/normalizing-cross-browser-flexbox-bugs/
 https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/

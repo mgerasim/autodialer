@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :tranks
   get 'help/outgoing_destroy_all'
   get 'help/answers_destroy_all'
+  get 'help/cdr_destroy_all'
 
   resources :outgoings
   resources :sips

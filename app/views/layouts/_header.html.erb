@@ -1,13 +1,81 @@
+
 <header class="navbar">
   <section class="navbar-section">
-    <a href="..." class="navbar-brand mr-2">Spectre.css</a>
-    <a href="..." class="btn btn-link">Docs</a>
+    <%= link_to "Автообзвон", root_path, { id: "logo", :class => "navbar-brand mr-2" }  %>
+      <% if logged_in? %>
+        <%= link_to "Добавить телефоны", new_outgoing_path, {:class => "btn btn-link"} %>
+        <%= link_to "Исходящие", outgoings_path, {:class => "btn btn-link"} %>
+      <% end %>
+    <!--
+    <a href="..." class="btn btn-link">Добавить телефоны</a>
     <a href="..." class="btn btn-link">GitHub</a>
+  -->
   </section>
   <section class="navbar-section">
-    <div class="input-group input-inline">
-      <input class="form-input" type="text" placeholder="search">
-      <button class="btn btn-primary input-group-btn">Search</button>
-    </div>
+    
   </section>
+
+<% if logged_in? %>
+
+  <section class="navbar-section">
+    <!-- basic dropdown button -->
+        <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Настройки <i class="icon icon-caret"></i></a>
+                  <ul class="menu">
+                    <li class="menu-item">
+                        
+                          <%= link_to "Рабочие каналы", tranks_path, {:class => "btn btn-link"} %>
+
+                      </li>
+
+                      <li class="menu-item">
+                        
+                          <%= link_to "Общие настройки", edit_setting_path(Setting.first), {:class => "btn btn-link"} %>
+
+                      </li>
+                  </ul>
+                </div>
+
+                <%= link_to "Выход", logout_path, method: :delete %>
+  </section>
+
+  <% end %>
+<!--
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Автообзвон", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+      <% if logged_in? %>
+    	    <li>
+    		<%= link_to "Добавить телефоны", new_outgoing_path %>
+    	    </li>
+    	    <li>
+    		<%= link_to "Исходящие", outgoings_path %>
+    	    </li>
+<li>
+	<%= link_to "Ответы", answers_path %>
+</li>
+
+	    <li>
+		<%= link_to "Выгрузка", cdr_index_path %>"
+	    </li>
+	    
+	    <li>
+		<%= link_to "Настройки", edit_setting_path(Setting.first) %>
+	    </li>
+	    
+	    <li>
+	       <%= link_to "Регистрация", register_path %>
+	    </li>
+            <li>
+               <%= link_to "Рабочие каналы", tranks_path %>
+		</li>
+              <li>                
+                <%= link_to "Выход", logout_path, method: :delete %>
+              </li>
+      <% end %>
+      </ul>
+    </nav>
+  </div>
 </header>
+-->

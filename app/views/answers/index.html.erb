@@ -2,6 +2,13 @@
 <h1>Ответы</h1>
 
 <%= link_to "Выгрузить в CSV", answers_path(:format => :csv), :class => "btn" %>
+
+<br>
+<br>
+
+<%= link_to "Удалить все", help_answers_destroy_all_url, :data => { :confirm=>'Подтвердить операцию?' }, :class => "btn btn-primary" %>
+
+
 <br>
 <br>
 

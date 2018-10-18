@@ -1,3 +1,9 @@
+# Настройка базы данных
+* ``` CREATE USER 'avtodialer'@'localhost' IDENTIFIED BY 'avtodialer';```
+* ``` CREATE DATABASE avtodialerdevel default charset utf8; ```
+* ``` GRANT ALL PRIVILEGES ON avtodialerdevel.* TO 'avtodialer'@'localhost' identified by 'avtodialer'; ```
+* ``` FLUSH PRIVILEGES; ```
+
 # Настройка хранения данных о вызовах
 
 ## 1. Подготовить систему
@@ -56,9 +62,7 @@ Socket=/va
 
 ## 1. Создать базу данных 
 
-```
-CREATE DATABASE asteriskcdrdb default charset utf8;
-```
+* ``` CREATE DATABASE asteriskcdrdb default charset utf8; ```
 
 ## 2. Предоставить привелегии 
 
