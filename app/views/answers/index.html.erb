@@ -1,5 +1,14 @@
 
-<h1>Ответы</h1>
+<div class="column col-8 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+      
+
+<div class="text-center">
+  <h1>Ответы</h1>
+</div>
 
 <%= link_to "Выгрузить в CSV", answers_path(:format => :csv), :class => "btn" %>
 
@@ -44,3 +53,4 @@
 
 <br>
 
+</div>

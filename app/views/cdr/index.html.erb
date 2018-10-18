@@ -1,4 +1,15 @@
-<h1>Статистика звонков</h1>
+<div class="column col-8 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+      
+
+<div class="text-center">
+  <h1>Статистика звонков</h1>
+</div>
+
+
 
 
 <%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv), :class => "btn" %>
@@ -40,3 +51,5 @@
 <br>
 
 <%= link_to "Удалить всё", help_cdr_destroy_all_url, :data => { :confirm=>'Подтвердить операцию?' }, :class => "btn btn-primary" %>
+
+</div>

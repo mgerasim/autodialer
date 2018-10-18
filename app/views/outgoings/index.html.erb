@@ -1,6 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<h1>База исходящих вызовов</h1>
+<div class="column col-4 col-mx-auto bg-gray">
+
+ <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<div class="text-center">
+	<h1>База исходящих вызовов</h1>
+</div>
 
 <table>
   <tbody>
@@ -15,4 +22,7 @@
 
 <br>
 
-<%= link_to 'Добавить номера', new_outgoing_path %>
+<div class="text-center"/>
+	<%= link_to 'Добавить номера', new_outgoing_path, :class => "btn btn-primary" %>
+</div>
+</div>

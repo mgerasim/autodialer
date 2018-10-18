@@ -1,5 +1,5 @@
 
-<div class="column col-4 col-mx-auto bg-gray">
+<div class="column col-6 col-mx-auto bg-gray">
 	
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "toast toast-error") %>
@@ -20,18 +20,15 @@
 
 
     <div class="form-group">
-
-
       <%= f.label "Пароль доступа", class: "form-label" %>
       <%= f.password_field :password, class: 'form-input' %>
+		<div class="mt-2 text-center">
+		      <%= f.submit "Авторизация", class: "btn btn-primary" %>
+
+		</div>
+	</div>
 
 
-
-<div class="mt-2 text-center">
-      <%= f.submit "Авторизация", class: "btn btn-primary" %>
-
-</div>
-</div>
     <% end %>
 
    

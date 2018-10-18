@@ -5,6 +5,9 @@
       <% if logged_in? %>
         <%= link_to "Добавить телефоны", new_outgoing_path, {:class => "btn btn-link"} %>
         <%= link_to "Исходящие", outgoings_path, {:class => "btn btn-link"} %>
+
+        <%= link_to "Отклики", answers_path, {:class => "btn btn-link"} %>
+        <%= link_to "Статистика", cdr_index_path, {:class => "btn btn-link"} %>
       <% end %>
     <!--
     <a href="..." class="btn btn-link">Добавить телефоны</a>

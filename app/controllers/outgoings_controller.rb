@@ -24,16 +24,26 @@ class OutgoingsController < ApplicationController
   # POST /outgoings
   # POST /outgoings.json
   def create
-    @outgoing = Outgoing.new(outgoing_params)
-    
-    OutgoingUploadJob.perform_later( @outgoing.csv_upload.path)
+    if ( !params.has_key?(:outgoing) ) 
+        respond_to do |format|
+        
+            format.html { redirect_to new_outgoing_url, notice: 'Не выбран файл' }
+            format.json { head :no_content }
 
-    respond_to do |format|
-	
-      format.html { redirect_to outgoings_url, notice: 'Outgoing was uploading.' }
-      format.json { head :no_content }
+          end
+      else
 
-    end
+        @outgoing = Outgoing.new(outgoing_params)
+        
+        OutgoingUploadJob.perform_later( @outgoing.csv_upload.path)
+
+        respond_to do |format|
+    	
+          format.html { redirect_to outgoings_url, notice: 'Номера успешно добавлены' }
+          format.json { head :no_content }
+
+        end
+      end
   end
 
   # PATCH/PUT /outgoings/1
