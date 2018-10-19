@@ -1,3 +1,9 @@
+
+ <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+
 <%= form_with(model: setting, local: true) do |form| %>
   <% if setting.errors.any? %>
     <div id="error_explanation">
@@ -5,7 +11,9 @@
 
       <ul>
       <% setting.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        
+        <%= content_tag(:div, message, class: "toast toast-error") %>
+
       <% end %>
       </ul>
     </div>
@@ -13,28 +21,28 @@
 
 
   <div class="field">
-    <%= form.label "Час начало работы:" %>
-    <%= form.number_field :hour_bgn, id: :setting_hour_bgn %>
+    <%= form.label "Час начало работы:", class: "form-label" %>
+    <%= form.number_field :hour_bgn, id: :setting_hour_bgn, class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= form.label "Час завершения работы:" %>
-    <%= form.number_field :hour_end, id: :setting_hour_end %>
+    <%= form.label "Час завершения работы:", class: "form-label" %>
+    <%= form.number_field :hour_end, id: :setting_hour_end, class: "form-input" %>
   </div>
   
 
   <div class="field">
-    <%= form.label "Максимальное количество попыток на повторный звонок:" %>
-    <%= form.number_field :attempt_max_count, id: :setting_attempt_max_count %>
+    <%= form.label "Максимальное количество попыток на повторный звонок:", class: "form-label" %>
+    <%= form.number_field :attempt_max_count, id: :setting_attempt_max_count, class: "form-input" %>
   </div>
 
 
   <div class="field">
-    <%= form.label "Интервал между попыками в мин:" %>
-    <%= form.number_field :attempt_interval, id: :setting_atempt_interval %>
+    <%= form.label "Интервал между попыками в мин:", class: "form-label" %>
+    <%= form.number_field :attempt_interval, id: :setting_atempt_interval, class: "form-input" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Сохранить" %>
+<div class="mt-2 text-center">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
   </div>
 <% end %>
