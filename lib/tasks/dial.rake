@@ -60,17 +60,20 @@ namespace :dial do
 
             n = 0
             Outgoing.limit(trank.callcount).each do |contact|
-                contact.delete
+                
+                contact.update_attributes(:status => 'DIALING')
+                
                 n = n + 1
                 j = j + 1
                 f_path = ""
                 peers_str = trank.callerid
                 peers = peers_str.split('|')
                 i = n % peers.count
-	        telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '')    
-	        if (telephone.length == 11)
-	            telephone.slice!(0)
-	        end
+    	        
+                telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '')    
+    	        if (telephone.length == 11)
+    	            telephone.slice!(0)
+    	        end
    
                 if (telephone.length == 10) 
                     telephone = '7' + telephone
@@ -102,6 +105,8 @@ namespace :dial do
                 dir = setting.outgoing + '/'
                 count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
                 puts "-->#{count}"
+
+                
               
                 if (j > trank.callcount)
                     j = 0
