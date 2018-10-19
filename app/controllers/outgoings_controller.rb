@@ -4,7 +4,7 @@ class OutgoingsController < ApplicationController
   # GET /outgoings
   # GET /outgoings.json
   def index
-    @outgoings = Outgoing.all
+    @outgoings = Outgoing.order(updated_at: :desc).limit(50)
   end
 
   # GET /outgoings/1
