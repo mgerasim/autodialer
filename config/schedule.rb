@@ -25,6 +25,10 @@ every :minute do
   rake "dial:run"
 end
 
-every 1.day, at: '4:30 am' do
+every :minute do
+  rake "cdr:update"
+end
+
+every :hour do
   rake "dial:clear"
 end

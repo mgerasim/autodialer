@@ -3,6 +3,18 @@ namespace :dial do
   task clear: :environment do
     `rm -rf /var/log/asterisk/cdr-csv/`
     `mkdir /var/log/asterisk/cdr-csv/`
+
+
+    Outgoing
+      .where("status != 'INSERTED'")
+      .where("updated_at < ? ", Time.now - 20.hours)
+      .order(updated_at: :desc)   do |contact|
+
+             contact.delete
+      
+      end
+  end
+
   end
 
   task :answer, [:contact] => :environment do |t, args|
@@ -106,7 +118,7 @@ namespace :dial do
                 count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
                 puts "-->#{count}"
 
-                
+
               
                 if (j > trank.callcount)
                     j = 0

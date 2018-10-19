@@ -1,7 +1,7 @@
 namespace :cdr do
   desc "TODO"
   task update: :environment do
-    Contact
+    Outgoing
       .where(status: "DIALING")
       .where("updated_at > ? ", Time.now - 1.hours)
       .where("updated_at < ? ", Time.now - 5.minute)
