@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181018091406) do
+ActiveRecord::Schema.define(version: 20181020115640) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20181018091406) do
     t.integer "hour_end"
     t.integer "attempt_max_count", default: 0
     t.integer "attempt_interval", default: 60
+    t.integer "google_sheet_count"
+    t.integer "google_sheet_current", default: 0
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

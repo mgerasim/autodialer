@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"form",
+				"form-input"
+			],
+			[
+				"out",
+				"outgoing"
+			],
+			[
+				"Вы",
+				"Выход"
+			],
+			[
+				"s",
+				"socket"
+			],
+			[
 				"re",
 				"recommendations"
 			],
@@ -22,10 +38,6 @@
 			[
 				"col-sm",
 				"col-sm-6"
-			],
-			[
-				"form",
-				"form-group"
 			],
 			[
 				"d",
@@ -125,6 +137,191 @@
 				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"contents": "# SQLite version 3.x\n#   gem install sqlite3\n#\n#   Ensure the SQLite 3 gem is defined in your Gemfile\n#   gem 'sqlite3'\n#\ndefault: &default\n  adapter: sqlite3\n  pool: <%= ENV.fetch(\"RAILS_MAX_THREADS\") { 5 } %>\n  timeout: 5000\n\ndevelopment:\n adapter: mysql2\n encoding: utf8\n pool: 5\n min_messages: warning\n timeout: 5000\n reconnect: false\n database: avtodialerdevel\n pool: 5\n username: avtodialer\n password: avtodialer\n #socket: /var/lib/mysql/mysql.sock\n socket: /tmp/mysql.sock\n\n# Warning: The database defined as \"test\" will be erased and\n# re-generated from your development database when you run \"rake\".\n# Do not set this db to the same as development or production.\ntest:\n  <<: *default\n  database: db/test.sqlite3\n\n#production:\n#  <<: *default\n#  database: db/production.sqlite3\nproduction:\n adapter: mysql2\n encoding: utf8\n pool: 5\n min_messages: warning\n timeout: 5000\n reconnect: false\n database: avtodialerdb\n pool: 5\n username: avtodialer\n password: avtodialer\n socket: /var/lib/mysql/mysql.sock\n\n\nasteriskcdrdb:\n adapter: mysql2\n encoding: utf8\n pool: 5\n min_messages: warning\n timeout: 5000\n reconnect: false\n database: asteriskcdrdb\n pool: 5\n username: freepbxuser\n password: ArvqHJChr35h\n #socket: /var/lib/mysql/mysql.sock\n socket: /tmp/mysql.sock",
+			"file": "config/database.yml",
+			"file_size": 1266,
+			"file_write_time": 131844320070070844,
+			"settings":
+			{
+				"buffer_size": 1264,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/cdr/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1186,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/cdr_controller.rb",
+			"settings":
+			{
+				"buffer_size": 355,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/application.html.erb",
+			"settings":
+			{
+				"buffer_size": 757,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/sessions/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 641,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/outgoings/_form.html.erb",
+			"settings":
+			{
+				"buffer_size": 853,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/outgoings/new.html.erb",
+			"settings":
+			{
+				"buffer_size": 210,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/settings/edit.html.erb",
+			"settings":
+			{
+				"buffer_size": 172,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/settings/_form.html.erb",
+			"settings":
+			{
+				"buffer_size": 1479,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/settings_controller.rb",
+			"settings":
+			{
+				"buffer_size": 2144,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/tasks/dial.rake",
+			"settings":
+			{
+				"buffer_size": 3788,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config/schedule.rb",
+			"settings":
+			{
+				"buffer_size": 638,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "lib/tasks/cdr.rake",
+			"settings":
+			{
+				"buffer_size": 589,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/models/outgoing.rb",
+			"settings":
+			{
+				"buffer_size": 377,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/controllers/outgoings_controller.rb",
+			"settings":
+			{
+				"buffer_size": 2134,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/outgoings/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1065,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/application.css",
+			"settings":
+			{
+				"buffer_size": 859,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "@import \"bootstrap-sprockets\";\n@import \"bootstrap\";\n\n/* mixins, variables, etc. */\n\n$gray-medium-light: #eaeaea;\n\n@mixin box_sizing {\n  -moz-box-sizing:    border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing:         border-box;\n}\n\n\t\n/* miscellaneous */\n\n.debug_dump {\n  clear: both;\n  float: left;\n  width: 100%;\n  margin-top: 45px;\n  @include box_sizing;\n}\n/* sidebar */\n\naside {\n  section.user_info {\n    margin-top: 20px;\n  }\n  section {\n    padding: 10px 0;\n    margin-top: 20px;\n    &:first-child {\n      border: 0;\n      padding-top: 0;\n    }\n    span {\n      display: block;\n      margin-bottom: 3px;\n      line-height: 1;\n    }\n    h1 {\n      font-size: 1.4em;\n      text-align: left;\n      letter-spacing: -1px;\n      margin-bottom: 3px;\n      margin-top: 0px;\n    }\n  }\n}\n\n.gravatar {\n  float: left;\n  margin-right: 10px;\n}\n\n.gravatar_edit {\n  margin-top: 15px;\n}\n\n/* universal */\n\nbody {\n  padding-top: 60px;\n}\n\nsection {\n  overflow: auto;\n}\n\ntextarea {\n  resize: vertical;\n}\n\n.center {\n  text-align: center;\n  h1 {\n    margin-bottom: 10px;\n  }\n}\n\n/* typography */\n\nh1, h2, h3, h4, h5, h6 {\n  line-height: 1;\n}\n\nh1 {\n  font-size: 3em;\n  letter-spacing: -2px;\n  margin-bottom: 30px;\n  text-align: center;\n}\n\nh2 {\n  font-size: 1.2em;\n  letter-spacing: -1px;\n  margin-bottom: 30px;\n  text-align: center;\n  font-weight: normal;\n  color: $gray-light;\n}\n\np {\n  font-size: 1.1em;\n  line-height: 1.7em;\n}\n\n\n/* header */\n\n#logo {\n  float: left;\n  margin-right: 10px;\n  font-size: 1.7em;\n  color: white;\n  text-transform: uppercase;\n  letter-spacing: -1px;\n  padding-top: 9px;\n  font-weight: bold;\n  &:hover {\n    color: white;\n    text-decoration: none;\n  }\n}\n\n/* footer */\n\nfooter {\n  margin-top: 45px;\n  padding-top: 5px;\n  border-top: 1px solid $gray-medium-light;\n  color: $gray-light;\n  a {\n    color: $gray;\n    &:hover {\n      color: $gray-darker;\n    }\n  }\n  small {\n    float: left;\n  }\n  ul {\n    float: right;\n    list-style: none;\n    li {\n      float: left;\n      margin-left: 15px;\n    }\n  }\n}\n\n/* forms */\n\ninput, textarea, select, .uneditable-input {\n  border: 1px solid #bbb;\n  width: 100%;\n  margin-bottom: 15px;\n  @include box_sizing;\n}\n\ninput {\n  height: auto !important;\n}\n\n/* sidebar */\n\naside {\n  section.user_info {\n    margin-top: 20px;\n  }\n  section {\n    padding: 10px 0;\n    margin-top: 20px;\n    &:first-child {\n      border: 0;\n      padding-top: 0;\n    }\n    span {\n      display: block;\n      margin-bottom: 3px;\n      line-height: 1;\n    }\n    h1 {\n      font-size: 1.4em;\n      text-align: left;\n      letter-spacing: -1px;\n      margin-bottom: 3px;\n      margin-top: 0px;\n    }\n  }\n}\n\n.gravatar {\n  float: left;\n  margin-right: 10px;\n}\n\n.gravatar_edit {\n  margin-top: 15px;\n}\n\n#error_explanation {\n  color: red;\n  ul {\n    color: red;\n    margin: 0 0 30px 0;\n  }\n}\n\n.field_with_errors {\n  @extend .has-error;\n  .form-control {\n    color: $state-danger-text;\n  }\n}\n",
+			"file": "app/assets/stylesheets/custom.scss",
+			"file_size": 2909,
+			"file_write_time": 131843407048461736,
+			"settings":
+			{
+				"buffer_size": 2909,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/answers/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 1257,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/layouts/_footer.html.erb",
+			"settings":
+			{
+				"buffer_size": 191,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
 		}
 	],
 	"build_system": "",
@@ -159,10 +356,15 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/mgerasim/Projects/web/autodialer"
+		"/Users/mgerasim/Projects/web/autodialer",
+		"/Users/mgerasim/Projects/web/autodialer/config",
+		"/Users/mgerasim/Projects/web/autodialer/lib",
+		"/Users/mgerasim/Projects/web/autodialer/lib/tasks"
 	],
 	"file_history":
 	[
+		"/Users/mgerasim/Projects/web/autodialer/app/views/layouts/_header.html.erb",
+		"/Users/mgerasim/Projects/web/autodialer/app/views/sessions/new.html.erb",
 		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825170958_add_call_ambulance_to_documents.rb",
 		"/Users/mgerasim/Projects/web/docman/app/views/documents/_call_address.html.erb",
 		"/Users/mgerasim/Projects/web/docman/db/migrate/20180825021209_delete_state_data_anisocoria.rb",
@@ -304,7 +506,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 12,
 			"sheets":
 			[
 				{
@@ -331,7 +533,587 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "config/database.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1264,
+								1264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 221.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/cdr/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1186,
+								1186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/controllers/cdr_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 355,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								291,
+								291
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 22.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/views/layouts/application.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 757,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								666,
+								666
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/views/sessions/new.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 641,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								25
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/views/outgoings/_form.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								803,
+								829
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/views/outgoings/new.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 210,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								46,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/views/settings/edit.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 172,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24,
+								24
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/views/settings/_form.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1479,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1431,
+								1431
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 55.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/controllers/settings_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2144,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1055,
+								1055
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 280.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "lib/tasks/dial.rake",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3788,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								322,
+								322
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "config/schedule.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								597,
+								597
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "lib/tasks/cdr.rake",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								67,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/models/outgoing.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 377,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								98,
+								98
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/controllers/outgoings_controller.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2134,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								460,
+								460
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 150.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/views/outgoings/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1065,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								50
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/assets/stylesheets/application.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 859,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								709,
+								709
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/assets/stylesheets/custom.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2909,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/views/answers/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								239,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/views/layouts/_footer.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 191,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				}
 			]

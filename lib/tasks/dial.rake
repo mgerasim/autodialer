@@ -15,7 +15,7 @@ namespace :dial do
       end
   end
 
-  end
+  
 
   task :answer, [:contact] => :environment do |t, args|
     puts args.contact
