@@ -28,20 +28,32 @@ class Answer < ApplicationRecord
     private
 
     def google_sheet_save
+
+    	begin
     	
-    	session = GoogleDrive::Session.from_service_account_key("config//avtodialer.json")
+	    	setting = Setting.first
 
-    	spreadsheet = session.spreadsheet_by_title("Avtodialer")
+	    	session = GoogleDrive::Session.from_service_account_key(setting.google_private_key.path)
 
-    	puts spreadsheet.worksheets.count
+	    	puts setting.google_private_key.url
 
-    	worksheet = spreadsheet.worksheets[ id %  spreadsheet.worksheets.count]
+	    	spreadsheet = session.spreadsheet_by_title("Avtodialer")
 
-    	row = [shown_date_created_at, shown_time_created_at, contact]
+	    	puts spreadsheet.worksheets.count
 
-    	worksheet.insert_rows(worksheet.num_rows + 1, [row])
+	    	worksheet = spreadsheet.worksheets[ id %  spreadsheet.worksheets.count]
 
-    	worksheet.save 
+	    	row = [shown_date_created_at, shown_time_created_at, contact]
+
+	    	worksheet.insert_rows(worksheet.num_rows + 1, [row])
+
+	    	worksheet.save 
+
+	    rescue => error
+
+	    	puts error.message
+
+	    end
 
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181020115640) do
+ActiveRecord::Schema.define(version: 20181020203908) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -55,6 +55,11 @@ ActiveRecord::Schema.define(version: 20181020115640) do
     t.integer "attempt_interval", default: 60
     t.integer "google_sheet_count"
     t.integer "google_sheet_current", default: 0
+    t.text "google_title"
+    t.string "google_private_key_file_name"
+    t.string "google_private_key_content_type"
+    t.integer "google_private_key_file_size"
+    t.datetime "google_private_key_updated_at"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

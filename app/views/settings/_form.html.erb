@@ -4,7 +4,7 @@
       <% end %>
 
 
-<%= form_with(model: setting, local: true) do |form| %>
+<%= form_with(model: setting, local: true, multipart: true) do |form| %>
   <% if setting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
@@ -40,6 +40,16 @@
   <div class="field">
     <%= form.label "Интервал между попыками в мин:", class: "form-label" %>
     <%= form.number_field :attempt_interval, id: :setting_atempt_interval, class: "form-input" %>
+  </div>
+
+  <div class="field">
+      <%= form.label "Наименование Google Drive документа:", class: "form-label"  %>
+      <%= form.text_field :google_title, id: :setting_google_title, class: "form-input" %>
+  </div>
+
+  <div class="field">
+      <%= form.label "Файл закрытого ключа:", class: "form-label"  %>
+      <%= form.file_field :google_private_key, id: :setting_google_private_key, class: "form-input" %>
   </div>
 
 <div class="mt-2 text-center">

@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "avtodialer",
+  "private_key_id": "649d5ffada8e063c78150f07d64920546f6867ce",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCoUVEvWE7xKnnh\nmBhicmVvAQ0wvKxGbR2iMBRPDXlfYWq+t/PGDypygl5/SKhaM21BQ6BWwRTXf+W5\n49BDGIzrFUefDLBzm2GOdcA/hhqJdjdAjRczlcofjqU1pBkazLkhp1ZtTE3nImX1\nZBfMLRB7qfKp9s1PcIYaDL5l8F+3RpPF7gKK4UOwd4jCFYaftm5k8n9whnhpcRHY\nGDM3dYeEnl64ihdEEuZ5K7mAtQQvMjAWW60MF8MccPoUZnUPRZKrHBCLYGoNbJ4y\n/+bXFXEM3G1VmWaoQPCLxiriRWsegBUvpcYPLJxm5t/PFd7vwQmSRbAca+BbSCTG\nDZtc8XeJAgMBAAECggEAKmYFccwoYoaFGiciaVYQqAQXSwIT0U+2Kb87tmgZ/UVA\nStdykB8M3bhqTlzCj6opqMl8r63GbrxYZVl2AhjCkosTNgTPw+dNjUGrEjVZJOxC\n4b9Iq2Vde1KG2jrCWiZcshYBZtnUO9dF4Kj8d6GYZ9Y4+shhElQxa4lvQqVorvUu\nswrLt8zeg28Rn2+vPjT59NwlIeHYKhEKOv9I27aPo0YRAjttDErCvn7sWxkMwcCt\nlcFCcpk7bC7WNWuF644WFK3vM06DZFyDw+rI0vJyVCMC6CqJ3ND5Q+265NRcjcGA\nKemkd6EuH65hGXFQIYIjqgT7PAKwjlKjmkui16MycwKBgQDllfzNcygu7+6EyE3N\nDQmbOnznGLU3qFeESR/3DWd3Ii07v6w7LYO+TEP1kiXXMB9ht27sDPPnVJS4JxI9\nrtScTs3ztlq24Qhach5kM1Wf1DWyfgzFL5IQtdapEqRHX0FBH6H7Ki2HzTaBWUBQ\nOUVl42lyfzjIoP0PMnX7g8TlYwKBgQC7rsp3alIN6p7RVkST+j55Lin7duLoOawv\nIIUI1+Y0hM92WXou3qauRQYtXV/7Yl/lDw6+EWeb5neuBAkeG0l2p6txwNwRXajL\n7j8PsHANSXimTsjmHbp29lZ+LnOosCnzAC1geurY8koAeWEDIrgBj5p2jnYRLP0v\naZhd2nXpIwKBgQCJ5PtxXuBcyMmHQVPRfCov7QJGP4XgxyDBmLY1SfzCBmoKwAYv\niRfe/am33q8Rv5qps2ZRKzp30Ep/DSCcodybgY2b+wQjYagFwxNT9a1REUGrUqBS\n806U8NLcvBCluaXU+q3s0JmGPpClQjkptixjlSKpnZY6ks9MCG/qwGtLpwKBgC1N\nTIu0eyfmyP0IkLcTQT8o2HNdR/n76cbaV6JB0sw8foM3p9lmXt9Tw+DxV/iqzzDQ\nCKPyOYsU/zBewwCkX4AniqeDgNskO1k2Ibycvv9GC7xA6hc5d8e9QDVm6v39v7Jr\nCYjvQn6pRRmGMtd56uZdjlAtpOwSau6l02RcFff3AoGARuJR1oDB1sIhZEWBUmqQ\n4SqvL5jjM/Vo9Z8dTzAco0EWdU51ZCxJS//ZaXKCdgVxuJZ2Bh4zWcUq0EEbw8gA\nZ0zHySlTeF4JGV9BGdLQyvbr7rYBTYTtw0KXGU4Od1rUOBKHYFL3CvCxMMbO/gNU\nDd9S1ORVcqtdSX+QSNlAckk=\n-----END PRIVATE KEY-----\n",
+  "client_email": "avtodialerserviceaccount@avtodialer.iam.gserviceaccount.com",
+  "client_id": "100696734469066575277",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/avtodialerserviceaccount%40avtodialer.iam.gserviceaccount.com"
+}
