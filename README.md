@@ -7,6 +7,10 @@ Records: 0  Duplicates: 0  Warnings: 0
 MariaDB [avtodialerdb]> ALTER TABLE `outgoings` MODIFY COLUMN `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
 Query OK, 0 rows affected (0.12 sec)
 Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [avtodialerdb]> ALTER TABLE `outgoings` MODIFY COLUMN `attempt` TIMESTAMP NOT NULL DEFAULT 0;
+Query OK, 0 rows affected (0.03 sec)               
+Records: 0  Duplicates: 0  Warnings: 0
 ```
 
 # Настройка базы данных
