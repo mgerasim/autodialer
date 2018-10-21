@@ -37,9 +37,10 @@
   </div>
 
   <div class="field">
-    <%= form.label "Активное состояние:", class: "form-label" %>
-    <%= form.check_box :enabled, id: :trank_enabled, class: "form-input"  %>
+    <%= form.label "Активное состояние:", class: "form-checkbox" %>
+    <%= form.check_box :enabled, id: :trank_enabled  %>
   </div>
+
 
  <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>
