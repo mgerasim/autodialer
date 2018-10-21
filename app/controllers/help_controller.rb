@@ -9,7 +9,7 @@ class HelpController < ApplicationController
   def outgoing_destroy_all
     OutgoingDestroyAllJob.perform_later( )
     respond_to do |format|
-      format.html { redirect_to outgoings_url, notice: 'Все записис удалены' }
+      format.html { redirect_to outgoings_url, notice: 'Все записи удалены' }
       format.json { head :no_content }
     end
   end

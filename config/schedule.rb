@@ -29,6 +29,10 @@ every :minute do
   rake "cdr:update"
 end
 
+every :minute do
+  rake "cdr:attempt"
+end
+
 every :hour do
   rake "dial:clear"
 end
