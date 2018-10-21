@@ -5,13 +5,13 @@ namespace :cdr do
 
 	begin
 		setting = Setting.first
-		contacts = Outgoing.where("attempt < ?", setting.attempt_max_count)
+		contacts = Outgoing.where("attempt_current < ?", setting.attempt_max_count)
 			.where(status: ['NO ANSWER', 'FAILED'])
 			.order(updated_at: :desc)
 		puts contacts.count
 		contacts.each do |contact|
 			contact.update_attributes(:status => "INSERTED",
-				:attempt => setting.attempt + 1)
+				:attempt_current => contact.attempt_current + 1)
 		end
 	rescue => error
 		puts error.message
@@ -34,11 +34,11 @@ namespace :cdr do
 
    		contacts.each do |contact|
 
-			if (contact.attempt == nil)
-				puts "attempt == nil"
-				contact.update_attributes(:status => 'DIALED', :attempt => 0)
+			if (contact.attempt_current == nil)
+				puts "attempt_current == nil"
+				contact.update_attributes(:status => 'DIALED', :attempt_current => 0)
 			else 
-				puts "attempt != nil"
+				puts "attempt_current != nil"
 				contact.update_attributes(:status => 'DIALED')
       			end
 
