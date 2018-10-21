@@ -6,7 +6,7 @@ class Outgoing < ApplicationRecord
   
     def shown_date_created_at
 	if (updated_at != nil)
-        	(updated_at - 3.hours).strftime("%Y-%m-%d")
+        	(updated_at).strftime("%Y-%m-%d")
 	else
 		""
 	end
@@ -14,7 +14,7 @@ class Outgoing < ApplicationRecord
 
     def shown_time_created_at
 	if (updated_at != nil)
-        	(updated_at - 3.hours).strftime("%H:%M:%S")
+        	(updated_at).strftime("%H:%M:%S")
 	else
 		""
 	end

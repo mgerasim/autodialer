@@ -71,8 +71,13 @@ namespace :dial do
             next   if (count > trank.callcount)
 
             n = 0
-            Outgoing.limit(trank.callcount).each do |contact|
-                
+            Outgoing.where(:status => 'INSERTED').limit(trank.callcount).each do |contact|                
+
+		if (contact.telephone == '')
+			contact.delete
+			next
+		end
+
                 contact.update_attributes(:status => 'DIALING')
                 
                 n = n + 1

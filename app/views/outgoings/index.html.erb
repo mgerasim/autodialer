@@ -32,6 +32,7 @@
 			<th>Время</th>
 			<th>Номер</th>
 			<th>Статус</th>
+			<th>Попытка</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -40,7 +41,8 @@
 			<td><%= outgoing.shown_date_created_at %> </td>
 			<td><%= outgoing.shown_time_created_at %> </td>
 			<td><%= outgoing.telephone %></td>
-			<td><%= outgoing.status %></td> 
+			<td><%= outgoing.status %></td>
+			<td><%= outgoing.attempt %></td> 
 		</tr>
 	<% end %>
 	</tbody>
