@@ -37,7 +37,7 @@ class Answer < ApplicationRecord
 
 	    	puts setting.google_private_key.url
 
-	    	spreadsheet = session.spreadsheet_by_title("Avtodialer")
+	    	spreadsheet = session.spreadsheet_by_title(setting.google_title)
 
 	    	puts spreadsheet.worksheets.count
 
