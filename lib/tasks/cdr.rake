@@ -27,7 +27,7 @@ namespace :cdr do
 
 		contacts = Outgoing.where(status: "DIALING")
 			.where("updated_at > ? ", Time.now.utc - 24.hours)
-			.where("updated_at < ? ", Time.now.utc - 1.minute)
+			.where("updated_at < ? ", Time.now.utc - 2.minute)
 			.order(updated_at: :desc)
 
 		puts contacts.count 

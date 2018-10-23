@@ -39,6 +39,14 @@ class Answer < ApplicationRecord
 
 	    	spreadsheet = session.spreadsheet_by_title(setting.google_title)
 
+#		if (spreadsheet == nil)
+#			spreadsheet = session.create_spreadsheet(setting.google_title)
+#		end
+
+#		session.files.each do |file|
+#			puts file.name
+#		end
+
 	    	puts spreadsheet.worksheets.count
 
 	    	worksheet = spreadsheet.worksheets[ id %  spreadsheet.worksheets.count]

@@ -15,7 +15,7 @@
       
       <tr>
         <td>Количество номеров в очереде:</td>
-        <td><%= Outgoing.count %></td>
+        <td><%= @outgoings_count %></td>
         <td><%= link_to 'Очистить', :action => :outgoing_destroy_all, :controller => :help %></td>
       </tr>
 
