@@ -68,7 +68,7 @@ namespace :dial do
             count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
             j = count
             puts "->#{count}"
-            next   if (count > trank.callcount)
+            next   if (count >= trank.callcount)
 
             n = 0
             Outgoing.where(:status => 'INSERTED').limit(trank.callcount).each do |contact|                
@@ -100,7 +100,7 @@ namespace :dial do
             
                 puts telephone
   
-                File.open(Dir::Tmpname.create(['tmp_' + peers[i] + "_#{trank.name}_", '.call']) { }.to_s, "w+") do |f|
+                File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{trank.name}_", '.call']) { }.to_s, "w+") do |f|
                     f.chmod(0666)
     	            f.puts("Channel: SIP/" + telephone +  "@#{trank.name}")
                     f.puts("Callerid: " + peers[i])

@@ -29,5 +29,9 @@ class HelpController < ApplicationController
        format.json { head :no_content }
     end
 
-  end 
+  end
+
+  def asterisk_restart 
+    `touch /tmp/asterisk.restart.marker`
+  end
 end

@@ -20,11 +20,11 @@ class Asteriskcdr < ActiveRecord::Base
     end
 
     def shown_date_created_at
-        (calldate.localtime + 3.hours).strftime("%Y-%m-%d")
+        (calldate.localtime).strftime("%Y-%m-%d")
     end
 
     def shown_time_created_at
-        (calldate.localtime + 3.hours).strftime("%H:%M:%S")
+        (calldate.localtime).strftime("%H:%M:%S")
     end
 	
 

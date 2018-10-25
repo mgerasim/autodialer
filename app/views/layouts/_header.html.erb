@@ -35,6 +35,10 @@
                           <%= link_to "Общие настройки", edit_setting_path(Setting.first), {:class => "btn btn-link"} %>
 
                       </li>
+			
+		    <li class="menu-item">
+			<%= link_to 'Перегрузить', :action => :asterisk_restart, :controller => :help %>
+ 		    </li>
                   </ul>
                 </div>
 
