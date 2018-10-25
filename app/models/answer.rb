@@ -33,19 +33,20 @@ class Answer < ApplicationRecord
     	
 	    	setting = Setting.first
 
-	    	session = GoogleDrive::Session.from_service_account_key(setting.google_private_key.path)
+	    	session = GoogleDrive::Session.from_service_account_key('/home/rails/apps/autodialer/current/public/system/settings/google_private_keys/000/000/002/original/Avtoobzvon-3666d5a20cb7.json')
+#setting.google_private_key.path)
 
 	    	puts setting.google_private_key.url
 
 	    	spreadsheet = session.spreadsheet_by_title(setting.google_title)
 
-#		if (spreadsheet == nil)
-#			spreadsheet = session.create_spreadsheet(setting.google_title)
-#		end
+		if (spreadsheet == nil)
+			spreadsheet = session.create_spreadsheet(setting.google_title)
+		end
 
-#		session.files.each do |file|
-#			puts file.name
-#		end
+		session.files.each do |file|
+			puts file.name
+		end
 
 	    	puts spreadsheet.worksheets.count
 
