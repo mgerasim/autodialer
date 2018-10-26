@@ -40,7 +40,7 @@
 		<tr>
 			<td><%= outgoing.shown_date_created_at %> </td>
 			<td><%= outgoing.shown_time_created_at %> </td>
-			<td><%= outgoing.telephone %></td>
+			<td><%= link_to outgoing.telephone, {:action => :extensions, :controller => :help, :id => outgoing.id}   %></td>
 			<td><%= outgoing.status %></td>
 			<td><%= outgoing.attempt_current %></td> 
 		</tr>

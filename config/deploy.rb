@@ -17,7 +17,7 @@ set  :repo_url,        'file:///home/rails/repos/webapp.git'
 
 
 set :application,     'autodialer'
-set :user,            'asterisk'
+set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 

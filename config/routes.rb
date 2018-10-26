@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'help/answers_destroy_all'
   get 'help/cdr_destroy_all'
   get 'help/asterisk_restart'
+  get 'help/extensions'
 
   resources :outgoings
   resources :sips

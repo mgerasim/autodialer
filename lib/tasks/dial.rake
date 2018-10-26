@@ -18,8 +18,10 @@ namespace :dial do
   
 
   task :answer, [:contact] => :environment do |t, args|
-    puts args.contact
     
+	puts args.contact
+	
+	Answer.create(:contact => args.contact)    
   end
  
   desc "TODO"
@@ -71,7 +73,7 @@ namespace :dial do
             next   if (count >= trank.callcount)
 
             n = 0
-            Outgoing.where(:status => 'INSERTED').limit(trank.callcount).each do |contact|                
+            Outgoing.where(:status => 'INSERTED').order(updated_at: :desc).limit(trank.callcount).each do |contact|                
 
 		if (contact.telephone == '')
 			contact.delete

@@ -1,0 +1,40 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Дата звонка</th>
+      <th>Время звонка</th>
+      <th>Имя звонящего</th>
+      <th>dst</th>
+      <th>dcontext</th>
+      <th>lastapp</th>
+      <th>channel</th>
+      <th>lastdata</th>
+      <th>duration</th>
+      <th>billsec</th>
+      <th>disposition</th>
+      <th>accountcode</th>
+      <th>userfield</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% if (@extensions != nil) %>
+          <% @extensions.each do |cdr| %>
+             <tr>
+                <td><%= cdr.shown_date_created_at %></td>
+                <td><%= cdr.shown_time_created_at %></td>
+                <td><%= cdr.src %></td>
+                <td><%= cdr.dst %></td>
+                <td><%= cdr.dcontext %></td>
+                <td><%= cdr.lastapp %></td>
+                <td><%= cdr.channel %></td>
+                <td><%= cdr.lastdata %></td>
+                <td><%= cdr.duration %></td>
+                <td><%= cdr.billsec %> </td>
+                <td><%= cdr.disposition %></td>
+                <td><%= cdr.accountcode %></td>
+                <td><%= cdr.userfield %></td>
+	     </tr>
+          <% end %>
+      <% end %>
+  </tbody>
+</table>

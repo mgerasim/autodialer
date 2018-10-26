@@ -34,4 +34,10 @@ class HelpController < ApplicationController
   def asterisk_restart 
     `touch /tmp/asterisk.restart.marker`
   end
+
+  def extensions
+    id = params[:id]
+    @extensions = Asteriskcdr.where(accountcode: id.to_s)
+  end
+
 end
