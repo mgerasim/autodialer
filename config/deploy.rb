@@ -92,6 +92,8 @@ task :cleanup do
 on roles(:app) do
   execute "source ~/.bashrc"
   execute "env"
+  execute "whenever --clear-crontab"
+  execute "whenever --update-crontab"
 end
 end
 
