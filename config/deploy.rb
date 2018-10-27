@@ -92,8 +92,6 @@ task :cleanup do
 on roles(:app) do
   execute "source ~/.bashrc"
   execute "env"
-  execute "#{fetch(:rbenv_path)}/shims/whenever --clear-crontab"
-  execute "#{fetch(:rbenv_path)}/shims/whenever --update-crontab"
 end
 end
 

@@ -33,7 +33,7 @@ class Answer < ApplicationRecord
     	
 	    	setting = Setting.first
 
-	    	session = GoogleDrive::Session.from_service_account_key(setting.google_private_key.path)
+	    	session = GoogleDrive::Session.from_service_account_key("/home/rails/projects/autodialer/public/system/settings/google_private_keys/000/000/004/original/avtoobzvon-220208-7622b8c4a673.json") #setting.google_private_key.path)
 
 	    	puts setting.google_private_key.url
 
