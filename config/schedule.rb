@@ -29,9 +29,9 @@ every :minute do
   rake "cdr:update"
 end
 
-every :minute do
-  rake "cdr:answer"
-end
+#every :minute do
+#  rake "cdr:answer"
+#end
 
 every :minute do
   rake "cdr:attempt"
