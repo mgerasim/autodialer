@@ -30,6 +30,10 @@ every :minute do
 end
 
 every :minute do
+  rake "cdr:answer"
+end
+
+every :minute do
   rake "cdr:attempt"
 end
 

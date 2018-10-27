@@ -1,6 +1,19 @@
 namespace :cdr do
 
   desc "TODO"
+  task answer: :environment do
+    cdr = Asteriskcdr.where(:lastapp => 'System').where("calldate > ?", Time.now - 8.hours).order(calldate: :desc).limit(10)
+
+    cdr.each do |record|
+        record.update_attributes(:lastapp => 'System01')
+        telephone = Outgoing.where(:id => record.accountcode.to_i).first
+        if (telephone != nil)
+            Answer.create(:contact => telephone.telephone)
+        end
+    end
+  end
+
+  desc "TODO"
   task attempt: :environment do
 
 	begin
