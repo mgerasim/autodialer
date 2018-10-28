@@ -2,8 +2,9 @@ namespace :cdr do
 
   desc "TODO"
   task spool: :environment do
-    sppols = Spool.all.limit(10)
+    spools = Spool.all.limit(10)
     spools.each do |spool|
+      puts spool.outgoing_id.to_s
       Answer.create(:contact => spool.outgoing.telephone)
       spool.delete
     end
