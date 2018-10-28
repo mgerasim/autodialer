@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 20181028124037) do
   end
 
   create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.bigint "answer_id"
+    t.bigint "outgoing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["answer_id"], name: "index_spools_on_answer_id"
+    t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -88,5 +88,5 @@ ActiveRecord::Schema.define(version: 20181028124037) do
   end
 
   add_foreign_key "contacts", "tasks"
-  add_foreign_key "spools", "answers"
+  add_foreign_key "spools", "outgoings"
 end
