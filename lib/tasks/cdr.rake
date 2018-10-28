@@ -1,6 +1,15 @@
 namespace :cdr do
 
   desc "TODO"
+  task spool: :environment do
+    sppols = Spool.all.limit(10)
+    spools.each do |spool|
+      Answer.create(:contact => spool.outgoing.telephone)
+      spool.delete
+    end
+  end
+
+  desc "TODO"
   task answer: :environment do
     cdr = Asteriskcdr.where(:lastapp => 'System').where("calldate > ?", Time.now - 8.hours).order(calldate: :desc).limit(10)
 

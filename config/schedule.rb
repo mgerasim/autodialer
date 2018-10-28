@@ -30,7 +30,7 @@ every :minute do
 end
 
 every :minute do
-  rake "cdr:answer"
+  rake "cdr:spool"
 end
 
 every :minute do
