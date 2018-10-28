@@ -113,7 +113,7 @@ namespace :dial do
                     f.puts("Extension: s")
                     f.puts("Priority: 1")
                     f.puts("Account: " + contact.id.to_s)
-                    f.puts("Set: __num=" + telephone)
+                    f.puts("Set: __num=" + contact.id.to_s)
                    # f.puts("Set: __num=" + telephone)
                     f_path = f.path
                 end

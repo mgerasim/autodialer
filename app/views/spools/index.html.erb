@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Spools</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @spools.each do |spool| %>
+      <tr>
+        <td><%= spool.answer %></td>
+        <td><%= link_to 'Show', spool %></td>
+        <td><%= link_to 'Edit', edit_spool_path(spool) %></td>
+        <td><%= link_to 'Destroy', spool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Spool', new_spool_path %>

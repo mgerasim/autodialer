@@ -1,0 +1,22 @@
+<%= form_with(model: spool, local: true) do |form| %>
+  <% if spool.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(spool.errors.count, "error") %> prohibited this spool from being saved:</h2>
+
+      <ul>
+      <% spool.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :answer_id %>
+    <%= form.text_field :answer_id, id: :spool_answer_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

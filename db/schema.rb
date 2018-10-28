@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181021194017) do
+ActiveRecord::Schema.define(version: 20181028124037) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 20181021194017) do
     t.datetime "google_private_key_updated_at"
   end
 
+  create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_spools_on_answer_id"
+  end
+
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -81,4 +88,5 @@ ActiveRecord::Schema.define(version: 20181021194017) do
   end
 
   add_foreign_key "contacts", "tasks"
+  add_foreign_key "spools", "answers"
 end

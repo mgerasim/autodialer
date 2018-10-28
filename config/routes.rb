@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spools
   get 'cdr/index'
 
   resources :answers
