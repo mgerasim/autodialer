@@ -3,4 +3,7 @@ class Trank < ApplicationRecord
     validates :waittime, presence: true
     validates :callerid, presence: true
     validates :callcount, presence: true
+    
+    def check
+    end
 end

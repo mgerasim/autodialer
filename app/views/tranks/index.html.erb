@@ -1,6 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="column col-8 col-mx-auto bg-gray">
 
-<h1>Рабочие каналы</h1>
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<div class="text-center">
+  <h1>Рабочие каналы</h1>
+</div>
+
+<br>
+
+<%= link_to "Активировать все каналы", help_trank_enable_all_url, :data => { :confirm=>'Подтвердить операцию?' }, :class => "btn btn-primary" %>
+<%= link_to "Деактивировать все каналы", help_trank_disable_all_url, :data => { :confirm=>'Подтвердить операцию?' }, :class => "btn" %>
+
+<br>
 
 <table class="table table-bordered">
   <thead>
@@ -27,6 +40,7 @@
         <td><%= link_to 'Показать', trank %></td>
         <td><%= link_to 'Редактировать', edit_trank_path(trank) %></td>
         <td><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Тестировать', {:action => :trank_check, :controller => :help, :id => trank.id} %></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,3 +49,5 @@
 <br>
 
 <%= link_to 'Добавить', new_trank_path, :class => 'btn btn-primary' %>
+
+</div>

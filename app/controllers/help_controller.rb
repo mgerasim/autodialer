@@ -40,4 +40,24 @@ class HelpController < ApplicationController
     @extensions = Asteriskcdr.where(accountcode: id.to_s)
   end
 
+  def trank_enable_all
+    Trank.where(:enabled => false).each do |trank| 
+      trank.update_attributes(:enabled => true)
+    end
+    redirect_to tranks_url, notice: "Все каналы активированы"
+  end
+
+  def trank_disable_all
+    Trank.where(:enabled => true).each do |trank| 
+        trank.update_attributes(:enabled => false)
+    end
+    redirect_to tranks_url, notice: "Все каналы деактивированы"
+  end
+ 
+ def trank_check
+   trank = Trank.find(params[:id])
+   trank.check()
+   redirect_to tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
+ end
+
 end

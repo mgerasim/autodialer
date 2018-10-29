@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'help/cdr_destroy_all'
   get 'help/asterisk_restart'
   get 'help/extensions'
+  get 'help/trank_enable_all'
+  get 'help/trank_disable_all'
+  get 'help/trank_check'
 
   resources :outgoings
   resources :sips
