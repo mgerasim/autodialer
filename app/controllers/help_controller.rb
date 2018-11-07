@@ -53,11 +53,12 @@ class HelpController < ApplicationController
     end
     redirect_to tranks_url, notice: "Все каналы деактивированы"
   end
- 
+
  def trank_check
    trank = Trank.find(params[:id])
-   trank.check()
-   redirect_to tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
+   telephone = params[:telephone]
+   trank.check(telephone)
+   redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
  end
 
 end

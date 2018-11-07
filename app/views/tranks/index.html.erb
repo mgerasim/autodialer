@@ -40,26 +40,71 @@
         <td><%= link_to 'Показать', trank %></td>
         <td><%= link_to 'Редактировать', edit_trank_path(trank) %></td>
         <td><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Тестировать', {:action => :trank_check, :controller => :help, :id => trank.id}, :data => {:id => :id} %></td>
+        <td><%= link_to 'Тестировать', '#', :class => "trank_test", :data => {:id => trank.id} %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<script>
+  $(document).ready(function() {
+
+    $(".trank_test").click(function() {
+        
+       $("#modal-id").addClass('active');
+       $("#trank-id").val($(this).data("id"));
+
+       return false;
+
+    });  
+
+    $("#btn-trank-test").click(function() {
+       
+        var id = $("#trank-id").val();
+        var tel = $("#input-example-1").val();
+ 
+        console.log(id);
+	console.log(tel);
+
+        $.get("/help/trank_check",
+		{
+			id: id,
+			telephone: tel
+		},
+		function(data, status) { 
+ 		}
+	)
+	.done(function() {
+	
+		$("#modal-id").removeClass('active');
+
+	});
+        
+    });
+
+  });
+</script>
 
 <div class="modal" id="modal-id">
   <a href="#close" class="modal-overlay" aria-label="Close"></a>
   <div class="modal-container">
     <div class="modal-header">
       <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
-      <div class="modal-title h5">Modal title</div>
+      <div class="modal-title h5">Проверка канала</div>
     </div>
     <div class="modal-body">
       <div class="content">
         <!-- content here -->
+        <!-- form input control -->
+<div class="form-group">
+  <label class="form-label" for="input-example-1">Укажите номер телефона:</label>
+  <input class="form-input" type="text" id="input-example-1" placeholder="Номер телефона">
+  <input id="trank-id" type="text" hidden="true" >
+</div>
       </div>
     </div>
     <div class="modal-footer">
-      ...
+      <button id="btn-trank-test" class="btn btn-primary">Проверить</button>
     </div>
   </div>
 </div>
