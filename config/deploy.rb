@@ -1,8 +1,11 @@
 # Change these
 server 'localhost', roles: [:web, :app, :db], primary: true
 
+set :application,     'autodialer'
+
+
 #set :repo_url,        'git@example.com:username/appname.git'
-set  :repo_url,        'file:///home/rails/repos/webapp.git'
+set  :repo_url,        "file:///home/rails/repos/#{fetch(:application)}.git"
 
 #set :scm, :none
 #set :repository, "."
@@ -15,8 +18,6 @@ set  :repo_url,        'file:///home/rails/repos/webapp.git'
 #set :local_repository, "."
 #set :branch, "master"
 
-
-set :application,     'autodialer'
 set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -74,6 +75,12 @@ task :check_revision do
 on roles(:app) do
 unless `git rev-parse HEAD` == `git rev-parse origin/master`
 puts "WARNING: HEAD is not the same as origin/master"
+puts "Run `git push` to sync changes."
+exit
+end
+
+unless `git rev-parse HEAD` == `git rev-parse local/master`
+puts "WARNING: HEAD is not the same as local/master"
 puts "Run `git push` to sync changes."
 exit
 end
