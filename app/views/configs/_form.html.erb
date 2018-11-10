@@ -1,0 +1,47 @@
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+<% end %>
+
+<%= form_with(model: config, local: true) do |form| %>
+  <% if config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(config.errors.count, "error") %> prohibited this config from being saved:</h2>
+
+      <ul>
+      <% config.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Пароль приложения:", class: "form-label" %>
+    <%= form.text_field :password_encrypted, id: :config_password_encrypted, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Удалять исходящие номера после вызова:", class: "form-label" %>
+    <%= form.check_box :is_outgoing_deleted, id: :config_is_outgoing_deleted %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Интеграция Google:", class: "form-label"  %>
+    <%= form.check_box :is_google_integrated, id: :config_is_google_integrated %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Поддержка повторного вызова по неотвеченным номерам с указанием интервала и количество попыток в настройках приложения:", class: "form-label"  %>
+    <%= form.check_box :is_attempt_supported, id: :config_is_attempt_supported %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Поддержка отображения откликов: ", class: "form-label"  %>
+    <%= form.check_box :is_answer_supported, id: :config_is_answer_supported %>
+  </div>
+
+  <div class="mt-2 text-center">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
+  </div>
+
+<% end %>

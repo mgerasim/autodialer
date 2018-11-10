@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :configs
+  resources :configurations
   resources :spools
   get 'cdr/index'
 

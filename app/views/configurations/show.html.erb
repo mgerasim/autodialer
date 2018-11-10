@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Password encrypted:</strong>
+  <%= @configuration.password_encrypted %>
+</p>
+
+<p>
+  <strong>Is outgoing deleted:</strong>
+  <%= @configuration.is_outgoing_deleted %>
+</p>
+
+<p>
+  <strong>Is outgoing table showed:</strong>
+  <%= @configuration.is_outgoing_table_showed %>
+</p>
+
+<p>
+  <strong>Is google integrated:</strong>
+  <%= @configuration.is_google_integrated %>
+</p>
+
+<p>
+  <strong>Is attempt supported:</strong>
+  <%= @configuration.is_attempt_supported %>
+</p>
+
+<p>
+  <strong>Is answer supported:</strong>
+  <%= @configuration.is_answer_supported %>
+</p>
+
+<%= link_to 'Edit', edit_configuration_path(@configuration) %> |
+<%= link_to 'Back', configurations_path %>

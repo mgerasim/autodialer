@@ -1,0 +1,47 @@
+<%= form_with(model: configuration, local: true) do |form| %>
+  <% if configuration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(configuration.errors.count, "error") %> prohibited this configuration from being saved:</h2>
+
+      <ul>
+      <% configuration.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :password_encrypted %>
+    <%= form.text_area :password_encrypted, id: :configuration_password_encrypted %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_outgoing_deleted %>
+    <%= form.check_box :is_outgoing_deleted, id: :configuration_is_outgoing_deleted %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_outgoing_table_showed %>
+    <%= form.check_box :is_outgoing_table_showed, id: :configuration_is_outgoing_table_showed %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_google_integrated %>
+    <%= form.check_box :is_google_integrated, id: :configuration_is_google_integrated %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_attempt_supported %>
+    <%= form.check_box :is_attempt_supported, id: :configuration_is_attempt_supported %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_answer_supported %>
+    <%= form.check_box :is_answer_supported, id: :configuration_is_answer_supported %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

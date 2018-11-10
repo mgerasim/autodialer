@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181110023131) do
+ActiveRecord::Schema.define(version: 20181110102524) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.text "password_encrypted"
+    t.boolean "is_outgoing_deleted"
+    t.boolean "is_outgoing_table_showed"
+    t.boolean "is_google_integrated"
+    t.boolean "is_attempt_supported"
+    t.boolean "is_answer_supported"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.text "password_encrypted"
+    t.boolean "is_outgoing_deleted"
+    t.boolean "is_outgoing_table_showed"
+    t.boolean "is_google_integrated"
+    t.boolean "is_attempt_supported"
+    t.boolean "is_answer_supported"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
