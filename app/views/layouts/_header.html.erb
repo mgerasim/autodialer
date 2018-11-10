@@ -22,7 +22,8 @@
 <% if logged_in? %>
 
   <section class="navbar-section">
-    <!-- basic dropdown button -->
+        <%= link_to "Выгрузить статистику", {:controller => :help, :action => :cdr}  %>
+	<!-- basic dropdown button -->
         <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Настройки <i class="icon icon-caret"></i></a>
                   <ul class="menu">
                     <li class="menu-item">
