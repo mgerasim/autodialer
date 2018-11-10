@@ -19,6 +19,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label "Заголовок:", class: "form-label" %>
+    <%= form.text_field :title, id: :setting_title, class: "form-input" %>
+  </div>
 
   <div class="field">
     <%= form.label "Час начало работы:", class: "form-label" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181028124037) do
+ActiveRecord::Schema.define(version: 20181110023131) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20181028124037) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.timestamp "created_at", null: false
-    t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "status"
     t.datetime "date_created"
     t.integer "attempt_current"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20181028124037) do
     t.string "outgoing"
     t.integer "sleep"
     t.boolean "is_enabled"
+    t.integer "duration"
     t.integer "waittime"
     t.string "trank"
     t.integer "hour_bgn"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20181028124037) do
     t.string "google_private_key_content_type"
     t.integer "google_private_key_file_size"
     t.datetime "google_private_key_updated_at"
+    t.text "title"
   end
 
   create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
