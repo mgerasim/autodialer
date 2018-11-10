@@ -13,7 +13,7 @@ set  :repo_url,        'file:///home/rails/repos/webapp.git'
 #set :scm, "git"
 #set :repository, "."
 #set :local_repository, "."
-#set :branch, "master"
+set :branch, "trank"
 
 
 set :application,     'autodialer'
