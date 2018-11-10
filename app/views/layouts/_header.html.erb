@@ -39,10 +39,11 @@
 		    <li class="menu-item">
 			<%= link_to 'Перегрузить', {:action => :asterisk_restart, :controller => :help}, {:class => "btn btn-link"} %>
  		    </li>
-
-		    <li class="menu-item">
-                       <%= link_to 'Конфигурация приложения', edit_config_path(Config.first), {:class => "btn btn-link"} %>
-                    </li>		    
+		    <% if is_admin? %>
+		    	<li class="menu-item">
+                       		<%= link_to 'Конфигурация приложения', edit_config_path(Config.first), {:class => "btn btn-link"} %>
+                    	</li>	
+		    <% end %>	    
 
                   </ul>
                 </div>

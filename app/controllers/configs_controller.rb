@@ -1,4 +1,6 @@
 class ConfigsController < ApplicationController
+  include SessionsHelper
+  before_action :require_admin
   before_action :set_config, only: [:show, :edit, :update, :destroy]
 
   # GET /configs
@@ -69,6 +71,14 @@ class ConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def config_params
-      params.require(:config).permit(:password_encrypted, :is_outgoing_deleted, :is_outgoing_table_showed, :is_google_integrated, :is_attempt_supported, :is_answer_supported)
+      params.require(:config).permit(:password, :is_outgoing_deleted, :is_outgoing_table_showed, :is_google_integrated, :is_attempt_supported, :is_answer_supported)
+    end
+
+  private
+    def require_admin
+      unless is_admin?
+        flash[:danger] = "Вы должны ввести пароль администратора"
+        redirect_to login_path
+      end
     end
 end
