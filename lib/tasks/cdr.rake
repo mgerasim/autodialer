@@ -2,6 +2,8 @@ namespace :cdr do
 
   desc "TODO"
   task spool: :environment do
+    config = Config.first
+    exit if config.is_outgoing_deleted 
     spools = Spool.all.limit(10)
     spools.each do |spool|
       puts spool.outgoing_id.to_s
@@ -12,6 +14,10 @@ namespace :cdr do
 
   desc "TODO"
   task answer: :environment do
+
+    config = Config.first
+    exit if config.is_outgoing_deleted
+
     cdr = Asteriskcdr.where(:lastapp => 'System').where("calldate > ?", Time.now - 8.hours).order(calldate: :desc).limit(10)
 
     cdr.each do |record|
@@ -27,6 +33,9 @@ namespace :cdr do
   task attempt: :environment do
 
 	begin
+		config = Config.first
+    		exit if config.is_outgoing_deleted
+		
 		setting = Setting.first
 		contacts = Outgoing.where("attempt_current < ?", setting.attempt_max_count)
 			.where(status: ['NO ANSWER', 'FAILED'])
@@ -45,9 +54,9 @@ namespace :cdr do
   task update: :environment do
 
 	begin	
-
-		puts Outgoing.all.count
-
+		config = Config.first
+		exit if config.is_outgoing_deleted
+	
 		contacts = Outgoing.where(status: "DIALING")
 			.where("updated_at > ? ", Time.now.utc - 24.hours)
 			.where("updated_at < ? ", Time.now.utc - 2.minute)

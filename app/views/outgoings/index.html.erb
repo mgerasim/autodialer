@@ -22,8 +22,9 @@
   </tbody>
 </table>
 
-<br>
+<% if Config.first.is_outgoing_deleted == false %>
 
+<br>
 
 <table class="table table-striped table-hover">
 	<thead>
@@ -47,6 +48,8 @@
 	<% end %>
 	</tbody>
 </table>
+
+<% end %>
 
 <br>
 

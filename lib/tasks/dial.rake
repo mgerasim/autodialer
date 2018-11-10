@@ -31,8 +31,8 @@ namespace :dial do
     
     wc1 = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
     
-    setting = Setting.first
-    
+    setting = Setting.first    
+
     if (setting == nil)    
 	setting = Setting.new
 	setting.hour_bgn = 0
@@ -53,6 +53,8 @@ namespace :dial do
     if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
 	exit
     end
+
+    config = Config.first
     
     total = (60 / setting.sleep).floor
     
@@ -85,8 +87,12 @@ namespace :dial do
 			contact.delete
 			next
 		end
-
-                contact.update_attributes(:status => 'DIALING')
+                
+                if (config.is_outgoing_deleted == true)
+             		contact.delete
+		else
+                	contact.update_attributes(:status => 'DIALING')
+		end
                 
                 n = n + 1
                 j = j + 1
