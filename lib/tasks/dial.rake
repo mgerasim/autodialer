@@ -42,8 +42,14 @@ namespace :dial do
 	setting.save
     end
     
-    puts Time.now.hour
-    
+    if (setting.hour_bgn == nil)
+        setting.update_attributes(:hour_bgn => 0)
+    end
+
+    if (setting.hour_end == nil)
+    	setting.update_attributes(:hour_end => 24)
+    end 
+   
     if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
 	exit
     end
@@ -85,9 +91,6 @@ namespace :dial do
                 n = n + 1
                 j = j + 1
                 f_path = ""
-                peers_str = trank.callerid
-                peers = peers_str.split('|')
-                i = n % peers.count
     	        
                 telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '')    
     	        if (telephone.length == 11)
@@ -101,26 +104,9 @@ namespace :dial do
                 telephone = trank.prefix + telephone
             
                 puts telephone
-  
-                File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{trank.name}_", '.call']) { }.to_s, "w+") do |f|
-                    f.chmod(0666)
-    	            f.puts("Channel: SIP/" + telephone +  "@#{trank.name}")
-                    f.puts("Callerid: " + peers[i])
-                    f.puts("MaxRetries: 0")
-                    f.puts("RetryTime: 20")
-                    f.puts("WaitTime: " + trank.waittime.to_s)
-                    f.puts("Context: from-trunk")
-                    f.puts("Extension: s")
-                    f.puts("Priority: 1")
-                    f.puts("Account: " + contact.id.to_s)
-                    f.puts("Set: __num=" + contact.id.to_s)
-                   # f.puts("Set: __num=" + telephone)
-                    f_path = f.path
-                end
-                puts f_path
 
-                FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
-       
+                trank.check(telephone, contact.id) 
+
                 dir = setting.outgoing + '/'
                 count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
                 puts "-->#{count}"

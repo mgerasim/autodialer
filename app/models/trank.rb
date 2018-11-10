@@ -3,8 +3,8 @@ class Trank < ApplicationRecord
     validates :waittime, presence: true
     validates :callerid, presence: true
     validates :callcount, presence: true
-   
-    def check(telephone)
+  
+    def check(telephone, account)
       setting = Setting.first
       puts telephone
       File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{self.name}_", '.call']) { }.to_s, "w+") do |f|
@@ -17,6 +17,10 @@ class Trank < ApplicationRecord
                     f.puts("Context: from-trunk")
                     f.puts("Extension: s")
                     f.puts("Priority: 1")
+                    if (account != nil)
+                        f.puts("Account: " + account.to_s)
+                    	f.puts("Set: __num=" + account.to_s)
+                    end
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
      

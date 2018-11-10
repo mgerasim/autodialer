@@ -57,7 +57,7 @@ class HelpController < ApplicationController
  def trank_check
    trank = Trank.find(params[:id])
    telephone = params[:telephone]
-   trank.check(telephone)
+   trank.check(telephone, nil)
    redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
  end
 
