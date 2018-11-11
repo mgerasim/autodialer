@@ -34,7 +34,7 @@
     <%= form.number_field :hour_end, id: :setting_hour_end, class: "form-input" %>
   </div>
 
-  <% if @config.is_outgoing_deleted == false %> 
+  <% if @config.is_outgoing_deleted == false or is_admin?%> 
 
   <div class="field">
     <%= form.label "Максимальное количество попыток на повторный звонок:", class: "form-label" %>
