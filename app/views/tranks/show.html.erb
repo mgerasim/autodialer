@@ -24,6 +24,13 @@
   <%= @trank.callcount %>
 </p>
 
+<% if @config.is_trank_context_showed or is_admin? %>
+<p>
+   <strong>Контекст выполнения вызова:</strong>
+  <%= @trank.context %>
+</p>
+<% end %>
+
 <p>
   <strong>Активное состояние:</strong>
   <%= @trank.enabled %>

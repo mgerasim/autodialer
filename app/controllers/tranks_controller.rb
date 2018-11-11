@@ -1,6 +1,6 @@
 class TranksController < ApplicationController
   before_action :set_trank, only: [:show, :edit, :update, :destroy]
-
+  before_action :get_config
   # GET /tranks
   # GET /tranks.json
   def index
@@ -69,6 +69,10 @@ class TranksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trank_params
-      params.require(:trank).permit(:name, :callerid, :prefix, :waittime, :callcount, :enabled)
+      params.require(:trank).permit(:context, :name, :callerid, :prefix, :waittime, :callcount, :enabled)
+    end
+   
+    def get_config
+      @config = Config.first
     end
 end

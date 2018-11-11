@@ -23,7 +23,10 @@
       <th>Префикс</th>
       <th>Время длительности вызова</th>
       <th>Максимальное количество вызовов</th>
-      <th>Активное состояние</th>
+      <% if @config.is_trank_context_showed or is_admin? %>
+        <th>Контекст выполнения вызова: </th>
+      <% end %>
+        <th>Активное состояние</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -36,6 +39,9 @@
         <td><%= trank.prefix %></td>
         <td><%= trank.waittime %></td>
         <td><%= trank.callcount %></td>
+        <% if @config.is_trank_context_showed or is_admin? %>
+  	  <td><%= trank.context %></td>
+        <% end %>
         <td><%= trank.enabled %></td>
         <td><%= link_to 'Показать', trank %></td>
         <td><%= link_to 'Редактировать', edit_trank_path(trank) %></td>

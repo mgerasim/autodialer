@@ -1,9 +1,16 @@
 class Trank < ApplicationRecord
+
     validates :name, presence: true
     validates :waittime, presence: true
     validates :callerid, presence: true
     validates :callcount, presence: true
-  
+
+    def initialize(attributes={})
+      super
+      config = Config.first
+      self.context = config.default_trank_context
+    end 
+
     def check(telephone, account)
       setting = Setting.first
       puts telephone
@@ -14,7 +21,7 @@ class Trank < ApplicationRecord
 	            f.puts("MaxRetries: 0")
                     f.puts("RetryTime: 20")
                     f.puts("WaitTime: " + self.waittime.to_s)
-                    f.puts("Context: from-trunk")
+                    f.puts("Context: " + self.context)
                     f.puts("Extension: s")
                     f.puts("Priority: 1")
                     if (account != nil)
@@ -27,4 +34,5 @@ class Trank < ApplicationRecord
     
 
     end
+  
 end
