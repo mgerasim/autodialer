@@ -33,7 +33,8 @@
     <%= form.label "Час завершения работы:", class: "form-label" %>
     <%= form.number_field :hour_end, id: :setting_hour_end, class: "form-input" %>
   </div>
-  
+
+  <% if @config.is_outgoing_deleted == false %> 
 
   <div class="field">
     <%= form.label "Максимальное количество попыток на повторный звонок:", class: "form-label" %>
@@ -45,6 +46,8 @@
     <%= form.label "Интервал между попыками в мин:", class: "form-label" %>
     <%= form.number_field :attempt_interval, id: :setting_atempt_interval, class: "form-input" %>
   </div>
+
+  <% end %>
 
   <div class="field">
       <%= form.label "Наименование Google Drive документа:", class: "form-label"  %>

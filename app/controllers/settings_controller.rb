@@ -71,7 +71,8 @@ class SettingsController < ApplicationController
         @setting.save
       end
       
-      
+      @config = Config.first
+     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
