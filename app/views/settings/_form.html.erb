@@ -34,7 +34,7 @@
     <%= form.number_field :hour_end, id: :setting_hour_end, class: "form-input" %>
   </div>
 
-  <% if @config.is_outgoing_deleted == false or is_admin?%> 
+  <% if @config.is_outgoing_deleted == false %> 
 
   <div class="field">
     <%= form.label "Максимальное количество попыток на повторный звонок:", class: "form-label" %>
@@ -49,6 +49,9 @@
 
   <% end %>
 
+
+  <% if @config.is_google_integrated %>
+
   <div class="field">
       <%= form.label "Наименование Google Drive документа:", class: "form-label"  %>
       <%= form.text_field :google_title, id: :setting_google_title, class: "form-input" %>
@@ -58,6 +61,8 @@
       <%= form.label "Файл закрытого ключа:", class: "form-label"  %>
       <%= form.file_field :google_private_key, id: :setting_google_private_key, class: "form-input" %>
   </div>
+
+  <% end %>
 
 <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>
