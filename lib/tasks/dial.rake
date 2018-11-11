@@ -111,8 +111,7 @@ namespace :dial do
             
                 puts telephone
 
-#                trank.check(telephone, contact.id) 
-		trank.check(telephone, telephone)
+                trank.check(telephone, contact.id) 
 
                 dir = setting.outgoing + '/'
                 count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }

@@ -20,10 +20,11 @@ class Trank < ApplicationRecord
                     if (account != nil)
                         f.puts("Account: " + account.to_s)
                     	f.puts("Set: __num=" + account.to_s)
+    			f.puts("Set: CDR(userfield)=" + telephone)
                     end
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
-     
+    
 
     end
 end
