@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111115025) do
+ActiveRecord::Schema.define(version: 20181111235825) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20181111115025) do
     t.string "password"
     t.string "default_trank_context"
     t.boolean "is_trank_context_showed"
+    t.boolean "is_menu_service_showed"
   end
 
   create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -56,8 +57,8 @@ ActiveRecord::Schema.define(version: 20181111115025) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.timestamp "created_at", null: false
+    t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "status"
     t.datetime "date_created"
     t.integer "attempt_current"
@@ -72,7 +73,6 @@ ActiveRecord::Schema.define(version: 20181111115025) do
     t.string "outgoing"
     t.integer "sleep"
     t.boolean "is_enabled"
-    t.integer "duration"
     t.integer "waittime"
     t.string "trank"
     t.integer "hour_bgn"

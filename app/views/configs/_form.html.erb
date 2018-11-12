@@ -41,6 +41,11 @@
     <%= form.check_box :is_trank_context_showed, id: :config_is_trank_context_showed %>
   </div>
 
+  <div class="field">
+    <%= form.label "Отображать пункт меню Сервис", class: "form-label" %>
+    <%= form.check_box :is_menu_service_showed, id: :config_is_menu_service_showed %>
+  </div>
+
 <!--
   <div class="field">
     <%= form.label "Поддержка повторного вызова по неотвеченным номерам с указанием интервала и количество попыток в настройках приложения:", class: "form-label"  %>

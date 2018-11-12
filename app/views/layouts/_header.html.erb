@@ -22,7 +22,20 @@
 <% if logged_in? %>
 
   <section class="navbar-section">
-        <%= link_to "Выгрузить статистику", {:controller => :help, :action => :cdr}  %>
+	<% if Config.first.is_menu_service_showed %>
+		
+		 <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Сервис <i class="icon icon-caret"></i></a>
+                  <ul class="menu">
+                    <li class="menu-item">
+			
+			<%= link_to "Выгрузить статистику", {:controller => :help, :action => :cdr},  {:class => "btn btn-link"}  %>
+
+                      </li>
+                  </ul>
+                </div>
+
+
+	<% end %>
 	<!-- basic dropdown button -->
         <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Настройки <i class="icon icon-caret"></i></a>
                   <ul class="menu">
