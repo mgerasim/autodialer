@@ -1,0 +1,20 @@
+<div class="column col-6 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<p>
+  <strong>Наименование:</strong>
+  <%= @vote.title %>
+</p>
+
+<p>
+  <strong>Голосовая запись:</strong>
+  <%= @vote.record %>
+</p>
+
+<%= link_to 'Редактировать', edit_vote_path(@vote) %> |
+<%= link_to 'Назад', votes_path %>
+
+</div>

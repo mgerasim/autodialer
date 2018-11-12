@@ -1,0 +1,27 @@
+<%= form_with(model: vote, local: true, multipart: true) do |form| %>
+  <% if vote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+
+      <ul>
+      <% vote.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Наименование:", class: "form-label" %>
+    <%= form.text_field :title, id: :vote_title, class: "form-input"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Голосовая запись:", class: "form-label" %>
+    <%= form.file_field :record, id: :vote_record, class: "form-input" %>
+  </div>
+
+  <div class="mt-2 text-center">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
+  </div>
+<% end %>

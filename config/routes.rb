@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :votes
   resources :configs
   resources :configurations
   resources :spools

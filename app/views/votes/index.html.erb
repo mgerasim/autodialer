@@ -1,0 +1,39 @@
+
+<div class="column col-8 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+      
+
+<div class="text-center">
+  <h1>Голосовые записи</h1>
+</div>
+
+
+
+<table  class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= vote.title %></td>
+        <td><%= link_to 'Показать', vote %></td>
+        <td><%= link_to 'Редактировать', edit_vote_path(vote) %></td>
+        <td><%= link_to 'Удалить', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить ', new_vote_path, :class => "btn" %>
+
+</div>

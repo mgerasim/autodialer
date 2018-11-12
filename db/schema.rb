@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181111235825) do
+ActiveRecord::Schema.define(version: 20181112112155) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -113,6 +113,16 @@ ActiveRecord::Schema.define(version: 20181111235825) do
     t.datetime "updated_at", null: false
     t.string "prefix", default: ""
     t.string "context"
+  end
+
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "title"
+    t.string "record_file_name"
+    t.string "record_content_type"
+    t.integer "record_file_size"
+    t.datetime "record_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "contacts", "tasks"

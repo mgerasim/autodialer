@@ -40,7 +40,7 @@ namespace :cdr do
 
 		contacts = Outgoing.where("attempt_current < ?", setting.attempt_max_count)
 			.where(status: ['NO ANSWER', 'FAILED'])
-			.where("update_at < ?", Time.now - setting.attempt_interval.minutes)
+			.where("updated_at < ?", Time.now - setting.attempt_interval.minutes)
 			.order(updated_at: :desc)
 		puts contacts.count
 		contacts.each do |contact|
