@@ -11,7 +11,9 @@
 
 <p>
   <strong>Голосовая запись:</strong>
-  <%= @vote.record %>
+  <audio id="player" controls>
+    <source src="<%= @vote.record.url%>" type="audio/mpeg">
+  </audio>
 </p>
 
 <%= link_to 'Редактировать', edit_vote_path(@vote) %> |

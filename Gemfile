@@ -84,3 +84,4 @@ gem 'activerecord-import'
 gem 'google_drive'
 gem "paperclip", "~> 6.0.0"
 gem 'jquery-rails'
+gem 'plyr-rails'
