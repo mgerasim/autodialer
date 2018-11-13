@@ -13,7 +13,8 @@ class Trank < ApplicationRecord
 
     def check(telephone, account)
       setting = Setting.first
-      puts telephone
+      Rails.logger.debug telephone
+      Rails.logger.debug self.context
       File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{self.name}_", '.call']) { }.to_s, "w+") do |f|
                     f.chmod(0666)
     	            f.puts("Channel: SIP/" + telephone +  "@#{self.name}")

@@ -47,6 +47,11 @@
     <%= form.number_field :attempt_interval, id: :setting_atempt_interval, class: "form-input" %>
   </div>
 
+  <div class="field">
+    <%= form.label "Каталог исходящих вызовов:", class: "form-label" %>
+    <%= form.text_field :outgoing, id: :outgoing, class: "form-input" %>
+  </div>
+
   <% end %>
 
 
