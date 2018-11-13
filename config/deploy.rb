@@ -3,9 +3,10 @@ server 'localhost', roles: [:web, :app, :db], primary: true
 
 set :application,     'autodialer'
 
+set :user,            'asterisk'
 
 #set :repo_url,        'git@example.com:username/appname.git'
-set  :repo_url,        "file:///home/rails/repos/#{fetch(:application)}.git"
+set  :repo_url,        "file:///home/#{fetch(:user)}/repos/#{fetch(:application)}.git"
 
 #set :scm, :none
 #set :repository, "."
@@ -18,7 +19,7 @@ set  :repo_url,        "file:///home/rails/repos/#{fetch(:application)}.git"
 #set :local_repository, "."
 #set :branch, "master"
 
-set :user,            'asterisk'
+#set :user,            'asterisk'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
