@@ -18,7 +18,7 @@ set  :repo_url,        "file:///home/rails/repos/#{fetch(:application)}.git"
 #set :local_repository, "."
 #set :branch, "master"
 
-set :user,            'rails'
+set :user,            'asterisk'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
