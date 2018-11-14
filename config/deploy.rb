@@ -3,7 +3,7 @@ server 'localhost', roles: [:web, :app, :db], primary: true
 
 set :application,     'autodialer'
 
-set :user,            'asterisk'
+set :user,            'rails'
 
 #set :repo_url,        'git@example.com:username/appname.git'
 set  :repo_url,        "file:///home/#{fetch(:user)}/repos/#{fetch(:application)}.git"
