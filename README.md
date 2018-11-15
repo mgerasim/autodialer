@@ -256,7 +256,8 @@ alias realsrc => realsrc
 ====================================================
 * ```chmod a+x /home/asterisk/bin/record_num.sh```
 * ```chmod 0777  /var/spool/asterisk/outgoing/```
-
+* ```chmod +x /tmp/git-ssh-autodialer-production-rails.sh ```
+* ``` chmod +x /tmp/ ```
 # Стереть записи о вызовах
 ====================================================
 * ```rm -rf /var/log/asterisk/cdr-csv/```
