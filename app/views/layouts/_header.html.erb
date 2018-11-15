@@ -27,10 +27,11 @@
 		 <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Сервис <i class="icon icon-caret"></i></a>
                   <ul class="menu">
                     <li class="menu-item">
-			
 			<%= link_to "Выгрузить статистику", {:controller => :help, :action => :cdr},  {:class => "btn btn-link"}  %>
-
                       </li>
+                    <li class="menu-item">
+                      <%= link_to "Очистить статистику", {:controller => :help, :action => :cdr_clear}, {:class => "btn btn-link"} %>
+                    </li>
                   </ul>
                 </div>
 

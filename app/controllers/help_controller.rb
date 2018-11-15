@@ -14,6 +14,13 @@ class HelpController < ApplicationController
     end
   end
 
+
+  def cdr_clear
+    `rm -f /var/log/asterisk/cdr-csv/*.csv`
+     `touch /var/log/asterisk/cdr-csv/Master.csv`
+    redirect_to outgoings_url, notice: 'Очистка журналов выполнено успешно'
+  end
+
   def answers_destroy_all
     Answer.delete_all
     respond_to do |format|
@@ -32,7 +39,7 @@ class HelpController < ApplicationController
   end
 
   def asterisk_restart 
-    `touch /tmp/asterisk.restart.marker`
+   `touch /tmp/asterisk.restart.marker`
   end
 
   def extensions
