@@ -49,7 +49,11 @@ namespace :dial do
     if (setting.hour_end == nil)
     	setting.update_attributes(:hour_end => 24)
     end 
-   
+
+    if (setting.sleep == nil)
+        setting.update_attributes(:sleep => 1)
+    end  
+
     if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
 	exit
     end
