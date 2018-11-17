@@ -1,4 +1,5 @@
 class Trank < ApplicationRecord
+
     belongs_to :vote_welcome, class_name: "Vote"
     belongs_to :vote_finish, class_name: "Vote"
     belongs_to :vote_push_two, class_name: "Vote"
@@ -33,10 +34,10 @@ class Trank < ApplicationRecord
                     	f.puts("Set: __num=" + account.to_s)
     			f.puts("Set: CDR(userfield)=" + telephone)
                     end
+                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:wav).chomp('.mp3')) if self.vote_welcome != nil
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
-    
+   
 
     end
-  
 end
