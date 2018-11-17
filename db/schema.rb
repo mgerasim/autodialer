@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20181114034725) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.timestamp "created_at", null: false
+    t.timestamp "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.string "status"
     t.datetime "date_created"
     t.integer "attempt_current"
