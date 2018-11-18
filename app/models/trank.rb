@@ -35,6 +35,8 @@ class Trank < ApplicationRecord
     			f.puts("Set: CDR(userfield)=" + telephone)
                     end
                     f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:wav).chomp('.mp3')) if self.vote_welcome != nil
+		    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:wav).chomp('.mp3')) if self.vote_finish != nil
+		    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:wav).chomp('.mp3')) if self.vote_push_two != nil
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
    

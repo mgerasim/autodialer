@@ -77,9 +77,13 @@ namespace :cdr do
       			end
 
              		cdr =  Asteriskcdr.where(accountcode: contact.id.to_s).last 
-             
+            
 			if (cdr != nil) 
-               			contact.update_attribute(:status, cdr.disposition)
+				if (cdr.dst == 's [outgoing-finish]')
+				
+					puts 'outgoing-finish'
+				end				
+              			contact.update_attribute(:status, cdr.disposition)
               		end
       
      	 	end
