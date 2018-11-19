@@ -36,12 +36,10 @@
     <%= form.number_field :callcount, id: :trank_callcount, class: "form-input"  %>
   </div>
 
-  <% if @config.is_trank_context_showed or is_admin? %>
-  	<div class="field">
-    		<%= form.label "Контекст выполнения вызова:", class: "form-label" %>
-    		<%= form.text_field :context, id: :trank_context, class: "form-input" %>
-  	</div>
-  <% end %>
+  <div class="field">
+    	<%= form.label "План вызова:", class: "form-label" %>
+    	<%= form.select :dialplan_id, options_for_select(Dialplan.all.collect { |p| [p.title, p.id] }, form.object.dialplan_id), {}, {:class => 'form-input',  id: "trank-dialplan"} %>
+  </div>
 
   <div class="field">
     <%= form.label "Активное состояние:", class: "form-checkbox" %>

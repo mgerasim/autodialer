@@ -36,6 +36,11 @@
   <%= @trank.enabled %>
 </p>
 
+<p>
+ <strong>План вызова:</strong>
+ <%= @trank.dialplan.title if @trank.dialplan != nil%>
+</p>
+
 <%= link_to 'Редактировать', edit_trank_path(@trank) %> |
 <%= link_to 'Назад', tranks_path %>
 

@@ -4,6 +4,8 @@ class Trank < ApplicationRecord
     belongs_to :vote_finish, class_name: "Vote"
     belongs_to :vote_push_two, class_name: "Vote"
 
+    belongs_to :dialplan
+
     validates :name, presence: true
     validates :waittime, presence: true
     validates :callerid, presence: true
@@ -26,7 +28,11 @@ class Trank < ApplicationRecord
 	            f.puts("MaxRetries: 0")
                     f.puts("RetryTime: 20")
                     f.puts("WaitTime: " + self.waittime.to_s)
-                    f.puts("Context: " + self.context)
+		    if (self.dialplan != nil)
+                    	f.puts("Context: " + self.dialplan.name)
+		    else
+			f.puts("Context: from-trunk")
+		    end
                     f.puts("Extension: s")
                     f.puts("Priority: 1")
                     if (account != nil)

@@ -1,0 +1,2 @@
+class Dialplan < ApplicationRecord
+end

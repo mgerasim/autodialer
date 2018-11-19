@@ -23,10 +23,10 @@
       <th>Префикс</th>
       <th>Время длительности вызова</th>
       <th>Максимальное количество вызовов</th>
-      <% if @config.is_trank_context_showed or is_admin? %>
-        <th>Контекст выполнения вызова: </th>
-      <% end %>
       <th>Активное состояние</th>
+      <% if @config.is_trank_context_showed or is_admin? %>
+        <th>План вызова: </th>
+      <% end %>
       <% if @config.is_vote_supported or is_admin? %>
         <th>Запись №01</th>
         <th>Запись №02</th>
@@ -46,7 +46,7 @@
         <td><%= trank.callcount %></td>
         <td><%= trank.enabled %></td>
         <% if @config.is_trank_context_showed or is_admin? %>
-  	  <td><%= trank.context %></td>
+  	  <td><%= trank.dialplan.title if trank.dialplan != nil %></td>
         <% end %>
         <% if @config.is_vote_supported or is_admin? %>
           <td><%= trank.vote_welcome.title if trank.vote_welcome != nil %></td>

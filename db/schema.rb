@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181117045849) do
+ActiveRecord::Schema.define(version: 20181119194418) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 20181117045849) do
     t.string "peer"
     t.index ["task_id", "created_at"], name: "index_contacts_on_task_id_and_created_at"
     t.index ["task_id"], name: "index_contacts_on_task_id"
+  end
+
+  create_table "dialplans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "title"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -118,6 +125,8 @@ ActiveRecord::Schema.define(version: 20181117045849) do
     t.bigint "vote_welcome_id"
     t.bigint "vote_finish_id"
     t.bigint "vote_push_two_id"
+    t.bigint "dialplan_id"
+    t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
     t.index ["record_welcome_id"], name: "index_tranks_on_record_welcome_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"
@@ -136,6 +145,7 @@ ActiveRecord::Schema.define(version: 20181117045849) do
 
   add_foreign_key "contacts", "tasks"
   add_foreign_key "spools", "outgoings"
+  add_foreign_key "tranks", "dialplans"
   add_foreign_key "tranks", "votes", column: "vote_finish_id"
   add_foreign_key "tranks", "votes", column: "vote_push_two_id"
   add_foreign_key "tranks", "votes", column: "vote_welcome_id"

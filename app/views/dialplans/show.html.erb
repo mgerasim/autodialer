@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @dialplan.title %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dialplan.name %>
+</p>
+
+<%= link_to 'Edit', edit_dialplan_path(@dialplan) %> |
+<%= link_to 'Back', dialplans_path %>
