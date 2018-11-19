@@ -61,7 +61,7 @@ namespace :cdr do
 	
 		contacts = Outgoing.where(status: "DIALING")
 			.where("updated_at > ? ", Time.now.utc - 24.hours)
-			.where("updated_at < ? ", Time.now.utc - 2.minute)
+			.where("updated_at < ? ", Time.now.utc - 1.minute)
 			.order(updated_at: :desc)
 
 		puts contacts.count 
@@ -77,13 +77,25 @@ namespace :cdr do
       			end
 
              		cdr =  Asteriskcdr.where(accountcode: contact.id.to_s).last 
-            
+           
 			if (cdr != nil) 
-				if (cdr.dst == 's [outgoing-finish]')
-				
+				puts cdr.dcontext
+				if (cdr.dcontext == 'outgoing-finish')
+			
 					puts 'outgoing-finish'
+				       
+                                        contact.google_sheet_save('Avtoobzvon1')	
+			
 				end				
-              			contact.update_attribute(:status, cdr.disposition)
+
+				if (cdr.dcontext == 'outgoing-push-two')
+
+					puts 'outgoing-push-two'
+
+					contact.google_sheet_save('Avtoobzvon2')			
+				end
+
+             			contact.update_attribute(:status, cdr.disposition)
               		end
       
      	 	end
