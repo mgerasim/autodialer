@@ -22,8 +22,8 @@ class Trank < ApplicationRecord
       Rails.logger.debug telephone
       Rails.logger.debug self.context
 
-      outgoing = Outgoing.create(:telephone => telephone, :status => 'DIALING')
-      account = outgoing.id
+#      outgoing = Outgoing.create(:telephone => telephone, :status => 'DIALING')
+#      account = outgoing.id
 
       File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{self.name}_", '.call']) { }.to_s, "w+") do |f|
                     f.chmod(0666)
