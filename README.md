@@ -255,7 +255,7 @@ alias realsrc => realsrc
 # Исправление ошибок, связанных со сбросом прав доступов
 ====================================================
 * ```chmod a+x /home/asterisk/bin/record_num.sh```
-* ```chmod 0777  /var/spool/asterisk/outgoing/```
+* ```chmod 0777  /var/spool/asterisk/outgoing/``` выполнять после каждого ```core reload``` и при многочисленных статусов FAIL
 * ```chmod +x /tmp/git-ssh-autodialer-production-rails.sh ```
 * ``` chmod +x /tmp/ ```
 # Стереть записи о вызовах
