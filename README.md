@@ -263,3 +263,8 @@ alias realsrc => realsrc
 * ```rm -rf /var/log/asterisk/cdr-csv/```
 * ```mkdir /var/log/asterisk/cdr-csv/```
 * ```> /var/log/asterisk/cdr-custom/Master.csv```
+
+# ffmpeg
+====================================================
+* ```https://www.galkov.pro/install_ffmpeg_on_centos_7/```
+
