@@ -86,7 +86,7 @@ namespace :cdr do
 				      
                                       #  contact.google_sheet_save('Avtoobzvon1')	
 					
-					Answer.create(:contact => contact.telephone)
+					Answer.create(:contact => contact.telephone, :level => 1)
 				end				
 
 				if (cdr.dcontext == 'outgoing-push-two')
@@ -94,7 +94,7 @@ namespace :cdr do
 					puts 'outgoing-push-two'
 
 				#	contact.google_sheet_save('Avtoobzvon2')	
-					Answer.create(:contact => contact.telephone)		
+					Answer.create(:contact => contact.telephone, :level => 2)		
 				end
 
              			contact.update_attribute(:status, cdr.disposition)
