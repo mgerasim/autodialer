@@ -83,16 +83,18 @@ namespace :cdr do
 				if (cdr.dcontext == 'outgoing-finish')
 			
 					puts 'outgoing-finish'
-				       
-                                        contact.google_sheet_save('Avtoobzvon1')	
-			
+				      
+                                      #  contact.google_sheet_save('Avtoobzvon1')	
+					
+					Answer.create(:contact => outgoing.telephone)
 				end				
 
 				if (cdr.dcontext == 'outgoing-push-two')
 
 					puts 'outgoing-push-two'
 
-					contact.google_sheet_save('Avtoobzvon2')			
+				#	contact.google_sheet_save('Avtoobzvon2')	
+					Answer.create(:contact => outgoing.telephone)		
 				end
 
              			contact.update_attribute(:status, cdr.disposition)

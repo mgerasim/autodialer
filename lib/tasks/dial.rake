@@ -108,7 +108,7 @@ namespace :dial do
     	        end
    
                 if (telephone.length == 10) 
-                    telephone = '8' + telephone
+                    telephone = '7' + telephone
                 end
 
                 telephone = trank.prefix + telephone
