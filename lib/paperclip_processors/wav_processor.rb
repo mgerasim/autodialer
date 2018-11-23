@@ -23,7 +23,7 @@ module Paperclip
         Paperclip.run('ffmpeg', parameters, :source => File.expand_path(source.path), :dest => File.expand_path(output.path))
      
       rescue PaperclipCommandLineError
-        raise PaperclipError, "There was an error converting #{@basename} to .wav"
+#        raise PaperclipError, "There was an error converting #{@basename} to .wav"
       end
       output
     end
