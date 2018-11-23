@@ -26,7 +26,7 @@ class Trank < ApplicationRecord
 #      account = outgoing.id
 
       File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{self.name}_", '.call']) { }.to_s, "w+") do |f|
-                    f.chmod(0666)
+#                    f.chmod(0666)
     	            f.puts("Channel: SIP/" + telephone +  "@#{self.name}")
                     f.puts("Callerid: " + self.callerid)
 	            f.puts("MaxRetries: 0")
