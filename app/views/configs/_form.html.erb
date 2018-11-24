@@ -51,6 +51,11 @@
     <%= form.check_box :is_vote_supported, id: :config_is_vote_supported %>
   </div>
 
+  <div class="field">
+    <%= form.label "Префикс страны:", class: "form-label" %>
+    <%= form.number_field :prefic_contry, id: :config_prefix_contry %>
+  </div>
+
 <!--
   <div class="field">
     <%= form.label "Поддержка повторного вызова по неотвеченным номерам с указанием интервала и количество попыток в настройках приложения:", class: "form-label"  %>
