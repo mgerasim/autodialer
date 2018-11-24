@@ -44,9 +44,12 @@ class Trank < ApplicationRecord
                     	f.puts("Set: __num=" + account.to_s)
     			f.puts("Set: CDR(userfield)=" + telephone)
                     end
-                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:wav).chomp('.mp3')) if self.vote_welcome != nil
-		    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:wav).chomp('.mp3')) if self.vote_finish != nil
-		    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:wav).chomp('.mp3')) if self.vote_push_two != nil
+		    if (Config.first.is_vote_supported == true)
+	                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:wav).chomp('.mp3')) if self.vote_welcome != nil
+			    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:wav).chomp('.mp3')) if self.vote_finish != nil
+			    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:wav).chomp('.mp3')) if self.vote_push_two != nil
+		    end
+
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
    
