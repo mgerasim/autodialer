@@ -1,8 +1,6 @@
 namespace :dial do
   desc "TODO"
   task clear: :environment do
-    `rm -rf /var/log/asterisk/cdr-csv/`
-    `mkdir /var/log/asterisk/cdr-csv/`
 
 
     Outgoing
