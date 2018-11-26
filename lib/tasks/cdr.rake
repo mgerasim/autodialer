@@ -98,6 +98,8 @@ namespace :cdr do
 				end
 
              			contact.update_attribute(:status, cdr.disposition)
+			else 
+				puts "cdr is nil"
               		end
       
      	 	end
