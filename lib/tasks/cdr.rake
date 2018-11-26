@@ -76,7 +76,7 @@ namespace :cdr do
 				contact.update_attributes(:status => 'DIALED')
       			end
 
-             		cdr =  Asteriskcdr.where(accountcode: contact.id.to_s).last 
+             		cdr =  Asteriskcdr.where(accountcode: contact.id.to_s).first 
            
 			if (cdr != nil) 
 				puts cdr.dcontext
