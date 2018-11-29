@@ -1,4 +1,7 @@
 namespace :dial do
+
+  pid_file = "/tmp/#{ENV['RAILS_ENV']}_dial_run.pid"
+
   desc "TODO"
   task clear: :environment do
 
@@ -21,57 +24,59 @@ namespace :dial do
 	
 	Answer.create(:contact => args.contact)    
   end
- 
-  desc "TODO"
-  task run: :environment do
-  
-    puts Time.now.strftime("  %F %T")
+
+  desc "Stop dial"
+  task stop: :environment do
+    Process.kill(15, File.read(pid_file).to_i)  if File.exist?(pid_file)
+    File.delete(pid_file) if File.exist?(pid_file)
+  end 
+
+
+  desc "Run dial"
+  task run: :environment do 
     
-    wc1 = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
+    raise 'pid file exists!' if File.exists? pid_file
+    File.open(pid_file, 'w') { |f| f.puts Process.pid }
+
+    puts Time.now.strftime("START:  %F %T")
+    puts "PID: " + Process.pid.to_s
+
+    loop do 
+      begin
+        puts Time.now.strftime("POLL: %F %T")
+        sleep 1
+
+        setting = Setting.first    
+        if (setting == nil)    
+	  setting = Setting.new
+	  setting.hour_bgn = 0
+	  setting.hour_end = 24
+	  setting.sleep = 1
+	  setting.outgoing = '/var/spool/asterisk/outgoing'
+	  setting.save
+        end
     
-    setting = Setting.first    
+        if (setting.hour_bgn == nil)
+          setting.update_attributes(:hour_bgn => 0)
+        end
 
-    if (setting == nil)    
-	setting = Setting.new
-	setting.hour_bgn = 0
-	setting.hour_end = 24
-	setting.sleep = 1
-	setting.outgoing = '/var/spool/asterisk/outgoing'
-	setting.save
-    end
-    
-    if (setting.hour_bgn == nil)
-        setting.update_attributes(:hour_bgn => 0)
-    end
+        if (setting.hour_end == nil)
+        	setting.update_attributes(:hour_end => 24)
+        end 
 
-    if (setting.hour_end == nil)
-    	setting.update_attributes(:hour_end => 24)
-    end 
+        if (setting.sleep == nil)
+          setting.update_attributes(:sleep => 1)
+        end  
 
-    if (setting.sleep == nil)
-        setting.update_attributes(:sleep => 1)
-    end  
+        if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
+                puts("out time")
+        	next
+        end
 
-    if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
-	exit
-    end
-
-    config = Config.first
-    
-    total = (60 / setting.sleep).floor
-    
-    for t in 0..total 
-        
-       puts Time.now.strftime("    %F %T")
-        
-        sleep setting.sleep
-        
-        wc = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
-        puts wc
-        next if (wc == 2 and wc1 == 2)
-
+        config = Config.first
+        puts Time.now.strftime("TRUNK:ALL: %F %T")
         Trank.all.each do |trank|
-            puts "#{trank.name}"
+            puts Time.now.strftime("TRANK: %F %T")
             next if (!trank.enabled)
                
             puts "Этот транк активный"
@@ -124,12 +129,14 @@ namespace :dial do
                 if (j > trank.callcount)
                     j = 0
                     next
-                end
-            end
-        end 
-        
-    end
-    
-  end
+                end # if
+            end # Outgoing.where
+          end # Trank.all
+        puts Time.now.strftime("POLL END: %F %T")    
+      rescue
+        puts "rescue"
+      end
+    end # loop  
+  end # task
 
 end

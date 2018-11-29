@@ -3,7 +3,7 @@ require 'csv'
 class Answer < ApplicationRecord
     default_scope { order(created_at: :desc) }
 
-  #  after_create :google_sheet_save 
+    after_create :google_sheet_save 
    
     def self.to_csv
 	attributes = %w{shown_date_created_at shown_time_created_at contact level}
