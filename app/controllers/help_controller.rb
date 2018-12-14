@@ -32,7 +32,7 @@ class HelpController < ApplicationController
   def cdr_destroy_all
     Asteriskcdr.delete_all
     respond_to do |format|
-       format.html {redirect_to cdr_url, notice: 'Все записи удалены' }
+       format.html {redirect_to cdr_index_url, notice: 'Все записи удалены' }
        format.json { head :no_content }
     end
 
