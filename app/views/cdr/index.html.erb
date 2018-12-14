@@ -9,7 +9,9 @@
   <h1>Статистика звонков</h1>
 </div>
 
-
+<p>
+Общая длительность (сек):  <%= @billsec_total %>
+</p>
 
 
 <%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv), :class => "btn" %>
