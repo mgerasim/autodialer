@@ -8,7 +8,7 @@ class Asteriskcdr < ActiveRecord::Base
   default_scope { order(calldate: :desc) }
 
   def self.to_csv
-	attributes = %w{shown_date_created_at shown_time_created_at disposition userfield}
+	attributes = %w{shown_date_created_at shown_time_created_at userfield billsec disposition}
 	
 	CSV.generate({:headers => false, :col_sep => ';'}) do |csv|
 	    
