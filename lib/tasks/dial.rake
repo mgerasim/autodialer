@@ -43,6 +43,7 @@ namespace :dial do
 
     loop do 
       begin
+        puts "PID: " + Process.pid.to_s
         puts Time.now.strftime("POLL: %F %T")
         sleep 1
 
@@ -76,9 +77,10 @@ namespace :dial do
         config = Config.first
         puts Time.now.strftime("TRUNK:ALL: %F %T")
         Trank.all.each do |trank|
-            puts Time.now.strftime("TRANK: %F %T")
+            puts Time.now.strftime("TRUNK: %F %T")
+	    puts "TRUNK: name=" + trank.name
             next if (!trank.enabled)
-               
+              
             puts "Этот транк активный"
 
             dir = setting.outgoing + '/'

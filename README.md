@@ -263,6 +263,19 @@ alias realsrc => realsrc
 * ```rm -rf /var/log/asterisk/cdr-csv/```
 * ```mkdir /var/log/asterisk/cdr-csv/```
 * ```> /var/log/asterisk/cdr-custom/Master.csv```
+* ```rm -rf /var/log/asterisk/messages-*```
+* ```rm -rf /var/log/asterisk/queue_log-*```
+* ```rm -rf /var/log/asterisk/fail2ban-*```
+* ```> /var/log/asterisk/full ```
+* ```> /var/log/asterisk/messages```
+* ```rm -rf /var/log/asterisk/full-*```
+* ```rm -rf /var/log/asterisk/cdr-csv/*```
+* ```rm -f /home/rails/projects/autodialer/log/*.log```
+* ```rm -f /home/rails/apps/autodialer/current/log/*.log```
+* ```rm -rf /var/log/*-*```
+* ```rm -f /home/rails/apps/autodialer/current/log/*.log```
+* ```rm -f /home/rails/projects/autodialer/log/*.log```
+
 
 # ffmpeg
 ====================================================

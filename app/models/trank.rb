@@ -1,8 +1,8 @@
 class Trank < ApplicationRecord
 
-    belongs_to :vote_welcome, class_name: "Vote"
-    belongs_to :vote_finish, class_name: "Vote"
-    belongs_to :vote_push_two, class_name: "Vote"
+    belongs_to :vote_welcome, class_name: "Vote", required: false
+    belongs_to :vote_finish, class_name: "Vote", required: false
+    belongs_to :vote_push_two, class_name: "Vote", required: false
 
     belongs_to :dialplan
 
