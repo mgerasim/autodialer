@@ -28,6 +28,8 @@
       <th>Дата вызова</th>
       <th>Время вызова</th>
       <th>Телефон</th>
+      <th>Длительность звонка, сек</th>
+      <th>Длительность разговора, сек</th>
       <th>Статус</th>
     </tr>
   </thead>
@@ -38,6 +40,8 @@
         <td><%= cdr.shown_date_created_at %></td>
         <td><%= cdr.shown_time_created_at %></td>
         <td><%= cdr.userfield %></td>
+        <td><%= cdr.duration %></td>
+        <td><%= cdr.billsec %></td>
         <td><%= cdr.disposition %></td>
       </tr>
     <% end %>
