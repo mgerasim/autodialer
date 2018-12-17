@@ -6,6 +6,10 @@ yum -y install epel-release
 
 # Nginx
 sudo yum install -y nginx 
+cd /etc/nginx
+mv nginx.conf nginx.conf.bak
+wget https://github.com/mgerasim/railsconf/raw/master/etc_nginx.conf
+mv etc_nginx.conf nginx.conf
 systemctl start nginx
 sudo systemctl enable nginx
 
@@ -69,6 +73,10 @@ cd ~/
 mkdir projects && cd projects
 git clone git@github.com:mgerasim/autodialer.git
 cd autodialer && bundle install
+#  Установить Capistrano
+bundle install
+rbenv rehash
+cap install
 
 /bin/mysql -e "CREATE DATABASE avtodialerdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 /bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
@@ -81,8 +89,8 @@ cd autodialer && bundle install
 rake db:migrate
 RAILS_ENV=production rake db:migrate
 
-/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb -e "ALTER TABLE `outgoings` MODIFY COLUMN `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
-/bin/mysql --user=avtodialer --password=avtodialer avtodialerdevel -e "ALTER TABLE `outgoings` MODIFY COLUMN `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdevel -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
 
 cd ~/
 mkdir repos
@@ -95,3 +103,10 @@ git push local master
 echo 'export SECRET_KEY_BASE=d0498ebab49bd3da5faa27c7e93a73662f443d1de577a0ad97e1991a72d46ae0eee5353dcae19fc4560bd9ef76e06474fb6387395ba4536d24e8c582bba96e80' >> ~/.bashrc
 source ~/.bashrc
 
+mkdir -p /home/rails/apps/
+mkdir -p /home/rails/apps/autodialer/
+mkdir -p /home/rails/apps/autodialer/shared/
+mkdir -p /home/rails/apps/autodialer/shared/config
+cd ~/projects/autodialer
+cp config/* /home/rails/apps/autodialer/shared/config
+cap production deploy
