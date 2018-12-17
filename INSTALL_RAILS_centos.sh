@@ -149,6 +149,25 @@ yum update -y
 
 # reboot
 
+
+## Настройка безопасности:
+# Создаем новый сервис в брандмауэре:
+firewall-cmd --permanent --new-service=asterisk
+# Добавим в сервис нужные порты:
+firewall-cmd --permanent --service=asterisk --add-port=5060/tcp
+firewall-cmd --permanent --service=asterisk --add-port=5060/udp
+firewall-cmd --permanent --service=asterisk --add-port=5061/tcp
+firewall-cmd --permanent --service=asterisk --add-port=5061/udp
+firewall-cmd --permanent --service=asterisk --add-port=4569/udp
+firewall-cmd --permanent --service=asterisk --add-port=5038/tcp
+firewall-cmd --permanent --service=asterisk --add-port=10000-20000/udp
+# где 5060 — SIP, 5061 — SIP over TLS, 4569 — IAX, 5038 — AMI (Asterisk Manager Interface), 10000-20000 — диапазон для динамических портов.
+# Теперь добавляем созданный сервис как разрешенный:
+firewall-cmd --permanent --add-service=asterisk
+# и перезапускаем фаервол:
+firewall-cmd --reload
+
+
 cd /usr/src
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
 tar zxvf asterisk-15-current.tar.gz
@@ -158,3 +177,5 @@ contrib/scripts/install_prereq install
 contrib/scripts/install_prereq install-unpackaged
 make distclean
 ./configure --with-pjproject-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
+make menuselect
+make && make install && make config && ldconfig
