@@ -11,6 +11,11 @@ yum -y install epel-release
 sudo yum install -y firewalld firewall-config -y  
 sudo systemctl start firewalld 
 
+# Fail2ban
+sudo yum -y install fail2ban
+systemctl start fail2ban
+
+
 # Nginx
 sudo yum install -y nginx 
 cd /etc/nginx
