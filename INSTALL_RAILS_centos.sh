@@ -63,3 +63,35 @@ ssh-keygen -t rsa -b 4096 -C "mgerasim@inbox.ru"
 cat ~/.ssh/id_rsa.pub
 # upload to github
 
+
+# Autodialer
+cd ~/
+mkdir projects && cd projects
+git clone git@github.com:mgerasim/autodialer.git
+cd autodialer && bundle install
+
+/bin/mysql -e "CREATE DATABASE avtodialerdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+/bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+
+/bin/mysql -e "CREATE USER 'avtodialer'@'localhost' IDENTIFIED BY 'avtodialer'"
+/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdb.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"    
+/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdevel.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"
+/bin/mysql -e "FLUSH PRIVILEGES"
+
+rake db:migrate
+RAILS_ENV=production rake db:migrate
+
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb -e "ALTER TABLE `outgoings` MODIFY COLUMN `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdevel -e "ALTER TABLE `outgoings` MODIFY COLUMN `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+
+cd ~/
+mkdir repos
+cd repos/
+git init --bare autodialer.git
+cd ~/projects/autodialer
+git remote add local file:///home/rails/repos/autodialer.git/
+git push local master
+
+echo 'export SECRET_KEY_BASE=d0498ebab49bd3da5faa27c7e93a73662f443d1de577a0ad97e1991a72d46ae0eee5353dcae19fc4560bd9ef76e06474fb6387395ba4536d24e8c582bba96e80' >> ~/.bashrc
+source ~/.bashrc
+
