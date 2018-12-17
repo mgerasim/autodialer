@@ -7,6 +7,10 @@ echo 'nameserver 8.8.4.4' >> /etc/resolv.conf
 #Add the EPEL yum repository. 
 yum -y install epel-release
 
+# Безопасность
+sudo yum install -y firewalld firewall-config -y  
+sudo systemctl start firewalld 
+
 # Nginx
 sudo yum install -y nginx 
 cd /etc/nginx
@@ -17,6 +21,10 @@ getenforce
 setenforce 0
 systemctl restart nginx
 sudo systemctl enable nginx
+sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+
 
 #Then install the Node.js package:
 yum install -y nodejs
@@ -115,9 +123,9 @@ mkdir -p /home/rails/apps/autodialer/shared/config
 cd ~/projects/autodialer
 cp config/* /home/rails/apps/autodialer/shared/config
 cap production deploy
-
-
-
+cd ~/apps/autodialer/current/
+gem install whenever
+whenver --update-crontab
 
 ####
 ## Asterisk
@@ -189,4 +197,18 @@ chown -R asterisk.asterisk /usr/lib/asterisk
 
 systemctl enable asterisk
 systemctl start asterisk
+
+###########
+chmod 777 /var/spool/asterisk/outgoing/
+chmod 777 /var/spool/asterisk/
+chmod 777 /var/spool/
+chmod 777 /var/
+
+chmod 777 /var/lib/nginx/tmp/client_body/
+chmod 777 /var/lib/nginx/tmp/
+chmod 777 /var/lib/nginx
+chmod 777 /var/lib/
+chmod 777 /var/
+
+
 
