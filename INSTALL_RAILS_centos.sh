@@ -1,6 +1,9 @@
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel wget libcurl-devel.x86_64
 sudo yum install -y crontabs cronie cronie-anacron
 
+echo 'nameserver 8.8.8.8' >> /etc/resolv.conf
+echo 'nameserver 8.8.4.4' >> /etc/resolv.conf
+
 #Add the EPEL yum repository. 
 yum -y install epel-release
 
@@ -8,9 +11,11 @@ yum -y install epel-release
 sudo yum install -y nginx 
 cd /etc/nginx
 mv nginx.conf nginx.conf.bak
-wget https://github.com/mgerasim/railsconf/raw/master/etc_nginx.conf
-mv etc_nginx.conf nginx.conf
-systemctl start nginx
+wget https://raw.githubusercontent.com/mgerasim/autodialer/master/nginx/nginx.conf
+# https://unix.stackexchange.com/questions/218747/nginx-says-open-etc-nginx-conf-d-foo-conf-failed-13-permission-denied
+getenforce
+setenforce 0
+systemctl restart nginx
 sudo systemctl enable nginx
 
 #Then install the Node.js package:
