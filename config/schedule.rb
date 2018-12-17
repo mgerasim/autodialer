@@ -37,6 +37,6 @@ every :minute do
   rake "cdr:attempt", :output => {:error => 'log/cdr_attempt_error.log', :standard => 'log/cdr_attempt_cron.log'}
 end
 
-every :hour do
-  rake "dial:clear", :output => {:error => 'log/dial_clear_error.log', :standard => 'log/dial_clear_cron.log'}
-end
+#every :hour do
+#  rake "dial:clear", :output => {:error => 'log/dial_clear_error.log', :standard => 'log/dial_clear_cron.log'}
+#end

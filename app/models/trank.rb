@@ -1,8 +1,8 @@
 class Trank < ApplicationRecord
 
-    belongs_to :vote_welcome, class_name: "Vote"
-    belongs_to :vote_finish, class_name: "Vote"
-    belongs_to :vote_push_two, class_name: "Vote"
+    belongs_to :vote_welcome, class_name: "Vote", required: false
+    belongs_to :vote_finish, class_name: "Vote", required: false
+    belongs_to :vote_push_two, class_name: "Vote", required: false
 
     belongs_to :dialplan
 
@@ -45,9 +45,9 @@ class Trank < ApplicationRecord
     			f.puts("Set: CDR(userfield)=" + telephone)
                     end
 		    if (Config.first.is_vote_supported == true)
-	                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:wav).chomp('.mp3')) if self.vote_welcome != nil
-			    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:wav).chomp('.mp3')) if self.vote_finish != nil
-			    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:wav).chomp('.mp3')) if self.vote_push_two != nil
+	                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
+			    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
+			    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
 		    end
 
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     

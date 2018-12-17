@@ -9,7 +9,9 @@
   <h1>Статистика звонков</h1>
 </div>
 
-
+<p>
+Общая длительность (сек):  <%= @billsec_total %>
+</p>
 
 
 <%= link_to "Выгрузить в CSV", cdr_index_path(:format => :csv), :class => "btn" %>
@@ -28,6 +30,7 @@
       <th>Дата вызова</th>
       <th>Время вызова</th>
       <th>Телефон</th>
+      <th>Длительность</th>
       <th>Статус</th>
     </tr>
   </thead>
@@ -38,6 +41,7 @@
         <td><%= cdr.shown_date_created_at %></td>
         <td><%= cdr.shown_time_created_at %></td>
         <td><%= cdr.userfield %></td>
+        <td><%= cdr.billsec %></td>
         <td><%= cdr.disposition %></td>
       </tr>
     <% end %>
