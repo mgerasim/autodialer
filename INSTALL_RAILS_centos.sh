@@ -148,3 +148,13 @@ yum install -y lynx mariadb-server mariadb php php-mysql php-mbstring tftp-serve
 yum update -y
 
 # reboot
+
+cd /usr/src
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
+tar zxvf asterisk-15-current.tar.gz
+cd asterisk*
+contrib/scripts/get_mp3_source.sh
+contrib/scripts/install_prereq install
+contrib/scripts/install_prereq install-unpackaged
+make distclean
+./configure --with-pjproject-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
