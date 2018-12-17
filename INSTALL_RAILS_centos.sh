@@ -179,3 +179,14 @@ make distclean
 ./configure --with-pjproject-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
 make menuselect
 make && make install && make config && ldconfig
+make samples
+sed -i 's/ASTARGS=""/ASTARGS="-U asterisk"/g'  /usr/sbin/safe_asterisk
+useradd -m asterisk &&
+chown asterisk.asterisk /var/run/asterisk &&
+chown -R asterisk.asterisk /etc/asterisk &&
+chown -R asterisk.asterisk /var/{lib,log,spool}/asterisk &&
+chown -R asterisk.asterisk /usr/lib/asterisk
+
+systemctl enable asterisk
+systemctl start asterisk
+
