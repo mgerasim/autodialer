@@ -115,3 +115,36 @@ mkdir -p /home/rails/apps/autodialer/shared/config
 cd ~/projects/autodialer
 cp config/* /home/rails/apps/autodialer/shared/config
 cap production deploy
+
+
+
+
+####
+## Asterisk
+## https://asterisk-pbx.ru/wiki/asterisk_install/asterisk-15_centos-7_realtime
+## https://www.dmosk.ru/miniinstruktions.php?mini=asterisk-centos
+## https://serveradmin.ru/ustanovka-asterisk-i-freepbx-na-centos-7/
+##
+sed -i s/SELINUX=enforcing/SELINUX=disabled/g /etc/selinux/config
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+yum install -y kernel-devel kernel-headers
+
+yum install -y e2fsprogs-devel  keyutils-libs-devel krb5-devel libogg \
+libselinux-devel libsepol-devel libxml2-devel libtiff-devel gmp php-pear \
+php php-gd php-mysql php-pdo php-mbstring ncurses-devel \
+mysql-connector-odbc unixODBC unixODBC-devel \
+audiofile-devel libogg-devel openssl-devel zlib-devel  \
+perl-DateManip sox git wget net-tools psmisc
+
+yum install -y gcc gcc-c++ make gnutls-devel \
+libxml2-devel ncurses-devel subversion doxygen \
+texinfo curl-devel net-snmp-devel neon-devel  \
+uuid-devel libuuid-devel sqlite-devel sqlite \
+speex-devel gsm-devel libtool libtool-ltdl libtool-ltdl-devel \
+libsrtp libsrtp-devel xmlstarlet
+
+yum install -y lynx mariadb-server mariadb php php-mysql php-mbstring tftp-server httpd ncurses-devel sendmail sendmail-cf sox newt-devel libxml2-devel libtiff-devel audiofile-devel gtk2-devel subversion kernel-devel git php-process crontabs cronie cronie-anacron wget vim php-xml uuid-devel sqlite-devel net-tools gnutls-devel php-pear
+
+yum update -y
+
+# reboot
