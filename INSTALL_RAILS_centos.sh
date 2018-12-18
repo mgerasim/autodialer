@@ -47,6 +47,15 @@ echo '178.21.11.109   zbx01' >> /etc/hosts
 systemctl enable zabbix-agent
 systemctl start zabbix-agent
 systemctl status zabbix-agent
+# Создаем новый сервис в брандмауэре:
+firewall-cmd --permanent --new-service=zabbix
+# Добавим в сервис нужные порты:
+firewall-cmd --permanent --service=zabbix --add-port=10050/tcp
+firewall-cmd --permanent --service=zabbix --add-port=10051/tcp
+# Теперь добавляем созданный сервис как разрешенный:
+firewall-cmd --permanent --add-service=zabbix
+# и перезапускаем фаервол:
+firewall-cmd --reload
 
 useradd rails
 echo 'kxJFqz' | passwd rails --stdin
