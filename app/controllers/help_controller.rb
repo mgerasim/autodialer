@@ -1,5 +1,6 @@
 class HelpController < ApplicationController
   def cdr
+    `sed -i 's/,/;/g' /var/log/asterisk/cdr-csv/Master.csv`
     send_file(
         "/var/log/asterisk/cdr-csv/Master.csv",
         filename: "Master.csv",
