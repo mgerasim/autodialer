@@ -13,7 +13,8 @@ sudo systemctl start firewalld
 
 # Fail2ban
 sudo yum -y install fail2ban
-systemctl start fail2ban
+sudo systemctl start fail2ban
+sudo systemctl enable fail2ban
 
 
 # Nginx
