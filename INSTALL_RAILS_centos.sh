@@ -58,6 +58,13 @@ firewall-cmd --permanent --add-service=zabbix
 # и перезапускаем фаервол:
 firewall-cmd --reload
 
+# /etc/zabbix/zabbix_agentd.d/userparameter_mysql.conf
+UserParameter=mysql.outgoing,mysql --user=avtodialer --password=avtodialer  -e 'SELECT count(*) FROM outgoings WHERE status="INSERTED"' avtodialerdb --batch --skip-column-name
+UserParameter=mysql.answer,mysql --user=avtodialer --password=avtodialer  -e 'SELECT count(*) FROM answers' avtodialerdb --batch --skip-column-name
+UserParameter=mysql.activetrunk, mysql --user=avtodialer --password=avtodialer  -e 'SELECT sum(callcount) FROM tranks where enabled=true ' avtodialerdb --batch --skip-column-name
+UserParameter=asterisk.outgoing, ls /var/spool/asterisk/outgoing/ | wc -l
+
+
 useradd rails
 echo 'kxJFqz' | passwd rails --stdin
 usermod -aG wheel rails 
