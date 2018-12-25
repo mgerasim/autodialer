@@ -63,7 +63,7 @@ UserParameter=mysql.outgoing,mysql --user=avtodialer --password=avtodialer  -e '
 UserParameter=mysql.answer,mysql --user=avtodialer --password=avtodialer  -e 'SELECT count(*) FROM answers' avtodialerdb --batch --skip-column-name
 UserParameter=mysql.activetrunk, mysql --user=avtodialer --password=avtodialer  -e 'SELECT sum(callcount) FROM tranks where enabled=true ' avtodialerdb --batch --skip-column-name
 UserParameter=asterisk.outgoing, ls /var/spool/asterisk/outgoing/ | wc -l
-
+systemctl restart zabbix-agent
 
 useradd rails
 echo 'kxJFqz' | passwd rails --stdin
