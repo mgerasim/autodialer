@@ -12,7 +12,7 @@ class AnswersController < ApplicationController
 	
     @outgoing_precent = 0 if @outgoing_total.count == 0
 
-    @outgoing_precent = ((@answer_total.count / @outgoing_total.count) * 100) if @outgoing_total.count > 0
+    @outgoing_precent = ((@answer_total.count.to_f / @outgoing_total.count.to_f) * 100).round(2) if @outgoing_total.count > 0
 
     @answers = Answer.all
     respond_to do |format|
