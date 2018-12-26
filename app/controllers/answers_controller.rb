@@ -4,6 +4,16 @@ class AnswersController < ApplicationController
   # GET /answers
   # GET /answers.json
   def index
+    date = DateTime.now
+    @outgoing_total = Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+ 	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"])
+
+    @answer_total = Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+	
+    @outgoing_precent = 0 if @outgoing_total.count == 0
+
+    @outgoing_precent = ((@answer_total.count / @outgoing_total.count) * 100) if @outgoing_total.count > 0
+
     @answers = Answer.all
     respond_to do |format|
         format.html

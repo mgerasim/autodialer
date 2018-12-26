@@ -5,6 +5,19 @@
         <%= content_tag(:div, message, class: "toast toast-success") %>
       <% end %>
       
+<div class="text-center">
+  <h1>Статистика звонков</h1>
+</div>
+
+<p>
+Кол-во обработанных номеров:  <%= @outgoing_total.count %>
+</p>
+<p>
+Кол-во откликов: <%= @answer_total.count %>
+</p>
+<p>
+Процент от обработанных: <%= @outgoing_precent %>
+</p>
 
 <div class="text-center">
   <h1>Ответы</h1>
