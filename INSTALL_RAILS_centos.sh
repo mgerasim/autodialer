@@ -1,3 +1,29 @@
+########
+# Swap #
+########
+
+# Проверка текущего свапа
+swapon -s
+# Проверть свободное дисковое пространство
+df -h
+# Создать файл подкачки
+sudo fallocate -l 2G /swapfile
+ls -lh /swapfile
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+# Создать пространство подкачки (инициализация)
+sudo mkswap /swapfile
+sudo swapon /swapfile
+swapon -s
+# Настроить автоматическое монтирование swap`а
+sudo cp /etc/fstab  /etc/fstab.backup && sudo echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab
+sudo sysctl vm.swappiness=10
+cp /etc/sysctl.conf  /etc/sysctl.conf.backup && sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
+sysctl vm.vfs_cache_pressure=50
+cp /etc/sysctl.conf  /etc/sysctl.conf.backup && sudo echo "vm.vfs_cache_pressure=50" >> /etc/sysctl.conf
+
+
+###
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel wget libcurl-devel.x86_64
 sudo yum install -y crontabs cronie cronie-anacron
 
