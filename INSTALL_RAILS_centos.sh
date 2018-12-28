@@ -1,3 +1,29 @@
+########
+# Swap #
+########
+
+# Проверка текущего свапа
+swapon -s
+# Проверть свободное дисковое пространство
+df -h
+# Создать файл подкачки
+sudo fallocate -l 2G /swapfile
+ls -lh /swapfile
+sudo chmod 600 /swapfile
+ls -lh /swapfile
+# Создать пространство подкачки (инициализация)
+sudo mkswap /swapfile
+sudo swapon /swapfile
+swapon -s
+# Настроить автоматическое монтирование swap`а
+sudo cp /etc/fstab  /etc/fstab.backup && sudo echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab
+sudo sysctl vm.swappiness=10
+cp /etc/sysctl.conf  /etc/sysctl.conf.backup && sudo echo "vm.swappiness = 10" >> /etc/sysctl.conf
+sysctl vm.vfs_cache_pressure=50
+cp /etc/sysctl.conf  /etc/sysctl.conf.backup && sudo echo "vm.vfs_cache_pressure=50" >> /etc/sysctl.conf
+
+
+###
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel wget libcurl-devel.x86_64
 sudo yum install -y crontabs cronie cronie-anacron
 
@@ -29,6 +55,7 @@ systemctl restart nginx
 sudo systemctl enable nginx
 sudo firewall-cmd --permanent --zone=public --add-service=http 
 sudo firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --permanent --zone=public --service=http --add-port=3000/tcp
 sudo firewall-cmd --reload
 
 
@@ -234,3 +261,37 @@ chmod 777 /var/
 
 
 
+####################
+### ODBC 
+####################
+sudo yum install -y mysql-connector-odbc
+sudo yum install -y unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel
+echo "[asterisk-connector]" >> /etc/odbc.ini
+echo "Description = MySQL connection to 'avtodialer' database" >> /etc/odbc.ini
+echo "Driver = MySQL" >> /etc/odbc.ini
+echo "Database = avtodialerdb" >> /etc/odbc.ini
+echo "Server = localhost" >> /etc/odbc.ini
+echo "Port = 3306" >> /etc/odbc.ini
+echo "Socket = /var/lib/mysql/mysql.sock" >> /etc/odbc.ini
+
+isql -v asterisk-connector avtodialer avtodialer
+
+echo "[asteriskcdrdb]" >> /etc/asterisk/res_odbc.conf
+echo "enabled=yes" >> /etc/asterisk/res_odbc.conf
+echo "dsn=asterisk-connector" >> /etc/asterisk/res_odbc.conf
+echo "pooling=no" >> /etc/asterisk/res_odbc.conf
+echo "limit=1" >> /etc/asterisk/res_odbc.conf
+echo "pre-connect=yes" >> /etc/asterisk/res_odbc.conf
+echo "username=avtodialer" >> /etc/asterisk/res_odbc.conf
+echo "password=avtodialer" >> /etc/asterisk/res_odbc.conf
+asterisk -x "core reload"
+asterisk -x "odbc show"
+
+echo "[global]" >> /etc/asterisk/cdr_odbc.conf 
+echo "dsn=asteriskcdrdb" >> /etc/asterisk/cdr_odbc.conf 
+echo "loguniqueid=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "dispositionstring=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "table=cdr" >> /etc/asterisk/cdr_odbc.conf 
+echo "usegmtime=no" >> /etc/asterisk/cdr_odbc.conf 
+echo "hrtime=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "newcdrcolumns=yes" >> /etc/asterisk/cdr_odbc.conf 
