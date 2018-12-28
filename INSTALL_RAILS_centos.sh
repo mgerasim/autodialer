@@ -288,7 +288,7 @@ asterisk -x "core reload"
 asterisk -x "odbc show"
 
 echo "[global]" >> /etc/asterisk/cdr_odbc.conf 
-echo "dsn=asterisk-connector" >> /etc/asterisk/cdr_odbc.conf 
+echo "dsn=asteriskcdrdb" >> /etc/asterisk/cdr_odbc.conf 
 echo "loguniqueid=yes" >> /etc/asterisk/cdr_odbc.conf 
 echo "dispositionstring=yes" >> /etc/asterisk/cdr_odbc.conf 
 echo "table=cdr" >> /etc/asterisk/cdr_odbc.conf 
