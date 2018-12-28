@@ -55,6 +55,7 @@ systemctl restart nginx
 sudo systemctl enable nginx
 sudo firewall-cmd --permanent --zone=public --add-service=http 
 sudo firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --permanent --zone=public --service=http --add-port=3000/tcp
 sudo firewall-cmd --reload
 
 
