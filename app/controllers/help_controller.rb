@@ -1,5 +1,6 @@
 class HelpController < ApplicationController
   def cdr
+    `sed -i 's/,/;/g' /var/log/asterisk/cdr-csv/Master.csv`
     send_file(
         "/var/log/asterisk/cdr-csv/Master.csv",
         filename: "Master.csv",
@@ -32,7 +33,7 @@ class HelpController < ApplicationController
   def cdr_destroy_all
     Asteriskcdr.delete_all
     respond_to do |format|
-       format.html {redirect_to cdr_url, notice: 'Все записи удалены' }
+       format.html {redirect_to cdr_index_url, notice: 'Все записи удалены' }
        format.json { head :no_content }
     end
 
@@ -64,7 +65,7 @@ class HelpController < ApplicationController
  def trank_check
    trank = Trank.find(params[:id])
    telephone = params[:telephone]
-   trank.check(telephone, nil)
+   trank.check(telephone, telephone)
    redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
  end
 

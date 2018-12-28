@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @machine.telephone %>
+</p>
+
+<p>
+  <strong>Amdstatus:</strong>
+  <%= @machine.amdstatus %>
+</p>
+
+<p>
+  <strong>Amdcause:</strong>
+  <%= @machine.amdcause %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

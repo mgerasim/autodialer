@@ -47,6 +47,8 @@ namespace :dial do
         puts Time.now.strftime("POLL: %F %T")
         sleep 1
 
+        File.open("/tmp/autodialer.log", 'w') { |f| f.puts Time.now }
+
         setting = Setting.first    
         if (setting == nil)    
 	  setting = Setting.new
