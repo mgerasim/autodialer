@@ -118,10 +118,6 @@ namespace :dial do
                     telephone = config.prefix_contry.to_s + telephone
                 end
 
-                telephone = trank.prefix + telephone
-            
-                puts telephone
-
                 trank.check(telephone, contact.id) 
 
                 dir = setting.outgoing + '/'
