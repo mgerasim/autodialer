@@ -261,3 +261,37 @@ chmod 777 /var/
 
 
 
+####################
+### ODBC 
+####################
+sudo yum install -y mysql-connector-odbc
+sudo yum install -y unixODBC unixODBC-devel libtool-ltdl libtool-ltdl-devel
+echo "[asterisk-connector]" >> /etc/odbc.ini
+echo "Description = MySQL connection to 'avtodialer' database" >> /etc/odbc.ini
+echo "Driver = MySQL" >> /etc/odbc.ini
+echo "Database = avtodialerdb" >> /etc/odbc.ini
+echo "Server = localhost" >> /etc/odbc.ini
+echo "Port = 3306" >> /etc/odbc.ini
+echo "Socket = /var/lib/mysql/mysql.sock" >> /etc/odbc.ini
+
+isql -v asterisk-connector avtodialer avtodialer
+
+echo "[asteriskcdrdb]" >> /etc/asterisk/res_odbc.conf
+echo "enabled=yes" >> /etc/asterisk/res_odbc.conf
+echo "dsn=asterisk-connector" >> /etc/asterisk/res_odbc.conf
+echo "pooling=no" >> /etc/asterisk/res_odbc.conf
+echo "limit=1" >> /etc/asterisk/res_odbc.conf
+echo "pre-connect=yes" >> /etc/asterisk/res_odbc.conf
+echo "username=avtodialer" >> /etc/asterisk/res_odbc.conf
+echo "password=avtodialer" >> /etc/asterisk/res_odbc.conf
+asterisk -x "core reload"
+asterisk -x "odbc show"
+
+echo "[global]" >> /etc/asterisk/cdr_odbc.conf 
+echo "dsn=asteriskcdrdb" >> /etc/asterisk/cdr_odbc.conf 
+echo "loguniqueid=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "dispositionstring=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "table=cdr" >> /etc/asterisk/cdr_odbc.conf 
+echo "usegmtime=no" >> /etc/asterisk/cdr_odbc.conf 
+echo "hrtime=yes" >> /etc/asterisk/cdr_odbc.conf 
+echo "newcdrcolumns=yes" >> /etc/asterisk/cdr_odbc.conf 
