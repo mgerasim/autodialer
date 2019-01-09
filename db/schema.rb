@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181217060906) do
+ActiveRecord::Schema.define(version: 20190109110413) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -135,6 +135,8 @@ ActiveRecord::Schema.define(version: 20181217060906) do
     t.bigint "vote_finish_id"
     t.bigint "vote_push_two_id"
     t.bigint "dialplan_id"
+    t.integer "callmax"
+    t.integer "sleeptime"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"

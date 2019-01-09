@@ -89,7 +89,9 @@ namespace :dial do
             count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
             j = count
             puts "->#{count}"
-            next   if (count >= trank.callcount)
+            next   if (count >= trank.callmax)
+
+            sleep trank.sleeptime
 
             n = 0
             Outgoing.where(:status => 'INSERTED').order(updated_at: :desc).limit(trank.callcount).each do |contact|                
@@ -137,8 +139,8 @@ namespace :dial do
             end # Outgoing.where
           end # Trank.all
         puts Time.now.strftime("POLL END: %F %T")    
-      rescue
-        puts "rescue"
+      rescue => error
+        puts "rescue: " + $!.message 
       end
     end # loop  
   end # task

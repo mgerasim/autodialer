@@ -32,9 +32,19 @@
   </div>
 
   <div class="field">
-    <%= form.label "Максимальное количество вызовов:", class: "form-label" %>
+    <%= form.label "Интервал пополнения очереди:", class: "form-label" %>
+    <%= form.number_field :sleeptime, id: :trank_sleeptime, class: "form-input"  %>
+  </div> 
+
+  <div class="field">
+    <%= form.label "Количество вызовов для пополнения очередив:", class: "form-label" %>
     <%= form.number_field :callcount, id: :trank_callcount, class: "form-input"  %>
   </div>
+
+  <div class="field">
+    <%= form.label "Максимальное количество вызовов в очереди:", class: "form-label" %>
+    <%= form.number_field :callmax, id: :trank_callmax, class: "form-input"  %>
+  </div> 
 
   <div class="field">
     	<%= form.label "План вызова:", class: "form-label" %>
