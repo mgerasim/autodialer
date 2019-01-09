@@ -45,7 +45,6 @@ namespace :dial do
       begin
         puts "PID: " + Process.pid.to_s
         puts Time.now.strftime("POLL: %F %T")
-        sleep 1
 
         File.open("/tmp/autodialer.log", 'w') { |f| f.puts Time.now }
 
@@ -78,7 +77,12 @@ namespace :dial do
 
         config = Config.first
         puts Time.now.strftime("TRUNK:ALL: %F %T")
-        Trank.all.each do |trank|
+
+        tranks = Trank.where(:enabled => true)
+
+	sleep 1 if tranks.count == 0
+
+        tranks.each do |trank|
             puts Time.now.strftime("TRUNK: %F %T")
 	    puts "TRUNK: name=" + trank.name
             next if (!trank.enabled)
@@ -88,7 +92,7 @@ namespace :dial do
             dir = setting.outgoing + '/'
             count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
             j = count
-            puts "->#{count}"
+            puts "-> Count:  #{count} Maxcall: #{trank.callmax}"
             next   if (count >= trank.callmax)
 
             sleep trank.sleeptime
@@ -128,10 +132,10 @@ namespace :dial do
 
 
               
-                if (j > trank.callcount)
-                    j = 0
-                    next
-                end # if
+               # if (j > trank.callcount)
+               #     j = 0
+               #     next
+               # end # if
             end # Outgoing.where
           end # Trank.all
         puts Time.now.strftime("POLL END: %F %T")    
