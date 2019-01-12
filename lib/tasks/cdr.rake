@@ -6,8 +6,8 @@ namespace :cdr do
     exit if config.is_outgoing_deleted 
     spools = Spool.all.limit(10)
     spools.each do |spool|
-      puts spool.outgoing_id.to_s
-      Answer.create(:contact => spool.outgoing.telephone)
+      puts spool.outgoing.telephone
+      Answer.create(:contact => spool.outgoing.telephone, :trank => spool.trank)
       spool.delete
     end
   end

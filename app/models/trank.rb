@@ -52,6 +52,8 @@ class Trank < ApplicationRecord
 			    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
 		    end
 
+                    f.puts("Set: trunk=" + self.id.to_s)
+
 		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
       end
    
