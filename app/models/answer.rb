@@ -27,9 +27,12 @@ class Answer < ApplicationRecord
     def shown_time_created_at
         (created_at.localtime).strftime("%H:%M:%S")
     end
- 
+
     def trank_name
-        trank.name
+        if (trank != nil)
+            trank.name
+        else
+            ""
     end
 
     private
