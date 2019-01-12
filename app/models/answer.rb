@@ -33,6 +33,7 @@ class Answer < ApplicationRecord
             trank.name
         else
             ""
+        end
     end
 
     private
