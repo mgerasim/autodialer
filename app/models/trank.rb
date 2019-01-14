@@ -43,7 +43,7 @@ class Trank < ApplicationRecord
                     f.puts("Priority: 1")
                     if (account != nil)
                         f.puts("Account: " + account.to_s)
-                    	f.puts("Set: __num=" + account.to_s)
+                    	f.puts("Set: num=" + account.to_s)
     			f.puts("Set: CDR(userfield)=" + telephone)
                     end
 		    if (Config.first.is_vote_supported == true)
