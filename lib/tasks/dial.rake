@@ -80,7 +80,7 @@ namespace :dial do
 
         tranks = Trank.where(:enabled => true)
 
-	sleep 1 if tranks.count == 0
+	sleep 1 
 
         tranks.each do |trank|
             puts Time.now.strftime("TRUNK: %F %T")
@@ -95,7 +95,7 @@ namespace :dial do
             puts "-> Count:  #{count} Maxcall: #{trank.callmax}"
             next   if (count >= trank.callmax)
 
-            sleep trank.sleeptime
+#            sleep trank.sleeptime
 
             n = 0
             Outgoing.where(:status => 'INSERTED').order(updated_at: :desc).limit(trank.callcount).each do |contact|                
