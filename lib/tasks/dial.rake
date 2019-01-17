@@ -43,6 +43,10 @@ namespace :dial do
 
     loop do 
       begin
+        
+        sleep 1
+        
+
         puts "PID: " + Process.pid.to_s
         puts Time.now.strftime("POLL: %F %T")
 
@@ -79,8 +83,6 @@ namespace :dial do
         puts Time.now.strftime("TRUNK:ALL: %F %T")
 
         tranks = Trank.where(:enabled => true)
-
-	sleep 1 
 
         tranks.each do |trank|
             puts Time.now.strftime("TRUNK: %F %T")

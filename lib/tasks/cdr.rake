@@ -7,8 +7,10 @@ namespace :cdr do
     spools = Spool.all.limit(10)
     spools.each do |spool|
       puts spool.outgoing.telephone
-      Answer.create(:contact => spool.outgoing.telephone, :trank => spool.trank)
+      telephone = spool.outgoing.telephone
+      trank = spool.trank
       spool.delete
+      Answer.create(:contact => telephone, :trank => trank)
     end
   end
 
