@@ -306,3 +306,6 @@ dotnet --info
 
 vi ~/.bashrc
 source scl_source enable rh-dotnet20
+useradd dotnet
+echo 'kxJFqz' | passwd dotnet --stdin
+usermod -aG wheel dotnet 
