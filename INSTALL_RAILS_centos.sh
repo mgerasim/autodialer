@@ -295,3 +295,14 @@ echo "table=cdr" >> /etc/asterisk/cdr_odbc.conf
 echo "usegmtime=no" >> /etc/asterisk/cdr_odbc.conf 
 echo "hrtime=yes" >> /etc/asterisk/cdr_odbc.conf 
 echo "newcdrcolumns=yes" >> /etc/asterisk/cdr_odbc.conf 
+
+####################
+### .NET Core
+####################
+yum install -y centos-release-dotnet
+yum install -y rh-dotnet20
+scl enable rh-dotnet20 bash
+dotnet --info
+
+vi ~/.bashrc
+source scl_source enable rh-dotnet20
