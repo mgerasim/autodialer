@@ -67,6 +67,8 @@ class Answer < ApplicationRecord
       
       puts error.message
 
+      error.backtrace.each { |line| logger.error line }
+
     end
     end
 end
