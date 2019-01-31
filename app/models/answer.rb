@@ -1,4 +1,6 @@
 require 'csv'
+require 'net/http'
+require 'addressable/uri'
 
 class Answer < ApplicationRecord
     
@@ -7,6 +9,7 @@ class Answer < ApplicationRecord
     default_scope { order(created_at: :desc) }
 
     after_create :google_sheet_save 
+#     after_create :skorozvon_save
    
     def self.to_csv
 	attributes = %w{shown_date_created_at shown_time_created_at contact trank_name}
@@ -37,6 +40,31 @@ class Answer < ApplicationRecord
     end
 
     private
+
+    def skorozvon_save
+
+       begin
+		
+		url = "https://app.skorozvon.ru/oauth/token"
+                uri = URI.parse(url)
+		https = Net::HTTP.new(uri.host, uri.port)
+		https.use_ssl = true
+		
+		answer = https.post(uri.request_uri).body
+
+		pust JSON.parse(answer)
+		
+		
+       
+       rescue => error
+
+ 		puts error.message
+		error.backtrace.each { |line| logger.error line }
+
+	end
+
+
+    end
 
     def google_sheet_save
       # AnswerCreateJob.perform_later self

@@ -110,7 +110,7 @@ namespace :dial do
                 if (config.is_outgoing_deleted == true)
              		contact.delete
 		else
-                	contact.update_attributes(:status => 'DIALING')
+                	contact.update_attributes(:status => 'DIALING', :trank => trank)
 		end
                 
                 n = n + 1

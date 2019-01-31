@@ -54,9 +54,9 @@ asteriskcdrdb:
  min_messages: warning
  timeout: 5000
  reconnect: false
- database: asteriskcdrdb
+ database: avtodialerdb
  pool: 5
- username: freepbxuser
- password: ArvqHJChr35h
+ username: avtodialer
+ password: avtodialer
  socket: /var/lib/mysql/mysql.sock
  #socket: /tmp/mysql.sock

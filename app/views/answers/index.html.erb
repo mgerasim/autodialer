@@ -9,23 +9,66 @@
   <h1>Статистика звонков</h1>
 </div>
 
-<p>
-Кол-во обработанных номеров:  <%= @outgoing_total.count %>
-</p>
-<p>
-Кол-во откликов: <%= @answer_total.count %>
-</p>
-<p>
-Процент от обработанных: <%= @outgoing_precent %>
-</p>
+<table class="table table-bordered">
 
-<p>
-Кол-во отвеченных: <%= @outgoing_answer_total.count %>
-</p>
+    <thead>
+        <tr>
+           <th></th>
+           <% Trank.all.each do |trunk| %>
+             <th><%= trunk.name %></th>
+           <% end %>
 
-<p>
-Процент от отвеченных: <%= @outgoing_answer_precent %>
-</p>
+        </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+	<td>Кол-во обработанных номеров:</td>
+        <% Trank.all.each do |trunk| %>
+             <td><%= trunk.outgoing_total_count %></td>
+           <% end %>
+
+       </tr>
+      
+      <tr>
+        <td>Кол-во откликов:</td>
+        <% Trank.all.each do |trunk| %>
+             <td><%= trunk.answer_total_count %></td>
+           <% end %>
+
+       </tr>
+
+
+      <tr>
+        <td>Процент от обработанных:</td>
+        <% Trank.all.each do |trunk| %>
+             <td><%= trunk.outgoing_precent %></td>
+           <% end %>
+
+       </tr>
+
+
+      <tr>
+        <td>Кол-во отвеченных:</td>
+        <% Trank.all.each do |trunk| %>
+             <td><%= trunk.outgoing_answer_total_count %></td>
+           <% end %>
+
+       </tr>
+
+
+      <tr>
+        <td>Процент от отвеченных:</td>
+        <% Trank.all.each do |trunk| %>
+             <td><%= trunk.outgoing_answer_precent %></td>
+           <% end %>
+
+       </tr>
+
+
+    </tbody>
+
+</table>
 
 
 <div class="text-center">

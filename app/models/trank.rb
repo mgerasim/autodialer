@@ -17,6 +17,46 @@ class Trank < ApplicationRecord
       self.context = config.default_trank_context
     end 
 
+    def outgoing_total_count
+        date = DateTime.now
+		Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
+       # Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+ #	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"]).count
+    end
+
+    def answer_total_count
+        date = DateTime.now
+	Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
+    end
+
+    def outgoing_precent
+        outgoing_count = self.outgoing_total_count
+
+       if outgoing_count == 0
+           0
+       else 
+            ((self.answer_total_count.to_f / outgoing_total_count.to_f) * 100).round(2) 
+       end
+    end
+
+
+    def outgoing_answer_total_count
+	date = DateTime.now
+       Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+        .where(:status => ["ANSWERED"]).count
+    end
+
+    def outgoing_answer_precent
+        outgoing_answer_count = self.outgoing_answer_total_count
+	
+        if outgoing_answer_count == 0 
+  	    0
+        else
+            ((answer_total_count.to_f / outgoing_answer_total_count.to_f) * 100).round(2) 
+        end
+    end
+        
+
     def check(telephone, account)
       setting = Setting.first
       Rails.logger.debug telephone

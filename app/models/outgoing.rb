@@ -4,6 +4,8 @@ class Outgoing < ApplicationRecord
 
     attr_accessor :csv_upload
 
+    belongs_to :trank, required: false
+
     def shown_date_created_at
 	if (updated_at != nil)
         	(updated_at).strftime("%Y-%m-%d")
