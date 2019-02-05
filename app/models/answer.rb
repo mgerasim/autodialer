@@ -45,10 +45,12 @@ class Answer < ApplicationRecord
 
        begin
 		cmd = "curl http://localhost:5000/api/lead/#{self.contact}"
-		`#{cmd}`
-
- 		encoded_url = URI.encode("http://localhost:5000/api/lead/#{self.contact}")
-		url = URI.parse(encoded_url)
+		puts cmd
+  		msg = `#{cmd}`
+		puts msg
+	
+ 		uri = "http://localhost:5000/api/lead/#{self.contact}"
+		url = URI.parse(uri)
 		req = Net::HTTP::Get.new(url.to_s)
 		puts url.to_s
 #	res = Net::HTTP.start(url.host, url.port) {|http|
