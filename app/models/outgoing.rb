@@ -22,7 +22,7 @@ class Outgoing < ApplicationRecord
 	end
     end
 	
-    def total_count
+    def self.total_count
         date = DateTime.now
                 Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day)).count
        # Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
