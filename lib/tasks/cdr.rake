@@ -10,7 +10,7 @@ namespace :cdr do
       telephone = spool.outgoing.telephone
       trank = spool.trank
       spool.delete
-      Answer.create(:contact => telephone, :trank => trank)
+      Answer.create(:contact => telephone.squish, :trank => trank)
     end
   end
 
