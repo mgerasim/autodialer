@@ -1,7 +1,7 @@
 require 'csv'
 
 class Asteriskcdr < ActiveRecord::Base
-  establish_connection(:asteriskcdrdb)
+#  establish_connection(:asteriskcdrdb)
   self.table_name = "cdr"
   self.primary_key = "clid"
 

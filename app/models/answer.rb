@@ -44,7 +44,16 @@ class Answer < ApplicationRecord
     def skorozvon_save
 
        begin
-		
+
+ 		url = URI.parse("http://localhost:5000/api/lead/#{self.contact}")
+		req = Net::HTTP::Get.new(url.to_s)
+		res = Net::HTTP.start(url.host, url.port) {|http|
+  			http.request(req)
+		}
+		puts res.body
+
+		return		
+
 		url = "https://app.skorozvon.ru/oauth/token"
                 uri = URI.parse(url)
 		https = Net::HTTP.new(uri.host, uri.port)
@@ -168,7 +177,7 @@ class Answer < ApplicationRecord
     def google_sheet_save
       # AnswerCreateJob.perform_later self
       begin
-    
+   
        skorozvon_save
    
         puts "google_sheet_save"
