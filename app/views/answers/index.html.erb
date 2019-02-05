@@ -17,6 +17,7 @@
            <% Trank.all.each do |trunk| %>
              <th><%= trunk.name %></th>
            <% end %>
+	   <th>Итого:</th>
         </tr>
     </thead>
 
@@ -26,7 +27,7 @@
         <% Trank.all.each do |trunk| %>
              <td><%= trunk.outgoing_total_count %></td>
            <% end %>
-
+           <td><%= Outgoing.total_count %></td>
        </tr>
       
       <tr>
@@ -34,7 +35,7 @@
         <% Trank.all.each do |trunk| %>
              <td><%= trunk.answer_total_count %></td>
            <% end %>
-
+	   <td><%= Outgoing.answer_total_count %></td>
        </tr>
 
 
@@ -43,7 +44,7 @@
         <% Trank.all.each do |trunk| %>
              <td><%= trunk.outgoing_precent %></td>
            <% end %>
-
+	   <td><%= Outgoing.outgoing_precent %></td>
        </tr>
 
 
@@ -52,7 +53,7 @@
         <% Trank.all.each do |trunk| %>
              <td><%= trunk.outgoing_answer_total_count %></td>
            <% end %>
-
+           <td><%= Outgoing.outgoing_answer_total_count %></td>
        </tr>
 
 
@@ -61,7 +62,7 @@
         <% Trank.all.each do |trunk| %>
              <td><%= trunk.outgoing_answer_precent %></td>
            <% end %>
-
+           <td><%= Outgoing.outgoing_answer_precent %></td>
        </tr>
 
 
