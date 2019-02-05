@@ -44,13 +44,17 @@ class Answer < ApplicationRecord
     def skorozvon_save
 
        begin
+		cmd = "curl http://localhost:5000/api/lead/#{self.contact}"
+		`#{cmd}`
 
- 		url = URI.parse("http://localhost:5000/api/lead/#{self.contact}")
+ 		encoded_url = URI.encode("http://localhost:5000/api/lead/#{self.contact}")
+		url = URI.parse(encoded_url)
 		req = Net::HTTP::Get.new(url.to_s)
-		res = Net::HTTP.start(url.host, url.port) {|http|
-  			http.request(req)
-		}
-		puts res.body
+		puts url.to_s
+#	res = Net::HTTP.start(url.host, url.port) {|http|
+ # 			http.request(req)
+#		}
+#		puts res.body
 
 		return		
 
