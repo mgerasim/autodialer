@@ -43,6 +43,7 @@ class Trank < ApplicationRecord
     def outgoing_answer_total_count
 	date = DateTime.now
        Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+        .where(:trank => self)
         .where(:status => ["ANSWERED"]).count
     end
 
