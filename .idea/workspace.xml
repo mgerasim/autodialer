@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="31ee8ad2-5b17-47fe-9a9a-dcb74db81403" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/-10f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Capfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/INSTALL_RAILS_centos.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImportCdrToExcel.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/config/manifest.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/images/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/answers.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/cable.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/cdr.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/channels/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/configs.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/configurations.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/dialplans.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/help.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/machines.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/outgoings.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/register.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/sessions.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/settings.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/sip.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/sips.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/spools.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/tasks.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/tranks.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/javascripts/votes.coffee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/answers.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/cdr.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/configs.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/configurations.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/dialplans.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/help.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/machines.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/outgoings.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/register.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/sessions.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/settings.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/sip.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/sips.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/spools.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/tasks.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/tranks.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/votes.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/answers_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/cdr_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/concerns/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/configs_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/configurations_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dialplans_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/help_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/machines_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/outgoings_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/register_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sessions_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/settings_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sip_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/sips_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/spools_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tasks_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tranks_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/votes_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/answers_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/application_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/cdr_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/configs_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/configurations_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/dialplans_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/help_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/machines_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/outgoings_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/register_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/sessions_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/settings_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/sip_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/sips_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/spools_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/tasks_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/tranks_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/helpers/votes_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/answer_create_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/application_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/outgoing_destroy_all_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/outgoing_upload_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/task_dailing_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/task_delete_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/task_loading_job.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mailers/application_mailer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/answer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/application_record.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/asteriskcdr.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/concerns/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/configuration.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/contact.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/dialplan.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/machine.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/outgoing.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sip.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/spool.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/task.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/vote.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/_answer.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/answers/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/cdr/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/_config.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configs/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/_configuration.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/configurations/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/_dialplan.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/dialplans/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/help/asterisk_restart.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/help/extensions.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/help/outgoing_destroy_all.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/.#_header.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_footer.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/_shim.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/_machine.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/machines/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/_outgoing.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/outgoings/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/register/reload.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/register/status.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sessions/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/_setting.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sip/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sip/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/_sip.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/sips/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/_spool.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/spools/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/_task.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tasks/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/_trank.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/_form.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/_vote.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/edit.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/index.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/new.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/show.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/votes/show.json.jbuilder" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asterisk/extensions_custom.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asterisk/google_speech.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asterisk/machine_detected.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/asterisk/record_num.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autodialer.sublime-project" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autodialer.sublime-workspace" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/bundle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rails" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/setup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/spring" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/update" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/yarn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ru" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/boot.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/cable.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/deploy.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/deploy/production.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/deploy/staging.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environment.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/production.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/assets.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/inflections.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/paperclip_media_type_spoof_detector_override.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/rack_timeout.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/scheduler.rb:" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/locales/en.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/puma.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/schedule.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/secrets.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/spring.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/custom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180109104101_create_tasks.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180109122534_create_contacts.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180109123556_add_status_to_contacts.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180211124433_create_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180212132504_add_currentcount_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180212132540_add_outgoing_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180218112803_add_peer_to_contact.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180310102235_add_sleep_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180311090612_add_status_to_task.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180312102706_create_outgoings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180312111811_add_status_to_outgoing.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180312112205_add_date_created_to_outgoing.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180312121504_add_is_enabled_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180705090358_add_waittime_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180710113014_add_trank_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180713053537_create_tranks.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180718115104_add_prefix_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180814031704_add_hour_bgn_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20180814031740_add_hour_end_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181001094901_create_answers.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181018091058_add_attempt_to_outgoings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181018091406_add_attempt_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181020115613_add_google_sheet_count_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181020115640_add_google_sheet_current_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181020200710_add_google_to_setting.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181020203908_add_attachment_google_private_key_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181021193926_remove_attempt_from_outgoings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181021194017_add_attempt_new_to_outgoings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181028124037_create_spools.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110023131_add_title_to_settings.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110100347_create_configurations.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110100521_insert_configuration.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110102511_create_configs.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110102524_insert_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110115356_add_password_to_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181110213946_insert_config_after_password.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181111110310_add_context_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181111115025_add_default_trank_context_to_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181111235825_add_menu_service_to_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181112112155_create_votes.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181114034725_add_is_vote_supported_to_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181117045849_add_records_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181119192900_create_dialplans.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181119192927_insert_dialplan.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181119194418_add_dialplan_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181123102530_add_level_to_answer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181124055703_add_prefix_contry_to_config.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181216132521_create_machines.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20181217060906_insert_dialplan_welcome_amd.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190109104115_add_callmax_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190109104604_set_callmax_and_waittime_for_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190109105855_add_sleeptime_to_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190109110413_set_sleeptime_for_trank.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190112020955_add_trunk_to_spool.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190112021055_add_trunk_to_answer.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190126141959_insert_dialplan_google_speech.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190131222145_add_trunk_to_outgoing.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/google_speech.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/assets/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/paperclip_processors/wav_processor.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/cdr.rake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/dial.rake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/google.rake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tasks/outgoings.rake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/log/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx/nginx.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/422.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/apple-touch-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/system/votes/records/000/000/005/original/3.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql_build.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/mysql_create_function.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/application_system_test_case.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/answers_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/cdr_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/configs_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/configurations_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/dialplans_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/help_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/machines_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/outgoings_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/register_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/sessions_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/settings_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/sip_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/sips_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/spools_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/tasks_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/tranks_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/votes_controller_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/answers.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/configs.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/configurations.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/contacts.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/dialplans.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/files/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/files/contacts.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/files/contacts_invalid.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/files/contacts_invalid_one.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/machines.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/outgoings.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/settings.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/sips.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/spools.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/tasks.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/tranks.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/votes.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/helpers/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/sessionss_login_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/integration/users_login_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/answer_create_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/loading_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/outgoing_destroy_all_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/outgoing_upload_job_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/outgoing_upload_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/task_dailing_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/task_delete_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/jobs/task_loading_job_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/mailers/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/answer_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/config_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/configuration_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/contact_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/dialplan_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/machine_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/outgoing_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/setting_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/sip_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/spool_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/task_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/trank_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/vote_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/answers_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/configs_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/configurations_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/dialplans_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/machines_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/outgoings_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/settings_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/sips_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/spools_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/tasks_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/tranks_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/system/votes_test.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_helper.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/.keep" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.bundle/" />
+    <ignored path="$PROJECT_DIR$/components/" />
+    <ignored path="$PROJECT_DIR$/log/" />
+    <ignored path="$PROJECT_DIR$/public/system/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <ignored path="$PROJECT_DIR$/vendor/bundle/" />
+    <ignored path="$PROJECT_DIR$/vendor/cache/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/autodialer@Development__autodialer.rcov" NAME="Development: autodialer Coverage Results" MODIFIED="1549528441655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="autodialer" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/database.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="46" column="1" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="29" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1260" />
+    <option name="height" value="944" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="RailsProjectView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Rails.Development: autodialer">
+    <configuration name="Development: autodialer" type="RailsRunConfigurationType" factoryName="Rails">
+      <module name="autodialer" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="true" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="ruby-2.2.6-p396" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Production: autodialer" type="RailsRunConfigurationType" factoryName="Rails">
+      <module name="autodialer" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="127.0.0.1" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="spec: autodialer" type="RakeRunConfigurationType" factoryName="Rake">
+      <module name="autodialer" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":rspec " />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test: autodialer" type="RakeRunConfigurationType" factoryName="Rake">
+      <module name="autodialer" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":test_unit " />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Rails.Development: autodialer" />
+      <item itemvalue="Rails.Production: autodialer" />
+      <item itemvalue="Rake.spec: autodialer" />
+      <item itemvalue="Rake.test: autodialer" />
+    </list>
+  </component>
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="31ee8ad2-5b17-47fe-9a9a-dcb74db81403" name="Default Changelist" comment="" />
+      <created>1549527697200</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549527697200</updated>
+      <workItem from="1549527698506" duration="1026000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1026000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.32936978" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936978" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32936978" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="46" column="1" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="28" column="4" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="29" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
