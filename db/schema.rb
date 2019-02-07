@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190131222145) do
+ActiveRecord::Schema.define(version: 20190207092754) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -63,6 +63,15 @@ ActiveRecord::Schema.define(version: 20190131222145) do
   create_table "dialplans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "phone"
+    t.string "dialer_status"
+    t.integer "dialer_attempt"
+    t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
