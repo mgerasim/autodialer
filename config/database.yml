@@ -21,7 +21,7 @@ development:
  username: avtodialer
  password: avtodialer
  socket: /var/lib/mysql/mysql.sock
- host: ast05
+# host: ast05
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -43,8 +43,8 @@ production:
  pool: 5
  username: avtodialer
  password: avtodialer
- #socket: /var/lib/mysql/mysql.sock
- host: ast05
+ socket: /var/lib/mysql/mysql.sock
+ #host: ast05
 
 asteriskcdrdb:
  adapter: mysql2
@@ -57,5 +57,5 @@ asteriskcdrdb:
  pool: 5
  username: avtodialer
  password: avtodialer
- #socket: /var/lib/mysql/mysql.sock
- host: ast05
+ socket: /var/lib/mysql/mysql.sock
+#host: ast05
