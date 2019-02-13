@@ -62,41 +62,39 @@ class Trank < ApplicationRecord
       setting = Setting.first
       Rails.logger.debug telephone
       Rails.logger.debug self.context
-
-#      outgoing = Outgoing.create(:telephone => telephone, :status => 'DIALING')
-#      account = outgoing.id
-
       telephone = self.prefix + telephone if self.prefix != nil
 
       File.open(Dir::Tmpname.create(['tmp_' + telephone + "_#{self.name}_", '.call']) { }.to_s, "w+") do |f|
-                    f.chmod(0666)
-    	            f.puts("Channel: SIP/" + telephone +  "@#{self.name}")
-                    f.puts("Callerid: " + self.callerid)
-	            f.puts("MaxRetries: 0")
-                    f.puts("RetryTime: 20")
-                    f.puts("WaitTime: " + self.waittime.to_s)
-		    if (self.dialplan != nil)
-                    	f.puts("Context: " + self.dialplan.name)
-		    else
-			f.puts("Context: from-trunk")
-		    end
-                    f.puts("Extension: s")
-                    f.puts("Priority: 1")
-                    if (account != nil)
-                        f.puts("Account: " + account.to_s)
-                    	f.puts("Set: num=" + account.to_s)
-    			f.puts("Set: CDR(userfield)=" + telephone)
-                    end
-		    if (Config.first.is_vote_supported == true)
-	                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
-			    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
-			    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
-		    end
+                f.chmod(0666)
+                f.puts("Channel: SIP/" + telephone +  "@#{self.name}")
+                f.puts("Callerid: " + self.callerid)
+                f.puts("MaxRetries: 0")
+                f.puts("RetryTime: 20")
+                f.puts("WaitTime: " + self.waittime.to_s)
+            if (self.dialplan != nil)
+                f.puts("Context: " + self.dialplan.name)
+		        else
+                f.puts("Context: from-trunk")
+		        end
+                f.puts("Extension: s")
+                f.puts("Priority: 1")
+            if (account != nil)
+                f.puts("Account: " + account.to_s)
+                f.puts("Set: num=" + account.to_s)
+    			      f.puts("Set: CDR(userfield)=" + telephone)
+            end
+		        if (Config.first.is_vote_supported == true)
+                f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
+			          f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
+			          f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
+            end
+                #
+                f.puts("Set: trunk=" + self.id.to_s)
+                f.puts("Set: leadback_phone=" + setting.leadback_phone)
+                f.puts("Set: trunk_name=" + self.name)
 
-                    f.puts("Set: trunk=" + self.id.to_s)
-
-		    FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))     
-      end
+		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
+          end
    
 
     end
