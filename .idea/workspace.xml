@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31ee8ad2-5b17-47fe-9a9a-dcb74db81403" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/trank.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/trank.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/_header.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/settings/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/settings/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asterisk/extensions_custom.conf" beforeDir="false" afterPath="$PROJECT_DIR$/asterisk/extensions_custom.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/settings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/settings_controller.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -22,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/autodialer@Development__autodialer.rcov" NAME="Development: autodialer Coverage Results" MODIFIED="1550016663638" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="autodialer" />
+    <SUITE FILE_PATH="coverage/autodialer@Development__autodialer.rcov" NAME="Development: autodialer Coverage Results" MODIFIED="1550054358211" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="autodialer" />
     <SUITE FILE_PATH="coverage/autodialer@Rails_console__autodialer.rcov" NAME="Rails console: autodialer Coverage Results" MODIFIED="1549542051335" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="autodialer" />
   </component>
   <component name="DatabaseView">
@@ -77,11 +73,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/asterisk/extensions_custom.conf">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="348">
               <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/settings_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="387">
+              <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -113,6 +118,7 @@
         <option value="$PROJECT_DIR$/app/views/settings/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/models/trank.rb" />
         <option value="$PROJECT_DIR$/asterisk/extensions_custom.conf" />
+        <option value="$PROJECT_DIR$/app/controllers/settings_controller.rb" />
       </list>
     </option>
   </component>
@@ -145,7 +151,13 @@
             <path>
               <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
               <item name="autodialer" type="462c0819:PsiDirectoryNode" />
-              <item name="asterisk" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -316,7 +328,7 @@
       <workItem from="1549541960682" duration="2808000" />
       <workItem from="1549769191858" duration="969000" />
       <workItem from="1550016019490" duration="1226000" />
-      <workItem from="1550052600188" duration="1244000" />
+      <workItem from="1550052600188" duration="1666000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена форма лидов">
       <created>1549543180596</created>
@@ -329,7 +341,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8583000" />
+    <option name="totallyTimeSpent" value="9005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -468,6 +480,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
           <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/settings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="79" column="55" selection-start-line="79" selection-start-column="55" selection-end-line="79" selection-end-column="55" />
         </state>
       </provider>
     </entry>
