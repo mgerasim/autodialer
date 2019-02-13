@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190213100621) do
+ActiveRecord::Schema.define(version: 20190213101043) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20190213100621) do
     t.boolean "is_menu_service_showed"
     t.boolean "is_vote_supported"
     t.integer "prefix_contry", default: 7
-    t.string "leadback_phone"
   end
 
   create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -120,6 +119,7 @@ ActiveRecord::Schema.define(version: 20190213100621) do
     t.integer "google_private_key_file_size"
     t.datetime "google_private_key_updated_at"
     t.text "title"
+    t.string "leadback_phone"
   end
 
   create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
