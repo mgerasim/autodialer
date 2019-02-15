@@ -77,6 +77,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:title, :google_title, :google_private_key, :attempt_max_count, :attempt_interval, :waittime, :callcount, :sipnames, :currentcount, :outgoing, :sleep, :is_enabled, :trank, :hour_bgn, :hour_end)
+      params.require(:setting).permit(:leadback_phone, :title, :google_title, :google_private_key, :attempt_max_count, :attempt_interval, :waittime, :callcount, :sipnames, :currentcount, :outgoing, :sleep, :is_enabled, :trank, :hour_bgn, :hour_end)
     end
 end

@@ -10,12 +10,15 @@
         	<%= link_to "Статистика", cdr_index_path, {:class => "btn btn-link"} %>
 	<% end %>
 
-	<%= link_to "Автоответчик", machines_path, {:class => "btn btn-link"} %>
-   
-        <% if Config.first.is_vote_supported %>
-		<%= link_to "Записи", votes_path, {:class => "btn btn-link"} %>
-	<% end %>
+	    <%= link_to "Автоответчик", machines_path, {:class => "btn btn-link"} %>
+      
+      <% if Config.first.is_vote_supported %>
+		      <%= link_to "Записи", votes_path, {:class => "btn btn-link"} %>
       <% end %>
+      <!--
+      <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
+      -->
+    <% end %>
   </section>
   <section class="navbar-section">
     

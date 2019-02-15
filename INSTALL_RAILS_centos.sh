@@ -112,7 +112,7 @@ RUBY_CONFIGURE_OPTS=--disable-install-doc rbenv install 2.5.1
 rbenv global 2.5.1
 # to disable generating of documents as that would take so much time 
 echo "gem: --no-document" > ~/.gemrc
-gem install bundler
+gem install bundler -v 1.16.1
 # must be executed everytime a gem has been installed in order for the ruby executable to run
 rbenv rehash
 gem install rails
@@ -138,7 +138,7 @@ cd autodialer && bundle install
 #  Установить Capistrano
 bundle install
 rbenv rehash
-cap install
+gem install cap
 
 /bin/mysql -e "CREATE DATABASE avtodialerdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 /bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leads
   resources :machines
   resources :dialplans
   resources :votes

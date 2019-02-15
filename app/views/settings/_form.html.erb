@@ -34,6 +34,7 @@
     <%= form.number_field :hour_end, id: :setting_hour_end, class: "form-input" %>
   </div>
 
+
   <% if @config.is_outgoing_deleted == false %> 
 
   <div class="field">
@@ -68,6 +69,11 @@
   </div>
 
   <% end %>
+
+   <div class="field">
+     <%= form.label "Номер оператора для соединения:", class: "form-label"  %>
+     <%= form.text_field :leadback_phone, id: :setting_leadback_phone, class: "form-input" %>
+   </div>
 
 <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>

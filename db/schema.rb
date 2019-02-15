@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190126141959) do
+ActiveRecord::Schema.define(version: 20190213101043) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -67,7 +67,17 @@ ActiveRecord::Schema.define(version: 20190126141959) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "phone"
+    t.string "dialer_status"
+    t.integer "dialer_attempt"
+    t.boolean "is_offer_accepted"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "update_at"
+  end
+
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "telephone"
     t.string "amdstatus"
     t.string "amdcause"
@@ -82,6 +92,8 @@ ActiveRecord::Schema.define(version: 20190126141959) do
     t.string "status"
     t.datetime "date_created"
     t.integer "attempt_current"
+    t.bigint "trank_id"
+    t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 
   create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -107,6 +119,7 @@ ActiveRecord::Schema.define(version: 20190126141959) do
     t.integer "google_private_key_file_size"
     t.datetime "google_private_key_updated_at"
     t.text "title"
+    t.string "leadback_phone"
   end
 
   create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -159,6 +172,7 @@ ActiveRecord::Schema.define(version: 20190126141959) do
 
   add_foreign_key "answers", "tranks"
   add_foreign_key "contacts", "tasks"
+  add_foreign_key "outgoings", "tranks"
   add_foreign_key "spools", "outgoings"
   add_foreign_key "spools", "tranks"
   add_foreign_key "tranks", "dialplans"
