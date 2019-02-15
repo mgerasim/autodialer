@@ -67,17 +67,16 @@ ActiveRecord::Schema.define(version: 20190213101043) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "phone"
     t.string "dialer_status"
     t.integer "dialer_attempt"
     t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "update_at"
   end
 
-  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
     t.string "amdstatus"
     t.string "amdcause"
@@ -87,7 +86,7 @@ ActiveRecord::Schema.define(version: 20190213101043) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
+    t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
     t.string "status"
     t.datetime "date_created"
