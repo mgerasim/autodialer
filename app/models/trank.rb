@@ -90,7 +90,7 @@ class Trank < ApplicationRecord
             end
                 #
                 f.puts("Set: trunk=" + self.id.to_s)
-                f.puts("Set: leadback_phone=" + setting.leadback_phone)
+                f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)
 
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))

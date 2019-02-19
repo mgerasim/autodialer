@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20190219115158) do
 
-  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.index ["trank_id"], name: "index_answers_on_trank_id"
   end
 
-  create_table "configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.text "password_encrypted"
     t.boolean "is_outgoing_deleted"
     t.boolean "is_outgoing_table_showed"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.integer "prefix_contry", default: 7
   end
 
-  create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.text "password_encrypted"
     t.boolean "is_outgoing_deleted"
     t.boolean "is_outgoing_table_showed"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "phone"
     t.bigint "task_id"
     t.datetime "created_at", null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.index ["task_id"], name: "index_contacts_on_task_id"
   end
 
-  create_table "dialplans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "dialplans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "title"
     t.string "name"
     t.datetime "created_at", null: false
@@ -82,10 +82,9 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "update_at"
   end
 
-  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
     t.string "amdstatus"
     t.string "amdcause"
@@ -93,9 +92,9 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
+    t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
     t.string "status"
     t.datetime "date_created"
@@ -104,7 +103,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 
-  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "callcount"
     t.text "sipnames"
     t.datetime "created_at", null: false
@@ -130,25 +129,23 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.string "leadback_phone"
   end
 
-  create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.bigint "outgoing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trunk_id"
     t.bigint "trank_id"
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
     t.index ["trank_id"], name: "index_spools_on_trank_id"
-    t.index ["trunk_id"], name: "index_spools_on_trunk_id"
   end
 
-  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status"
   end
 
-  create_table "tranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tranks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "name"
     t.string "callerid"
     t.integer "waittime"
@@ -170,7 +167,7 @@ ActiveRecord::Schema.define(version: 20190219115158) do
     t.index ["vote_welcome_id"], name: "index_tranks_on_vote_welcome_id"
   end
 
-  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "votes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "title"
     t.string "record_file_name"
     t.string "record_content_type"

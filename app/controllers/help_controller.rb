@@ -17,8 +17,8 @@ class HelpController < ApplicationController
 
 
   def cdr_clear
-    `rm -f /var/log/asterisk/cdr-csv/*.csv`
-     `touch /var/log/asterisk/cdr-csv/Master.csv`
+   # `rm -f /var/log/asterisk/cdr-csv/*.csv`
+     `> /var/log/asterisk/cdr-csv/Master.csv`
     redirect_to outgoings_url, notice: 'Очистка журналов выполнено успешно'
   end
 
