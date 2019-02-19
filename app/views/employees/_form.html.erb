@@ -1,0 +1,32 @@
+<%= form_with(model: employee, local: true) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employee.errors.count, "error") %> prohibited this employee from being saved:</h2>
+
+      <ul>
+      <% employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label "Имя:", class: "form-label" %>
+    <%= form.text_field :name, id: :employee_name, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Пароль:", class: "form-label" %>
+    <%= form.text_field :password, id: :employee_password, class: "form-input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Статус", class: "form-label" %>
+    <%= form.number_field :status, id: :employee_status, class: "form-input" %>
+  </div>
+
+  <div class="mt-2 text-center">
+    <%= form.submit  "Сохранить", class: "btn btn-primary" %>
+  </div>
+<% end %>

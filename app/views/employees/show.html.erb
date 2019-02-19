@@ -1,0 +1,25 @@
+<div class="column col-6 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<p>
+  <strong>Имя:</strong>
+  <%= @employee.name %>
+</p>
+
+<p>
+  <strong>Пароль:</strong>
+  <%= @employee.password %>
+</p>
+
+<p>
+  <strong>Статус:</strong>
+  <%= @employee.status %>
+</p>
+
+<%= link_to 'Редактировать', edit_employee_path(@employee) %> |
+<%= link_to 'Назад', employees_path %>
+
+</div>

@@ -1,0 +1,40 @@
+<div class="column col-8 col-mx-auto bg-gray">
+
+
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "toast toast-success") %>
+  <% end %>
+
+<div class="text-center">
+    <h1>Сотрудники</h1>
+  </div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Пароль</th>
+      <th>Статус</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.password %></td>
+        <td><%= employee.status %></td>
+        <td><%= link_to 'Показать', employee %></td>
+        <td><%= link_to 'Редактировать', edit_employee_path(employee) %></td>
+        <td><%= link_to 'Удалить', employee, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить сотрудника', new_employee_path, :class => "btn btn-primary" %>
+
+</div>
