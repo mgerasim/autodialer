@@ -21,6 +21,10 @@
 
       <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
 
+    <% else %>
+   
+       <%= link_to "Личный кабинет сотрудника", cabinet_in_path, { :class => "btn btn-link" } %>
+
     <% end %>
   </section>
   <section class="navbar-section">

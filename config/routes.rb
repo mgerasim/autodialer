@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  get '/cabinet_in', to: 'cabinet#new'
+
+  post '/cabinet_in', to: 'cabinet#create'
+
+  delete '/cabinet_out', to: 'cabinet#destroy'
+
+  get 'cabinet/new'
+
+  get 'cabinet/create'
+
+  get 'cabinet/destroy'
+
   resources :employees
   resources :leads
   resources :machines
@@ -47,6 +60,8 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'outgoings/destroy_all'
   get 'help/cdr'
