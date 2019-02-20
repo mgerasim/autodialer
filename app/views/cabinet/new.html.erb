@@ -17,24 +17,18 @@
 
     <%= form_for(:cabinet, url: cabinet_in_path) do |f| %>
 
-    <div class="form-group">
+      <div class="form-group">
+        <%= f.label "Сотрудник:", class: "form-label" %>
+        <%= collection_select(:cabinet, :employee, Employee.all, :id, :name, optoins = {}, html_options = { :class => 'form-input' }) %>
+      </div>
 
-      <%= f.label "Сотрудник:", class: "form-label" %>
-
-      <%= collection_select(:cabinet, :employee, Employee.all, :id, :name, optoins = {}, html_options = { :class => 'form-input' }) %>
-
-    </div>
-
-
-    <div class="form-group">
-      <%= f.label "Пароль доступа:", class: "form-label" %>
-      <%= f.password_field :password, class: 'form-input' %>
-		<div class="mt-2 text-center">
-		      <%= f.submit "Вход", class: "btn btn-primary" %>
-
-		</div>
-	</div>
-
+      <div class="form-group">
+        <%= f.label "Пароль доступа:", class: "form-label" %>
+        <%= f.password_field :password, class: 'form-input' %>
+        <div class="mt-2 text-center">
+          <%= f.submit "Вход", class: "btn btn-primary" %>
+        </div>
+      </div>
 
     <% end %>
 

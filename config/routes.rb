@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  post '/cabinet_employee_status_change', to: 'cabinet#employee_status_change'
+
+  get '/cabinet_show', to: 'cabinet#show'
+
   get '/cabinet_in', to: 'cabinet#new'
 
   post '/cabinet_in', to: 'cabinet#create'

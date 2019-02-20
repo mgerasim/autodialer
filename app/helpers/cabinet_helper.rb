@@ -10,21 +10,21 @@ module CabinetHelper
 
   end
 
-  def cabinet_in
+  def cabinet_in(employee)
 
-    session[:cabinet_in] = true
+    session[:employee] = employee
 
   end
 
   def cabinet_out
 
-    session[:cabinet_in] = false
+    session[:employee] = nil
 
   end
      
   def cabineted_in?
  
-    session[:cabinet_in]
+    session[:employee] != nil
 
   end
 

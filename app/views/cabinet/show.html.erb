@@ -1,0 +1,29 @@
+<div class="column col-8 col-mx-auto bg-gray">
+
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "toast toast-success") %>
+  <% end %>
+
+
+  <div class="text-center">
+    <h1>Личный кабинет</h1>
+     <h2> <%= @employee.name %> </h2>
+
+    <p>
+      <%= form_for(:employee, url: cabinet_employee_status_change_path) do |f| %>
+
+      <div class="form-group">
+        <%= f.label "Статус:", class: "form-label" %>
+        <%= select_tag(:status, options_for_select([['Активен', 1], ['Приостановлен', 2]], @employee.status)) %>
+      </div>
+
+      <div class="form-group">
+          <%= f.submit "Сменить", class: "btn btn-primary" %>
+      </div>
+
+    <% end %>
+    </p>
+
+  </div>
+
+</div>

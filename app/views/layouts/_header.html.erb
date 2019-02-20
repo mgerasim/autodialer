@@ -22,8 +22,10 @@
       <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
 
     <% else %>
-   
-       <%= link_to "Личный кабинет сотрудника", cabinet_in_path, { :class => "btn btn-link" } %>
+
+      <% if controller_name != 'cabinet' %>
+        <%= link_to "Личный кабинет сотрудника", cabinet_in_path, { :class => "btn btn-link" } %>
+      <% end %>
 
     <% end %>
   </section>
@@ -83,43 +85,11 @@
   </section>
 
   <% end %>
-<!--
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Автообзвон", root_path, id: "logo" %>
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
-      <% if logged_in? %>
-    	    <li>
-    		<%= link_to "Добавить телефоны", new_outgoing_path %>
-    	    </li>
-    	    <li>
-    		<%= link_to "Исходящие", outgoings_path %>
-    	    </li>
-<li>
-	<%= link_to "Ответы", answers_path %>
-</li>
 
-	    <li>
-		<%= link_to "Выгрузка", cdr_index_path %>"
-	    </li>
-	    
-	    <li>
-		<%= link_to "Настройки", edit_setting_path(Setting.first) %>
-	    </li>
-	    
-	    <li>
-	       <%= link_to "Регистрация", register_path %>
-	    </li>
-            <li>
-               <%= link_to "Рабочие каналы", tranks_path %>
-		</li>
-              <li>                
-                <%= link_to "Выход", logout_path, method: :delete %>
-              </li>
-      <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
--->
+
+
+  <% if (logged_in? or cabineted_in?)  %>
+
+    <%= link_to "Выход", logout_path, method: :delete %>
+
+  <% end %>
