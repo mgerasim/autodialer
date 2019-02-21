@@ -282,3 +282,7 @@ alias realsrc => realsrc
 ====================================================
 * ```https://www.galkov.pro/install_ffmpeg_on_centos_7/```
 
+# Zabbix 
+# https://www.zabbix.com/forum/in-russian/40710-%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82-%D0%B4%D0%BB%D1%8F-asterisk/page2
+chmod 777 /var/run/asterisk/asterisk.ctl
+zabbix  ALL=NOPASSWD:/usr/sbin/asterisk
