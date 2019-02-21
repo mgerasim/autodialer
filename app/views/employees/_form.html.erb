@@ -21,10 +21,17 @@
     <%= form.text_field :password, id: :employee_password, class: "form-input" %>
   </div>
 
-  <div class="field">
-    <%= form.label "Статус", class: "form-label" %>
-    <%= form.number_field :status, id: :employee_status, class: "form-input" %>
+  <div class="form-group">
+        <%= form.label "Статус:", class: "form-label" %>
+
+        
+        <%= form.select(:status, options_for_select([['Активен', 1], ['Приостановлен', 2]], @employee.status), {}, {:class => 'form-input',  id: "employee_status"} ) %>
   </div>
+
+   <div class="field">
+    	<%= form.label "Внутренний номер:", class: "form-label" %>
+    	<%= form.select :sipaccount_id, options_for_select(Sipaccount.all.collect { |p| [p.title, p.id] }, form.object.sipaccount_id), {}, {:class => 'form-input',  id: "employee_sipaccount"} %>
+   </div>
 
   <div class="mt-2 text-center">
     <%= form.submit  "Сохранить", class: "btn btn-primary" %>

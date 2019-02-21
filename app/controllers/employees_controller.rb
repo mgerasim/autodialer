@@ -26,6 +26,8 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
 
+#    @employee.sipaccount = Sipaccount.find(@employee.sipaccount)
+
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
@@ -69,6 +71,6 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :password, :status)
+      params.require(:employee).permit(:name, :password, :status, :sipaccount_id)
     end
 end

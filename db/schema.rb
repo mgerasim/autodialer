@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190221024507) do
+ActiveRecord::Schema.define(version: 20190221081323) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 20190221024507) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "sipaccount_id"
+    t.index ["sipaccount_id"], name: "index_employees_on_sipaccount_id"
   end
 
   create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -189,6 +191,7 @@ ActiveRecord::Schema.define(version: 20190221024507) do
 
   add_foreign_key "answers", "tranks"
   add_foreign_key "contacts", "tasks"
+  add_foreign_key "employees", "sipaccounts"
   add_foreign_key "outgoings", "tranks"
   add_foreign_key "spools", "outgoings"
   add_foreign_key "spools", "tranks"

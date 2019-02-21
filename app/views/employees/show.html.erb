@@ -19,6 +19,11 @@
   <%= @employee.status %>
 </p>
 
+<p>
+  <strong>Внутренний номер:</strong>
+  <%= @employee.show_sip %>
+</p>
+
 <%= link_to 'Редактировать', edit_employee_path(@employee) %> |
 <%= link_to 'Назад', employees_path %>
 

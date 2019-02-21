@@ -1,3 +1,4 @@
+
 <%= form_with(model: sipaccount, local: true) do |form| %>
   <% if sipaccount.errors.any? %>
     <div id="error_explanation">
@@ -12,16 +13,16 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :number %>
-    <%= form.text_field :number, id: :sipaccount_number %>
+    <%= form.label "Внутренний номер:", class: "form-label" %>
+    <%= form.text_field :number, id: :sipaccount_number, class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, id: :sipaccount_password %>
+    <%= form.label "Пароль:", class: "form-label" %>
+    <%= form.text_field :password, id: :sipaccount_password, class: "form-input" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mt-2 text-center">
+    <%= form.submit "Сохранить", class: "btn btn-primary" %>
   </div>
 <% end %>

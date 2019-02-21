@@ -4,8 +4,15 @@ class SessionsController < ApplicationController
     unless Setting.first
       Setting.new.save
     end
+
     if logged_in?
       redirect_to outgoings_path
+    end
+
+    if cabineted_in?
+
+      redirect_to cabinet_show_path
+
     end
   end
   def create

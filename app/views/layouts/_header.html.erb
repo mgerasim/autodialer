@@ -21,6 +21,10 @@
 
       <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
 
+       
+      <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
+
+
     <% else %>
 
       <% if controller_name != 'cabinet' %>
@@ -81,7 +85,6 @@
                   </ul>
                 </div>
 
-                <%= link_to "Выход", logout_path, method: :delete %>
   </section>
 
   <% end %>
