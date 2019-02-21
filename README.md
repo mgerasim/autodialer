@@ -264,6 +264,7 @@ alias realsrc => realsrc
 * ```mkdir /var/log/asterisk/cdr-csv/```
 * ```> /var/log/asterisk/cdr-custom/Master.csv```
 * ```rm -rf /var/log/asterisk/messages-*```
+* ```rm -rf /var/log/asterisk/messages.*```
 * ```rm -rf /var/log/asterisk/queue_log-*```
 * ```rm -rf /var/log/asterisk/fail2ban-*```
 * ```> /var/log/asterisk/full ```
