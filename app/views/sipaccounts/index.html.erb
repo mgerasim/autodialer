@@ -1,0 +1,39 @@
+<div class="column col-8 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+      
+
+<div class="text-center">
+  <h1>SIP аккаунты</h1>
+</div>
+
+
+<table class="table table-bordered"> 
+  <thead>
+    <tr>
+      <th>Номер</th>
+      <th>Пароль</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sipaccounts.each do |sipaccount| %>
+      <tr>
+        <td><%= sipaccount.number %></td>
+        <td><%= sipaccount.password %></td>
+        <td><%= link_to 'Показать', sipaccount %></td>
+        <td><%= link_to 'Редактировать', edit_sipaccount_path(sipaccount) %></td>
+        <td><%= link_to 'Удалить', sipaccount, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить', new_sipaccount_path, :class => "btn btn-primary" %>
+
+</div>

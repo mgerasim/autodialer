@@ -1,0 +1,27 @@
+<%= form_with(model: sipaccount, local: true) do |form| %>
+  <% if sipaccount.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sipaccount.errors.count, "error") %> prohibited this sipaccount from being saved:</h2>
+
+      <ul>
+      <% sipaccount.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number, id: :sipaccount_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.text_field :password, id: :sipaccount_password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

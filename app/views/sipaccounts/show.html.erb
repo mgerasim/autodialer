@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @sipaccount.number %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @sipaccount.password %>
+</p>
+
+<%= link_to 'Edit', edit_sipaccount_path(@sipaccount) %> |
+<%= link_to 'Back', sipaccounts_path %>

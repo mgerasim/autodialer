@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :sipaccounts
   get '/cabinet_in', to: 'cabinet#new'
 
   post '/cabinet_in', to: 'cabinet#create'

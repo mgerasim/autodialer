@@ -1,0 +1,2 @@
+class Sipaccount < ApplicationRecord
+end
