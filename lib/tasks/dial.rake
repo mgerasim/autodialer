@@ -33,8 +33,21 @@ namespace :dial do
 
 
   desc "Run dial"
-  task run: :environment do 
-    
+  task run: :environment do
+    if File.exists? pid_file
+      pid = File.read(pid_file).to_i
+
+      begin
+        Process.getpgid( pid )
+        check_pid = true
+      rescue Errno::ESRCH
+        check_pid = false
+      end
+
+      File.delete(pid_file) if check_pid == false
+
+    end
+
     raise 'pid file exists!' if File.exists? pid_file
     File.open(pid_file, 'w') { |f| f.puts Process.pid }
 

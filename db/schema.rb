@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190221081323) do
+ActiveRecord::Schema.define(version: 20190222100133) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20190221081323) do
     t.index ["sipaccount_id"], name: "index_employees_on_sipaccount_id"
   end
 
+  create_table "lead_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.string "title"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "leads", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "phone"
     t.string "dialer_status"
@@ -84,7 +95,6 @@ ActiveRecord::Schema.define(version: 20190221081323) do
     t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "update_at"
   end
 
   create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -130,6 +140,7 @@ ActiveRecord::Schema.define(version: 20190221081323) do
     t.datetime "google_private_key_updated_at"
     t.text "title"
     t.string "leadback_phone"
+    t.integer "call_delta"
   end
 
   create_table "sipaccounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -143,11 +154,9 @@ ActiveRecord::Schema.define(version: 20190221081323) do
     t.bigint "outgoing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "trunk_id"
     t.bigint "trank_id"
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
     t.index ["trank_id"], name: "index_spools_on_trank_id"
-    t.index ["trunk_id"], name: "index_spools_on_trunk_id"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

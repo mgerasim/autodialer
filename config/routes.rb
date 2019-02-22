@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :lead_statuses
   resources :sipaccounts
   post '/cabinet_employee_status_change', to: 'cabinet#employee_status_change'
 

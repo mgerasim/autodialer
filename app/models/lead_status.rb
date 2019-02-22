@@ -1,0 +1,2 @@
+class LeadStatus < ApplicationRecord
+end

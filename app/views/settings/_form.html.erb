@@ -75,6 +75,12 @@
      <%= form.text_field :leadback_phone, id: :setting_leadback_phone, class: "form-input" %>
    </div>
 
+
+   <div class="field">
+     <%= form.label "Увеличивать очередь при входе сотрудника:", class: "form-label"  %>
+     <%= form.number_field :call_delta, id: :setting_call_delta, class: "form-input" %>
+   </div>
+
 <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>
   </div>

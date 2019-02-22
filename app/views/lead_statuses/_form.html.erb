@@ -1,0 +1,32 @@
+<%= form_with(model: lead_status, local: true) do |form| %>
+  <% if lead_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lead_status.errors.count, "error") %> prohibited this lead_status from being saved:</h2>
+
+      <ul>
+      <% lead_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image, id: :lead_status_image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :lead_status_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :lead_status_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
