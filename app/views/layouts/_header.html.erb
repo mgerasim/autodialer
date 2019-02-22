@@ -15,13 +15,11 @@
       <% if Config.first.is_vote_supported %>
 		      <%= link_to "Записи", votes_path, {:class => "btn btn-link"} %>
       <% end %>
-      <!--
+
       <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
-      -->
 
       <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
 
-       
       <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
 
 
@@ -88,8 +86,6 @@
   </section>
 
   <% end %>
-
-
 
   <% if (logged_in? or cabineted_in?)  %>
 
