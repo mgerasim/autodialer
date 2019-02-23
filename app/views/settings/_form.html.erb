@@ -81,6 +81,12 @@
      <%= form.number_field :call_delta, id: :setting_call_delta, class: "form-input" %>
    </div>
 
+
+   <div>
+     <%= form.label "Включить режим автоматической смены длины очереди: ", class: "form-label"  %>
+     <%= form.check_box :is_support_call_delta, id: :config_is_support_call_delta %>
+   </div>
+
 <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>
   </div>

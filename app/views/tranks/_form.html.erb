@@ -63,12 +63,10 @@
     <%= form.select :vote_welcome_id, options_for_select(Vote.all.collect { |p| [p.title, p.id] }, form.object.vote_welcome_id), {}, {:class => 'form-input',  id: "trank-vote-welcome"} %>
   </div>
 
-
   <div class="field">
     <%= form.label "Голосовая запись №02", class: "form-label" %>
     <%= form.select :vote_finish_id, options_for_select(Vote.all.collect { |p| [p.title, p.id] }, form.object.vote_finish_id), {}, {:class => 'form-input',  id: "trank-vote-finish"} %>
   </div>
-
 
   <div class="field">
     <%= form.label "Голосовая запись №03", class: "form-label" %>
@@ -76,6 +74,11 @@
   </div>
 
   <% end %>
+
+  <div>
+    <%= form.label "Проверять канал на регистрацию: ", class: "form-label"  %>
+    <%= form.check_box :is_check_registered, id: :trank_is_check_registered %>
+  </div>
 
  <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>

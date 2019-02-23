@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190223041707) do
+ActiveRecord::Schema.define(version: 20190223081104) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(version: 20190223041707) do
     t.text "title"
     t.string "leadback_phone"
     t.integer "call_delta"
+    t.boolean "is_support_call_delta"
   end
 
   create_table "sipaccounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -183,6 +184,7 @@ ActiveRecord::Schema.define(version: 20190223041707) do
     t.bigint "dialplan_id"
     t.integer "callmax"
     t.integer "sleeptime"
+    t.boolean "is_check_registered"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"

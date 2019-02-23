@@ -1,3 +1,5 @@
+require 'open3'
+
 namespace :dial do
 
   pid_file = "/tmp/#{ENV['RAILS_ENV']}_dial_run.pid"
@@ -103,6 +105,14 @@ namespace :dial do
             next if (!trank.enabled)
               
             puts "Этот транк активный"
+
+            if trank.is_check_registered
+              cmd = "asterisk -x \"sip show registry\" | awk ' $3 == \"#{trank.name}@m\" { print $5 }'"
+
+              stdout, stderr, status = Open3.capture3(cmd)
+
+              next if stdout != "Registered"
+            end
 
             dir = setting.outgoing + '/'
             count = Dir[File.join(dir, '**', "*#{trank.name}*")].count { |file| File.file?(file) }
