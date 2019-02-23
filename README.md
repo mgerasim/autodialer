@@ -276,6 +276,14 @@ alias realsrc => realsrc
 * ```rm -rf /var/log/*-*```
 * ```rm -f /home/rails/apps/autodialer/current/log/*.log```
 * ```rm -f /home/rails/projects/autodialer/log/*.log```
+* ```> /home/rails/apps/autodialer/shared/log/cdr_update_cron.log ```
+* ```> /home/rails/apps/autodialer/shared/log/dial_cron.log ```
+* ```> /home/rails/apps/autodialer/shared/log/dial_error.log ```
+* ```> /home/rails/apps/autodialer/shared/log/cdr_spool_cron.log ```
+* ```> /home/rails/apps/autodialer/shared/log/cdr_spool_error.log ```
+* ```> /home/rails/apps/autodialer/shared/log/cdr_attempt_cron.log ```
+* ```> /home/rails/apps/autodialer/shared/log/production.log ```
+
 
 
 # ffmpeg
