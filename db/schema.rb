@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190222100133) do
+ActiveRecord::Schema.define(version: 20190223041707) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20190222100133) do
     t.boolean "is_menu_service_showed"
     t.boolean "is_vote_supported"
     t.integer "prefix_contry", default: 7
+    t.boolean "is_support_employee"
   end
 
   create_table "configurations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

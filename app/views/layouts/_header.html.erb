@@ -16,18 +16,21 @@
 		      <%= link_to "Записи", votes_path, {:class => "btn btn-link"} %>
       <% end %>
 
-      <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
-
-      <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
-
-      <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
+      <% if Config.first.is_support_employee %>
+        <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
+        <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
+        <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
+      <% end %>
 
 
     <% else %>
 
-      <% if controller_name != 'cabinet' %>
-        <%= link_to "Личный кабинет сотрудника", cabinet_in_path, { :class => "btn btn-link" } %>
+      <% if Config.first.is_support_employee %>
+        <% if controller_name != 'cabinet' %>
+          <%= link_to "Личный кабинет сотрудника", cabinet_in_path, { :class => "btn btn-link" } %>
+        <% end %>
       <% end %>
+
 
     <% end %>
   </section>

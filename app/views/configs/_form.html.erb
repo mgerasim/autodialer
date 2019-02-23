@@ -68,6 +68,11 @@
   </div>
 -->
 
+  <div>
+    <%= form.label "Поддержка внутрених номеров, пользователей и лидов: ", class: "form-label"  %>
+    <%= form.check_box :is_support_employee, id: :config_is_support_employee %>
+  </div>
+
   <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>
   </div>
