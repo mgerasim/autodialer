@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31ee8ad2-5b17-47fe-9a9a-dcb74db81403" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/cabinet_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/cabinet_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/cabinet_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/cabinet_helper.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/employee.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/employee.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/trank.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/trank.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/tranks/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tranks/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/tasks/dial.rake" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tasks/dial.rake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/settings/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/settings/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/tranks/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tranks/_form.html.erb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -43,10 +38,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/cabinet_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="313">
               <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
             </state>
           </provider>
@@ -64,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/configs/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1679">
-              <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
+            <state relative-caret-position="345">
+              <caret line="72" column="43" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -73,17 +68,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/tranks/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1748">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="261">
+              <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/settings/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1978">
-              <caret line="86" column="46" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="46" />
+            <state relative-caret-position="123">
+              <caret line="77" column="3" lean-forward="true" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -154,17 +149,17 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/controllers/configs_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/layouts/_header.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/settings/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/settings_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/tranks_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/configs/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/tranks/_form.html.erb" />
         <option value="$PROJECT_DIR$/lib/tasks/dial.rake" />
         <option value="$PROJECT_DIR$/app/models/trank.rb" />
         <option value="$PROJECT_DIR$/app/views/tranks/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/employee.rb" />
         <option value="$PROJECT_DIR$/app/helpers/cabinet_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/cabinet_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/tranks/_form.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/settings/_form.html.erb" />
       </list>
     </option>
   </component>
@@ -201,7 +196,21 @@
               <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
               <item name="autodialer" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="tranks" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -380,7 +389,7 @@
       <workItem from="1549769191858" duration="969000" />
       <workItem from="1550016019490" duration="1226000" />
       <workItem from="1550052600188" duration="14666000" />
-      <workItem from="1550979201702" duration="2460000" />
+      <workItem from="1550979201702" duration="2942000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена форма лидов">
       <created>1549543180596</created>
@@ -393,7 +402,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24465000" />
+    <option name="totallyTimeSpent" value="24947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -404,7 +413,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936978" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919093" visible="true" weight="0.3913649" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49919093" weight="0.3913649" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -412,7 +421,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.40082645" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.36072424" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.36072424" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5008091" side_tool="true" weight="0.32936978" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3292011" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -584,27 +593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/configs/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1679">
-          <caret line="73" column="8" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/tranks/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1748">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/settings/_form.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1978">
-          <caret line="86" column="46" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/trank.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="23">
@@ -642,8 +630,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/cabinet_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="313">
           <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/configs/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="72" column="43" selection-start-line="72" selection-start-column="24" selection-end-line="72" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/tranks/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/settings/_form.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="77" column="3" lean-forward="true" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="3" />
         </state>
       </provider>
     </entry>
