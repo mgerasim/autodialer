@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
 
     if logged_in?
       redirect_to outgoings_path
+      return
     end
 
     if cabineted_in?
-
       redirect_to cabinet_show_path
-
+      return
     end
   end
   def create
