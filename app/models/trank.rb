@@ -95,7 +95,5 @@ class Trank < ApplicationRecord
 
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
-   
-
     end
 end

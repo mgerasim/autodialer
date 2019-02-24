@@ -43,7 +43,7 @@
         <td><%= trank.callerid %></td>
         <td><%= trank.prefix %></td>
         <td><%= trank.waittime %></td>
-        <td><%= trank.callcount %></td>
+        <td><%= trank.callmax %></td>
         <td><%= trank.enabled %></td>
         <% if @config.is_trank_context_showed or is_admin? %>
   	  <td><%= trank.dialplan.title if trank.dialplan != nil %></td>
