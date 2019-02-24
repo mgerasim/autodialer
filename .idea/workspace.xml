@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31ee8ad2-5b17-47fe-9a9a-dcb74db81403" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/views/settings/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/settings/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/tranks/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/tranks/_form.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asterisk/lead_incoming.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/trank.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/trank.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asterisk/extensions_custom.conf" beforeDir="false" afterPath="$PROJECT_DIR$/asterisk/extensions_custom.conf" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -48,15 +50,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/configs_controller.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1679">
-              <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/configs/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="345">
@@ -74,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/settings/_form.html.erb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
@@ -83,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/tasks/dial.rake">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/asterisk/extensions_custom.conf">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="101" column="30" lean-forward="true" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="30" />
+            <state relative-caret-position="302">
+              <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -95,8 +88,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/trank.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+            <state relative-caret-position="261">
+              <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/asterisk/lead_incoming.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
@@ -142,7 +144,6 @@
         <option value="$PROJECT_DIR$/tmp/pids/server.pid" />
         <option value="$PROJECT_DIR$/config/database.yml" />
         <option value="$PROJECT_DIR$/db/migrate/20190213001324_insert_dialplan_leadback.rb" />
-        <option value="$PROJECT_DIR$/asterisk/extensions_custom.conf" />
         <option value="$PROJECT_DIR$/app/controllers/sessions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/cabinet/new.html.erb" />
         <option value="$PROJECT_DIR$/app/views/cabinet/show.html.erb" />
@@ -153,13 +154,15 @@
         <option value="$PROJECT_DIR$/app/controllers/tranks_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/configs/_form.html.erb" />
         <option value="$PROJECT_DIR$/lib/tasks/dial.rake" />
-        <option value="$PROJECT_DIR$/app/models/trank.rb" />
         <option value="$PROJECT_DIR$/app/views/tranks/index.html.erb" />
         <option value="$PROJECT_DIR$/app/models/employee.rb" />
         <option value="$PROJECT_DIR$/app/helpers/cabinet_helper.rb" />
         <option value="$PROJECT_DIR$/app/controllers/cabinet_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/tranks/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/views/settings/_form.html.erb" />
+        <option value="$PROJECT_DIR$/asterisk/lead_incoming.sh" />
+        <option value="$PROJECT_DIR$/app/models/trank.rb" />
+        <option value="$PROJECT_DIR$/asterisk/extensions_custom.conf" />
       </list>
     </option>
   </component>
@@ -196,21 +199,7 @@
               <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
               <item name="autodialer" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="settings" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="autodialer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="autodialer" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="tranks" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -228,6 +217,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/asterisk" />
       <recent name="$PROJECT_DIR$/app/views/cabinet" />
     </key>
   </component>
@@ -389,7 +379,7 @@
       <workItem from="1549769191858" duration="969000" />
       <workItem from="1550016019490" duration="1226000" />
       <workItem from="1550052600188" duration="14666000" />
-      <workItem from="1550979201702" duration="2942000" />
+      <workItem from="1550979201702" duration="3973000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена форма лидов">
       <created>1549543180596</created>
@@ -402,7 +392,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24947000" />
+    <option name="totallyTimeSpent" value="25978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -555,13 +545,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/asterisk/extensions_custom.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="69" column="18" lean-forward="true" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_header.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
@@ -590,13 +573,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1679">
           <caret line="73" column="59" selection-start-line="73" selection-start-column="59" selection-end-line="73" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/trank.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -653,6 +629,27 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="77" column="3" lean-forward="true" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/asterisk/lead_incoming.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/trank.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/asterisk/extensions_custom.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="84" column="32" selection-start-line="84" selection-start-column="32" selection-end-line="84" selection-end-column="32" />
         </state>
       </provider>
     </entry>

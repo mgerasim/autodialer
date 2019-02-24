@@ -31,7 +31,6 @@ class Trank < ApplicationRecord
 
     def outgoing_precent
         outgoing_count = self.outgoing_total_count
-
        if outgoing_count == 0
            0
        else 
@@ -39,24 +38,21 @@ class Trank < ApplicationRecord
        end
     end
 
-
     def outgoing_answer_total_count
-	date = DateTime.now
-       Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
-        .where(:trank => self)
-        .where(:status => ["ANSWERED"]).count
+      date = DateTime.now
+           Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+            .where(:trank => self)
+            .where(:status => ["ANSWERED"]).count
     end
 
     def outgoing_answer_precent
         outgoing_answer_count = self.outgoing_answer_total_count
-	
         if outgoing_answer_count == 0 
-  	    0
+  	        0
         else
             ((answer_total_count.to_f / outgoing_answer_total_count.to_f) * 100).round(2) 
         end
     end
-        
 
     def check(telephone, account)
       setting = Setting.first
@@ -71,27 +67,28 @@ class Trank < ApplicationRecord
                 f.puts("MaxRetries: 0")
                 f.puts("RetryTime: 20")
                 f.puts("WaitTime: " + self.waittime.to_s)
-            if (self.dialplan != nil)
-                f.puts("Context: " + self.dialplan.name)
-		        else
-                f.puts("Context: from-trunk")
-		        end
+                if (self.dialplan != nil)
+                    f.puts("Context: " + self.dialplan.name)
+                else
+                    f.puts("Context: from-trunk")
+                end
                 f.puts("Extension: s")
                 f.puts("Priority: 1")
-            if (account != nil)
-                f.puts("Account: " + account.to_s)
-                f.puts("Set: num=" + account.to_s)
-    			      f.puts("Set: CDR(userfield)=" + telephone)
-            end
-		        if (Config.first.is_vote_supported == true)
-                f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
-			          f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
-			          f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
-            end
+                if (account != nil)
+                    f.puts("Account: " + account.to_s)
+                    f.puts("Set: num=" + account.to_s)
+                    f.puts("Set: CDR(userfield)=" + telephone)
+                end
+                if (Config.first.is_vote_supported == true)
+                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
+                    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
+                    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
+                end
                 #
                 f.puts("Set: trunk=" + self.id.to_s)
                 f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)
+                f.puts("Set: rails_env=" + Rails.env)
 
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
