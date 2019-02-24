@@ -190,7 +190,7 @@ class Answer < ApplicationRecord
 
         config = Config.first
 
-        exit if !config.is_google_integrated  
+        return if !config.is_google_integrated  
        
         puts "config.is_google_integrated"
 

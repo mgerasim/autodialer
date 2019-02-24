@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'register_reload', to: 'register_reload#reload'
 
   resources :tranks
+  get 'help/lead_incoming'
   get 'help/outgoing_destroy_all'
   get 'help/answers_destroy_all'
   get 'help/cdr_destroy_all'

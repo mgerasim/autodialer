@@ -1,4 +1,7 @@
 class HelpController < ApplicationController
+ 
+  skip_before_action :require_login, :only => [:lead_incoming]
+
   def cdr
     `sed -i 's/,/;/g' /var/log/asterisk/cdr-csv/Master.csv`
     send_file(
@@ -67,6 +70,14 @@ class HelpController < ApplicationController
    telephone = params[:telephone]
    trank.check(telephone, telephone)
    redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
+ end
+
+ def lead_incoming
+   telephone = params[:telephone]
+   trank = Trank.find(params[:trank])
+   answer = Answer.create(:contact => telephone.squish, :trank => trank)
+   @lead = Lead.create(:phone => telephone.squish, :answer => answer)
+   render :layout => false
  end
 
 end
