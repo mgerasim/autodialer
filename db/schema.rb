@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20190223081104) do
     t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "update_at"
   end
 
   create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -156,9 +157,11 @@ ActiveRecord::Schema.define(version: 20190223081104) do
     t.bigint "outgoing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trunk_id"
     t.bigint "trank_id"
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
     t.index ["trank_id"], name: "index_spools_on_trank_id"
+    t.index ["trunk_id"], name: "index_spools_on_trunk_id"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

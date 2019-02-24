@@ -111,6 +111,10 @@ namespace :dial do
 
               stdout, stderr, status = Open3.capture3(cmd)
 
+              puts stdout
+
+              puts stderr
+
               next if stdout != "Registered"
             end
 
