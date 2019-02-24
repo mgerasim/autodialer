@@ -123,9 +123,6 @@ namespace :dial do
             j = count
             puts "-> Count:  #{count} Maxcall: #{trank.callmax}"
             next   if (count >= trank.callmax)
-
-#            sleep trank.sleeptime
-
             n = 0
             Outgoing.where(:status => 'INSERTED').order(updated_at: :desc).limit(trank.callcount).each do |contact|                
 

@@ -75,10 +75,12 @@
 
   <% end %>
 
-  <div>
-    <%= form.label "Проверять канал на регистрацию: ", class: "form-label"  %>
-    <%= form.check_box :is_check_registered, id: :trank_is_check_registered %>
-  </div>
+  <% if (Config.first.is_support_employee) %>
+    <div>
+      <%= form.label "Проверять канал на регистрацию: ", class: "form-label"  %>
+      <%= form.check_box :is_check_registered, id: :trank_is_check_registered %>
+    </div>
+  <% end %>
 
  <div class="mt-2 text-center">
     <%= form.submit "Сохранить", class: "btn btn-primary" %>

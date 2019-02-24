@@ -33,11 +33,8 @@ class CabinetController < ApplicationController
   end
 
   def destroy
-
       cabinet_out
-
       redirect_to root_url
-
   end
 
   def show
@@ -45,15 +42,13 @@ class CabinetController < ApplicationController
   end
 
   def employee_status_change
-
     @employee = Employee.find(session[:employee]['id'])
-
-    @employee.update_attribute(:status , params[:status])
-
-    flash.now[:success] = 'Статус успешно обновлен'
-
+    if (@employee.status != params[:status].to_i)
+      @employee.update_attribute(:status , params[:status])
+      update_trank_callmax(@employee.status)
+      flash.now[:success] = 'Статус успешно обновлен'
+    end
     render 'show'
-
   end
 
 end
