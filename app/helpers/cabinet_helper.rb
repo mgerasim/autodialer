@@ -24,6 +24,7 @@ module CabinetHelper
     setting = Setting.first
     puts setting.is_support_call_delta
     return if setting.is_support_call_delta == false
+    return if setting.call_delta == nil
     delta = setting.call_delta
     if (status != 1)
       delta = -setting.call_delta

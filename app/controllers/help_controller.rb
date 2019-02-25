@@ -77,11 +77,11 @@ class HelpController < ApplicationController
    trank = Trank.find(params[:trank])
    answer = Answer.create(:contact => telephone.squish, :trank => trank)
    @lead = Lead.create(:phone => telephone.squish, :answer => answer)
-   sipaccount_count = Sipaccount.count
-   if (sipaccount_count > 0)
-     sipaccount_index = @lead.id % Sipaccount.count
-     sipaccount = Sipaccount.all[sipaccount_index]
-     @lead.update_attribute(:sipaccount => sipaccount)
+   employee_count = Employee.count
+   if (employee_count > 0)
+     employee_index = @lead.id % employee_count
+     employee = Employee.all[employee_index]
+     @lead.update_attributes(:employee => employee)
    end
 
    render :layout => false

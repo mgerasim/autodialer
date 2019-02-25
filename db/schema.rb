@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190224130101) do
+ActiveRecord::Schema.define(version: 20190225224119) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "contact"
@@ -97,8 +97,11 @@ ActiveRecord::Schema.define(version: 20190224130101) do
     t.boolean "is_offer_accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "update_at"
     t.bigint "answer_id"
+    t.bigint "employee_id"
     t.index ["answer_id"], name: "index_leads_on_answer_id"
+    t.index ["employee_id"], name: "index_leads_on_employee_id"
   end
 
   create_table "machines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -159,9 +162,11 @@ ActiveRecord::Schema.define(version: 20190224130101) do
     t.bigint "outgoing_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "trunk_id"
     t.bigint "trank_id"
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
     t.index ["trank_id"], name: "index_spools_on_trank_id"
+    t.index ["trunk_id"], name: "index_spools_on_trunk_id"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -208,6 +213,7 @@ ActiveRecord::Schema.define(version: 20190224130101) do
   add_foreign_key "contacts", "tasks"
   add_foreign_key "employees", "sipaccounts"
   add_foreign_key "leads", "answers"
+  add_foreign_key "leads", "employees"
   add_foreign_key "outgoings", "tranks"
   add_foreign_key "spools", "outgoings"
   add_foreign_key "spools", "tranks"
