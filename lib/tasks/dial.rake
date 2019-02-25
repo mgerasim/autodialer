@@ -115,7 +115,9 @@ namespace :dial do
 
               puts stderr
 
-              next if stdout != "Registered"
+	      puts "пропускаем шаг" if (stdout.include? "Registered") == false
+
+              next if (stdout.include? "Registered") == false
             end
 
             dir = setting.outgoing + '/'
