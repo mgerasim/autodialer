@@ -23,8 +23,6 @@
 
   <div class="form-group">
         <%= form.label "Статус:", class: "form-label" %>
-
-        
         <%= form.select(:status, options_for_select([['Активен', 1], ['Приостановлен', 2]], @employee.status), {}, {:class => 'form-input',  id: "employee_status"} ) %>
   </div>
 
@@ -32,6 +30,11 @@
     	<%= form.label "Внутренний номер:", class: "form-label" %>
     	<%= form.select :sipaccount_id, options_for_select(Sipaccount.all.collect { |p| [p.title, p.id] }, form.object.sipaccount_id), {}, {:class => 'form-input',  id: "employee_sipaccount"} %>
    </div>
+
+    <div>
+      <%= form.label "Обрабатывать лидов во внутреннем личном кабинете: ", class: "form-label"  %>
+      <%= form.check_box :is_support_call, id: :employee_is_support_call %>
+    </div>
 
   <div class="mt-2 text-center">
     <%= form.submit  "Сохранить", class: "btn btn-primary" %>
