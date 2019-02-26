@@ -94,6 +94,7 @@ class Trank < ApplicationRecord
 			port = 80
 		end
 		f.puts("Set: curl_lead_incoming=http://localhost:#{port}/help/lead_incoming?telephone=#{telephone}&trank=#{self.id}")
+                f.puts("Set: curl_lead_update_dial_status=http://localhost:#{port}/help/lead_update_dial_status?id=")
 
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end

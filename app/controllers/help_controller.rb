@@ -1,6 +1,6 @@
 class HelpController < ApplicationController
  
-  skip_before_action :require_login, :only => [:lead_incoming]
+  skip_before_action :require_login, :only => [:lead_incoming, :lead_update_dial_status]
 
   def cdr
     `sed -i 's/,/;/g' /var/log/asterisk/cdr-csv/Master.csv`
@@ -84,6 +84,14 @@ class HelpController < ApplicationController
      @lead.update_attributes(:employee => employee)
    end
 
+   render :layout => false
+ end
+
+ def lead_update_dial_status
+   lead_id = params[:id]
+   dial_status = params[:dial_status]
+   lead = Lead.find(lead_id)
+   lead.update_attributes(:dialer_status => dial_status)
    render :layout => false
  end
 
