@@ -35,9 +35,19 @@ class OutgoingsController < ApplicationController
       else
 
         @outgoing = Outgoing.new(outgoing_params)
-        
-        OutgoingUploadJob.perform_later( @outgoing.csv_upload.path)
+       
+     #   OutgoingUploadJob.perform_later( @outgoing.csv_upload.path)
+   
+        path = @outgoing.csv_upload.path
 
+        Rails.logger.error path
+	
+	upload = "LOAD DATA LOCAL INFILE '" + path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"	
+	
+	results = ActiveRecord::Base.connection.execute(upload)
+	
+	Rails.logger.error results     
+  
         respond_to do |format|
     	
           format.html { redirect_to outgoings_url, notice: 'Номера успешно добавлены' }

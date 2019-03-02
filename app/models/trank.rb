@@ -89,7 +89,7 @@ class Trank < ApplicationRecord
                 f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)
                 f.puts("Set: rails_env=" + Rails.env)
-                port = 3000
+                port = 80
                 if (Rails.env.production?)
 			port = 80
 		end
