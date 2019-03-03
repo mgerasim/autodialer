@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'register_reload', to: 'register_reload#reload'
 
   resources :tranks
+  get 'help/lead_get_employee_sipaccount'
   get 'help/lead_update_dial_status'
   get 'help/lead_incoming'
   get 'help/outgoing_destroy_all'

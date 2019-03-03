@@ -89,12 +89,13 @@ class Trank < ApplicationRecord
                 f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)
                 f.puts("Set: rails_env=" + Rails.env)
-                port = 80
+                port = 3001
                 if (Rails.env.production?)
 			port = 80
 		end
 		f.puts("Set: curl_lead_incoming=http://localhost:#{port}/help/lead_incoming?telephone=#{telephone}&trank=#{self.id}")
                 f.puts("Set: curl_lead_update_dial_status=http://localhost:#{port}/help/lead_update_dial_status?id=")
+                f.puts("Set: curl_lead_get_employee_sipaccount=http://localhost:#{port}/help/lead_get_employee_sipaccount?lead_id=")
 
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
