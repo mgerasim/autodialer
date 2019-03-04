@@ -81,7 +81,7 @@ class HelpController < ApplicationController
    employee_count = employeies.count
    if (employee_count > 0)
      employee_index = @lead.id % employee_count
-     employee = employeis[employee_index]
+     employee = employeies[employee_index]
      @lead.update_attributes(:employee => employee)
    end
    render :layout => false
