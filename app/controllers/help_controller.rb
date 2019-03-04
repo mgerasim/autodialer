@@ -77,13 +77,13 @@ class HelpController < ApplicationController
    trank = Trank.find(params[:trank])
    answer = Answer.create(:contact => telephone.squish, :trank => trank)
    @lead = Lead.create(:phone => telephone.squish, :answer => answer)
-   employee_count = Employee.count
+   employeies = Employee.where(:status => 1)
+   employee_count = employeies.count
    if (employee_count > 0)
      employee_index = @lead.id % employee_count
-     employee = Employee.all[employee_index]
+     employee = employeis[employee_index]
      @lead.update_attributes(:employee => employee)
    end
-
    render :layout => false
  end
 
@@ -91,7 +91,6 @@ class HelpController < ApplicationController
    lead_id = params[:lead_id]
    puts lead_id
    @lead = Lead.find(lead_id)
-
    render :layout => false
  end
 
