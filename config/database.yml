@@ -39,7 +39,7 @@ production:
  min_messages: warning
  timeout: 5000
  reconnect: false
- database: avtodialerdb
+ database: avtodialerdb_prod
  pool: 5
  username: avtodialer
  password: avtodialer
