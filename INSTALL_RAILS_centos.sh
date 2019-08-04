@@ -140,18 +140,18 @@ bundle install
 rbenv rehash
 gem install cap
 
-/bin/mysql -e "CREATE DATABASE avtodialerdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+/bin/mysql -e "CREATE DATABASE avtodialerdb_prod CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 /bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
 /bin/mysql -e "CREATE USER 'avtodialer'@'localhost' IDENTIFIED BY 'avtodialer'"
-/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdb.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"    
+/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdb_prod.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"    
 /bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdevel.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"
 /bin/mysql -e "FLUSH PRIVILEGES"
 
 rake db:migrate
 RAILS_ENV=production rake db:migrate
 
-/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb_prod -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
 /bin/mysql --user=avtodialer --password=avtodialer avtodialerdevel -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
 
 cd ~/
@@ -226,14 +226,25 @@ firewall-cmd --reload
 
 
 cd /usr/src
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
-tar zxvf asterisk-15-current.tar.gz
+
+wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
+cd jansson-2.7.tar.gz 
+tar -zxvf jansson-2.7.tar.gz
+cd jansson-2.7
+./configure --prefix=/usr
+make clean
+make && make install
+ldconfig
+cd ..
+
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
+tar zxvf asterisk-16-current.tar.gz
 cd asterisk*
 contrib/scripts/get_mp3_source.sh
 contrib/scripts/install_prereq install
 contrib/scripts/install_prereq install-unpackaged
 make distclean
-./configure --with-pjproject-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
+./configure --with-pjproject-bundled --with-jansson-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
 make menuselect
 make && make install && make config && ldconfig
 make samples
