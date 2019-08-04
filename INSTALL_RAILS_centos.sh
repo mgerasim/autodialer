@@ -226,6 +226,17 @@ firewall-cmd --reload
 
 
 cd /usr/src
+
+wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
+cd jansson-2.7.tar.gz 
+tar -zxvf jansson-2.7.tar.gz
+cd jansson-2.7
+./configure --prefix=/usr
+make clean
+make && make install
+ldconfig
+cd ..
+
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
 tar zxvf asterisk-16-current.tar.gz
 cd asterisk*
