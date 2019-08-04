@@ -284,6 +284,10 @@ alias realsrc => realsrc
 * ```> /home/rails/apps/autodialer/shared/log/cdr_spool_error.log ```
 * ```> /home/rails/apps/autodialer/shared/log/cdr_attempt_cron.log ```
 * ```> /home/rails/apps/autodialer/shared/log/production.log ```
+* ```systemctl stop fail2ban```
+* ```rm -rf /var/lib/fail2ban/fail2ban.sqlite3```
+* ```systemctl start fail2ban```
+
 
 
 
