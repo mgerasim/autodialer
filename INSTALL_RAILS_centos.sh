@@ -244,7 +244,7 @@ contrib/scripts/get_mp3_source.sh
 contrib/scripts/install_prereq install
 contrib/scripts/install_prereq install-unpackaged
 make distclean
-./configure --with-pjproject-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
+./configure --with-pjproject-bundled --with-jansson-bundled --with-crypto --with-ssl=ssl --with-srtp --with-iconv --with-libcurl --with-speex --with-mysqlclient
 make menuselect
 make && make install && make config && ldconfig
 make samples
