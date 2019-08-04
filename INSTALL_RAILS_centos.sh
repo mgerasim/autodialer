@@ -151,7 +151,7 @@ gem install cap
 rake db:migrate
 RAILS_ENV=production rake db:migrate
 
-/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
+/bin/mysql --user=avtodialer --password=avtodialer avtodialerdb_prod -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
 /bin/mysql --user=avtodialer --password=avtodialer avtodialerdevel -e "ALTER TABLE outgoings MODIFY COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
 
 cd ~/
