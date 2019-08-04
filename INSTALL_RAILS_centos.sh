@@ -226,8 +226,8 @@ firewall-cmd --reload
 
 
 cd /usr/src
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
-tar zxvf asterisk-15-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-16-current.tar.gz
+tar zxvf asterisk-16-current.tar.gz
 cd asterisk*
 contrib/scripts/get_mp3_source.sh
 contrib/scripts/install_prereq install
