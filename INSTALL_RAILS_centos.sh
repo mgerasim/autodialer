@@ -140,7 +140,7 @@ bundle install
 rbenv rehash
 gem install cap
 
-/bin/mysql -e "CREATE DATABASE avtodialerdb CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
+/bin/mysql -e "CREATE DATABASE avtodialerdb_prop CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 /bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
 /bin/mysql -e "CREATE USER 'avtodialer'@'localhost' IDENTIFIED BY 'avtodialer'"
