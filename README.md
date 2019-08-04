@@ -287,7 +287,8 @@ alias realsrc => realsrc
 * ```systemctl stop fail2ban```
 * ```rm -rf /var/lib/fail2ban/fail2ban.sqlite3```
 * ```systemctl start fail2ban```
-
+* ```/var/spool/mail/rails```
+* ```ast02 ~$> /var/spool/mail/root```
 
 
 
