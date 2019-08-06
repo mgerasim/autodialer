@@ -25,17 +25,17 @@ every :minute do
   rake "dial:run", :output => {:error => 'log/dial_error.log', :standard => 'log/dial_cron.log'}
 end
 
-every :minute do
-  rake "cdr:update", :output => {:error => 'log/cdr_update_error.log', :standard => 'log/cdr_update_cron.log'}
-end
+#every :minute do
+#  rake "cdr:update", :output => {:error => 'log/cdr_update_error.log', :standard => 'log/cdr_update_cron.log'}
+#end
+#
+#every :minute do
+#  rake "cdr:spool", :output => {:error => 'log/cdr_spool_error.log', :standard => 'log/cdr_spool_cron.log'}
+#end
 
-every :minute do
-  rake "cdr:spool", :output => {:error => 'log/cdr_spool_error.log', :standard => 'log/cdr_spool_cron.log'}
-end
-
-every :minute do
-  rake "cdr:attempt", :output => {:error => 'log/cdr_attempt_error.log', :standard => 'log/cdr_attempt_cron.log'}
-end
+#every :minute do
+#  rake "cdr:attempt", :output => {:error => 'log/cdr_attempt_error.log', :standard => 'log/cdr_attempt_cron.log'}
+#end
 
 #every :hour do
 #  rake "dial:clear", :output => {:error => 'log/dial_clear_error.log', :standard => 'log/dial_clear_cron.log'}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190630080223) do
+ActiveRecord::Schema.define(version: 20190225224119) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -19,24 +19,6 @@ ActiveRecord::Schema.define(version: 20190630080223) do
     t.integer "level"
     t.bigint "trank_id"
     t.index ["trank_id"], name: "index_answers_on_trank_id"
-  end
-
-  create_table "blves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.bigint "uid"
-    t.string "status"
-    t.string "direction"
-    t.string "other_leg"
-    t.string "other_leg_domain"
-    t.string "rank"
-    t.string "uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "uuid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "configs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -149,7 +131,6 @@ ActiveRecord::Schema.define(version: 20190630080223) do
     t.string "outgoing"
     t.integer "sleep"
     t.boolean "is_enabled"
-    t.integer "duration"
     t.integer "waittime"
     t.string "trank"
     t.integer "hour_bgn"
@@ -164,7 +145,6 @@ ActiveRecord::Schema.define(version: 20190630080223) do
     t.integer "google_private_key_file_size"
     t.datetime "google_private_key_updated_at"
     t.text "title"
-    t.boolean "autosps"
     t.string "leadback_phone"
     t.integer "call_delta"
     t.boolean "is_support_call_delta"
@@ -184,15 +164,6 @@ ActiveRecord::Schema.define(version: 20190630080223) do
     t.bigint "trank_id"
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
     t.index ["trank_id"], name: "index_spools_on_trank_id"
-  end
-
-  create_table "statsps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.integer "countreg"
-    t.integer "freeoper"
-    t.integer "newsps"
-    t.integer "abonqueue"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
