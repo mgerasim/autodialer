@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190225224119) do
+ActiveRecord::Schema.define(version: 20190807202925) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
-    t.string "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level"
     t.bigint "trank_id"
+    t.bigint "contact"
+    t.index ["contact"], name: "index_answers_on_contact", unique: true
     t.index ["trank_id"], name: "index_answers_on_trank_id"
   end
 
@@ -113,7 +114,7 @@ ActiveRecord::Schema.define(version: 20190225224119) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
+    t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
     t.string "status"
     t.datetime "date_created"
