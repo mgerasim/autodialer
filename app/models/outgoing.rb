@@ -21,7 +21,20 @@ class Outgoing < ApplicationRecord
 		""
 	end
     end
+
+    def self.to_csv
+	attributes = %w{shown_date_created_at shown_time_created_at telephone status}
 	
+	CSV.generate({:headers => false, :col_sep => ';'}) do |csv|
+	    
+	    all.each do |answer|
+	        csv << attributes.map{ |attr| answer.send(attr) }
+	    end
+	    
+	end
+    end
+
+
     def self.total_count
         date = DateTime.now
                 Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day)).count

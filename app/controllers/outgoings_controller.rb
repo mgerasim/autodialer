@@ -6,6 +6,10 @@ class OutgoingsController < ApplicationController
   def index
     @outgoings = Outgoing.order(updated_at: :desc).limit(50)
     @outgoings_count = Outgoing.where(:status => 'INSERTED').count
+    respond_to do |format|
+	format.html
+	format.csv { send_data Outgoing.where.not(status: 'INSERTED').to_csv, filename: "autodialer-#{Date.today}.csv" }    
+    end
   end
 
   # GET /outgoings/1
