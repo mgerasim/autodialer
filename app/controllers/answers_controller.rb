@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
 
     @outgoing_answer_precent = ((@answer_total.count.to_f / @outgoing_answer_total.count.to_f) * 100).round(2) if @outgoing_answer_total.count > 0
 
-    @answers = Answer.where.not(:status: '0')
+    @answers = Answer.where.not(:level => 0)
     respond_to do |format|
         format.html
         format.csv { send_data @answers.to_csv, filename: "answers-#{Date.today}.csv" }
