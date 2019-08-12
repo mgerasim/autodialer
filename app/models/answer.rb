@@ -12,7 +12,7 @@ class Answer < ApplicationRecord
 #    after_create :skorozvon_save
    
     def self.to_csv
-	attributes = %w{shown_date_created_at shown_time_created_at contact trank_name}
+	attributes = %w{shown_date_created_at shown_time_created_at contact status trank_name}
 	
 	CSV.generate({:headers => false, :col_sep => ';'}) do |csv|
 	    
