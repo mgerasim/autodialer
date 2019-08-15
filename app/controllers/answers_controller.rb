@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
     @answers = Answer.where.not(:level => 0)
     respond_to do |format|
         format.html
-        format.csv { send_data @answers.to_csv, filename: "answers-#{Date.today}.csv" }
+        format.csv { send_data Answer.all.to_csv, filename: "answers-#{Date.today}.csv" }
     end
   end
 
