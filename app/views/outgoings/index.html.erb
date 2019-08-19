@@ -25,7 +25,7 @@
 <% if Config.first.is_outgoing_deleted == false %>
 
 <br>
-<%= link_to "Выгрузить в CSV", outgoings_path(:format => :csv), :class => "btn" %>
+<%= link_to "Выгрузить неотвеченных в CSV", outgoings_path(:format => :csv), :class => "btn" %>
 <br>
 
 <table class="table table-striped table-hover">
