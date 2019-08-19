@@ -8,7 +8,7 @@ class OutgoingsController < ApplicationController
     @outgoings_count = Outgoing.where(:status => 'INSERTED').count
     respond_to do |format|
 	format.html
-	Жцйformat.csv { send_data Outgoing.where("EXISTS (select * from answers where INSTR(telephone, contact) = 0)").to_csv, filename: "autodialer-#{Date.today}.csv" }    
+	format.csv { send_data Outgoing.where("EXISTS (select * from answers where INSTR(telephone, contact) = 0)").to_csv, filename: "autodialer-#{Date.today}.csv" }    
     end
   end
 
