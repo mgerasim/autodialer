@@ -19,14 +19,12 @@ class Trank < ApplicationRecord
 
     def outgoing_total_count
         date = DateTime.now
-		Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
-       # Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
- #	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"]).count
+		Outgoing.where(:trank => self).count
     end
 
     def answer_total_count
         date = DateTime.now
-	Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
+	Answer.where(:trank => self).count
     end
 
     def outgoing_precent
@@ -40,9 +38,8 @@ class Trank < ApplicationRecord
 
     def outgoing_answer_total_count
       date = DateTime.now
-           Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
-            .where(:trank => self)
-            .where(:status => ["ANSWERED"]).count
+           #Outgoing.where(:trank => self).where(:status => ["ANSWERED"]).count
+           Answer.where(:trank => self).where(:level => ["1", "2"]).count
     end
 
     def outgoing_answer_precent
