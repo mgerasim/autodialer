@@ -5,17 +5,15 @@ class AnswersController < ApplicationController
   # GET /answers.json
   def index
     date = DateTime.now
-    @outgoing_total = Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
- 	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"])
+    @outgoing_total = Outgoing.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"])
 
-    @answer_total = Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+    @answer_total = Answer.all
 	
     @outgoing_precent = 0 if @outgoing_total.count == 0
 
     @outgoing_precent = ((@answer_total.count.to_f / @outgoing_total.count.to_f) * 100).round(2) if @outgoing_total.count > 0
 
-    @outgoing_answer_total = Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
-        .where(:status => ["ANSWERED"])
+    @outgoing_answer_total = Outgoing.where(:status => ["ANSWERED"])
 
     @outgoing_answer_precent = 0 if @outgoing_answer_total.count == 0
 
