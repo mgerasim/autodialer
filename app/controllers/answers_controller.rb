@@ -13,7 +13,7 @@ class AnswersController < ApplicationController
 
     @outgoing_precent = ((@answer_total.count.to_f / @outgoing_total.count.to_f) * 100).round(2) if @outgoing_total.count > 0
 
-    @outgoing_answer_total = Answer.where(:status => ["1", "2"]) #Outgoing.where(:status => ["ANSWERED", "1", "2"])
+    @outgoing_answer_total = Answer.where(:level => ["1", "2"]) #Outgoing.where(:status => ["ANSWERED", "1", "2"])
 
     @outgoing_answer_precent = 0 if @outgoing_answer_total.count == 0
 
