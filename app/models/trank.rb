@@ -72,6 +72,9 @@ class Trank < ApplicationRecord
 
             end
         end
+
+        %x{sudo asterisk -rx "sip reload"}
+
     end
 
     def check(telephone, account, outgoing = nil)
