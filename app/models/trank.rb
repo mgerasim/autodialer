@@ -13,6 +13,8 @@ class Trank < ApplicationRecord
 
     has_and_belongs_to_many :groups
 
+    after_save :update_peers
+
     def shown_groups
         self.groups.collect(&:title).join(';')
     end
@@ -54,6 +56,21 @@ class Trank < ApplicationRecord
   	        0
         else
             ((answer_total_count.to_f / outgoing_answer_total_count.to_f) * 100).round(2) 
+        end
+    end
+
+    def update_peers
+        File.open("/home/rails/autodialer.sip.#{Rails.env}.conf", "w+") do |f|
+            Trank.all.each do |trunk| 
+                f.chmod(0666)
+                f.puts("[#{trunk.name}](beeline)")
+                f.puts("callbackextension=#{trunk.name}")
+                f.puts("defaultuser=#{trunk.name}")
+                f.puts("secret=#{trunk.password}")
+                f.puts("fromuser=#{trunk.name}")
+                f.puts("")
+
+            end
         end
     end
 
