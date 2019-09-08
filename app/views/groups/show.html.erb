@@ -1,0 +1,21 @@
+<div class="column col-6 col-mx-auto bg-gray">
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<p>
+  <strong>Наименование:</strong>
+  <%= @group.title %>
+</p>
+
+
+<p>
+  <strong>Рабочие каналы:</strong>
+  <%= @group.shown_tranks %>
+</p>
+
+<%= link_to 'Редактировать', edit_group_path(@group) %> |
+<%= link_to 'Назад', groups_path %>
+
+</div>

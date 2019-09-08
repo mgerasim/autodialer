@@ -69,7 +69,7 @@ class TranksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trank_params
-      params.require(:trank).permit(:is_check_registered, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled)
+      params.require(:trank).permit(:is_check_registered, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled, group_ids:[])
     end
    
     def get_config

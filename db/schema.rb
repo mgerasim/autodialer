@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190807202925) do
+ActiveRecord::Schema.define(version: 20190907234347) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -78,6 +78,19 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.bigint "sipaccount_id"
     t.boolean "is_support_call"
     t.index ["sipaccount_id"], name: "index_employees_on_sipaccount_id"
+  end
+
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups_tranks", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "trank_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_groups_tranks_on_group_id"
+    t.index ["trank_id"], name: "index_groups_tranks_on_trank_id"
   end
 
   create_table "lead_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -210,6 +223,8 @@ ActiveRecord::Schema.define(version: 20190807202925) do
   add_foreign_key "answers", "tranks"
   add_foreign_key "contacts", "tasks"
   add_foreign_key "employees", "sipaccounts"
+  add_foreign_key "groups_tranks", "groups"
+  add_foreign_key "groups_tranks", "tranks"
   add_foreign_key "leads", "answers"
   add_foreign_key "leads", "employees"
   add_foreign_key "outgoings", "tranks"

@@ -41,6 +41,11 @@
  <%= @trank.dialplan.title if @trank.dialplan != nil%>
 </p>
 
+<p>
+  <strong>Группы каналов:</strong>
+  <%= @trank.shown_groups %>
+</p>
+
 <%= link_to 'Редактировать', edit_trank_path(@trank) %> |
 <%= link_to 'Назад', tranks_path %>
 

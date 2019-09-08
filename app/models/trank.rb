@@ -11,6 +11,12 @@ class Trank < ApplicationRecord
     validates :callerid, presence: true
     validates :callcount, presence: true
 
+    has_and_belongs_to_many :groups
+
+    def shown_groups
+        self.groups.collect(&:title).join(';')
+    end
+
     def initialize(attributes={})
       super
       config = Config.first

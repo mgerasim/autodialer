@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :groups do 
+    member do 
+      get 'active'
+      get 'deactive'
+    end
+  end
   resources :lead_statuses
   resources :sipaccounts
   post '/cabinet_employee_status_change', to: 'cabinet#employee_status_change'
