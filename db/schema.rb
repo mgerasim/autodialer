@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190907234347) do
+ActiveRecord::Schema.define(version: 20190908011458) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20190907234347) do
     t.integer "callmax"
     t.integer "sleeptime"
     t.boolean "is_check_registered"
+    t.string "password"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"
