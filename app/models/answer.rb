@@ -2,6 +2,11 @@ require 'csv'
 require 'net/http'
 require 'addressable/uri'
 
+class AnswerSerializer < ActiveModel::Serializer
+  attributes :id, :contact, :level
+  belongs_to :trank
+end
+
 class Answer < ApplicationRecord
     
     belongs_to :trank
