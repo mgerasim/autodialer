@@ -10,7 +10,18 @@ class Answer < ApplicationRecord
 
     after_create :google_sheet_save 
 #    after_create :skorozvon_save
-   
+
+
+   def as_json(options = {})
+    super (options || { }).merge( 
+      :include => { 
+	:trank =>{ 
+	:only => [:trank_id] }
+      }, 
+      :except => [:created_at, :updated_at] )
+ end
+  
+
     def self.to_csv
 	attributes = %w{shown_date_created_at shown_time_created_at shown_contact level trank_name}
 	
