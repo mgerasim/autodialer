@@ -9,7 +9,8 @@ class OutgoingsController < ApplicationController
     respond_to do |format|
  	format.html
 #	format.csv { send_data Outgoing.where("EXISTS (select * from answers where INSTR(telephone, contact) = 0)").to_csv, filename: "autodialer-#{Date.today}.csv" }    
-	format.csv { send_data Outgoing.all.to_csv, filename: "autodialer-#{Date.today}.csv" } 
+  format.csv { send_data Outgoing.all.to_csv, filename: "autodialer-#{Date.today}.csv" } 
+  format.json { render :json => Outgoing.all, :except => [:created_at, :updated_at]}
     end
   end
 
