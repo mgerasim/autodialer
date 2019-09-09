@@ -1,6 +1,7 @@
 class OutgoingsController < ApplicationController
   before_action :set_outgoing, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :require_login, :only => [:index]
+  
   # GET /outgoings
   # GET /outgoings.json
   def index
