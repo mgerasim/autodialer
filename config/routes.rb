@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'analysis/answers'
+
   resources :groups do 
     member do 
       get 'active'
