@@ -4,11 +4,12 @@ require 'addressable/uri'
 
 class AnswerSerializer < ActiveModel::Serializer
   attributes :id, :contact, :level
-  belongs_to :trank
 end
 
 class Answer < ApplicationRecord
-    
+
+   attr_accessible :contac, :level  
+ 
     belongs_to :trank
 
     default_scope { order(created_at: :desc) }
@@ -17,15 +18,9 @@ class Answer < ApplicationRecord
 #    after_create :skorozvon_save
 
 
-   def as_json(options = {})
-    super (options || { }).merge( 
-      :include => { 
-	:trank =>{ 
-	:only => [:id] }
-      }, 
-      :except => [:created_at, :updated_at] )
- end
-  
+ def active_model_serializer
+    AnswerSerializer
+  end
 
     def self.to_csv
 	attributes = %w{shown_date_created_at shown_time_created_at shown_contact level trank_name}
