@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
+   skip_before_action :require_login, :only => [:index]
+
   # GET /answers
   # GET /answers.json
   def index
@@ -29,7 +31,7 @@ headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Typ
     respond_to do |format|
         format.html
         format.csv { send_data @answers.to_csv, filename: "answers-#{Date.today}.csv" }
-        format.json { render :index, status: :created, location: @answer }
+        format.json { render json: @answer}
     end
   end
 

@@ -87,3 +87,5 @@ gem 'jquery-rails'
 gem 'plyr-rails'
 
 gem "google-cloud-speech"
+gem 'active_model_serializers'
+gem "rack-cors"

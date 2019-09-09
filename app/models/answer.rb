@@ -2,15 +2,25 @@ require 'csv'
 require 'net/http'
 require 'addressable/uri'
 
+class AnswerSerializer < ActiveModel::Serializer
+  attributes :id, :contact, :level
+end
+
 class Answer < ApplicationRecord
-    
+
+ 
     belongs_to :trank
 
     default_scope { order(created_at: :desc) }
 
     after_create :google_sheet_save 
 #    after_create :skorozvon_save
-   
+
+
+ def active_model_serializer
+    AnswerSerializer
+  end
+
     def self.to_csv
 	attributes = %w{shown_date_created_at shown_time_created_at shown_contact level trank_name}
 	
