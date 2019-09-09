@@ -1,6 +1,8 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
+   skip_before_action :require_login, :only => [:index]
+
   # GET /answers
   # GET /answers.json
   def index
