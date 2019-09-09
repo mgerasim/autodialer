@@ -8,7 +8,6 @@ end
 
 class Answer < ApplicationRecord
 
-   attr_accessible :contac, :level  
  
     belongs_to :trank
 
