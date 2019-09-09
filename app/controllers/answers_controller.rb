@@ -31,7 +31,7 @@ headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Typ
     respond_to do |format|
         format.html
         format.csv { send_data @answers.to_csv, filename: "answers-#{Date.today}.csv" }
-        format.json { render :json => @answers}
+        format.json { render :json => @answers, :include => {:trank}}
     end
   end
 
