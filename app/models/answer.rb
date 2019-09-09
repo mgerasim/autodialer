@@ -16,7 +16,7 @@ class Answer < ApplicationRecord
     super (options || { }).merge( 
       :include => { 
 	:trank =>{ 
-	:only => [:trank_id] }
+	:only => [:id] }
       }, 
       :except => [:created_at, :updated_at] )
  end
