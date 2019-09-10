@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base_url: 'http://localhost'
+  base_url: window.location.host
 };
