@@ -1,3 +1,37 @@
-<p>
-  answers works!
-</p>
+
+<div *ngIf="answers">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>
+        Рабочий канал
+      </th>
+      <th>
+        Количество обработанных номеров
+      </th>
+      <th>
+        Количество откликов
+      </th>
+      <th>
+        Количество не согласившихся
+      </th>
+      <th>
+        Количество согласившихся
+      </th>
+      <th>
+        Количество подтвердивших
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let answer of answers">
+        <td>{{answer.trunk}}</td>
+        <td>{{answer.outgoingCount}}</td>
+        <td>{{answer.answersCount}}</td>
+        <td>{{answer.callbackCount}}</td>
+        <td>{{answer.agreedCount}}</td>
+        <td>{{answer.confirmedCount}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

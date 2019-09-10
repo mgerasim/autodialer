@@ -3,12 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { AnalysisRoutingModule } from './analysis-routing.module';
 import { AnswersComponent } from './answers/answers.component';
-import {AnalysisService} from './analysis.service';
+import {AnalysisApiService} from '../@core/@services/@api/analysis.api.service';
 import {HttpClientModule} from '@angular/common/http';
+import {GroupByPipe} from '../@core/@pipes/groupBy.pipe';
+import {LogPipe} from '../@core/@pipes/log.pipe';
+import {AnalysisLogicalService} from '../@core/@services/@logical/analysis.logical.service';
 
 @NgModule({
-  providers: [AnalysisService],
-  declarations: [AnswersComponent],
+  providers: [
+    AnalysisApiService,
+    AnalysisLogicalService
+  ],
+  declarations: [
+    AnswersComponent,
+    GroupByPipe,
+    LogPipe
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
