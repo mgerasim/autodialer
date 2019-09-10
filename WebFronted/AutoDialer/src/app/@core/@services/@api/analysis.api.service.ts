@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {AnswerApiModel} from '../../@models/@api/answer.api.model';
 import {environment} from '../../../../environments/environment';
 import {OutgoingApiModel} from '../../@models/@api/outgoing.api.model';
+import { TrunkApiModel } from '../../@models/@api/trunk.api.model';
 
 @Injectable()
 export class AnalysisApiService {
@@ -13,6 +14,17 @@ export class AnalysisApiService {
   getAnswers(observe?: 'body', reportProgress?: boolean): Observable<AnswerApiModel[]> {
     const headers = this.defaultHeaders;
     return this.http.get<AnswerApiModel[]>(`${environment.base_url}/answers.json`,
+      {
+        headers,
+        observe,
+        reportProgress
+      }
+    );
+  }
+
+  getTrunks(observe?: 'body', reportProgress?: boolean): Observable<TrunkApiModel[]> {
+    const headers = this.defaultHeaders;
+    return this.http.get<TrunkApiModel[]>(`${environment.base_url}/tranks.json`,
       {
         headers,
         observe,

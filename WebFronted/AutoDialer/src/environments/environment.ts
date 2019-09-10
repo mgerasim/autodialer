@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  base_url: 'http://ast12'
+  base_url: 'http://ast11'
 };
 
 /*

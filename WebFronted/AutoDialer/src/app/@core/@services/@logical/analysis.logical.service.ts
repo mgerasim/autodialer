@@ -10,8 +10,8 @@ export class AnalysisLogicalService {
   constructor(private analysisApiService: AnalysisApiService) {}
 
   getAnswers(): Observable<AnalysisAnswersLogicalModel[]> {
-    return combineLatest([this.analysisApiService.getAnswers(), this.analysisApiService.getOutgoings()])
-      .pipe(map(([answers, outgoings]) => {
+    return combineLatest([this.analysisApiService.getAnswers(), this.analysisApiService.getOutgoings(), this.analysisApiService.getTrunks()])
+      .pipe(map(([answers, outgoings, trunks]) => {
         const groupedAnswers = answers.reduce((previous, current) => {
           if(!previous[current['trank_id']]) {
             previous[current['trank_id']] = [current];
@@ -33,14 +33,16 @@ export class AnalysisLogicalService {
 
         const list = new Array<AnalysisAnswersLogicalModel>();
 
-        Object.keys(groupedOutgoings).forEach((x: string) => {
+        trunks.forEach((trunk: TrunkApiModel) => {
+          const x = trunk.id.toString();
           const model = new AnalysisAnswersLogicalModel();
-          model.trunk = x;
+          model.trunk = trunk.name;
           model.outgoingCount = groupedOutgoings[x].length;
           model.answersCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].length;
           model.callbackCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 0).length;
           model.agreedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 1).length;
           model.confirmedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 2).length;
+          
           list.push(model);
         });
         return list;
