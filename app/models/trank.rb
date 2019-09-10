@@ -64,10 +64,10 @@ class Trank < ApplicationRecord
             Trank.all.each do |trunk| 
                 f.chmod(0666)
                 f.puts("[#{trunk.name}](beeline)")
-                f.puts("callbackextension=#{trunk.name}")
-                f.puts("defaultuser=#{trunk.name}")
+                f.puts("callbackextension=#{trunk.username}")
+                f.puts("defaultuser=#{trunk.username}")
                 f.puts("secret=#{trunk.password}")
-                f.puts("fromuser=#{trunk.name}")
+                f.puts("fromuser=#{trunk.username}")
                 f.puts("")
 
             end

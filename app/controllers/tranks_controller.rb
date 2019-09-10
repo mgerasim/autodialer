@@ -54,9 +54,11 @@ class TranksController < ApplicationController
   # DELETE /tranks/1
   # DELETE /tranks/1.json
   def destroy
+    Outgoing.where(:trank => @trank).delete_all
+    Answer.where(:trank => @trank).delete_all
     @trank.destroy
     respond_to do |format|
-      format.html { redirect_to tranks_url, notice: 'Рабочий канал успешно удален.' }
+      format.html { redirect_to tranks_path, notice: 'Рабочий канал успешно удален.' }
       format.json { head :no_content }
     end
   end
@@ -69,7 +71,7 @@ class TranksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trank_params
-      params.require(:trank).permit(:is_check_registered, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled, :password, group_ids:[])
+      params.require(:trank).permit(:is_check_registered, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled, :password, :username, group_ids:[])
     end
    
     def get_config
