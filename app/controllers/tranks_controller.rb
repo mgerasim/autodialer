@@ -1,10 +1,15 @@
 class TranksController < ApplicationController
+  skip_before_action :require_login, :only => [:index]
   before_action :set_trank, only: [:show, :edit, :update, :destroy]
   before_action :get_config
   # GET /tranks
   # GET /tranks.json
   def index
     @tranks = Trank.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @tranks, :include => :groups, :except => [:created_at, :updated_at]}
+    end
   end
 
   # GET /tranks/1
