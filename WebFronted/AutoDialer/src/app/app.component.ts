@@ -11,6 +11,6 @@ export class AppComponent {
   title = 'AutoDialer';
   constructor(private router: Router) {}
   routeLink_Click(link: string) {
-    window.location.href = window.location.host + link;
+    window.location.href = environment.base_url + link;
   }
 }
