@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
+import {environment} from '../environments/environment.prod';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AutoDialer';
+  constructor(private router: Router) {}
+  routeLink_Click(link: string) {
+    window.location.href = window.location.host + link;
+  }
 }
