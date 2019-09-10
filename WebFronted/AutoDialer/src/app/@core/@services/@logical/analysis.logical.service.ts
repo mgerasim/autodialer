@@ -37,7 +37,7 @@ export class AnalysisLogicalService {
           const x = trunk.id.toString();
           const model = new AnalysisAnswersLogicalModel();
           model.trunk = trunk.name;
-          model.outgoingCount = groupedOutgoings[x].length;
+          model.outgoingCount = groupedOutgoings[x] ===  undefined ? 0 : groupedOutgoings[x].length;
           model.answersCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].length;
           model.callbackCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 0).length;
           model.agreedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 1).length;
