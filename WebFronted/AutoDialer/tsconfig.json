@@ -11,6 +11,11 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es5",
+    "paths": {
+      "jszip": [
+        "node_modules/jszip/dist/jszip.min.js"
+      ]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],

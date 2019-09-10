@@ -1,5 +1,7 @@
 {
   "name": "avtodailer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "devextreme": "19.1.5"
+  }
 }

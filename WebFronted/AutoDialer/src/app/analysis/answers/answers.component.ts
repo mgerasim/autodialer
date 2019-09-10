@@ -14,8 +14,6 @@ export class AnswersComponent implements OnInit {
   ngOnInit() {
     this.serviceAnalysis.getAnswers().subscribe(x => {
       this.answers = x;
-
-      console.log(x)
     });
   }
 

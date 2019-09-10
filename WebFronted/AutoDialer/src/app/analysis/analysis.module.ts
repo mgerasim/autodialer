@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {GroupByPipe} from '../@core/@pipes/groupBy.pipe';
 import {LogPipe} from '../@core/@pipes/log.pipe';
 import {AnalysisLogicalService} from '../@core/@services/@logical/analysis.logical.service';
+import {DxDataGridModule, DxPieChartModule} from 'devextreme-angular';
 
 @NgModule({
   providers: [
@@ -22,6 +23,8 @@ import {AnalysisLogicalService} from '../@core/@services/@logical/analysis.logic
   imports: [
     CommonModule,
     HttpClientModule,
+    DxDataGridModule,
+    DxPieChartModule,
     AnalysisRoutingModule
   ]
 })

@@ -1,1 +1,7 @@
-
+::ng-deep #pie {
+  height: 1040px;
+  width: 1000px;
+}
+::ng-deep #pie * {
+  margin: 0 auto;
+}
