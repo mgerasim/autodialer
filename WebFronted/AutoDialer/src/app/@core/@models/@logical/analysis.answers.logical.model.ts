@@ -1,12 +1,34 @@
-import {AnswerApiModel} from '../@api/answer.api.model';
-import {OutgoingApiModel} from '../@api/outgoing.api.model';
+import {TrunkApiModel} from '../@api/trunk.api.model';
 
 export class AnalysisAnswersLogicalModel {
-  answerList: AnswerApiModel[];
-  outgoingList: OutgoingApiModel[];
-  constructor(answers: AnswerApiModel[], outgoings: OutgoingApiModel[]) {
-    this.answerList = answers;
-    this.outgoingList = outgoings;
-  }
+  /**
+   * Транк
+   */
+  trunk: string;
+
+  /**
+   * Количество обработанных номеров
+   */
+  outgoingCount: number;
+
+  /**
+   * Количество откликов
+   */
+  answersCount: number;
+
+  /**
+   * Количество перезвонивших
+   */
+  callbackCount: number;
+
+  /**
+   * Количество согласившихся
+   */
+  agreedCount: number;
+
+  /**
+   * Количество подтвердивших
+   */
+  confirmedCount: number;
 }
 

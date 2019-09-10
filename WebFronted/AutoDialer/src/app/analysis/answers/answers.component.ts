@@ -10,7 +10,7 @@ import {AnalysisAnswersLogicalModel} from '../../@core/@models/@logical/analysis
 export class AnswersComponent implements OnInit {
 
   constructor(private serviceAnalysis: AnalysisLogicalService) { }
-  answers: AnalysisAnswersLogicalModel
+  answers: AnalysisAnswersLogicalModel[];
   ngOnInit() {
     this.serviceAnalysis.getAnswers().subscribe(x => {
       this.answers = x;
