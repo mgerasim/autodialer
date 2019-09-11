@@ -7,10 +7,10 @@
         <a class="nav-link" (click)="routeLink_Click('/outgoings/new')" routerLink="/outgoings/new">Добавить телефоны <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/outgoings">Исходящие</a>
+        <a class="nav-link" (click)="routeLink_Click('/outgoings')"  routerLink="/outgoings">Исходящие</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/answers">Отклики</a>
+        <a class="nav-link" (click)="routeLink_Click('/answers')"  routerLink="/answers">Отклики</a>
       </li>
     </ul>
     <ul class="navbar-nav nav justify-content-center">
@@ -19,14 +19,14 @@
           Настройки
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="/tranks">Рабочие каналы</a>
-          <a class="dropdown-item" routerLink="/groups">Группы каналов</a>
+          <a class="dropdown-item" (click)="routeLink_Click('/tranks')" routerLink="/tranks">Рабочие каналы</a>
+          <a class="dropdown-item" (click)="routeLink_Click('/groups')" routerLink="/groups">Группы каналов</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" routerLink="/settings/1/edit">Настройки приложения</a>
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" routerLink="/logout">Выход <span class="sr-only">(current)</span></a>
+        <a class="nav-link" (click)="routeLink_Click('/logout')" routerLink="/logout">Выход <span class="sr-only">(current)</span></a>
       </li>
     </ul>
   </div>

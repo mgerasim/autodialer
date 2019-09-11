@@ -1,4 +1,6 @@
-
+<p *ngIf="!answers">
+  Загрузка ...
+</p>
 <dx-data-grid *ngIf="answers"
   id="gridContainer"
   [dataSource]="answers"
