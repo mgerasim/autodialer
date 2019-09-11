@@ -16,5 +16,11 @@ export class AnswersComponent implements OnInit {
       this.answers = x;
     });
   }
+  customizeTotal(data) {
+    return "Итого: " + data.value.toString();
+  }
+  customizeCount(data) {
+    return "Количество: " + data.value.toString();
+  }
 
 }
