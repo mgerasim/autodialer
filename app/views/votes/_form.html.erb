@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label "Голосовая запись:", class: "form-label" %>
-    <%= form.file_field :record, id: :vote_record, class: "form-input" %>
+    <%= form.file_field :record, id: :vote_record, class: "form-input", accept: 'audio/GSM' %>
   </div>
 
   <div class="mt-2 text-center">
