@@ -24,3 +24,6 @@
 public/system/settings/
 public/system/
 public/analysis/
+
+/bin/*
+/obj/*
