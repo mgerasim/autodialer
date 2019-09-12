@@ -12,7 +12,8 @@ export class AnalysisLogicalService {
   getAnswers(): Observable<AnalysisAnswersLogicalModel[]> {
     return combineLatest([this.analysisApiService.getAnswers(), this.analysisApiService.getOutgoings(), this.analysisApiService.getTrunks()])
       .pipe(map(([answers, outgoings, trunks]) => {
-        const groupedAnswers = answers.reduce((previous, current) => {
+        console.log(answers.data)
+        const groupedAnswers = answers.data.reduce((previous, current) => {
           if(!previous[current['trank_id']]) {
             previous[current['trank_id']] = [current];
           } else {
