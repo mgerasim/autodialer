@@ -25,6 +25,10 @@ every :minute do
   rake "dial:run", :output => {:error => 'log/dial_error.log', :standard => 'log/dial_cron.log'}
 end
 
+every :minute do
+  rake "mango:employee", :output => {:error => 'log/mango_employee_error.log', :standard => 'log/mango_employee_cron.log'}
+end
+
 #every :minute do
 #  rake "cdr:update", :output => {:error => 'log/cdr_update_error.log', :standard => 'log/cdr_update_cron.log'}
 #end

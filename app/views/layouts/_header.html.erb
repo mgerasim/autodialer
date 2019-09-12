@@ -17,9 +17,14 @@
       <% end %>
 
       <% if Config.first.is_support_employee %>
+<!--
         <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
+-->
         <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
+
+  <!--
         <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
+    -->
       <% end %>
 
 
