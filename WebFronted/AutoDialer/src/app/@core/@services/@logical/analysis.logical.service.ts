@@ -12,8 +12,10 @@ export class AnalysisLogicalService {
   getAnswers(): Observable<AnalysisAnswersLogicalModel[]> {
     return combineLatest([this.analysisApiService.getAnswers(), this.analysisApiService.getOutgoings(), this.analysisApiService.getTrunks()])
       .pipe(map(([answers, outgoings, trunks]) => {
-        console.log(answers.data)
-        const groupedAnswers = answers.data.reduce((previous, current) => {
+        if (answers.data !== undefined) {
+          answers = answers.data;
+        }
+        const groupedAnswers = answers.reduce((previous, current) => {
           if(!previous[current['trank_id']]) {
             previous[current['trank_id']] = [current];
           } else {
@@ -22,6 +24,9 @@ export class AnalysisLogicalService {
           return previous;
         }, {});
 
+        if (outgoings.data !== undefined) {
+          outgoings = outgoings.data;
+        }
         const groupedOutgoings = outgoings.reduce((previous, current) => {
           if(!previous[current['trank_id']]) {
             previous[current['trank_id']] = [current];
@@ -43,7 +48,7 @@ export class AnalysisLogicalService {
           model.callbackCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 0).length;
           model.agreedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 1).length;
           model.confirmedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 2).length;
-          
+
           list.push(model);
         });
         return list;
