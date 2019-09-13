@@ -17,8 +17,6 @@ class EventsController < ApplicationController
 
       telephone = telephone.split(//).last(10).join("").to_s
 
-      telephone = "9600531314"
-
       outgoing = Outgoing.where("telephone like ? ", "%#{telephone}%").first
 
       if (outgoing != nil)

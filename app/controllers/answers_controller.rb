@@ -21,7 +21,7 @@ class AnswersController < ApplicationController
 
     @outgoing_answer_precent = ((@answer_total.count.to_f / @outgoing_answer_total.count.to_f) * 100).round(2) if @outgoing_answer_total.count > 0
 
-    @answers = Answer.where.not(:level => 0)
+    @answers = Answer.all
 
 headers['Access-Control-Allow-Origin'] = '*'
 headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
