@@ -19,10 +19,11 @@ class EventsController < ApplicationController
 
       telephone = "9600531314"
 
-      outgoing = Outgoing.where(:telephone => "7#{telephone}\n").first
+      outgoing = Outgoing.where("telephone like '%?%'", telephone).first
 
       if (outgoing != nil)
-        Answer.create(:contact => telephone, :level => 0, :trank => outgoing.trank)
+        answer = Answer.create(:contact => telephone, :level => 0, :trank => outgoing.trank)
+        answer.save
       end
 
       logger.debug(telephone)
