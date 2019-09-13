@@ -15,7 +15,15 @@ class EventsController < ApplicationController
 
       logger.debug(telephone)
 
-      telephone = telephone.split(//).last(10).to_s
+      telephone = telephone.split(//).last(10).join("").to_s
+
+      telephone = "9600531314"
+
+      outgoing = Outgoing.where(:telephone => "7#{telephone}\n").first
+
+      if (outgoing != nil)
+        Answer.create(:contact => telephone, :level => 0, :trank => outgoing.trank)
+      end
 
       logger.debug(telephone)
 
