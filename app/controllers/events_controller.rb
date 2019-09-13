@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     
     logger.debug(params)
 
-    json = JSON.parse(params)
+    json = JSON.parse(params[:json])
 
     if (json["call_state"] == 'Appeared') 
 
