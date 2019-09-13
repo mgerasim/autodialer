@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'events/call'
+
+  get 'events/dtmf'
+
+  get 'events/summary'
+
+  post 'events/call'
+
+  post 'events/dtmf'
+
+  post 'events/summary'
+
   get 'analysis/answers'
 
   resources :groups do 
