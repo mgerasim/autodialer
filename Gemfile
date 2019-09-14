@@ -79,7 +79,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rufus-scheduler'
 gem "twitter-bootstrap-rails"
-gem "rack-timeout"
+gem "rack-timeout", require:"rack/timeout/base"
 gem 'activerecord-import'
 gem 'google_drive'
 gem "paperclip", "~> 6.0.0"
