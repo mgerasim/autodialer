@@ -5,6 +5,7 @@ class OutgoingsController < ApplicationController
   # GET /outgoings
   # GET /outgoings.json
   def index
+
     @outgoings = Outgoing.order(updated_at: :desc).limit(50)
     @outgoings_count = Outgoing.where(:status => 'INSERTED').count
     respond_to do |format|
