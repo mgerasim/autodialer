@@ -5,13 +5,14 @@ class OutgoingsController < ApplicationController
   # GET /outgoings
   # GET /outgoings.json
   def index
+
     @outgoings = Outgoing.order(updated_at: :desc).limit(50)
     @outgoings_count = Outgoing.where(:status => 'INSERTED').count
     respond_to do |format|
  	format.html
 #	format.csv { send_data Outgoing.where("EXISTS (select * from answers where INSTR(telephone, contact) = 0)").to_csv, filename: "autodialer-#{Date.today}.csv" }    
   format.csv { send_data Outgoing.all.to_csv, filename: "autodialer-#{Date.today}.csv" } 
-  format.json { render :json => Outgoing.where.not(:trank => nil), :except => [:created_at, :updated_at]}
+  format.json { render :json => Outgoing.where.not(:trank => nil).as_json(only: [:id, :trank_id])}
     end
   end
 
