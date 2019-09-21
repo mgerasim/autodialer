@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { JsSIP } from 'jssip';
+
 @Component({
   selector: 'app-cabinet-login',
   templateUrl: './work-space.component.html',
@@ -7,7 +7,7 @@ import { JsSIP } from 'jssip';
 })
 export class WorkSpaceComponent implements OnInit {
 
-  socket = new JsSIP.WebSocketInterface('wss://sip.myhost.com');
+  telephone: string = "";
 
   constructor() { }
 
@@ -15,8 +15,12 @@ export class WorkSpaceComponent implements OnInit {
 
   }
 
-
   login() {
 
+  }
+
+  click_Digits(digit: number) {
+    console.log(digit)
+    this.telephone += digit.toString();
   }
 }
