@@ -30,5 +30,15 @@ export class AnalysisAnswersLogicalModel {
    * Количество подтвердивших
    */
   confirmedCount: number;
+
+  /**
+   * Количество прождавших очередь полностью и несоедиенные с оператором
+   */
+  timeoutCount: number;
+
+  /**
+   * Количество соединенных с оператором
+   */
+  continueCount: number;
 }
 

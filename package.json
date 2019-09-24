@@ -2,6 +2,7 @@
   "name": "avtodailer",
   "private": true,
   "dependencies": {
-    "devextreme": "19.1.5"
+    "devextreme": "19.1.5",
+    "jssip": "^3.3.7"
   }
 }

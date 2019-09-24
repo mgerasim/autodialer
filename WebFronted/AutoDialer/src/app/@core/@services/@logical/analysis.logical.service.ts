@@ -48,6 +48,8 @@ export class AnalysisLogicalService {
           model.callbackCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 0).length;
           model.agreedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 1).length;
           model.confirmedCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 2).length;
+          model.timeoutCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 4).length;
+          model.continueCount = groupedAnswers[x] === undefined ? 0 : groupedAnswers[x].filter(a => a.level === 3).length;
 
           list.push(model);
         });

@@ -7,6 +7,7 @@ import {AnalysisModule} from './analysis/analysis.module';
 import {BsDropdownModule, ModalModule, TooltipModule} from 'ngx-bootstrap';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {CabinetModule} from './cabinet/cabinet.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {FormsModule} from '@angular/forms';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     AnalysisModule,
+    CabinetModule,
     AppRoutingModule,
   ],
   providers: [],

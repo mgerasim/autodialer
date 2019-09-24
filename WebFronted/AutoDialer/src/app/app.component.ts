@@ -10,7 +10,5 @@ import {environment} from '../environments/environment.prod';
 export class AppComponent {
   title = 'AutoDialer';
   constructor(private router: Router) {}
-  routeLink_Click(link: string) {
-    window.location.href = environment.base_url + link;
-  }
+
 }
