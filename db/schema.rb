@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190910112918) do
+ActiveRecord::Schema.define(version: 20190923060856) do
+
+  create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer "employee_active_count"
+    t.integer "setting_trunk_active_count"
+    t.integer "trunk_enable_count"
+    t.integer "outgoing_count"
+    t.integer "answer_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -162,6 +172,7 @@ ActiveRecord::Schema.define(version: 20190910112918) do
     t.string "leadback_phone"
     t.integer "call_delta"
     t.boolean "is_support_call_delta"
+    t.integer "trunk_active_count"
   end
 
   create_table "sipaccounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

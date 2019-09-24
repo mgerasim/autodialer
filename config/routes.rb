@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :analyses
   get 'events/call'
 
   get 'events/dtmf'
@@ -13,6 +14,14 @@ Rails.application.routes.draw do
   post 'events/summary'
 
   get 'analysis/answers'
+
+
+  resources :employees do
+    member do 
+      get 'active'
+      get 'deactive'
+    end
+  end
 
   resources :groups do 
     member do 
@@ -38,7 +47,6 @@ Rails.application.routes.draw do
 
   get 'cabinet/destroy'
 
-  resources :employees
   resources :leads
   resources :machines
   resources :dialplans

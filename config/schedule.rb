@@ -29,6 +29,10 @@ every :minute do
   rake "mango:employee", :output => {:error => 'log/mango_employee_error.log', :standard => 'log/mango_employee_cron.log'}
 end
 
+every :minute do
+  rake "analysis:run", :output => {:error => 'log/analysis_error.log', :standard => 'log/analysis_cron.log'}
+end
+
 #every :minute do
 #  rake "cdr:update", :output => {:error => 'log/cdr_update_error.log', :standard => 'log/cdr_update_cron.log'}
 #end
