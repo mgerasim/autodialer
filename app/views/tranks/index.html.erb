@@ -40,7 +40,7 @@
 
   <tbody>
     <% @tranks.each do |trank| %>
-      <tr>
+      <tr class="<%= 'table-primary' if trunk.enabled == true %> "  >
         <td><%= trank.name %></td>
         <td><%= trank.callerid %></td>
         <td><%= trank.username %></td>
