@@ -31,6 +31,8 @@ class HelpController < ApplicationController
     end
     employee.update_attributes(:status => 0)
 
+    setting = Setting.first
+
     for i in 0..setting.trunk_active_count - 1
       enable_trunks = Trank.where(:enable => true)
       enable_count = enable_trunks.length
