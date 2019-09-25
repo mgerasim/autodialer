@@ -77,6 +77,8 @@ Rails.application.routes.draw do
   get 'help/trank_enable_all'
   get 'help/trank_disable_all'
   get 'help/trank_check'
+  get 'help/employee_active'
+  get 'help/employee_deactive'
 
   resources :outgoings
   resources :sips
