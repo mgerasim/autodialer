@@ -14,7 +14,7 @@ class HelpController < ApplicationController
 
     for i in 0..setting.trunk_active_count - 1
       enable_trunks = Trank.where(:enable => false)
-      enable_count = enable_trunks.length
+      enable_count = enable_trunks.count
       trunk = enable_trunks[rand(enable_count - 1)]
       trunk.update_attributes(:enable => true)
     end
@@ -35,7 +35,7 @@ class HelpController < ApplicationController
 
     for i in 0..setting.trunk_active_count - 1
       enable_trunks = Trank.where(:enable => true)
-      enable_count = enable_trunks.length
+      enable_count = enable_trunks.count
       trunk = enable_trunks[rand(enable_count - 1)]
       trunk.update_attributes(:enable => false)
     end
