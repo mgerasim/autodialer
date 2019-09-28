@@ -32,7 +32,8 @@
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/devextreme/dist/js/dx.all.js",
               "node_modules/devextreme/dist/js/localization/dx.messages.ru.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "assets/js/dial_pad.js"
             ]
           },
           "configurations": {

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Analyses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee active count</th>
+      <th>Setting trunk active count</th>
+      <th>Trunk enable count</th>
+      <th>Outgoing count</th>
+      <th>Answer count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @analyses.each do |analysis| %>
+      <tr>
+        <td><%= analysis.employee_active_count %></td>
+        <td><%= analysis.setting_trunk_active_count %></td>
+        <td><%= analysis.trunk_enable_count %></td>
+        <td><%= analysis.outgoing_count %></td>
+        <td><%= analysis.answer_count %></td>
+        <td><%= link_to 'Show', analysis %></td>
+        <td><%= link_to 'Edit', edit_analysis_path(analysis) %></td>
+        <td><%= link_to 'Destroy', analysis, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Analysis', new_analysis_path %>

@@ -40,7 +40,7 @@
 
   <tbody>
     <% @tranks.each do |trank| %>
-      <tr>
+      <tr class="<%= 'active' if trank.enabled == true %> "  >
         <td><%= trank.name %></td>
         <td><%= trank.callerid %></td>
         <td><%= trank.username %></td>

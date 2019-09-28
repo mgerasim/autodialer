@@ -1,6 +1,76 @@
 class HelpController < ApplicationController
  
-  skip_before_action :require_login, :only => [:lead_incoming, :lead_update_dial_status, :lead_get_employee_sipaccount]
+  skip_before_action :require_login, :only => [:employee_active, :employee_deactive, :lead_incoming, :lead_update_dial_status, :lead_get_employee_sipaccount]
+
+  def employee_active
+
+    employee = Employee.where(:name => params[:name]).first
+    if (employee == nil)
+      employee = Employee.create(:name => params[:name])
+
+      employee.update_attributes(:status => 1)
+
+      setting = Setting.first
+
+      for i in 0..setting.trunk_active_count - 1
+        enable_trunks = Trank.where(:enabled => false)
+        enable_count = enable_trunks.count
+        trunk = enable_trunks[rand(enable_count - 1)]
+        trunk.update_attributes(:enabled => true)
+      end
+      
+    else
+      if employee.status != 1
+
+        employee.update_attributes(:status => 1)
+
+        setting = Setting.first
+
+        for i in 0..setting.trunk_active_count - 1
+          enable_trunks = Trank.where(:enabled => false)
+          enable_count = enable_trunks.count
+          trunk = enable_trunks[rand(enable_count - 1)]
+          trunk.update_attributes(:enabled => true)
+        end
+
+      end
+    end
+
+    render plain: "OK"
+
+  end
+
+  def employee_deactive
+
+    employee = Employee.where(:name => params[:name]).first
+    if (employee == nil)
+      employee = Employee.create(:name => params[:name])
+      employee.update_attributes(:status => 0)
+      setting = Setting.first
+      for i in 0..setting.trunk_active_count - 1
+        enable_trunks = Trank.where(:enabled => true)
+        enable_count = enable_trunks.count
+        trunk = enable_trunks[rand(enable_count - 1)] if enable_count > 0
+        trunk.update_attributes(:enabled => false) if enable_count > 0
+      end
+    else
+      if (employee.status != 0 )
+
+        employee.update_attributes(:status => 0)
+        setting = Setting.first
+        for i in 0..setting.trunk_active_count - 1
+          enable_trunks = Trank.where(:enabled => true)
+          enable_count = enable_trunks.count
+          trunk = enable_trunks[rand(enable_count - 1)] if enable_count > 0
+          trunk.update_attributes(:enabled => false) if enable_count > 0
+        end
+      end
+    end
+
+
+    render plain: "OK"
+
+  end
 
   def cdr
     `sed -i 's/,/;/g' /var/log/asterisk/cdr-csv/Master.csv`
