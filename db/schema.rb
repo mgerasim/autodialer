@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190910112918) do
+ActiveRecord::Schema.define(version: 20190918193427) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 20190910112918) do
     t.datetime "date_created"
     t.integer "attempt_current"
     t.bigint "trank_id"
+    t.integer "reason"
     t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 
