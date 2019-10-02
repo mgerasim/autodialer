@@ -1,6 +1,6 @@
 class TranksController < ApplicationController
   skip_before_action :require_login, :only => [:index]
-  before_action :set_trank, only: [:show, :edit, :update, :destroy]
+  before_action :set_trank, only: [:show, :edit, :update, :destroy, :distrib]
   before_action :get_config
   # GET /tranks
   # GET /tranks.json
@@ -66,6 +66,19 @@ class TranksController < ApplicationController
       format.html { redirect_to tranks_path, notice: 'Рабочий канал успешно удален.' }
       format.json { head :no_content }
     end
+  end
+
+  def distrib
+    Trank.where.not(:id => @trank.id).each do |trunk|
+      trunk.update_attributes(:waittime => @trank.waittime, :sleeptime => @trank.sleeptime, 
+        :callcount => @trank.callcount, :callmax => @trank.callmax);
+    end
+
+    respond_to do |format|
+      format.html { redirect_to tranks_path, notice: 'Настройки успешно распространены.' }
+      format.json { head :no_content }
+    end
+
   end
 
   private
