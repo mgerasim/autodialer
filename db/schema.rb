@@ -10,6 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 20190918193427) do
+=======
 ActiveRecord::Schema.define(version: 20190923060856) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -21,6 +24,7 @@ ActiveRecord::Schema.define(version: 20190923060856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+>>>>>>> 578903498a7aa8c7a431f7353f94ebc273ccb77b
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -143,6 +147,7 @@ ActiveRecord::Schema.define(version: 20190923060856) do
     t.datetime "date_created"
     t.integer "attempt_current"
     t.bigint "trank_id"
+    t.integer "reason"
     t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 

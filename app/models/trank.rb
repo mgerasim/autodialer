@@ -119,7 +119,7 @@ class Trank < ApplicationRecord
 		f.puts("Set: curl_lead_incoming=http://localhost:#{port}/help/lead_incoming?telephone=#{telephone}&trank=#{self.id}")
                 f.puts("Set: curl_lead_update_dial_status=http://localhost:#{port}/help/lead_update_dial_status?id=")
                 f.puts("Set: curl_lead_get_employee_sipaccount=http://localhost:#{port}/help/lead_get_employee_sipaccount?lead_id=")
-		f.puts("Set: outgoing=#{outgoing.id}") if outgoing != nil
+		f.puts("Set: outgoing=#{account}")
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
     end
