@@ -71,7 +71,8 @@ class TranksController < ApplicationController
   def distrib
     Trank.where.not(:id => @trank.id).each do |trunk|
       trunk.update_attributes(:waittime => @trank.waittime, :sleeptime => @trank.sleeptime, 
-        :callcount => @trank.callcount, :callmax => @trank.callmax);
+        :callcount => @trank.callcount, :callmax => @trank.callmax, :dialplan_id => @trank.dialplan_id,
+        :dialplan_incoming_id => @trank.dialplan_incoming_id);
     end
 
     respond_to do |format|
@@ -89,7 +90,7 @@ class TranksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trank_params
-      params.require(:trank).permit(:is_check_registered, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled, :password, :username, group_ids:[])
+      params.require(:trank).permit(:is_check_registered, :dialplan_incoming_id, :dialplan_id, :vote_welcome_id, :vote_finish_id, :vote_push_two_id, :context, :name, :callerid, :prefix, :waittime, :callcount, :callmax, :sleeptime, :enabled, :password, :username, group_ids:[])
     end
    
     def get_config

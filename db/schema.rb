@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20190918193427) do
-=======
-ActiveRecord::Schema.define(version: 20190923060856) do
+ActiveRecord::Schema.define(version: 20191014221223) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "employee_active_count"
@@ -24,7 +21,6 @@ ActiveRecord::Schema.define(version: 20190923060856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
->>>>>>> 578903498a7aa8c7a431f7353f94ebc273ccb77b
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -32,6 +28,7 @@ ActiveRecord::Schema.define(version: 20190923060856) do
     t.integer "level"
     t.bigint "trank_id"
     t.bigint "contact"
+    t.string "dialstatus"
     t.index ["contact"], name: "index_answers_on_contact", unique: true
     t.index ["trank_id"], name: "index_answers_on_trank_id"
   end
@@ -222,7 +219,9 @@ ActiveRecord::Schema.define(version: 20190923060856) do
     t.boolean "is_check_registered"
     t.string "password"
     t.string "username"
+    t.bigint "dialplan_incoming_id"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
+    t.index ["dialplan_incoming_id"], name: "index_tranks_on_dialplan_incoming_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"
     t.index ["vote_welcome_id"], name: "index_tranks_on_vote_welcome_id"
@@ -249,6 +248,7 @@ ActiveRecord::Schema.define(version: 20190923060856) do
   add_foreign_key "spools", "outgoings"
   add_foreign_key "spools", "tranks"
   add_foreign_key "tranks", "dialplans"
+  add_foreign_key "tranks", "dialplans", column: "dialplan_incoming_id"
   add_foreign_key "tranks", "votes", column: "vote_finish_id"
   add_foreign_key "tranks", "votes", column: "vote_push_two_id"
   add_foreign_key "tranks", "votes", column: "vote_welcome_id"

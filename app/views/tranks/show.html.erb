@@ -52,6 +52,11 @@
 </p>
 
 <p>
+ <strong>План ответа:</strong>
+ <%= @trank.dialplan_incoming.title if @trank.dialplan_incoming != nil%>
+</p>
+
+<p>
   <strong>Группы каналов:</strong>
   <%= @trank.shown_groups %>
 </p>

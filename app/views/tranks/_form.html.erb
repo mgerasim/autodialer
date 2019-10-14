@@ -62,6 +62,13 @@
   </div>
 
   <div class="field">
+    	<%= form.label "План приёма:", class: "form-label" %>
+    	<%= form.select :dialplan_incoming_id, options_for_select(Dialplan.all.collect { |p| [p.title, p.id] }, form.object.dialplan_id), {}, {:class => 'form-input',  id: "trank-dialplan_incoming"} %>
+  </div>
+
+  
+
+  <div class="field">
     <%= form.label "Активное состояние:", class: "form-checkbox" %>
     <%= form.check_box :enabled, id: :trank_enabled  %>
   </div>

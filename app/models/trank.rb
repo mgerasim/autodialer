@@ -5,6 +5,7 @@ class Trank < ApplicationRecord
     belongs_to :vote_push_two, class_name: "Vote", required: false
 
     belongs_to :dialplan
+    belongs_to :dialplan_incoming, class_name: "Dialplan", required: false
 
     validates :name, presence: true
     validates :waittime, presence: true
@@ -68,6 +69,7 @@ class Trank < ApplicationRecord
                 f.puts("defaultuser=#{trunk.username}")
                 f.puts("secret=#{trunk.password}")
                 f.puts("fromuser=#{trunk.username}")
+                f.puts("context=#{trunk.dialplan_incoming.name}")
                 f.puts("")
 
             end
