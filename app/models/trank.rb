@@ -69,7 +69,7 @@ class Trank < ApplicationRecord
                 f.puts("defaultuser=#{trunk.username}")
                 f.puts("secret=#{trunk.password}")
                 f.puts("fromuser=#{trunk.username}")
-                f.puts("context=#{trunk.dialplan_incoming.name}")
+                f.puts("context=#{trunk.dialplan_incoming.name}") if trunk.dialplan_incoming != nil
                 f.puts("")
 
             end
