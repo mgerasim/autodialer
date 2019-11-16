@@ -1,0 +1,65 @@
+<p *ngIf="!answers">
+  Загрузка ...
+</p>
+<dx-data-grid *ngIf="answers"
+  id="gridContainer"
+  [dataSource]="answers"
+  [showBorders]="true">
+  <dxo-filter-row
+    [visible]="true"></dxo-filter-row>
+  <dxo-header-filter
+    [visible]="true"></dxo-header-filter>
+  <dxo-selection mode="single"></dxo-selection>
+  <dxi-column dataField="trunk" caption="Рабочий канал"></dxi-column>
+  <dxi-column dataField="outgoingCount" caption="Количество обработанных номеров"></dxi-column>
+  <dxi-column dataField="answersCount" caption="Количество откликов"></dxi-column>
+  <dxi-column dataField="callbackCount" caption="Количество не выполнившие действия"></dxi-column>
+  <dxi-column dataField="agreedCount" caption="Количество согласившихся"></dxi-column>
+  <dxi-column dataField="confirmedCount" caption="Количество подтвердивших"></dxi-column>
+  <dxi-column dataField="timeoutCount" caption="Количество прослушившие очередь полностью и не соединенные с оператором"></dxi-column>
+  <dxi-column dataField="continueCount" caption="Количество соединенных с оператором"></dxi-column>
+  <dxo-summary>
+    <dxi-total-item
+      column="trunk"
+      [customizeText]="customizeCount"
+      summaryType="count">
+    </dxi-total-item>
+    <dxi-total-item
+      column="outgoingCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="answersCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="callbackCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="agreedCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="confirmedCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="timeoutCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+    <dxi-total-item
+      column="continueCount"
+      [customizeText]="customizeTotal"
+      summaryType="sum">
+    </dxi-total-item>
+  </dxo-summary>
+</dx-data-grid>
+
+

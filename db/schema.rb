@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190807202925) do
+ActiveRecord::Schema.define(version: 20191014221223) do
+
+  create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer "employee_active_count"
+    t.integer "setting_trunk_active_count"
+    t.integer "trunk_enable_count"
+    t.integer "outgoing_count"
+    t.integer "answer_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.datetime "created_at", null: false
@@ -18,6 +28,7 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.integer "level"
     t.bigint "trank_id"
     t.bigint "contact"
+    t.string "dialstatus"
     t.index ["contact"], name: "index_answers_on_contact", unique: true
     t.index ["trank_id"], name: "index_answers_on_trank_id"
   end
@@ -80,6 +91,19 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.index ["sipaccount_id"], name: "index_employees_on_sipaccount_id"
   end
 
+  create_table "groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups_tranks", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.bigint "trank_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_groups_tranks_on_group_id"
+    t.index ["trank_id"], name: "index_groups_tranks_on_trank_id"
+  end
+
   create_table "lead_statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "image_file_name"
     t.string "image_content_type"
@@ -120,6 +144,7 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.datetime "date_created"
     t.integer "attempt_current"
     t.bigint "trank_id"
+    t.integer "reason"
     t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 
@@ -149,6 +174,7 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.string "leadback_phone"
     t.integer "call_delta"
     t.boolean "is_support_call_delta"
+    t.integer "trunk_active_count"
   end
 
   create_table "sipaccounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -191,7 +217,11 @@ ActiveRecord::Schema.define(version: 20190807202925) do
     t.integer "callmax"
     t.integer "sleeptime"
     t.boolean "is_check_registered"
+    t.string "password"
+    t.string "username"
+    t.bigint "dialplan_incoming_id"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
+    t.index ["dialplan_incoming_id"], name: "index_tranks_on_dialplan_incoming_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"
     t.index ["vote_push_two_id"], name: "index_tranks_on_vote_push_two_id"
     t.index ["vote_welcome_id"], name: "index_tranks_on_vote_welcome_id"
@@ -210,12 +240,15 @@ ActiveRecord::Schema.define(version: 20190807202925) do
   add_foreign_key "answers", "tranks"
   add_foreign_key "contacts", "tasks"
   add_foreign_key "employees", "sipaccounts"
+  add_foreign_key "groups_tranks", "groups"
+  add_foreign_key "groups_tranks", "tranks"
   add_foreign_key "leads", "answers"
   add_foreign_key "leads", "employees"
   add_foreign_key "outgoings", "tranks"
   add_foreign_key "spools", "outgoings"
   add_foreign_key "spools", "tranks"
   add_foreign_key "tranks", "dialplans"
+  add_foreign_key "tranks", "dialplans", column: "dialplan_incoming_id"
   add_foreign_key "tranks", "votes", column: "vote_finish_id"
   add_foreign_key "tranks", "votes", column: "vote_push_two_id"
   add_foreign_key "tranks", "votes", column: "vote_welcome_id"

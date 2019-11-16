@@ -1,5 +1,8 @@
 {
   "name": "avtodailer",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "devextreme": "19.1.5",
+    "jssip": "^3.3.7"
+  }
 }

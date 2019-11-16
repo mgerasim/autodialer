@@ -1,0 +1,29 @@
+<div class="container">
+
+  <form class="form-signin"
+        (ngSubmit)="login()">
+
+    <h2 class="form-signin-heading">Авторизация сотрудника</h2>
+    <label for="inputEmail"
+           class="sr-only">Имя сотрудника:"</label>
+    <input type="email"
+           id="inputEmail"
+           class="form-control mb-2"
+           placeholder="Имя сотрудника"
+           name="username"
+           required
+           autofocus>
+    <label for="inputPassword"
+           class="sr-only">Пароль:</label>
+    <input type="password"
+           id="inputPassword"
+           class="form-control mb-2"
+           placeholder="Пароль"
+           name="password"
+           required>
+    <button class="btn btn-lg btn-primary btn-block"
+            type="submit">Вход</button>
+
+  </form>
+
+</div>

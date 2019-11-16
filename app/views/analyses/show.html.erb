@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Employee active count:</strong>
+  <%= @analysis.employee_active_count %>
+</p>
+
+<p>
+  <strong>Setting trunk active count:</strong>
+  <%= @analysis.setting_trunk_active_count %>
+</p>
+
+<p>
+  <strong>Trunk enable count:</strong>
+  <%= @analysis.trunk_enable_count %>
+</p>
+
+<p>
+  <strong>Outgoing count:</strong>
+  <%= @analysis.outgoing_count %>
+</p>
+
+<p>
+  <strong>Answer count:</strong>
+  <%= @analysis.answer_count %>
+</p>
+
+<%= link_to 'Edit', edit_analysis_path(@analysis) %> |
+<%= link_to 'Back', analyses_path %>

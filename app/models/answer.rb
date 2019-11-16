@@ -3,16 +3,16 @@ require 'net/http'
 require 'addressable/uri'
 
 class Answer < ApplicationRecord
-    
+
+ 
     belongs_to :trank
 
     default_scope { order(created_at: :desc) }
 
     after_create :google_sheet_save 
-#    after_create :skorozvon_save
-   
+
     def self.to_csv
-	attributes = %w{shown_date_created_at shown_time_created_at contact level trank_name}
+	attributes = %w{shown_date_created_at shown_time_created_at shown_contact level trank_name}
 	
 	CSV.generate({:headers => false, :col_sep => ';'}) do |csv|
 	    
@@ -21,6 +21,10 @@ class Answer < ApplicationRecord
 	    end
 	    
 	end
+    end
+
+    def shown_contact
+        "7#{contact}"
     end
 
     def shown_date_created_at

@@ -1,30 +1,37 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: [:show, :edit, :update, :destroy]
 
+   skip_before_action :require_login, :only => [:index]
+
   # GET /answers
   # GET /answers.json
   def index
     date = DateTime.now
-    @outgoing_total = Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
- 	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"])
+    @outgoing_total = Outgoing.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY", "DIALING"])
 
-    @answer_total = Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day))
+    @answer_total = Answer.all
 	
     @outgoing_precent = 0 if @outgoing_total.count == 0
 
     @outgoing_precent = ((@answer_total.count.to_f / @outgoing_total.count.to_f) * 100).round(2) if @outgoing_total.count > 0
 
-    @outgoing_answer_total = Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
-        .where(:status => ["ANSWERED"])
+    @outgoing_answer_total = Answer.where(:level => ["1", "2"]) #Outgoing.where(:status => ["ANSWERED", "1", "2"])
 
     @outgoing_answer_precent = 0 if @outgoing_answer_total.count == 0
 
     @outgoing_answer_precent = ((@answer_total.count.to_f / @outgoing_answer_total.count.to_f) * 100).round(2) if @outgoing_answer_total.count > 0
 
-    @answers = Answer.where.not(:level => 0)
+    @answers = Answer.all
+
+headers['Access-Control-Allow-Origin'] = '*'
+headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+headers['Access-Control-Request-Method'] = '*'
+headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+
     respond_to do |format|
         format.html
-        format.csv { send_data Answer.all.to_csv, filename: "answers-#{Date.today}.csv" }
+        format.csv { send_data @answers.to_csv, filename: "answers-#{Date.today}.csv" }
+        format.json { render :json => @answers, :include => {:trank => {:only => :name}}, :except => [:created_at, :updated_at]}
     end
   end
 

@@ -7,7 +7,7 @@
         <%= link_to "Исходящие", outgoings_path, {:class => "btn btn-link"} %>
 	<% if Config.first.is_outgoing_deleted == false %>
         	<%= link_to "Отклики", answers_path, {:class => "btn btn-link"} %>
-        	<%= link_to "Статистика", cdr_index_path, {:class => "btn btn-link"} %>
+        	<%= link_to "Статистика", analysis_answers_path, {:class => "btn btn-link"} %>
 	<% end %>
 <!--
 	    <%= link_to "Автоответчик", machines_path, {:class => "btn btn-link"} %>
@@ -17,9 +17,14 @@
       <% end %>
 
       <% if Config.first.is_support_employee %>
+<!--
         <%= link_to "Лиды", leads_path, {:class => "btn btn-link"} %>
+-->
         <%= link_to "Сотрудники", employees_path, { :class => "btn btn-link" } %>
+
+  <!--
         <%= link_to "Внутренние номера", sipaccounts_path, { :class => "btn btn-link" } %>
+    -->
       <% end %>
 
 
@@ -60,9 +65,10 @@
         <div class="dropdown dropdown-right"><a class="btn btn-link dropdown-toggle" tabindex="0">Настройки <i class="icon icon-caret"></i></a>
                   <ul class="menu">
                     <li class="menu-item">
-                        
                           <%= link_to "Рабочие каналы", tranks_path, {:class => "btn btn-link"} %>
-
+                      </li>
+                    <li class="menu-item">
+                          <%= link_to "Группы каналов", groups_path, {:class => "btn btn-link"} %>
                       </li>
 
                       <li class="menu-item">

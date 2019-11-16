@@ -10,6 +10,16 @@
 </p>
 
 <p>
+  <strong>Имя пользователя:</strong>
+  <%= @trank.username %>
+</p>
+
+<p>
+  <strong>Пароль:</strong>
+  <%= @trank.password %>
+</p>
+
+<p>
   <strong>Префикс:</strong>
   <%= @trank.prefix %>
 </p>
@@ -39,6 +49,16 @@
 <p>
  <strong>План вызова:</strong>
  <%= @trank.dialplan.title if @trank.dialplan != nil%>
+</p>
+
+<p>
+ <strong>План ответа:</strong>
+ <%= @trank.dialplan_incoming.title if @trank.dialplan_incoming != nil%>
+</p>
+
+<p>
+  <strong>Группы каналов:</strong>
+  <%= @trank.shown_groups %>
 </p>
 
 <%= link_to 'Редактировать', edit_trank_path(@trank) %> |

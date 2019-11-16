@@ -1,0 +1,41 @@
+<div class="column col-8 col-mx-auto bg-gray">
+
+
+<% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "toast toast-success") %>
+      <% end %>
+
+<div class="text-center">
+  <h1>Группы каналов</h1>
+</div>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Наименование</th>
+      <th>Рабочие каналы</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.title %></td>
+        <td><%= group.shown_tranks %></td>
+        <td><%= link_to 'Активировать', active_group_path(group) %></td>
+        <td><%= link_to 'Деактивировать', deactive_group_path(group) %></td>
+        <td><%= link_to 'Показать', group %></td>
+        <td><%= link_to 'Редактировать', edit_group_path(group) %></td>
+        <td><%= link_to 'Удалить', group, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Добавить', new_group_path, :class => 'btn btn-primary' %>
+</div>

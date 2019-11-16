@@ -5,11 +5,20 @@ class Trank < ApplicationRecord
     belongs_to :vote_push_two, class_name: "Vote", required: false
 
     belongs_to :dialplan
+    belongs_to :dialplan_incoming, class_name: "Dialplan", required: false
 
     validates :name, presence: true
     validates :waittime, presence: true
     validates :callerid, presence: true
     validates :callcount, presence: true
+
+    has_and_belongs_to_many :groups
+
+    after_save :update_peers
+
+    def shown_groups
+        self.groups.collect(&:title).join(';')
+    end
 
     def initialize(attributes={})
       super
@@ -19,14 +28,12 @@ class Trank < ApplicationRecord
 
     def outgoing_total_count
         date = DateTime.now
-		Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
-       # Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
- #	.where(:status => ["DIALED", "ANSWERED", "NO ANSWER", "FAILED", "BUSY"]).count
+		Outgoing.where(:trank => self).count
     end
 
     def answer_total_count
         date = DateTime.now
-	Answer.where(:updated_at => (date.beginning_of_day..date.end_of_day)).where(:trank => self).count
+	Answer.where(:trank => self).count
     end
 
     def outgoing_precent
@@ -40,9 +47,8 @@ class Trank < ApplicationRecord
 
     def outgoing_answer_total_count
       date = DateTime.now
-           Outgoing.where(:updated_at => (date.beginning_of_day..date.end_of_day))
-            .where(:trank => self)
-            .where(:status => ["ANSWERED"]).count
+           #Outgoing.where(:trank => self).where(:status => ["ANSWERED"]).count
+           Answer.where(:trank => self).where(:level => ["1", "2"]).count
     end
 
     def outgoing_answer_precent
@@ -52,6 +58,25 @@ class Trank < ApplicationRecord
         else
             ((answer_total_count.to_f / outgoing_answer_total_count.to_f) * 100).round(2) 
         end
+    end
+
+    def update_peers
+        File.open("/home/rails/autodialer.sip.#{Rails.env}.conf", "w+") do |f|
+            Trank.all.each do |trunk| 
+                f.chmod(0666)
+                f.puts("[#{trunk.name}](beeline)")
+                f.puts("callbackextension=#{trunk.username}")
+                f.puts("defaultuser=#{trunk.username}")
+                f.puts("secret=#{trunk.password}")
+                f.puts("fromuser=#{trunk.username}")
+                f.puts("context=#{trunk.dialplan_incoming.name}") if trunk.dialplan_incoming != nil
+                f.puts("")
+
+            end
+        end
+
+        %x{sudo asterisk -rx "sip reload"}
+
     end
 
     def check(telephone, account, outgoing = nil)
@@ -98,7 +123,7 @@ class Trank < ApplicationRecord
 		f.puts("Set: curl_lead_incoming=http://localhost:#{port}/help/lead_incoming?telephone=#{telephone}&trank=#{self.id}")
                 f.puts("Set: curl_lead_update_dial_status=http://localhost:#{port}/help/lead_update_dial_status?id=")
                 f.puts("Set: curl_lead_get_employee_sipaccount=http://localhost:#{port}/help/lead_get_employee_sipaccount?lead_id=")
-		f.puts("Set: outgoing=#{outgoing.id}") if outgoing != nil
+		f.puts("Set: outgoing=#{account}")
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
     end
