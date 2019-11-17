@@ -1,75 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using AutoDialer.Console;
+using FluentNHibernate.Cfg;
+using FluentNHibernate.Cfg.Db;
 
 namespace AutoDialer
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main()
         {
-            string base_url = "https://app.mango-office.ru/vpbx";
-            string command_url = "/config/users/request";
-            string vpbx_api_key = "bx87j76eaoet53vhyd06qae4ksbhf89g";
-            string vpbx_api_salt = "v8e56aa6peql8btxejtvkxpugq2lo1sa";
+            DataAccessLayer dataAccessLayer = null;
 
-            string json = "{}";
-
-            string sign = Sign(vpbx_api_key, json, vpbx_api_salt);
-
-            Console.WriteLine(sign);
-
-            HttpClient httpClient = new HttpClient();
-
-            var values = new Dictionary<string, string>
+            try
             {
-                { "vpbx_api_key", vpbx_api_key },
-                { "sign", sign },
-                {"json", "{}" }
+                var connectionString = "";
 
-            };
+                dataAccessLayer = new DataAccessLayer(connectionString);
 
-            var content = new FormUrlEncodedContent(values);
+                dataAccessLayer.Open();
 
-            var response = httpClient.PostAsync(base_url + command_url, content).Result;
+                do
+                {
+                    await Task.Delay(1000);
+                } while (false);
 
-            var responseString = response.Content.ReadAsStringAsync().Result;
-
-            Console.WriteLine(responseString);
-        }
-
-        /// <summary>
-        /// Формирует подпись запроса
-        /// </summary>
-        /// <param name="vpbx_api_key"></param>
-        /// <param name="json"></param>
-        /// <param name="vpbx_api_salt"></param>
-        /// <returns></returns>
-        static string Sign(string vpbx_api_key, string json, string vpbx_api_salt)
-        {
-            string result = sha256(vpbx_api_key + json + vpbx_api_salt);
-
-            return result;
-        }
-
-        /// <summary>
-        /// Расчитывает хеш SHA256
-        /// </summary>
-        /// <param name="randomString"></param>
-        /// <returns></returns>
-        static string sha256(string randomString)
-        {
-            var crypt = new SHA256Managed();
-            string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(randomString));
-            foreach (byte theByte in crypto)
-            {
-                hash += theByte.ToString("x2");
             }
-            return hash;
+            catch(Exception exc)
+            {
+                System.Console.Write(exc.ToString());
+            }
+            finally
+            {
+                if (dataAccessLayer != null)
+                {
+                    dataAccessLayer.Dispose();
+                }
+            }
+            
         }
+
+        
     }
 }
