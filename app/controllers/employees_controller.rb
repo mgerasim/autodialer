@@ -63,6 +63,42 @@ class EmployeesController < ApplicationController
     end
   end
 
+  def active
+    employee = Employee.where(:name => params[:name]).first
+    if (employee == nil)
+      employee = Employee.create(:name => params[:name])
+    end
+    employee.update_attributes(:status => 1)
+
+    setting = Setting.first
+
+    for i in 0..setting.trunk_active_count - 1
+      enable_trunks = Trank.where(:enable => false)
+      enable_count = enable_trunks.length
+      trunk = enable_trunks[rand(enable_count - 1)]
+      trunk.update_attributes(:enable => true)
+    end
+
+    render plain: "OK"
+  end
+
+  def deactive
+    employee = Employee.where(:name => params[:name]).first
+    if (employee == nil)
+      employee = Employee.create(:name => params[:name])
+    end
+    employee.update_attributes(:status => 0)
+
+    for i in 0..setting.trunk_active_count - 1
+      enable_trunks = Trank.where(:enable => true)
+      enable_count = enable_trunks.length
+      trunk = enable_trunks[rand(enable_count - 1)]
+      trunk.update_attributes(:enable => false)
+    end
+
+    render plain: "OK"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_employee

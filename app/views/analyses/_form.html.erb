@@ -1,0 +1,42 @@
+<%= form_with(model: analysis, local: true) do |form| %>
+  <% if analysis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(analysis.errors.count, "error") %> prohibited this analysis from being saved:</h2>
+
+      <ul>
+      <% analysis.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :employee_active_count %>
+    <%= form.number_field :employee_active_count, id: :analysis_employee_active_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :setting_trunk_active_count %>
+    <%= form.number_field :setting_trunk_active_count, id: :analysis_setting_trunk_active_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :trunk_enable_count %>
+    <%= form.number_field :trunk_enable_count, id: :analysis_trunk_enable_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :outgoing_count %>
+    <%= form.number_field :outgoing_count, id: :analysis_outgoing_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer_count %>
+    <%= form.number_field :answer_count, id: :analysis_answer_count %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

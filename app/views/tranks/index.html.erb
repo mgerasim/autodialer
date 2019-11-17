@@ -19,48 +19,46 @@
   <thead>
     <tr>
       <th>Наименование</th>
-      <th>Исходящий номер</th>
       <th>Имя пользователя</th>
       <th>Пароль</th>
       <th>Префикс</th>
       <th>Время длительности вызова</th>
       <th>Максимальное количество вызовов</th>
       <th>Активное состояние</th>
-      <% if @config.is_trank_context_showed or is_admin? %>
-        <th>План вызова: </th>
-      <% end %>
-      <% if @config.is_vote_supported or is_admin? %>
-        <th>Запись №01</th>
-        <th>Запись №02</th>
-        <th>Запись №03</th>
-      <% end %>
-      <th colspan="3"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tranks.each do |trank| %>
-      <tr>
+      <tr class="<%= 'active' if trank.enabled == true %> "  >
         <td><%= trank.name %></td>
-        <td><%= trank.callerid %></td>
         <td><%= trank.username %></td>
         <td><%= trank.password %></td>
         <td><%= trank.prefix %></td>
         <td><%= trank.waittime %></td>
         <td><%= trank.callmax %></td>
         <td><%= trank.enabled %></td>
-        <% if @config.is_trank_context_showed or is_admin? %>
-  	  <td><%= trank.dialplan.title if trank.dialplan != nil %></td>
-        <% end %>
-        <% if @config.is_vote_supported or is_admin? %>
-          <td><%= trank.vote_welcome.title if trank.vote_welcome != nil %></td>
-          <td><%= trank.vote_finish.title if trank.vote_finish != nil %></td>
-          <td><%= trank.vote_push_two.title if trank.vote_push_two != nil %></td>
-        <% end %>
-        <td><%= link_to 'Показать', trank %></td>
-        <td><%= link_to 'Редактировать', edit_trank_path(trank) %></td>
-        <td><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to 'Тестировать', '#', :class => "trank_test", :data => {:id => trank.id} %></td>
+        <td>
+
+
+<div class="dropdown dropdown-right">
+                  <div class="btn-group">
+                    
+                    <a class="btn btn-primary dropdown-toggle" tabindex="0"><i class="icon icon-caret"></i></a>
+                    <ul class="menu">
+                      <li class="menu-item"><%= link_to 'Показать', trank %></li>
+                      <li class="menu-item"><%= link_to 'Редактировать', edit_trank_path(trank) %></li>
+                      <li class="menu-item"><%= link_to 'Тестировать', '#', :class => "trank_test", :data => {:id => trank.id} %></li>
+                      <li class="menu-item"><%= link_to 'Распространить настройки', distrib_trank_path(trank) %></li>
+                      <li class="menu-item"><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                    </ul>
+                  </div>
+                </div>
+                
+
+
+        </td>
       </tr>
     <% end %>
   </tbody>

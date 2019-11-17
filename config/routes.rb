@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :analyses
   get 'events/call'
 
   get 'events/dtmf'
@@ -13,6 +14,14 @@ Rails.application.routes.draw do
   post 'events/summary'
 
   get 'analysis/answers'
+
+
+  resources :employees do
+    member do 
+      get 'active'
+      get 'deactive'
+    end
+  end
 
   resources :groups do 
     member do 
@@ -38,7 +47,6 @@ Rails.application.routes.draw do
 
   get 'cabinet/destroy'
 
-  resources :employees
   resources :leads
   resources :machines
   resources :dialplans
@@ -57,7 +65,12 @@ Rails.application.routes.draw do
   
   get 'register_reload', to: 'register_reload#reload'
 
-  resources :tranks
+  resources :tranks do
+    member do
+      get 'distrib'
+    end
+  end
+
   get 'help/lead_get_employee_sipaccount'
   get 'help/lead_update_dial_status'
   get 'help/lead_incoming'
@@ -69,6 +82,8 @@ Rails.application.routes.draw do
   get 'help/trank_enable_all'
   get 'help/trank_disable_all'
   get 'help/trank_check'
+  get 'help/employee_active'
+  get 'help/employee_deactive'
 
   resources :outgoings
   resources :sips

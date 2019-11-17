@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_active_count: 1
+  setting_trunk_active_count: 1
+  trunk_enable_count: 1
+  outgoing_count: 1
+  answer_count: 1
+
+two:
+  employee_active_count: 1
+  setting_trunk_active_count: 1
+  trunk_enable_count: 1
+  outgoing_count: 1
+  answer_count: 1

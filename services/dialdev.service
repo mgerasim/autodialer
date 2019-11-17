@@ -1,0 +1,15 @@
+[Unit]
+Description=Dial Development Service
+After=network.target
+
+[Service]
+Type=simple
+User=rails
+Environment=RAILS_ENV=developmnet
+WorkingDirectory=/home/rails/projects/autodialer
+ExecStart=/home/rails/.rbenv/shims/bundle exec /home/rails/.rbenv/shims/rake dial:start RAILS_ENV=development --silent >> log/dial_start_cron.log 2>> log/dial_start_error.log
+Restart=on-abort
+
+
+[Install]
+WantedBy=multi-user.target

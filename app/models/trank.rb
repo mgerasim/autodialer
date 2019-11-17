@@ -5,6 +5,7 @@ class Trank < ApplicationRecord
     belongs_to :vote_push_two, class_name: "Vote", required: false
 
     belongs_to :dialplan
+    belongs_to :dialplan_incoming, class_name: "Dialplan", required: false
 
     validates :name, presence: true
     validates :waittime, presence: true
@@ -68,6 +69,7 @@ class Trank < ApplicationRecord
                 f.puts("defaultuser=#{trunk.username}")
                 f.puts("secret=#{trunk.password}")
                 f.puts("fromuser=#{trunk.username}")
+                f.puts("context=#{trunk.dialplan_incoming.name}") if trunk.dialplan_incoming != nil
                 f.puts("")
 
             end
@@ -107,7 +109,9 @@ class Trank < ApplicationRecord
                     f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
                     f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
                 end
-                #
+
+		f.puts("Set: vote_record=" + Vote.first.record.path(:original).chomp('.mp3')) if Vote.first != nil                
+
                 f.puts("Set: trunk=" + self.id.to_s)
                 f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)
@@ -119,7 +123,7 @@ class Trank < ApplicationRecord
 		f.puts("Set: curl_lead_incoming=http://localhost:#{port}/help/lead_incoming?telephone=#{telephone}&trank=#{self.id}")
                 f.puts("Set: curl_lead_update_dial_status=http://localhost:#{port}/help/lead_update_dial_status?id=")
                 f.puts("Set: curl_lead_get_employee_sipaccount=http://localhost:#{port}/help/lead_get_employee_sipaccount?lead_id=")
-		f.puts("Set: outgoing=#{outgoing.id}") if outgoing != nil
+		f.puts("Set: outgoing=#{account}")
 		            FileUtils.mv(f.path, setting.outgoing + '/' + File.basename(f.path))
           end
     end
