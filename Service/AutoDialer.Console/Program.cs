@@ -17,6 +17,8 @@ namespace AutoDialer
 {
     class Program
     {
+        static object _lock = new object();
+
         /// <summary>
         /// Логирование
         /// </summary>
@@ -53,13 +55,19 @@ namespace AutoDialer
 
                 DateTime endRun = DateTime.Now;
 
+                var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
+
+                ulong index = 0;
+
                 while (true)
                 {
                     try
                     {
+                        index++;
+
                         endRun = DateTime.Now;
 
-      //                  File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
+                        File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
                         if ((endRun - bgnRun).TotalMilliseconds < 1000)
                         {
@@ -84,6 +92,17 @@ namespace AutoDialer
                             continue;
                         }
 
+                        if (index % 10 == 0)
+                        {
+                            Task.Run(() =>
+                            {
+                                lock (_lock)
+                                {
+                                    outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
+                                }
+                            });
+                        }
+
                         var activedTrunks = trunks.Where(x => x.Actived == true);
 
                         var callCountTotal = activedTrunks.Sum(x => x.CallCount);
@@ -94,10 +113,13 @@ namespace AutoDialer
                         {
                             Log($"RUN: BGN: TRUNK: {trunk.Title}");
 
-                            //int fileCount = Directory.GetFiles(setting.OutgoingDir, $"*{trunk.Title}*", SearchOption.TopDirectoryOnly).Length;
+                            int fileCount = 0;
 
-                            //int fileCount = ReturnFiles(new DirectoryInfo(setting.OutgoingDir), $"*{trunk.Title}*").Length;
-
+                            lock ( _lock )
+                            {
+                                fileCount = outgoingFiles.Select(x => x.Contains(trunk.Title)).Count();
+                            }
+                                
                             Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
 
                             if (fileCount > trunk.CallMax)
