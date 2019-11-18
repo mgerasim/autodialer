@@ -33,6 +33,7 @@ class TranksController < ApplicationController
 
     respond_to do |format|
       if @trank.save
+         %x( sudo service Autodial restart )
         format.html { redirect_to @trank, notice: 'Рабочий канал успешно создан.' }
         format.json { render :show, status: :created, location: @trank }
       else
@@ -47,6 +48,7 @@ class TranksController < ApplicationController
   def update
     respond_to do |format|
       if @trank.update(trank_params)
+         %x( sudo service Autodial restart )
         format.html { redirect_to @trank, notice: 'Рабочий канал успешно обновлен.' }
         format.json { render :show, status: :ok, location: @trank }
       else
