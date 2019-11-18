@@ -64,7 +64,7 @@ namespace AutoDialer.Console
 #else
             
             SessionFactory = Fluently.Configure()
-                .Database(OdbcConfiguration.MyDialect.ConnectionString("DSN=ODBC2;UID=avtodialer;PWD=avtodialer")
+                .Database(OdbcConfiguration.MyDialect.ConnectionString("DSN=ODBC;UID=avtodialer;PWD=avtodialer")
                         .Driver<NHibernate.Driver.OdbcDriver>()
                         .Dialect<NHibernate.Dialect.MySQLDialect>()
 

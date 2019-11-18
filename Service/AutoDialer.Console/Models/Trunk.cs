@@ -37,10 +37,15 @@ namespace AutoDialer.Console.Models
         /// </summary>
         public virtual int CallMax { get; set; }
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        public Trunk()
+		/// <summary>
+		/// Идентификатор вызывающей стороны
+		/// </summary>
+		public virtual string CallerId { get; set; }
+
+		/// <summary>
+		/// Конструктор
+		/// </summary>
+		public Trunk()
         {
         }
 
@@ -71,7 +76,7 @@ namespace AutoDialer.Console.Models
             new StreamWriter(fullFileName, true))
             {
                 file.WriteLine($"Channel: SIP/{Title}/{outgoing.Telephone}");
-                //file.WriteLine("Callerid: " + self.callerid)
+				file.WriteLine($"Callerid: {CallerId}");
                 file.WriteLine("MaxRetries: 0");
                 file.WriteLine("RetryTime: 20");
                 file.WriteLine($"WaitTime: {WaitTime}");
