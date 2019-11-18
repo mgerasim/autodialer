@@ -49,11 +49,15 @@ class OutgoingsController < ApplicationController
         path = @outgoing.csv_upload.path
 
         Rails.logger.error path
-	
+
+	%x( sudo service Autodial stop )
+
 	upload = "LOAD DATA LOCAL INFILE '" + path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"	
 	
 	results = ActiveRecord::Base.connection.execute(upload)
-	
+
+	%x( sudo service Autodial start )	
+
 	Rails.logger.error results     
   
         respond_to do |format|

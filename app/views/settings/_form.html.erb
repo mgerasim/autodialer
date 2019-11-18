@@ -55,6 +55,10 @@
     <%= form.text_field :outgoing, id: :outgoing, class: "form-input" %>
   </div>
 
+   <div class="field">
+     <%= form.label "Службы генерации обзвона:", class: "form-label" %>
+     <%= form.select :dialtype, options_for_select([["Синхронная (первоначальный вариант)", 1], ["Асинхронная (обновленный вариант)", 2]], form.object.dialtype), {}, {:class =>"form-input"} %>
+   </div>
 
   <% if @config.is_google_integrated %>
 

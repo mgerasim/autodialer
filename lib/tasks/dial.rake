@@ -61,6 +61,11 @@ namespace :dial do
           setting.update_attributes(:sleep => 1)
         end  
 
+        if (setting.dialtype != 1)
+          Rails.logger.debug "DIAL: NEW: Пропускаем итерацию так как указана иная служба"
+                next
+        end
+
         if (!(setting.hour_bgn <= Time.now.hour and Time.now.hour < setting.hour_end))
           Rails.logger.debug "DIAL: NEW: Пропускаем итерацию так как нахоидимся за рамки временного промежутка"
         	next

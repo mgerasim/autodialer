@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191014221223) do
+ActiveRecord::Schema.define(version: 20191117102844) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "employee_active_count"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(version: 20191014221223) do
     t.integer "attempt_current"
     t.bigint "trank_id"
     t.integer "reason"
+    t.index ["status"], name: "index_outgoings_on_status", length: { status: 191 }
     t.index ["trank_id"], name: "index_outgoings_on_trank_id"
   end
 
@@ -175,6 +176,7 @@ ActiveRecord::Schema.define(version: 20191014221223) do
     t.integer "call_delta"
     t.boolean "is_support_call_delta"
     t.integer "trunk_active_count"
+    t.integer "dialtype", default: 1
   end
 
   create_table "sipaccounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

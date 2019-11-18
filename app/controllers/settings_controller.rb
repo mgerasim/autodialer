@@ -40,6 +40,7 @@ class SettingsController < ApplicationController
   # PATCH/PUT /settings/1
   # PATCH/PUT /settings/1.json
   def update
+    %x( sudo service Autodial restart ) 
     respond_to do |format|
       if @setting.update(setting_params)
         format.html { redirect_to edit_setting_path(Setting.first), notice: 'Настройки обновлены' }
@@ -77,6 +78,6 @@ class SettingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
-      params.require(:setting).permit(:trunk_active_count, :is_support_call_delta, :call_delta, :leadback_phone, :title, :google_title, :google_private_key, :attempt_max_count, :attempt_interval, :waittime, :callcount, :sipnames, :currentcount, :outgoing, :sleep, :is_enabled, :trank, :hour_bgn, :hour_end)
+      params.require(:setting).permit(:dialtype, :trunk_active_count, :is_support_call_delta, :call_delta, :leadback_phone, :title, :google_title, :google_private_key, :attempt_max_count, :attempt_interval, :waittime, :callcount, :sipnames, :currentcount, :outgoing, :sleep, :is_enabled, :trank, :hour_bgn, :hour_end)
     end
 end

@@ -89,6 +89,7 @@ class HelpController < ApplicationController
   end
 
 
+
   def cdr_clear
    # `rm -f /var/log/asterisk/cdr-csv/*.csv`
      `> /var/log/asterisk/cdr-csv/Master.csv`
@@ -125,6 +126,7 @@ class HelpController < ApplicationController
     Trank.where(:enabled => false).each do |trank| 
       trank.update_attributes(:enabled => true)
     end
+    %x( sudo service Autodial restart )
     redirect_to tranks_url, notice: "Все каналы активированы"
   end
 
@@ -132,6 +134,7 @@ class HelpController < ApplicationController
     Trank.where(:enabled => true).each do |trank| 
         trank.update_attributes(:enabled => false)
     end
+    %x( sudo service Autodial restart )
     redirect_to tranks_url, notice: "Все каналы деактивированы"
   end
 
