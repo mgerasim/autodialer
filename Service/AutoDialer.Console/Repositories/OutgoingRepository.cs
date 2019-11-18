@@ -20,9 +20,11 @@ namespace AutoDialer.Console.Repositories
         /// <returns></returns>
         public override async Task DeleteAsync(Outgoing entity)
         {
-            await _session.DeleteAsync(entity);
+			_session.BeginTransaction();
 
-            _session.Flush();
+			await _session.DeleteAsync(entity);
+
+			await _session.Transaction.CommitAsync();
         }
 
         public override Task<Outgoing> GetAsync(int Id)

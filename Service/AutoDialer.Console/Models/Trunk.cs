@@ -61,14 +61,14 @@ namespace AutoDialer.Console.Models
         /// <param name="outgoing"></param>
         public virtual async Task Dialing(Outgoing outgoing, Setting setting)
         {
-            string fileName = $"{Guid.NewGuid().ToString()}-{Title}-{outgoing.Telephone}.call";
+            string fileName = $"{Guid.NewGuid().ToString()}-{Title}-{outgoing.Telephone.Trim().Replace("\r","").Replace("\n","")}.call";
 
             string fullFileName = Path.GetTempPath() + fileName;
 
             System.Console.WriteLine(fullFileName);
 
             using (var file =
-            new System.IO.StreamWriter(fullFileName, true))
+            new StreamWriter(fullFileName, true))
             {
                 file.WriteLine($"Channel: SIP/{Title}/{outgoing.Telephone}");
                 //file.WriteLine("Callerid: " + self.callerid)
@@ -88,14 +88,11 @@ namespace AutoDialer.Console.Models
 
             }
 
-            try
-            {
-                File.Move(fullFileName, setting.OutgoingDir + "/" + fileName);
-            }
-            catch { }
-            finally { }
+			System.Console.WriteLine($"{fullFileName} - {setting.OutgoingDir} + / + {fileName}");
 
-            await outgoing.DeleteAsync();
+			File.Move(fullFileName, setting.OutgoingDir + "/" + fileName);
+
+			await outgoing.DeleteAsync();
         }
     }
 }

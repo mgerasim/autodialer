@@ -2,7 +2,7 @@ dotnet restore AutoDialer.Console.csproj
 dotnet publish AutoDialer.Console.csproj -c Release --runtime linux-x64
 ssh root@ast11 'systemctl stop Autodial.service'
 
-scp /Users/mgerasim/Projects/autodialer/Service/AutoDialer.Console/bin/Release/netcoreapp2.2/linux-x64/publish/Auto* root@ast11:/home/asterisk/services/Autodial/ 
+scp bin/Release/netcoreapp2.2/linux-x64/publish/Auto* root@ast11:/home/asterisk/services/Autodial/ 
 ssh root@ast11 ' chown asterisk:asterisk /home/asterisk/services/Autodial/*'
 
 ssh root@ast11 'cp /home/asterisk/services/Autodial/Autodial.service /etc/systemd/system/'

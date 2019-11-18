@@ -24,152 +24,157 @@ namespace AutoDialer
         /// </summary>
         static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-        static async Task Main()
+        static void Main()
         {
-            var setting = await Setting.Reload();
+			Task.Run(async () =>
+			{
+				var setting = await Setting.Reload();
 
-            try
-            {
-                if (setting is null)
-                {
-                    throw new ArgumentNullException(nameof(setting));
-                }
+				try
+				{
+					if (setting is null)
+					{
+						throw new ArgumentNullException(nameof(setting));
+					}
 
-                Log("MAIN: Setting: Reload");
+					Log("MAIN: Setting: Reload");
 
-                Log($"MAIN: Setting: HourBgn: {setting.HourBgn}" );
-                Log($"MAIN: Setting: HourEnd: {setting.HourEnd}" );
-                Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
-                Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
-                Log($"MAIN: DialType: {setting.DialType}");
+					Log($"MAIN: Setting: HourBgn: {setting.HourBgn}");
+					Log($"MAIN: Setting: HourEnd: {setting.HourEnd}");
+					Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
+					Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
+					Log($"MAIN: DialType: {setting.DialType}");
 
-                var trunks = await Trunk.GetListAsync();
+					var trunks = await Trunk.GetListAsync();
 
-                var totalOutgoings = await Outgoing.GetInsertedListAsync();
+					var totalOutgoings = await Outgoing.GetInsertedListAsync();
 
-                Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
+					Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
 
-                var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
+					var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
 
-                DateTime bgnRun = DateTime.Now;
+					DateTime bgnRun = DateTime.Now;
 
-                DateTime endRun = DateTime.Now;
+					DateTime endRun = DateTime.Now;
 
-                var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
+					var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
 
-                ulong index = 0;
+					ulong index = 0;
 
-                while (true)
-                {
-                    try
-                    {
-                        index++;
+					while (true)
+					{
+						try
+						{
+							index++;
 
-                        endRun = DateTime.Now;
+							endRun = DateTime.Now;
 
-                        File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
+							File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
-                        if ((endRun - bgnRun).TotalMilliseconds < 1000)
-                        {
-                            await Task.Delay(1000);
-                        }
+							if ((endRun - bgnRun).TotalMilliseconds < 1000)
+							{
+								await Task.Delay(1000);
+							}
 
-                        bgnRun = DateTime.Now;
+							bgnRun = DateTime.Now;
 
-                        Log("RUN: BGN");
+							Log("RUN: BGN");
 
-                        if (setting.DialType != SettingDialType.DialAsyncCSharp)
-                        {
-                            Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Указана иная служба генерации вызовов на обзвон в настройках");
+							if (setting.DialType != SettingDialType.DialAsyncCSharp)
+							{
+								Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Указана иная служба генерации вызовов на обзвон в настройках");
 
-                            continue;
-                        }
+								continue;
+							}
 
-                        if (!(setting.HourBgn <= DateTime.Now.Hour && DateTime.Now.Hour < setting.HourEnd))
-                        {
-                            Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Находимся за рамками рабочего времени");
+							if (!(setting.HourBgn <= DateTime.Now.Hour && DateTime.Now.Hour < setting.HourEnd))
+							{
+								Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Находимся за рамками рабочего времени");
 
-                            continue;
-                        }
+								continue;
+							}
 
-                        if (index % 10 == 0)
-                        {
-                            Task.Run(() =>
-                            {
-                                lock (_lock)
-                                {
-                                    outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
-                                }
-                            });
-                        }
+							if (index % 10 == 0)
+							{
+								Task.Run(() =>
+								{
+									lock (_lock)
+									{
+										outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
 
-                        var activedTrunks = trunks.Where(x => x.Actived == true);
+										Log($"RUN: BGN: outgoingFiles: Обновлен список файл вызовов: {outgoingFiles.Length}");
+									}
+								});
+							}
 
-                        var callCountTotal = activedTrunks.Sum(x => x.CallCount);
+							var activedTrunks = trunks.Where(x => x.Actived == true);
 
-                        Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
+							var callCountTotal = activedTrunks.Sum(x => x.CallCount);
 
-                        foreach (var trunk in activedTrunks)
-                        {
-                            Log($"RUN: BGN: TRUNK: {trunk.Title}");
+							Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
 
-                            int fileCount = 0;
+							foreach (var trunk in activedTrunks)
+							{
+								Log($"RUN: BGN: TRUNK: {trunk.Title}");
 
-                            lock ( _lock )
-                            {
-                                fileCount = outgoingFiles.Select(x => x.Contains(trunk.Title)).Count();
-                            }
-                                
-                            Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
+								int fileCount = 0;
 
-                            if (fileCount > trunk.CallMax)
-                            {
-                                Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
+								lock (_lock)
+								{
+									fileCount = outgoingFiles.Where(x => x.Contains(trunk.Title)).Count();
+								}
 
-                                continue;
-                            }
+								Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
 
-                            for (int i = 0; i < trunk.CallCount; i++)
-                            {
-                                if (outgoingQueue.Count == 0)
-                                {
-                                    Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
+								if (fileCount > trunk.CallMax)
+								{
+									Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
 
-                                    continue;
-                                }
+									continue;
+								}
 
-                                var outgoing = outgoingQueue.Dequeue();
+								for (int i = 0; i < trunk.CallCount; i++)
+								{
+									if (outgoingQueue.Count == 0)
+									{
+										Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
 
-                                Log($"RUN: BGN: TRUNK: Dialing: {outgoing.Telephone}");
+										continue;
+									}
 
-                                //await trunk.Dialing(outgoing, setting);
+									var outgoing = outgoingQueue.Dequeue();
 
-                                Task.Run(async () => await trunk.Dialing(outgoing, setting));
+									Log($"RUN: BGN: TRUNK: Dialing: {outgoing.Telephone}");
 
-                            }
-                        }
+									//await trunk.Dialing(outgoing, setting);
+
+									Task.Run(async () => await trunk.Dialing(outgoing, setting));
+
+								}
+							}
 
 
-                        Log("RUN: END");
-                    }
-                    catch (Exception exc)
-                    {
-                        System.Console.WriteLine(exc.ToString());
-                        Log(exc.ToString());
-                    }
-                }  // whele
+							Log("RUN: END");
+						}
+						catch (Exception exc)
+						{
+							System.Console.WriteLine(exc.ToString());
+							Log(exc.ToString());
+						}
+					}  // whele
 
-            }
-            catch(Exception exc)
-            {
-                System.Console.Write(exc.ToString());
-                Log(exc.ToString());
-            }
-            finally
-            {
-                // Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
-                LogManager.Shutdown();
-            }
+				}
+				catch (Exception exc)
+				{
+					System.Console.Write(exc.ToString());
+					Log(exc.ToString());
+				}
+				finally
+				{
+					// Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+					LogManager.Shutdown();
+				}
+			}).GetAwaiter().GetResult();
 
         }
 
