@@ -109,7 +109,9 @@ class Trank < ApplicationRecord
                     f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
                     f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
                 end
-                #
+
+		f.puts("Set: vote_record=" + Vote.first.record.path(:original).chomp('.mp3')) if Vote.first != nil                
+
                 f.puts("Set: trunk=" + self.id.to_s)
                 f.puts("Set: leadback_phone=" + setting.leadback_phone) if setting.leadback_phone != nil
                 f.puts("Set: trunk_name=" + self.name)

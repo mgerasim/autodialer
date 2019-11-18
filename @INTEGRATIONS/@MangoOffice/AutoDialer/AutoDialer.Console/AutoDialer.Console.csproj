@@ -9,5 +9,15 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />
+    <PackageReference Include="NHibernate" Version="5.2.6" />
+    <PackageReference Include="FluentNHibernate" Version="2.1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Models\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mappings\TrunkMap.cs" />
   </ItemGroup>
 </Project>
