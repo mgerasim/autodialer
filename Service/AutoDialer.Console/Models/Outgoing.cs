@@ -11,6 +11,8 @@ namespace AutoDialer.Console.Models
     /// </summary>
     public class Outgoing: Record
     {
+		private string _telephone;
+
         /// <summary>
         /// Рабочий канал с которого произошел вызов
         /// </summary>
@@ -19,7 +21,11 @@ namespace AutoDialer.Console.Models
         /// <summary>
         /// Номер телефона
         /// </summary>
-        public virtual string Telephone { get; set; }
+        public virtual string Telephone
+		{
+			get => _telephone;
+			set => _telephone = value.Trim().Replace("\n", "").Replace("\r", "");
+		}
 
         /// <summary>
         /// Статус телефонного номера

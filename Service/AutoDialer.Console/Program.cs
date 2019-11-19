@@ -19,13 +19,47 @@ namespace AutoDialer
     {
         static object _lock = new object();
 
-        /// <summary>
-        /// Логирование
-        /// </summary>
-        static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+		/// <summary>
+		/// Синхронизирует логирование
+		/// </summary>
+		static readonly object _loggerSync = new object();
+
+		/// <summary>
+		/// Синхронизирует выполнение запросов
+		/// </summary>
+		static readonly object _httpClientSync = new object();
+
+		/// <summary>
+		/// https://csharp.hotexamples.com/examples/AsterNET.Manager/ManagerConnection/-/php-managerconnection-class-examples.html
+		/// </summary>
+		static AsterNET.NetStandard.Manager.ManagerConnection ManagerConnection = new AsterNET.NetStandard.Manager.ManagerConnection("ast11", 5038, "avtodialer", "NoO5ijyFWDF6lgquTM7n");
+
+		/// <summary>
+		/// Клиент запросов
+		/// </summary>
+		private static readonly HttpClient _httpClient = new HttpClient();
+
+		/// <summary>
+		/// Логирование
+		/// </summary>
+		static readonly Logger _logger = LogManager.GetCurrentClassLogger();
+
+		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting);
+
+		static event MethodContainer onDialing;
+
 
         static void Main()
         {
+			onDialing += Program_onDialing;
+
+
+
+			ManagerConnection.UnhandledEvent += ManagerConnection_UnhandledEvent;
+
+			ManagerConnection.Login();
+
+
 			Task.Run(async () =>
 			{
 				var setting = await Setting.Reload();
@@ -144,11 +178,13 @@ namespace AutoDialer
 
 									var outgoing = outgoingQueue.Dequeue();
 
-									Log($"RUN: BGN: TRUNK: Dialing: {outgoing.Telephone}");
+									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
 
-									//await trunk.Dialing(outgoing, setting);
+									onDialing?.Invoke(trunk, outgoing, setting);
 
-									Task.Run(async () => await trunk.Dialing(outgoing, setting));
+									//trunk.Dialing(outgoing, setting, _logger);
+
+									//Task.Run(async () => await trunk.Dialing(outgoing, setting));
 
 								}
 							}
@@ -178,17 +214,44 @@ namespace AutoDialer
 
         }
 
-        private static FileInfo[] ReturnFiles(DirectoryInfo dir, string fileSearchPattern)
+		private static void ManagerConnection_UnhandledEvent(object sender, AsterNET.NetStandard.Manager.Event.ManagerEvent e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private static async void Program_onDialing(Trunk trunk, Outgoing outgoing, Setting setting)
+		{
+			try
+			{
+				Log($"EVENT: Program_onDialing: {trunk.Title} {outgoing.Telephone}");
+								
+				await trunk.Dialing(outgoing, setting, ManagerConnection);				
+			}
+			catch (Exception exc)
+			{
+				Log(exc.ToString());
+			}
+			
+		}
+
+		private static FileInfo[] ReturnFiles(DirectoryInfo dir, string fileSearchPattern)
         {
             return dir.GetFiles(fileSearchPattern, SearchOption.TopDirectoryOnly);
         }
 
+		/// <summary>
+		/// Логирование
+		/// </summary>
+		/// <param name="msg"></param>
         static void Log(string msg)
         {
-            _logger.Debug(msg);
+			lock (_loggerSync)
+			{
+				_logger.Debug(msg);
 
-            System.Console.WriteLine(msg);
-        }
+				System.Console.WriteLine(msg);
+			}
+		}
         
     }
 }

@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AmiClient" Version="1.2.4" />
+    <PackageReference Include="AsterNET.NetStandard" Version="2.2.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
     <PackageReference Include="System.Security.Cryptography.Algorithms" Version="4.3.1" />

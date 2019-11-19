@@ -45,26 +45,27 @@ namespace AutoDialer.Console
         public void CreateSessionFactory(string connectionString)
         {
             MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
-            conn_string.Server = "185.20.225.203";
+            conn_string.Server = "ast11";
             conn_string.UserID = "avtodialer";
             conn_string.Password = "avtodialer";
+			conn_string.Port = 3306;
             conn_string.Database = "avtodialerdevel"; // "avtodialerdb_prod";
 
 
             conn_string.Logging = true;
 
-#if DEBUG            
+       
             SessionFactory = Fluently.Configure()
                 .Database(MySQLConfiguration.Standard 
                     .ConnectionString(conn_string.ToString())
                     .Driver<NHibernate.Driver.MySqlDataDriver>)
                 .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
                 .BuildSessionFactory();
-
+			/*
 #else
             
             SessionFactory = Fluently.Configure()
-                .Database(OdbcConfiguration.MyDialect.ConnectionString("DSN=ODBC;UID=avtodialer;PWD=avtodialer")
+                .Database(OdbcConfiguration.MyDialect.ConnectionString("DSN=ODBC2;UID=avtodialer;PWD=avtodialer")
                         .Driver<NHibernate.Driver.OdbcDriver>()
                         .Dialect<NHibernate.Dialect.MySQLDialect>()
 
@@ -73,6 +74,7 @@ namespace AutoDialer.Console
                         ;
 
 #endif
+			*/
         }
 
         public ISession Open()

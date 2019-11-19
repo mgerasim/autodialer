@@ -12,6 +12,8 @@ SyslogIdentifier=autodial-app
 User=asterisk
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+LimitNOFILE=1617596
+LimitNOFILESoft=1617596
 
 [Install]
 WantedBy=multi-user.target

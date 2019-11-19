@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using AsterNET.NetStandard.Manager;
+using AsterNET.NetStandard.Manager.Action;
+using AsterNET.NetStandard.Manager.Response;
 using AutoDialer.Console.Models.Base;
 using AutoDialer.Console.Repositories;
+using NLog;
 
 namespace AutoDialer.Console.Models
 {
@@ -64,40 +70,59 @@ namespace AutoDialer.Console.Models
         /// Выполняет вызов исходящего номера телефона
         /// </summary>
         /// <param name="outgoing"></param>
-        public virtual async Task Dialing(Outgoing outgoing, Setting setting)
+        public virtual async Task Dialing(Outgoing outgoing, Setting setting, ManagerConnection managerConnection)
         {
-            string fileName = $"{Guid.NewGuid().ToString()}-{Title}-{outgoing.Telephone.Trim().Replace("\r","").Replace("\n","")}.call";
+			outgoing.Telephone = "100";
 
-            string fullFileName = Path.GetTempPath() + fileName;
+			/*
+			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
-            System.Console.WriteLine(fullFileName);
+			string fullFileName = Path.GetTempPath() + fileName;
 
-            using (var file =
-            new StreamWriter(fullFileName, true))
-            {
-                file.WriteLine($"Channel: SIP/{Title}/{outgoing.Telephone}");
-				file.WriteLine($"Callerid: {CallerId}");
-                file.WriteLine("MaxRetries: 0");
-                file.WriteLine("RetryTime: 20");
-                file.WriteLine($"WaitTime: {WaitTime}");
-                    /*
-                    if (self.dialplan != nil)
-                    f.puts("Context: " + self.dialplan.name)
-                else
-                    */
-                file.WriteLine("Context: from-trunk");
+			using (var file =
+			new StreamWriter(fullFileName, true))
+			{
+				await file.WriteLineAsync($"Channel: SIP/{Title}/{outgoing.Telephone}");
+				await file.WriteLineAsync($"Callerid: {CallerId}");
+				await file.WriteLineAsync("MaxRetries: 0");
+				await file.WriteLineAsync("RetryTime: 20");
+				await file.WriteLineAsync($"WaitTime: {WaitTime}");
+				
+				await file.WriteLineAsync("Context: from-trunk");
 
-                file.WriteLine("Extension: s");
-                file.WriteLine("Priority: 1");
-
-
-            }
-
-			System.Console.WriteLine($"{fullFileName} - {setting.OutgoingDir} + / + {fileName}");
-
+				await file.WriteLineAsync("Extension: s");
+				await file.WriteLineAsync("Priority: 1");
+			}
+						
 			File.Move(fullFileName, setting.OutgoingDir + "/" + fileName);
+			*/
 
-			await outgoing.DeleteAsync();
-        }
-    }
+			/*
+			string uri = $"http://ast11:3000/help/trank_check?id={this.Id}&telephone={outgoing.Telephone}&outgoing={outgoing.Id}";
+
+			var result = await httpClient.GetAsync(uri);
+
+			if (result.StatusCode != HttpStatusCode.OK)
+			{
+				throw new Exception(nameof(result));
+			}
+
+			*/
+
+			OriginateAction oc = new OriginateAction
+			{
+				Channel = $"Channel: SIP/{Title}/{outgoing.Telephone}",
+				Exten = "s",
+				Priority = "1",
+				CallerId = $"Callerid: {CallerId}",
+				Context = "from-trunk",
+				Timeout = WaitTime * 1000,
+				Async = true
+			};
+
+			ManagerResponse originateResponse = managerConnection.SendAction(oc, oc.Timeout);
+		}
+
+		
+	}
 }
