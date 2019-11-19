@@ -72,13 +72,11 @@ namespace AutoDialer.Console.Models
         /// <param name="outgoing"></param>
         public virtual async Task Dialing(Outgoing outgoing, Setting setting, ManagerConnection managerConnection)
         {
-			outgoing.Telephone = "100";
-
-			/*
 			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
 			string fullFileName = Path.GetTempPath() + fileName;
 
+            
 			using (var file =
 			new StreamWriter(fullFileName, true))
 			{
@@ -93,11 +91,12 @@ namespace AutoDialer.Console.Models
 				await file.WriteLineAsync("Extension: s");
 				await file.WriteLineAsync("Priority: 1");
 			}
-						
+
+            /*
 			File.Move(fullFileName, setting.OutgoingDir + "/" + fileName);
 			*/
 
-			/*
+            /*
 			string uri = $"http://ast11:3000/help/trank_check?id={this.Id}&telephone={outgoing.Telephone}&outgoing={outgoing.Id}";
 
 			var result = await httpClient.GetAsync(uri);
@@ -109,6 +108,7 @@ namespace AutoDialer.Console.Models
 
 			*/
 
+            /*
 			OriginateAction oc = new OriginateAction
 			{
 				Channel = $"Channel: SIP/{Title}/{outgoing.Telephone}",
@@ -121,7 +121,14 @@ namespace AutoDialer.Console.Models
 			};
 
 			ManagerResponse originateResponse = managerConnection.SendAction(oc, oc.Timeout);
-		}
+            */
+
+            var cmd = $"mv {fullFileName} {setting.OutgoingDir}";
+
+            cmd.Bash();
+
+            await outgoing.DeleteAsync();
+        }
 
 		
 	}

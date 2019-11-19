@@ -54,12 +54,6 @@ namespace AutoDialer
 			onDialing += Program_onDialing;
 
 
-
-			ManagerConnection.UnhandledEvent += ManagerConnection_UnhandledEvent;
-
-			ManagerConnection.Login();
-
-
 			Task.Run(async () =>
 			{
 				var setting = await Setting.Reload();
@@ -225,7 +219,10 @@ namespace AutoDialer
 			{
 				Log($"EVENT: Program_onDialing: {trunk.Title} {outgoing.Telephone}");
 								
-				await trunk.Dialing(outgoing, setting, ManagerConnection);				
+				await trunk.Dialing(outgoing, setting, ManagerConnection);
+
+
+
 			}
 			catch (Exception exc)
 			{
