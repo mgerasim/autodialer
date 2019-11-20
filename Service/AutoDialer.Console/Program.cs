@@ -101,7 +101,7 @@ namespace AutoDialer
 
 							if ((endRun - bgnRun).TotalMilliseconds < 1000)
 							{
-								await Task.Delay(1000);
+								await Task.Delay(1000 - ((int)(endRun - bgnRun).TotalMilliseconds));
 							}
 
 							bgnRun = DateTime.Now;
@@ -220,8 +220,6 @@ namespace AutoDialer
 				Log($"EVENT: Program_onDialing: {trunk.Title} {outgoing.Telephone}");
 								
 				await trunk.Dialing(outgoing, setting, ManagerConnection);
-
-
 
 			}
 			catch (Exception exc)
