@@ -39,9 +39,13 @@ namespace AutoDialer.Console.Repositories
             return await criteria.ListAsync<Outgoing>();
         }
 
-        public override Task SaveAsync(Outgoing entity)
+        public override async Task SaveAsync(Outgoing entity)
         {
-            throw new NotImplementedException();
+            _session.BeginTransaction();
+
+            await _session.SaveOrUpdateAsync(entity);
+
+            await _session.Transaction.CommitAsync();
         }
 
         /// <summary>

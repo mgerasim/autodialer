@@ -10,6 +10,8 @@ namespace AutoDialer.Console.Mappings
         {
             Table("tranks");
             Id(x => x.Id).GeneratedBy.Increment().Not.Nullable().Length(6).Column("Id");
+            Map(x => x.CreatedAt).Column("created_at");
+            Map(x => x.UpdatedAt).Column("updated_at");
             Map(x => x.Title).Not.Nullable().Column("name");
             Map(x => x.Actived).Not.Nullable().Column("enabled");
             Map(x => x.CallCount).Not.Nullable().Column("callcount");

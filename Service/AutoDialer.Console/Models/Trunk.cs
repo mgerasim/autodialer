@@ -127,7 +127,11 @@ namespace AutoDialer.Console.Models
 
             cmd.Bash();
 
-            await outgoing.DeleteAsync();
+            outgoing.Status = "DIALING";
+
+            outgoing.Trunk = this;
+
+            await outgoing.SaveAsync();
         }
 
 		

@@ -85,5 +85,19 @@ namespace AutoDialer.Console.Models
             await repository.DeleteAsync(this);
         }
 
+        /// <summary>
+        /// Обновляет или сохраняет запись
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task SaveAsync()
+        {
+            var repository = new OutgoingRepository();
+
+            this.UpdatedAt = DateTime.Now;
+
+            await repository.SaveAsync(this);
+        }
+
+
     }
 }
