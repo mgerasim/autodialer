@@ -49,7 +49,7 @@ namespace AutoDialer.Console
             conn_string.UserID = "avtodialer";
             conn_string.Password = "avtodialer";
 			conn_string.Port = 3306;
-            conn_string.Database = "avtodialerdb_prod"; // "avtodialerdb_prod";
+            conn_string.Database = "avtodialerdevel"; // "avtodialerdb_prod";
             conn_string.AllowZeroDateTime = true;
             conn_string.ConvertZeroDateTime = true;
 

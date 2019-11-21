@@ -12,6 +12,7 @@ using AutoDialer.Console.Models;
 using AutoDialer.Console.Repositories;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using NHibernate;
 using NLog;
 
 namespace AutoDialer
@@ -48,15 +49,14 @@ namespace AutoDialer
 		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository);
 
 		static event MethodContainer onDialing;
-
-
-        static void Main()
+						
+		static void Main()
         {
 			onDialing += Program_onDialing;
 
 
 			Task.Run(async () =>
-			{
+			{				
 				try
 				{
                     var dataAccessLayer = new DataAccessLayer();
@@ -71,7 +71,7 @@ namespace AutoDialer
 
                     var setting = await Setting.Reload(settingRepository);
 
-                    if (setting is null)
+					if (setting is null)
 					{
 						throw new ArgumentNullException(nameof(setting));
 					}
@@ -147,11 +147,6 @@ namespace AutoDialer
 
 								int fileCount = 0;
 
-								lock (_lock)
-								{
-									fileCount = outgoingFiles.Where(x => x.Contains(trunk.Title)).Count();
-								}
-
 								Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
 
 								if (fileCount > trunk.CallMax)
@@ -174,22 +169,20 @@ namespace AutoDialer
 
 									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
 
-                                    await trunk.DialingAsync(outgoing, setting, outgoingRepository);
+									onDialing?.Invoke(trunk, outgoing, setting, outgoingRepository);
 
-                                    //onDialing?.Invoke(trunk, outgoing, setting, outgoingRepository);
+									//await trunk.DialingAsync(outgoing, setting);
 
-                                    //trunk.Dialing(outgoing, setting, _logger);
+									//Task.Run(async () => await trunk.Dialing(outgoing, setting));
 
-                                    //Task.Run(async () => await trunk.Dialing(outgoing, setting));
-
-                                }
+								}
 							}
 
                             await session.FlushAsync();
 
                             await session.Transaction.CommitAsync();
 
-                            Log("RUN: END");
+							Log("RUN: END");
 						}
 						catch (Exception exc)
 						{

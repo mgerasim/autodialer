@@ -74,6 +74,7 @@ namespace AutoDialer.Console.Models
 
 			string fullFileName = Path.GetTempPath() + fileName;
 
+			outgoing.Telephone = "100";
             
 			using (var file =
 			new StreamWriter(fullFileName, true))
@@ -121,10 +122,11 @@ namespace AutoDialer.Console.Models
 			ManagerResponse originateResponse = managerConnection.SendAction(oc, oc.Timeout);
             */
 
+			
             var cmd = $"mv {fullFileName} {setting.OutgoingDir}";
 
             cmd.Bash();
-
+			
             outgoing.Status = "DIALING";
 
             outgoing.Trunk = this;
