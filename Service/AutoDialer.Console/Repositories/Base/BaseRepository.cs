@@ -11,11 +11,6 @@ namespace AutoDialer.Console.Repositories.Base
     abstract public class BaseRepository<T>: IRepository<T>
     {
         /// <summary>
-        /// Уровень доступа к данным
-        /// </summary>
-        protected DataAccessLayer _dataAccessLayer;
-
-        /// <summary>
         /// Сессия соединения с БД
         /// </summary>
         protected ISession _session;
@@ -23,11 +18,9 @@ namespace AutoDialer.Console.Repositories.Base
         /// <summary>
         /// Конструктор
         /// </summary>
-        protected BaseRepository()
+        protected BaseRepository(ISession session)
         {
-            _dataAccessLayer = new DataAccessLayer();
-
-            _session = _dataAccessLayer.Open();
+            _session = session ?? throw new ArgumentNullException(nameof(session));
         }
 
         abstract public Task DeleteAsync(T entity);

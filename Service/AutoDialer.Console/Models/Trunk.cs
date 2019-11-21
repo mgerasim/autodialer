@@ -59,10 +59,8 @@ namespace AutoDialer.Console.Models
         /// Получает список рабочих каналов
         /// </summary>
         /// <returns></returns>
-        public static async Task<IList<Trunk>> GetListAsync()
+        public static async Task<IList<Trunk>> GetListAsync(TrunkRepository repository)
         {
-            var repository = new TrunkRepository();
-
             return await repository.GetListAsync();
         }
 
@@ -70,7 +68,7 @@ namespace AutoDialer.Console.Models
         /// Выполняет вызов исходящего номера телефона
         /// </summary>
         /// <param name="outgoing"></param>
-        public virtual async Task Dialing(Outgoing outgoing, Setting setting, ManagerConnection managerConnection)
+        public virtual async Task DialingAsync(Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository)
         {
 			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
@@ -131,9 +129,7 @@ namespace AutoDialer.Console.Models
 
             outgoing.Trunk = this;
 
-            await outgoing.SaveAsync();
+            await outgoing.SaveAsync(outgoingRepository);
         }
-
-		
 	}
 }

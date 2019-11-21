@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoDialer.Console.Models;
 using AutoDialer.Console.Repositories.Base;
+using NHibernate;
 using NHibernate.Criterion;
 
 namespace AutoDialer.Console.Repositories
 {
     public class OutgoingRepository : BaseRepository<Outgoing>
     {
-        public OutgoingRepository()
+        public OutgoingRepository(ISession session) : base(session)
         {
         }
 
@@ -41,11 +42,7 @@ namespace AutoDialer.Console.Repositories
 
         public override async Task SaveAsync(Outgoing entity)
         {
-            _session.BeginTransaction();
-
             await _session.SaveOrUpdateAsync(entity);
-
-            await _session.Transaction.CommitAsync();
         }
 
         /// <summary>

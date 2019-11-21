@@ -43,10 +43,8 @@ namespace AutoDialer.Console.Models
         /// Получает список всех номеров
         /// </summary>
         /// <returns></returns>
-        public static async Task<IList<Outgoing>> GetListAsync()
+        public static async Task<IList<Outgoing>> GetListAsync(OutgoingRepository repository)
         {
-            var repository = new OutgoingRepository();
-
             return await repository.GetListAsync();
         }
 
@@ -54,10 +52,8 @@ namespace AutoDialer.Console.Models
         /// Получает список номеров для обзвона
         /// </summary>
         /// <returns></returns>
-        public static async Task<IList<Outgoing>> GetInsertedListAsync()
+        public static async Task<IList<Outgoing>> GetInsertedListAsync(OutgoingRepository repository)
         {
-            var repository = new OutgoingRepository();
-
             return await repository.GetInsertedListAsync();
         }
 
@@ -65,10 +61,8 @@ namespace AutoDialer.Console.Models
         /// Получает список номеров для обзвона
         /// </summary>
         /// <returns></returns>
-        public static async Task<IList<Outgoing>> GetInsertedListAsync(int maxResult)
+        public static async Task<IList<Outgoing>> GetInsertedListAsync(OutgoingRepository repository, int maxResult)
         {
-            var repository = new OutgoingRepository();
-
             return await repository.GetInsertedListAsync(maxResult);
         }
 
@@ -76,12 +70,8 @@ namespace AutoDialer.Console.Models
         /// Удаляет запись 
         /// </summary>
         /// <returns></returns>
-        public virtual async Task DeleteAsync()
+        public virtual async Task DeleteAsync(OutgoingRepository repository)
         {
-            System.Console.WriteLine($"DElete - {Id}");
-
-            var repository = new OutgoingRepository();
-
             await repository.DeleteAsync(this);
         }
 
@@ -89,10 +79,8 @@ namespace AutoDialer.Console.Models
         /// Обновляет или сохраняет запись
         /// </summary>
         /// <returns></returns>
-        public virtual async Task SaveAsync()
+        public virtual async Task SaveAsync(OutgoingRepository repository)
         {
-            var repository = new OutgoingRepository();
-
             this.UpdatedAt = DateTime.Now;
 
             await repository.SaveAsync(this);

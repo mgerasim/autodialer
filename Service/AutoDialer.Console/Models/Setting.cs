@@ -43,10 +43,8 @@ namespace AutoDialer.Console.Models
         /// Перечитывает настройки
         /// </summary>
         /// <returns></returns>
-        public static async Task<Setting> Reload()
+        public static async Task<Setting> Reload(SettingRepository repository)
         {
-            var repository = new SettingRepository();
-
             var list = await repository.GetListAsync();
 
             if (list.Count == 0)

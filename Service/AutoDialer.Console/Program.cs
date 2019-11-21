@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoDialer.Console;
 using AutoDialer.Console.Models;
+using AutoDialer.Console.Repositories;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NLog;
@@ -44,7 +45,7 @@ namespace AutoDialer
 		/// </summary>
 		static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting);
+		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository);
 
 		static event MethodContainer onDialing;
 
@@ -56,11 +57,21 @@ namespace AutoDialer
 
 			Task.Run(async () =>
 			{
-				var setting = await Setting.Reload();
-
 				try
 				{
-					if (setting is null)
+                    var dataAccessLayer = new DataAccessLayer();
+
+                    var session = dataAccessLayer.Open();
+
+                    var settingRepository = new SettingRepository(session);
+
+                    var trunkRepository = new TrunkRepository(session);
+
+                    var outgoingRepository = new OutgoingRepository(session);
+
+                    var setting = await Setting.Reload(settingRepository);
+
+                    if (setting is null)
 					{
 						throw new ArgumentNullException(nameof(setting));
 					}
@@ -73,9 +84,9 @@ namespace AutoDialer
 					Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
 					Log($"MAIN: DialType: {setting.DialType}");
 
-					var trunks = await Trunk.GetListAsync();
+					var trunks = await Trunk.GetListAsync(trunkRepository);
 
-					var totalOutgoings = await Outgoing.GetInsertedListAsync();
+					var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
 
 					Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
 
@@ -97,7 +108,7 @@ namespace AutoDialer
 
 							endRun = DateTime.Now;
 
-							File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
+							await File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
 							if ((endRun - bgnRun).TotalMilliseconds < 1000)
 							{
@@ -122,25 +133,14 @@ namespace AutoDialer
 								continue;
 							}
 
-							if (index % 10 == 0)
-							{
-								Task.Run(() =>
-								{
-									lock (_lock)
-									{
-										outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
-
-										Log($"RUN: BGN: outgoingFiles: Обновлен список файл вызовов: {outgoingFiles.Length}");
-									}
-								});
-							}
-
 							var activedTrunks = trunks.Where(x => x.Actived == true);
 
 							var callCountTotal = activedTrunks.Sum(x => x.CallCount);
 
 							Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
 
+                            session.BeginTransaction();
+                            
 							foreach (var trunk in activedTrunks)
 							{
 								Log($"RUN: BGN: TRUNK: {trunk.Title}");
@@ -174,17 +174,22 @@ namespace AutoDialer
 
 									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
 
-									onDialing?.Invoke(trunk, outgoing, setting);
+                                    await trunk.DialingAsync(outgoing, setting, outgoingRepository);
 
-									//trunk.Dialing(outgoing, setting, _logger);
+                                    //onDialing?.Invoke(trunk, outgoing, setting, outgoingRepository);
 
-									//Task.Run(async () => await trunk.Dialing(outgoing, setting));
+                                    //trunk.Dialing(outgoing, setting, _logger);
 
-								}
+                                    //Task.Run(async () => await trunk.Dialing(outgoing, setting));
+
+                                }
 							}
 
+                            await session.FlushAsync();
 
-							Log("RUN: END");
+                            await session.Transaction.CommitAsync();
+
+                            Log("RUN: END");
 						}
 						catch (Exception exc)
 						{
@@ -213,13 +218,13 @@ namespace AutoDialer
 			throw new NotImplementedException();
 		}
 
-		private static async void Program_onDialing(Trunk trunk, Outgoing outgoing, Setting setting)
+		private static async void Program_onDialing(Trunk trunk, Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository)
 		{
 			try
 			{
 				Log($"EVENT: Program_onDialing: {trunk.Title} {outgoing.Telephone}");
 								
-				await trunk.Dialing(outgoing, setting, ManagerConnection);
+				await trunk.DialingAsync(outgoing, setting, outgoingRepository);
 
 			}
 			catch (Exception exc)

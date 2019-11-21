@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoDialer.Console.Models;
 using AutoDialer.Console.Repositories.Base;
+using NHibernate;
 
 namespace AutoDialer.Console.Repositories
 {
     public class SettingRepository : BaseRepository<Setting>
     {
-        public SettingRepository()
+        public SettingRepository(ISession session): base(session)
         {
         }
 
