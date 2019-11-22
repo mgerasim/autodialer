@@ -1,23 +1,17 @@
-﻿using System;
+﻿using AutoDialer.Console;
+using AutoDialer.Console.Models;
+using AutoDialer.Console.Repositories;
+using NLog;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
-using AutoDialer.Console;
-using AutoDialer.Console.Models;
-using AutoDialer.Console.Repositories;
-using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using NHibernate;
-using NLog;
 
 namespace AutoDialer
 {
-    class Program
+	class Program
     {
         static object _lock = new object();
 
@@ -46,7 +40,7 @@ namespace AutoDialer
 		/// </summary>
 		static readonly Logger _logger = LogManager.GetCurrentClassLogger();
 
-		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository);
+		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository);
 
 		static event MethodContainer onDialing;
 						
@@ -69,6 +63,8 @@ namespace AutoDialer
 
                     var outgoingRepository = new OutgoingRepository(session);
 
+					var configRepository = new ConfigRepository(session);
+
                     var setting = await Setting.Reload(settingRepository);
 
 					if (setting is null)
@@ -83,6 +79,19 @@ namespace AutoDialer
 					Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
 					Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
 					Log($"MAIN: DialType: {setting.DialType}");
+										
+					var config = await Config.Reload(configRepository);
+
+					if (config is null)
+					{
+						throw new ArgumentNullException(nameof(config));
+					}
+
+					Log("MAIN: Config: Reload");
+
+					Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
+					Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
+					Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
 
 					var trunks = await Trunk.GetListAsync(trunkRepository);
 
@@ -169,12 +178,7 @@ namespace AutoDialer
 
 									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
 
-									onDialing?.Invoke(trunk, outgoing, setting, outgoingRepository);
-
-									//await trunk.DialingAsync(outgoing, setting);
-
-									//Task.Run(async () => await trunk.Dialing(outgoing, setting));
-
+									onDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
 								}
 							}
 
@@ -211,13 +215,13 @@ namespace AutoDialer
 			throw new NotImplementedException();
 		}
 
-		private static async void Program_onDialing(Trunk trunk, Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository)
+		private static async void Program_onDialing(Trunk trunk, Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository)
 		{
 			try
 			{
 				Log($"EVENT: Program_onDialing: {trunk.Title} {outgoing.Telephone}");
 								
-				await trunk.DialingAsync(outgoing, setting, outgoingRepository);
+				await trunk.DialingAsync(outgoing, setting, config, outgoingRepository);
 
 			}
 			catch (Exception exc)

@@ -68,27 +68,27 @@ namespace AutoDialer.Console.Models
         /// Выполняет вызов исходящего номера телефона
         /// </summary>
         /// <param name="outgoing"></param>
-        public virtual async Task DialingAsync(Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository)
+        public virtual async Task DialingAsync(Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository)
         {
 			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
 			string fullFileName = Path.GetTempPath() + fileName;
 
-			outgoing.Telephone = "100";
+			outgoing.Normalize(config);
             
 			using (var file =
 			new StreamWriter(fullFileName, true))
 			{
 				await file.WriteLineAsync($"Channel: SIP/{Title}/{outgoing.Telephone}");
 				await file.WriteLineAsync($"Callerid: {CallerId}");
-				await file.WriteLineAsync("MaxRetries: 0");
-				await file.WriteLineAsync("RetryTime: 20");
+				await file.WriteLineAsync($"MaxRetries: 0");
+				await file.WriteLineAsync($"RetryTime: 20");
 				await file.WriteLineAsync($"WaitTime: {WaitTime}");
 				
-				await file.WriteLineAsync("Context: from-trunk");
+				await file.WriteLineAsync($"Context: {config.DefaultTrunkContext}");
 
-				await file.WriteLineAsync("Extension: s");
-				await file.WriteLineAsync("Priority: 1");
+				await file.WriteLineAsync($"Extension: s");
+				await file.WriteLineAsync($"Priority: 1");
 			}
 
             /*

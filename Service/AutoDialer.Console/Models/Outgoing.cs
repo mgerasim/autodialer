@@ -39,6 +39,22 @@ namespace AutoDialer.Console.Models
         {
         }
 
+		/// <summary>
+		/// Нормализация телефонного номера
+		/// </summary>
+		/// <param name="config"></param>
+		public virtual void Normalize(Config config)
+		{
+			if (!string.IsNullOrEmpty(_telephone))
+			{
+				string reverseTelephone = Outgoing.Reverse(_telephone);
+
+				reverseTelephone = reverseTelephone.Substring(0, 10);
+
+				_telephone = $"{config.ContryPrefix}{Outgoing.Reverse(reverseTelephone)}";
+			}
+		}
+
         /// <summary>
         /// Получает список всех номеров
         /// </summary>
@@ -81,11 +97,16 @@ namespace AutoDialer.Console.Models
         /// <returns></returns>
         public virtual async Task SaveAsync(OutgoingRepository repository)
         {
-            this.UpdatedAt = DateTime.Now;
+            UpdatedAt = DateTime.Now;
 
             await repository.SaveAsync(this);
         }
-
-
-    }
+				
+		public static string Reverse(string s)
+		{
+			char[] charArray = s.ToCharArray();
+			Array.Reverse(charArray);
+			return new string(charArray);
+		}
+	}
 }
