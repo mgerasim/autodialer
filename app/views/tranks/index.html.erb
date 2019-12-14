@@ -44,13 +44,18 @@
 
 <div class="dropdown dropdown-right">
                   <div class="btn-group">
-                    
+                   
                     <a class="btn btn-primary dropdown-toggle" tabindex="0"><i class="icon icon-caret"></i></a>
                     <ul class="menu">
                       <li class="menu-item"><%= link_to 'Показать', trank %></li>
                       <li class="menu-item"><%= link_to 'Редактировать', edit_trank_path(trank) %></li>
                       <li class="menu-item"><%= link_to 'Тестировать', '#', :class => "trank_test", :data => {:id => trank.id} %></li>
-                      <li class="menu-item"><%= link_to 'Распространить настройки', distrib_trank_path(trank) %></li>
+                      <% if trank.enabled %>
+		          <li class="menu-item"><%= link_to 'Деактивировать', deactive_trank_path(trank) %></li>
+		      <% else %>
+			  <li class="menu-item"><%= link_to 'Активировать', active_trank_path(trank) %></li>
+		      <% end %>
+		      <li class="menu-item"><%= link_to 'Распространить настройки', distrib_trank_path(trank) %></li>
                       <li class="menu-item"><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></li>
                     </ul>
                   </div>

@@ -1,6 +1,6 @@
 class TranksController < ApplicationController
   skip_before_action :require_login, :only => [:index]
-  before_action :set_trank, only: [:show, :edit, :update, :destroy, :distrib]
+  before_action :set_trank, only: [:show, :edit, :update, :destroy, :distrib, :active, :deactive]
   before_action :get_config
   # GET /tranks
   # GET /tranks.json
@@ -74,7 +74,10 @@ class TranksController < ApplicationController
     Trank.where.not(:id => @trank.id).each do |trunk|
       trunk.update_attributes(:waittime => @trank.waittime, :sleeptime => @trank.sleeptime, 
         :callcount => @trank.callcount, :callmax => @trank.callmax, :dialplan_id => @trank.dialplan_id,
-        :dialplan_incoming_id => @trank.dialplan_incoming_id);
+        :dialplan_incoming_id => @trank.dialplan_incoming_id,
+	:vote_welcome_id => @trank.vote_welcome_id,
+	:vote_push_two_id => @trank.vote_push_two_id,
+	:vote_finish_id => @trank.vote_finish_id);
     end
 
     respond_to do |format|
@@ -83,6 +86,27 @@ class TranksController < ApplicationController
     end
 
   end
+
+
+  def active
+    @trank.update_attributes(:enabled => true);
+
+    respond_to do |format|
+      format.html { redirect_to tranks_url, notice: "Рабочий канал #{@trank.name} успешно активирован." }
+      format.json { head :no_content }
+    end
+  end
+
+  def deactive
+    @trank.update_attributes(:enabled => false);
+    respond_to do |format|
+      format.html { redirect_to tranks_url, notice: "Рабочий канал #{@trank.name} успешно деактивирован." }
+      format.json { head :no_content }
+    end
+  end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
