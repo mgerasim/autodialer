@@ -5,7 +5,7 @@ ssh root@$1 'systemctl stop Autodial.service'
 ssh root@$1 'mkdir -p /home/asterisk/services/Autodial'
 ssh root@$1 'mkdir -p /home/asterisk/services'
 
-scp bin/Release/netcoreapp2.2/linux-x64/publish/* root@$1:/home/asterisk/services/Autodial/ 
+scp bin/Release/netcoreapp2.2/linux-x64/publish/Auto* root@$1:/home/asterisk/services/Autodial/ 
 ssh root@$1 'chown asterisk:asterisk /home/asterisk/services/Autodial/*'
 ssh root@$1 'chown asterisk:asterisk /home/asterisk/services/Autodial'
 ssh root@$1 'chown asterisk:asterisk /home/asterisk/services'
