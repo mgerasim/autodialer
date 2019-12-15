@@ -16,7 +16,7 @@ namespace AutoDialer.Console.Models
     /// <summary>
     /// Рабочий канал
     /// </summary>
-    public class Trunk: Record
+    public class Trunk : Record
     {
         /// <summary>
         /// Наименование
@@ -43,10 +43,25 @@ namespace AutoDialer.Console.Models
         /// </summary>
         public virtual int CallMax { get; set; }
 
-		/// <summary>
-		/// Идентификатор вызывающей стороны
-		/// </summary>
-		public virtual string CallerId { get; set; }
+        /// <summary>
+        /// Идентификатор вызывающей стороны
+        /// </summary>
+        public virtual string CallerId { get; set; }
+
+        /// <summary>
+        /// Голосовая запись приветсвия
+        /// </summary>
+        public virtual Vote VoteWelcome { get; set; }
+
+        /// <summary>
+        /// Голосовая запись завершения
+        /// </summary>
+        public virtual Vote VoteFinish { get; set; }
+
+        /// <summary>
+        /// Голосовая запись действия
+        /// </summary>
+        public virtual Vote VotePushTwo { get; set; }
 
 		/// <summary>
 		/// Конструктор
@@ -89,6 +104,17 @@ namespace AutoDialer.Console.Models
 
 				await file.WriteLineAsync($"Extension: s");
 				await file.WriteLineAsync($"Priority: 1");
+
+                if (config.IsVoteSupported && VoteWelcome != null && VotePushTwo != null && VoteFinish != null)
+                {
+                    await file.WriteLineAsync($"Set: vote_welcome={VoteWelcome.Path}");
+
+                    await file.WriteLineAsync($"Set: vote_push_two={VotePushTwo.Path}");
+
+                    await file.WriteLineAsync($"Set: vote_finish={VoteFinish.Path}");
+                }
+
+
 			}
 
             /*

@@ -21,6 +21,11 @@ namespace AutoDialer.Console.Models
 		/// </summary>
 		public virtual bool IsOutgoingDeleted { get; set; }
 
+        /// <summary>
+        /// Поддержка голосовых записей
+        /// </summary>
+        public virtual bool IsVoteSupported { get; set; }
+
 		/// <summary>
 		/// Контекст по умолчанию для вызова
 		/// </summary>
