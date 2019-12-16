@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   resources :tranks do
     member do
       get 'distrib'
+      get 'active'
+      get 'deactive'
     end
   end
 

@@ -16,7 +16,7 @@ namespace AutoDialer.Console.Models
     /// <summary>
     /// Рабочий канал
     /// </summary>
-    public class Trunk: Record
+    public class Trunk : Record
     {
         /// <summary>
         /// Наименование
@@ -43,10 +43,35 @@ namespace AutoDialer.Console.Models
         /// </summary>
         public virtual int CallMax { get; set; }
 
+        /// <summary>
+        /// Идентификатор вызывающей стороны
+        /// </summary>
+        public virtual string CallerId { get; set; }
+
+        /// <summary>
+        /// Голосовая запись приветсвия
+        /// </summary>
+        public virtual Vote VoteWelcome { get; set; }
+
+        /// <summary>
+        /// Голосовая запись завершения
+        /// </summary>
+        public virtual Vote VoteFinish { get; set; }
+
+        /// <summary>
+        /// Голосовая запись действия
+        /// </summary>
+        public virtual Vote VotePushTwo { get; set; }
+
 		/// <summary>
-		/// Идентификатор вызывающей стороны
+		/// План входящих вызовов
 		/// </summary>
-		public virtual string CallerId { get; set; }
+		public virtual Dialplan DialplanIncoming { get; set; }
+
+		/// <summary>
+		/// План исходящих вызовов
+		/// </summary>
+		public virtual Dialplan DialplanOutgoining { get; set; }
 
 		/// <summary>
 		/// Конструктор
@@ -68,26 +93,39 @@ namespace AutoDialer.Console.Models
         /// Выполняет вызов исходящего номера телефона
         /// </summary>
         /// <param name="outgoing"></param>
-        public virtual async Task DialingAsync(Outgoing outgoing, Setting setting, OutgoingRepository outgoingRepository)
+        public virtual async Task DialingAsync(Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository)
         {
 			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
 			string fullFileName = Path.GetTempPath() + fileName;
 
+			outgoing.Normalize(config);
             
 			using (var file =
-			new StreamWriter(fullFileName, true))
+				new StreamWriter(fullFileName, true))
 			{
 				await file.WriteLineAsync($"Channel: SIP/{Title}/{outgoing.Telephone}");
 				await file.WriteLineAsync($"Callerid: {CallerId}");
-				await file.WriteLineAsync("MaxRetries: 0");
-				await file.WriteLineAsync("RetryTime: 20");
+				await file.WriteLineAsync($"MaxRetries: 0");
+				await file.WriteLineAsync($"RetryTime: 20");
 				await file.WriteLineAsync($"WaitTime: {WaitTime}");
-				
-				await file.WriteLineAsync("Context: from-trunk");
 
-				await file.WriteLineAsync("Extension: s");
-				await file.WriteLineAsync("Priority: 1");
+				if (DialplanOutgoining != null)
+					await file.WriteLineAsync($"Context: {DialplanOutgoining.Name}");
+				else 
+					await file.WriteLineAsync($"Context: {config.DefaultTrunkContext}");
+				
+				await file.WriteLineAsync($"Extension: s");
+				await file.WriteLineAsync($"Priority: 1");
+
+                if (config.IsVoteSupported && VoteWelcome != null && VotePushTwo != null && VoteFinish != null)
+                {
+                    await file.WriteLineAsync($"Set: vote_welcome={VoteWelcome.Path.Replace(".mp3", "")}");
+
+                    await file.WriteLineAsync($"Set: vote_push_two={VotePushTwo.Path.Replace(".mp3", "")}");
+
+                    await file.WriteLineAsync($"Set: vote_finish={VoteFinish.Path.Replace(".mp3", "")}");
+                }
 			}
 
             /*
@@ -121,10 +159,11 @@ namespace AutoDialer.Console.Models
 			ManagerResponse originateResponse = managerConnection.SendAction(oc, oc.Timeout);
             */
 
+			
             var cmd = $"mv {fullFileName} {setting.OutgoingDir}";
 
             cmd.Bash();
-
+			
             outgoing.Status = "DIALING";
 
             outgoing.Trunk = this;

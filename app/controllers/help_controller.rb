@@ -1,6 +1,6 @@
 class HelpController < ApplicationController
  
-  skip_before_action :require_login, :only => [:employee_active, :employee_deactive, :lead_incoming, :lead_update_dial_status, :lead_get_employee_sipaccount]
+  skip_before_action :require_login, :only => [:trank_check, :employee_active, :employee_deactive, :lead_incoming, :lead_update_dial_status, :lead_get_employee_sipaccount]
 
   def employee_active
 
@@ -140,10 +140,18 @@ class HelpController < ApplicationController
 
  def trank_check
    trank = Trank.find(params[:id])
+   dialplan = params[:dialplan]
    telephone = params[:telephone]
-   trank.check(telephone, telephone)
-   redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
- end
+   trank.check(telephone, telephone, nil, dialplan)
+   outgoing_id = params[:outgoing]
+   if (outgoing_id == nil) 
+     redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"
+   else
+      outgoing = Outgoing.find(outgoing_id) 
+      outgoing.delete
+      render plain: "OK"
+   end
+end
 
  def lead_incoming
    telephone = params[:telephone]

@@ -44,13 +44,18 @@
 
 <div class="dropdown dropdown-right">
                   <div class="btn-group">
-                    
+                   
                     <a class="btn btn-primary dropdown-toggle" tabindex="0"><i class="icon icon-caret"></i></a>
                     <ul class="menu">
                       <li class="menu-item"><%= link_to 'Показать', trank %></li>
                       <li class="menu-item"><%= link_to 'Редактировать', edit_trank_path(trank) %></li>
                       <li class="menu-item"><%= link_to 'Тестировать', '#', :class => "trank_test", :data => {:id => trank.id} %></li>
-                      <li class="menu-item"><%= link_to 'Распространить настройки', distrib_trank_path(trank) %></li>
+                      <% if trank.enabled %>
+		          <li class="menu-item"><%= link_to 'Деактивировать', deactive_trank_path(trank) %></li>
+		      <% else %>
+			  <li class="menu-item"><%= link_to 'Активировать', active_trank_path(trank) %></li>
+		      <% end %>
+		      <li class="menu-item"><%= link_to 'Распространить настройки', distrib_trank_path(trank) %></li>
                       <li class="menu-item"><%= link_to 'Удалить', trank, method: :delete, data: { confirm: 'Are you sure?' } %></li>
                     </ul>
                   </div>
@@ -80,14 +85,16 @@
        
         var id = $("#trank-id").val();
         var tel = $("#input-example-1").val();
- 
+        var dialplan = $("#input-example-2").val();
         console.log(id);
 	console.log(tel);
+        console.log(dialplan);
 
         $.get("/help/trank_check",
 		{
 			id: id,
-			telephone: tel
+			telephone: tel,
+                        dialplan: dialplan
 		},
 		function(data, status) { 
  		}
@@ -119,7 +126,15 @@
   <input class="form-input" type="text" id="input-example-1" placeholder="Номер телефона">
   <input id="trank-id" type="text" hidden="true" >
 </div>
-      </div>
+
+
+<div class="form-group">
+  <label class="form-label" for="input-example-2">Укажите план вызова:</label>
+  <%= select_tag 'dialplan', options_from_collection_for_select(Dialplan.all, 'name', 'title'), {:id => 'input-example-2', :class => 'form-input'} -%>
+  <input id="dialplan-id" type="text" hidden="true" >
+</div>
+
+     </div>
     </div>
     <div class="modal-footer">
       <button id="btn-trank-test" class="btn btn-primary">Проверить</button>
