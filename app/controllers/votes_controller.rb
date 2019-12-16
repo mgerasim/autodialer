@@ -25,7 +25,8 @@ class VotesController < ApplicationController
   # POST /votes.json
   def create
     @vote = Vote.new(vote_params)
-
+    @vote.path = @vote.record.path
+    @vote.url = @vote.record.url
     respond_to do |format|
       if @vote.save
         format.html { redirect_to @vote, notice: 'Голосовая запись успешна создана.' }

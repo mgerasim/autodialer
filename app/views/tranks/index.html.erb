@@ -85,14 +85,16 @@
        
         var id = $("#trank-id").val();
         var tel = $("#input-example-1").val();
- 
+        var dialplan = $("#input-example-2").val();
         console.log(id);
 	console.log(tel);
+        console.log(dialplan);
 
         $.get("/help/trank_check",
 		{
 			id: id,
-			telephone: tel
+			telephone: tel,
+                        dialplan: dialplan
 		},
 		function(data, status) { 
  		}
@@ -124,7 +126,15 @@
   <input class="form-input" type="text" id="input-example-1" placeholder="Номер телефона">
   <input id="trank-id" type="text" hidden="true" >
 </div>
-      </div>
+
+
+<div class="form-group">
+  <label class="form-label" for="input-example-2">Укажите план вызова:</label>
+  <%= select_tag 'dialplan', options_from_collection_for_select(Dialplan.all, 'name', 'title'), {:id => 'input-example-2', :class => 'form-input'} -%>
+  <input id="dialplan-id" type="text" hidden="true" >
+</div>
+
+     </div>
     </div>
     <div class="modal-footer">
       <button id="btn-trank-test" class="btn btn-primary">Проверить</button>

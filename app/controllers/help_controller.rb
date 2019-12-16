@@ -140,8 +140,9 @@ class HelpController < ApplicationController
 
  def trank_check
    trank = Trank.find(params[:id])
+   dialplan = params[:dialplan]
    telephone = params[:telephone]
-   trank.check(telephone, telephone)
+   trank.check(telephone, telephone, nil, dialplan)
    outgoing_id = params[:outgoing]
    if (outgoing_id == nil) 
      redirect_to  tranks_url, notice: "Тестовый звонок на канал успешно отправлен"

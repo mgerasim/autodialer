@@ -79,7 +79,7 @@ class Trank < ApplicationRecord
 
     end
 
-    def check(telephone, account, outgoing = nil)
+    def check(telephone, account, outgoing = nil, dialplan = nil)
       setting = Setting.first
       Rails.logger.debug telephone
       Rails.logger.debug self.context
@@ -92,11 +92,17 @@ class Trank < ApplicationRecord
                 f.puts("MaxRetries: 0")
                 f.puts("RetryTime: 20")
                 f.puts("WaitTime: " + self.waittime.to_s)
-                if (self.dialplan != nil)
-                    f.puts("Context: " + self.dialplan.name)
-                else
-                    f.puts("Context: from-trunk")
-                end
+
+		if (dialplan != nil)
+			f.puts("Context: " + dialplan)
+		else
+	                if (self.dialplan != nil)
+        	            f.puts("Context: " + self.dialplan.name)
+                	else
+                	    f.puts("Context: from-trunk")
+	                end
+		end
+
                 f.puts("Extension: s")
                 f.puts("Priority: 1")
                 if (account != nil)
@@ -105,9 +111,9 @@ class Trank < ApplicationRecord
                     f.puts("Set: CDR(userfield)=" + telephone)
                 end
                 if (Config.first.is_vote_supported == true)
-                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav')) if self.vote_welcome != nil
-                    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav')) if self.vote_finish != nil
-                    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav')) if self.vote_push_two != nil
+                    f.puts("Set: vote_welcome=" + self.vote_welcome.record.path(:original).chomp('.wav').chomp('.mp3')) if self.vote_welcome != nil
+                    f.puts("Set: vote_finish=" + self.vote_finish.record.path(:original).chomp('.wav').chomp('.mp3')) if self.vote_finish != nil
+                    f.puts("Set: vote_push_two=" + self.vote_push_two.record.path(:original).chomp('.wav').chomp('.mp3')) if self.vote_push_two != nil
                 end
 
 		f.puts("Set: vote_record=" + Vote.first.record.path(:original).chomp('.mp3')) if Vote.first != nil                

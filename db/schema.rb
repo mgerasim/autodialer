@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191117102844) do
+ActiveRecord::Schema.define(version: 20191215044603) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "employee_active_count"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 20191117102844) do
 
   create_table "outgoings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "telephone"
-    t.datetime "created_at", null: false
+    t.timestamp "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", null: false
     t.string "status"
     t.datetime "date_created"
@@ -237,6 +237,8 @@ ActiveRecord::Schema.define(version: 20191117102844) do
     t.datetime "record_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "path"
+    t.string "url"
   end
 
   add_foreign_key "answers", "tranks"
