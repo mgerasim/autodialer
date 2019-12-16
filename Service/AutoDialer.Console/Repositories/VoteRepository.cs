@@ -7,30 +7,30 @@ using NHibernate;
 
 namespace AutoDialer.Console.Repositories
 {
-    public class VoteRepository: BaseRepository<Vote>
+    public class TrunkRepository: BaseRepository<Trunk>
     {
-        public VoteRepository(ISession session): base(session)
+        public TrunkRepository(ISession session): base(session)
         {
         }
 
-        public override Task DeleteAsync(Vote entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Task<Vote> GetAsync(int Id)
+        public override Task DeleteAsync(Trunk entity)
         {
             throw new NotImplementedException();
         }
 
-        public override async Task<IList<Vote>> GetListAsync()
+        public override Task<Trunk> GetAsync(int Id)
         {
-            var criteria = _session.CreateCriteria<Vote>();
-
-            return await criteria.ListAsync<Vote>();
+            throw new NotImplementedException();
         }
 
-        public override Task SaveAsync(Vote entity)
+        public override async Task<IList<Trunk>> GetListAsync()
+        {
+            var criteria = _session.CreateCriteria<Trunk>();
+
+            return await criteria.ListAsync<Trunk>();
+        }
+
+        public override Task SaveAsync(Trunk entity)
         {
             throw new NotImplementedException();
         }

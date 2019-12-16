@@ -15,6 +15,7 @@ namespace AutoDialer.Console.Mappings
             Map(x => x.ContryPrefix).Column("prefix_contry");
 			Map(x => x.DefaultTrunkContext).Column("default_trank_context");
 			Map(x => x.IsOutgoingDeleted).Not.Nullable().Column("is_outgoing_deleted");
+            Map(x => x.IsVoteSupported).Not.Nullable().Column("is_vote_supported");
         }
     }
 }
