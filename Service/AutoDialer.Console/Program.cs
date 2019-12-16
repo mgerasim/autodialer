@@ -1,5 +1,6 @@
 ﻿using AutoDialer.Console;
 using AutoDialer.Console.Models;
+using AutoDialer.Console.Performance;
 using AutoDialer.Console.Repositories;
 using NLog;
 using System;
@@ -29,12 +30,7 @@ namespace AutoDialer
 		/// https://csharp.hotexamples.com/examples/AsterNET.Manager/ManagerConnection/-/php-managerconnection-class-examples.html
 		/// </summary>
 		static AsterNET.NetStandard.Manager.ManagerConnection ManagerConnection = new AsterNET.NetStandard.Manager.ManagerConnection("ast11", 5038, "avtodialer", "NoO5ijyFWDF6lgquTM7n");
-
-		/// <summary>
-		/// Клиент запросов
-		/// </summary>
-		private static readonly HttpClient _httpClient = new HttpClient();
-
+		
 		/// <summary>
 		/// Логирование
 		/// </summary>
@@ -42,173 +38,175 @@ namespace AutoDialer
 
 		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository);
 
-		static event MethodContainer onDialing;
+		static event MethodContainer OnDialing;
 						
-		static void Main()
+		static async Task Main()
         {
-			onDialing += Program_onDialing;
+			OnDialing += Program_onDialing;
 
+			try
+			{
+				var dataAccessLayer = new DataAccessLayer();
 
-			Task.Run(async () =>
-			{				
-				try
+				var session = dataAccessLayer.Open();
+
+				var settingRepository = new SettingRepository(session);
+
+				var trunkRepository = new TrunkRepository(session);
+
+				var outgoingRepository = new OutgoingRepository(session);
+
+				var configRepository = new ConfigRepository(session);
+
+				var setting = await Setting.Reload(settingRepository);
+
+				if (setting is null)
 				{
-                    var dataAccessLayer = new DataAccessLayer();
+					throw new ArgumentNullException(nameof(setting));
+				}
 
-                    var session = dataAccessLayer.Open();
+				Log("MAIN: Setting: Reload");
 
-                    var settingRepository = new SettingRepository(session);
+				Log($"MAIN: Setting: HourBgn: {setting.HourBgn}");
+				Log($"MAIN: Setting: HourEnd: {setting.HourEnd}");
+				Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
+				Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
+				Log($"MAIN: DialType: {setting.DialType}");
 
-                    var trunkRepository = new TrunkRepository(session);
+				var config = await Config.Reload(configRepository);
 
-                    var outgoingRepository = new OutgoingRepository(session);
+				if (config is null)
+				{
+					throw new ArgumentNullException(nameof(config));
+				}
 
-					var configRepository = new ConfigRepository(session);
+				Log("MAIN: Config: Reload");
 
-                    var setting = await Setting.Reload(settingRepository);
+				Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
+				Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
+				Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
 
-					if (setting is null)
+				var trunks = await Trunk.GetListAsync(trunkRepository);
+
+				var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
+
+				Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
+
+				var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
+
+				DateTime bgnRun = DateTime.Now;
+
+				DateTime endRun = DateTime.Now;
+
+				var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
+
+				ulong index = 0;
+
+				var counterDelay = new Counter("delay", "Ожидание между опросами", _logger);
+
+				while (true)
+				{
+					try
 					{
-						throw new ArgumentNullException(nameof(setting));
-					}
+						index++;
 
-					Log("MAIN: Setting: Reload");
+						endRun = DateTime.Now;
 
-					Log($"MAIN: Setting: HourBgn: {setting.HourBgn}");
-					Log($"MAIN: Setting: HourEnd: {setting.HourEnd}");
-					Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
-					Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
-					Log($"MAIN: DialType: {setting.DialType}");
-										
-					var config = await Config.Reload(configRepository);
+						counterDelay.Start();
 
-					if (config is null)
-					{
-						throw new ArgumentNullException(nameof(config));
-					}
+						await File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
-					Log("MAIN: Config: Reload");
-
-					Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
-					Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
-					Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
-
-					var trunks = await Trunk.GetListAsync(trunkRepository);
-
-					var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
-
-					Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
-
-					var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
-
-					DateTime bgnRun = DateTime.Now;
-
-					DateTime endRun = DateTime.Now;
-
-					var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
-
-					ulong index = 0;
-
-					while (true)
-					{
-						try
+						if ((endRun - bgnRun).TotalMilliseconds < 1000)
 						{
-							index++;
+							await Task.Delay(1000 - ((int)(endRun - bgnRun).TotalMilliseconds));
+						}
 
-							endRun = DateTime.Now;
+						bgnRun = DateTime.Now;
 
-							await File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
+						Log("RUN: BGN");
 
-							if ((endRun - bgnRun).TotalMilliseconds < 1000)
+						counterDelay.Stop();
+
+						if (setting.DialType != SettingDialType.DialAsyncCSharp)
+						{
+							Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Указана иная служба генерации вызовов на обзвон в настройках");
+
+							continue;
+						}
+
+						if (!(setting.HourBgn <= DateTime.Now.Hour && DateTime.Now.Hour < setting.HourEnd))
+						{
+							Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Находимся за рамками рабочего времени");
+
+							continue;
+						}
+
+						var activedTrunks = trunks.Where(x => x.Actived == true);
+
+						var callCountTotal = activedTrunks.Sum(x => x.CallCount);
+
+						Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
+
+						session.BeginTransaction();
+
+						foreach (var trunk in activedTrunks)
+						{
+							Log($"RUN: BGN: TRUNK: {trunk.Title}");
+
+							int fileCount = 0;
+
+							Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
+
+							if (fileCount > trunk.CallMax)
 							{
-								await Task.Delay(1000 - ((int)(endRun - bgnRun).TotalMilliseconds));
-							}
-
-							bgnRun = DateTime.Now;
-
-							Log("RUN: BGN");
-
-							if (setting.DialType != SettingDialType.DialAsyncCSharp)
-							{
-								Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Указана иная служба генерации вызовов на обзвон в настройках");
+								Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
 
 								continue;
 							}
 
-							if (!(setting.HourBgn <= DateTime.Now.Hour && DateTime.Now.Hour < setting.HourEnd))
+							for (int i = 0; i < trunk.CallCount; i++)
 							{
-								Log("RUN: BGN: CONTINUE: Пропускаем итерацию: Находимся за рамками рабочего времени");
-
-								continue;
-							}
-
-							var activedTrunks = trunks.Where(x => x.Actived == true);
-
-							var callCountTotal = activedTrunks.Sum(x => x.CallCount);
-
-							Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
-
-                            session.BeginTransaction();
-                            
-							foreach (var trunk in activedTrunks)
-							{
-								Log($"RUN: BGN: TRUNK: {trunk.Title}");
-
-								int fileCount = 0;
-
-								Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
-
-								if (fileCount > trunk.CallMax)
+								if (outgoingQueue.Count == 0)
 								{
-									Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
+									Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
 
 									continue;
 								}
 
-								for (int i = 0; i < trunk.CallCount; i++)
-								{
-									if (outgoingQueue.Count == 0)
-									{
-										Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
+								var outgoing = outgoingQueue.Dequeue();
 
-										continue;
-									}
+								Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
 
-									var outgoing = outgoingQueue.Dequeue();
-
-									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
-
-									onDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
-								}
+								OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
 							}
-
-                            await session.FlushAsync();
-
-                            await session.Transaction.CommitAsync();
-
-							Log("RUN: END");
 						}
-						catch (Exception exc)
-						{
-							System.Console.WriteLine(exc.ToString());
-							Log(exc.ToString());
-						}
-					}  // whele
 
-				}
-				catch (Exception exc)
-				{
-					System.Console.Write(exc.ToString());
-					Log(exc.ToString());
-				}
-				finally
-				{
-					// Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
-					LogManager.Shutdown();
-				}
-			}).GetAwaiter().GetResult();
+						await session.FlushAsync();
 
-        }
+						await session.Transaction.CommitAsync();
+
+						Log("RUN: END");
+					}
+					catch (Exception exc)
+					{
+						System.Console.WriteLine(exc.ToString());
+						Log(exc.ToString());
+					}
+				}  // whele
+
+			}
+			catch (Exception exc)
+			{
+				System.Console.Write(exc.ToString());
+				Log(exc.ToString());
+			}
+			finally
+			{
+				// Ensure to flush and stop internal timers/threads before application-exit (Avoid segmentation fault on Linux)
+				LogManager.Shutdown();
+			}
+
+		}
 
 		private static void ManagerConnection_UnhandledEvent(object sender, AsterNET.NetStandard.Manager.Event.ManagerEvent e)
 		{
