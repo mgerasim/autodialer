@@ -1,38 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoDialer.Console.Models;
+﻿using AutoDialer.Console.Models;
 using AutoDialer.Console.Repositories.Base;
 using NHibernate;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AutoDialer.Console.Repositories
 {
-    public class VoteRepository: BaseRepository<Vote>
-    {
-        public VoteRepository(ISession session): base(session)
-        {
-        }
+	public class TrunkRepository : BaseRepository<Trunk>
+	{
+		public TrunkRepository(ISession session) : base(session)
+		{
+		}
 
-        public override Task DeleteAsync(Vote entity)
-        {
-            throw new NotImplementedException();
-        }
+		public override Task DeleteAsync(Trunk entity)
+		{
+			throw new NotImplementedException();
+		}
 
-        public override Task<Vote> GetAsync(int Id)
-        {
-            throw new NotImplementedException();
-        }
+		public override Task<Trunk> GetAsync(int Id)
+		{
+			throw new NotImplementedException();
+		}
 
-        public override async Task<IList<Vote>> GetListAsync()
-        {
-            var criteria = _session.CreateCriteria<Vote>();
+		public override async Task<IList<Trunk>> GetListAsync()
+		{
+			var criteria = _session.CreateCriteria<Trunk>();
 
-            return await criteria.ListAsync<Vote>();
-        }
+			return await criteria.ListAsync<Trunk>();
+		}
 
-        public override Task SaveAsync(Vote entity)
-        {
-            throw new NotImplementedException();
-        }
-    }
+		public override Task SaveAsync(Trunk entity)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

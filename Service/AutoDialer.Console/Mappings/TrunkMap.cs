@@ -21,6 +21,8 @@ namespace AutoDialer.Console.Mappings
             References(x => x.VoteWelcome).Column("vote_welcome_id");
             References(x => x.VotePushTwo).Column("vote_push_two_id");
             References(x => x.VoteFinish).Column("vote_finish_id");
+			References(x => x.DialplanIncoming).Column("dialplan_incoming_id");
+			References(x => x.DialplanOutgoining).Column("dialplan_id");
         }
     }
 }

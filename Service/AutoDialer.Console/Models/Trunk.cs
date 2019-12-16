@@ -64,6 +64,16 @@ namespace AutoDialer.Console.Models
         public virtual Vote VotePushTwo { get; set; }
 
 		/// <summary>
+		/// План входящих вызовов
+		/// </summary>
+		public virtual Dialplan DialplanIncoming { get; set; }
+
+		/// <summary>
+		/// План исходящих вызовов
+		/// </summary>
+		public virtual Dialplan DialplanOutgoining { get; set; }
+
+		/// <summary>
 		/// Конструктор
 		/// </summary>
 		public Trunk()
@@ -92,29 +102,30 @@ namespace AutoDialer.Console.Models
 			outgoing.Normalize(config);
             
 			using (var file =
-			new StreamWriter(fullFileName, true))
+				new StreamWriter(fullFileName, true))
 			{
 				await file.WriteLineAsync($"Channel: SIP/{Title}/{outgoing.Telephone}");
 				await file.WriteLineAsync($"Callerid: {CallerId}");
 				await file.WriteLineAsync($"MaxRetries: 0");
 				await file.WriteLineAsync($"RetryTime: 20");
 				await file.WriteLineAsync($"WaitTime: {WaitTime}");
-				
-				await file.WriteLineAsync($"Context: {config.DefaultTrunkContext}");
 
+				if (DialplanOutgoining != null)
+					await file.WriteLineAsync($"Context: {DialplanOutgoining.Name}");
+				else 
+					await file.WriteLineAsync($"Context: {config.DefaultTrunkContext}");
+				
 				await file.WriteLineAsync($"Extension: s");
 				await file.WriteLineAsync($"Priority: 1");
 
                 if (config.IsVoteSupported && VoteWelcome != null && VotePushTwo != null && VoteFinish != null)
                 {
-                    await file.WriteLineAsync($"Set: vote_welcome={VoteWelcome.Path}");
+                    await file.WriteLineAsync($"Set: vote_welcome={VoteWelcome.Path.Replace(".mp3", "")}");
 
-                    await file.WriteLineAsync($"Set: vote_push_two={VotePushTwo.Path}");
+                    await file.WriteLineAsync($"Set: vote_push_two={VotePushTwo.Path.Replace(".mp3", "")}");
 
-                    await file.WriteLineAsync($"Set: vote_finish={VoteFinish.Path}");
+                    await file.WriteLineAsync($"Set: vote_finish={VoteFinish.Path.Replace(".mp3", "")}");
                 }
-
-
 			}
 
             /*
