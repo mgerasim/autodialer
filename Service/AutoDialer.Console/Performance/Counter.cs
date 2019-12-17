@@ -10,6 +10,8 @@ namespace AutoDialer.Console.Performance
 	/// </summary>
 	public class Counter
 	{
+		private const string Format = "COUNTER: {0,10}: {1,5}: {2}";
+
 		/// <summary>
 		/// Точка старта 
 		/// </summary>
@@ -34,6 +36,11 @@ namespace AutoDialer.Console.Performance
 		/// Логирование
 		/// </summary>
 		private Logger _logger;
+
+		/// <summary>
+		/// Количество милисекунд работы счётчика
+		/// </summary>
+		public double TotalMilliseconds => (_endDate - _startDate).TotalMilliseconds;
 
 		/// <summary>
 		/// Конструктор
@@ -67,12 +74,19 @@ namespace AutoDialer.Console.Performance
 		{
 			_endDate = DateTime.Now;
 
-			
+			Log();
 		}
 
+		/// <summary>
+		/// Выполняет протоколирование
+		/// </summary>
 		private void Log()
 		{
-			
+			string msg = String.Format(Format, _name, TotalMilliseconds, _description);
+
+			_logger.Debug(msg);
+
+			System.Console.WriteLine(msg);
 		}
 	}
 }

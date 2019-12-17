@@ -102,7 +102,11 @@ namespace AutoDialer
 
 				ulong index = 0;
 
-				var counterDelay = new Counter("delay", "Ожидание между опросами", _logger);
+				var delayCounter = new Counter("delay", "Ожидание между опросами", _logger);
+
+				var activedTrunksCounter = new Counter("activedTrunks", "Получение активных транков", _logger);
+
+				var transactionCounter = new Counter("beginTransaction", "Время жизни транзакции", _logger);
 
 				while (true)
 				{
@@ -112,7 +116,7 @@ namespace AutoDialer
 
 						endRun = DateTime.Now;
 
-						counterDelay.Start();
+						delayCounter.Start();
 
 						await File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
@@ -125,7 +129,7 @@ namespace AutoDialer
 
 						Log("RUN: BGN");
 
-						counterDelay.Stop();
+						delayCounter.Stop();
 
 						if (setting.DialType != SettingDialType.DialAsyncCSharp)
 						{
@@ -141,9 +145,13 @@ namespace AutoDialer
 							continue;
 						}
 
+						activedTrunksCounter.Start();
+
 						var activedTrunks = trunks.Where(x => x.Actived == true);
 
 						var callCountTotal = activedTrunks.Sum(x => x.CallCount);
+
+						activedTrunksCounter.Stop();
 
 						Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
 
