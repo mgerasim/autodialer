@@ -108,6 +108,10 @@ namespace AutoDialer
 
 				var transactionCounter = new Counter("beginTransaction", "Время жизни транзакции", _logger);
 
+				var trunkCallCountCounter = new Counter("trunkCallCount", "Время обработки транка", _logger);
+
+				var commitTransactionCounter = new Counter("commitTransaction", "Время подтверждения транзакции", _logger);
+
 				while (true)
 				{
 					try
@@ -155,10 +159,14 @@ namespace AutoDialer
 
 						Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
 
+						transactionCounter.Start();
+
 						session.BeginTransaction();
 
 						foreach (var trunk in activedTrunks)
 						{
+							trunkCallCountCounter.Start();
+
 							Log($"RUN: BGN: TRUNK: {trunk.Title}");
 
 							int fileCount = 0;
@@ -187,11 +195,19 @@ namespace AutoDialer
 
 								OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
 							}
+
+							trunkCallCountCounter.Stop();
 						}
+
+						commitTransactionCounter.Start();
 
 						await session.FlushAsync();
 
 						await session.Transaction.CommitAsync();
+
+						commitTransactionCounter.Stop();
+
+						transactionCounter.Stop();
 
 						Log("RUN: END");
 					}
