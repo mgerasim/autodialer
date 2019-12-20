@@ -112,6 +112,8 @@ namespace AutoDialer
 
 				var commitTransactionCounter = new Counter("commitTransaction", "Время подтверждения транзакции", _logger);
 
+				int seconds = 2;
+
 				while (true)
 				{
 					try
@@ -124,9 +126,9 @@ namespace AutoDialer
 
 						await File.WriteAllTextAsync("/tmp/avtodialer.run", $"{(endRun - bgnRun).TotalMilliseconds}");
 
-						if ((endRun - bgnRun).TotalMilliseconds < 1000)
+						if ((endRun - bgnRun).TotalMilliseconds < seconds * 1000)
 						{
-							await Task.Delay(1000 - ((int)(endRun - bgnRun).TotalMilliseconds));
+							await Task.Delay(seconds * 1000 - ((int)(endRun - bgnRun).TotalMilliseconds));
 						}
 
 						bgnRun = DateTime.Now;
