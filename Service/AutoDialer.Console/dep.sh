@@ -11,7 +11,7 @@ ssh $1 'sudo chown asterisk:asterisk /home/asterisk/services/Autodial'
 ssh $1 'sudo chown asterisk:asterisk /home/asterisk/services'
 
 ssh $1 'sudo cp /home/asterisk/services/Autodial/Autodial.service /etc/systemd/system/'
-ssh $1 'sudo service systemd-resolved restart'
+ssh $1 'sudo systemctl daemon-reload'
 
 ssh $1 'sudo systemctl enable Autodial.service'
 ssh $1 'sudo systemctl start Autodial.service'
