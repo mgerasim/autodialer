@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using AutoDialer.Console.Models;
+using AutoDialer.Console.Repositories.Base;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AutoDialer.Console.Models;
-using AutoDialer.Console.Repositories.Base;
-using NHibernate;
 
 namespace AutoDialer.Console.Repositories
 {

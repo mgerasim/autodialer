@@ -97,6 +97,8 @@ namespace AutoDialer.Console.Models
         {
 			string fileName = $"dial_{outgoing.Id}_{Title}_{outgoing.Telephone}.call";
 
+            //outgoing.Telephone = "74443331100";
+
 			string fullFileName = Path.GetTempPath() + fileName;
 
 			outgoing.Normalize(config);
