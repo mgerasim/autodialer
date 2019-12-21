@@ -153,6 +153,22 @@ class HelpController < ApplicationController
    end
 end
 
+def upload_nodial
+
+	file = Tempfile.new('no_dial', '/var/lib/mysql')
+
+	file_path = file.path + '.csv'
+
+	File.delete(file.path) if File.exist?(file.path)
+
+	sql = "SELECT telephone FROM outgoings WHERE SUBSTR(telephone,2) NOT IN (SELECT contact FROM answers)  INTO OUTFILE '#{file_path}' FIELDS TERMINATED BY ',' ENCLOSED BY '' LINES TERMINATED BY '\n'"
+        results = ActiveRecord::Base.connection.execute(sql)
+
+	send_file file_path
+
+end
+
+
  def lead_incoming
    telephone = params[:telephone]
    trank = Trank.find(params[:trank])

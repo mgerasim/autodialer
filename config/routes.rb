@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'help/upload_nodial'
   get 'help/lead_get_employee_sipaccount'
   get 'help/lead_update_dial_status'
   get 'help/lead_incoming'

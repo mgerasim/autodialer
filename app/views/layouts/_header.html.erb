@@ -8,6 +8,7 @@
 	<% if Config.first.is_outgoing_deleted == false %>
         	<%= link_to "Отклики", answers_path, {:class => "btn btn-link"} %>
         	<%= link_to "Статистика", analysis_answers_path, {:class => "btn btn-link"} %>
+		<%= link_to "Неотвеченные", help_upload_nodial_path, {:class => "btn btn-link"} %>
 	<% end %>
 <!--
 	    <%= link_to "Автоответчик", machines_path, {:class => "btn btn-link"} %>
