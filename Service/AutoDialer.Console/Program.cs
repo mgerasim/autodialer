@@ -112,7 +112,7 @@ namespace AutoDialer
 
 				var commitTransactionCounter = new Counter("commitTransaction", "Время подтверждения транзакции", _logger);
 
-				int seconds = 2;
+				int seconds = 1;
 
 				while (true)
 				{
