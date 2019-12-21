@@ -161,7 +161,7 @@ def upload_nodial
 
 	File.delete(file.path) if File.exist?(file.path)
 
-	sql = "SELECT telephone FROM outgoings WHERE SUBSTR(telephone,2) NOT IN (SELECT contact FROM answers)  INTO OUTFILE '#{file_path}' FIELDS TERMINATED BY ',' ENCLOSED BY '' LINES TERMINATED BY '\n'"
+	sql = "SELECT telephone FROM outgoings WHERE SUBSTR(telephone,2) NOT IN (SELECT contact FROM answers) AND status='DIALING' INTO OUTFILE '#{file_path}' FIELDS TERMINATED BY ',' ENCLOSED BY '' LINES TERMINATED BY '\n'"
         results = ActiveRecord::Base.connection.execute(sql)
 
 	send_file file_path
