@@ -13,8 +13,8 @@ using System.Threading.Tasks;
 namespace AutoDialer
 {
 	class Program
-    {
-        static object _lock = new object();
+	{
+		static object _lock = new object();
 
 		/// <summary>
 		/// Синхронизирует логирование
@@ -41,7 +41,7 @@ namespace AutoDialer
 		static event MethodContainer OnDialing;
 						
 		static async Task Main()
-        {
+		{
 			OnDialing += Program_onDialing;
 
 			try
@@ -256,16 +256,16 @@ namespace AutoDialer
 		}
 
 		private static FileInfo[] ReturnFiles(DirectoryInfo dir, string fileSearchPattern)
-        {
-            return dir.GetFiles(fileSearchPattern, SearchOption.TopDirectoryOnly);
-        }
+		{
+			return dir.GetFiles(fileSearchPattern, SearchOption.TopDirectoryOnly);
+		}
 
 		/// <summary>
 		/// Логирование
 		/// </summary>
 		/// <param name="msg"></param>
-        static void Log(string msg)
-        {
+		static void Log(string msg)
+		{
 			lock (_loggerSync)
 			{
 				_logger.Debug(msg);
@@ -273,6 +273,6 @@ namespace AutoDialer
 				System.Console.WriteLine(msg);
 			}
 		}
-        
-    }
+		
+	}
 }
