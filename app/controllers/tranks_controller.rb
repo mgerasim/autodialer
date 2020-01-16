@@ -74,6 +74,7 @@ class TranksController < ApplicationController
     Trank.where.not(:id => @trank.id).each do |trunk|
       trunk.update_attributes(:waittime => @trank.waittime, :sleeptime => @trank.sleeptime, 
         :callcount => @trank.callcount, :callmax => @trank.callmax, :dialplan_id => @trank.dialplan_id,
+	:prefix => @trank.prefix,
         :dialplan_incoming_id => @trank.dialplan_incoming_id,
 	:vote_welcome_id => @trank.vote_welcome_id,
 	:vote_push_two_id => @trank.vote_push_two_id,

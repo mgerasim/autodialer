@@ -28,6 +28,9 @@
     -->
       <% end %>
 
+      <% if Setting.first.is_support_amd %>
+		      <%= link_to "Автоответчики",   machines_path, {:class => "btn btn-link"} %>
+      <% end %>
 
     <% else %>
 

@@ -94,6 +94,12 @@
        <%= form.label "Включить режим автоматической смены длины очереди: ", class: "form-label"  %>
        <%= form.check_box :is_support_call_delta, id: :config_is_support_call_delta %>
      </div>
+
+     <div>
+       <%= form.label "Включить режим определения автоответчиков: ", class: "form-label"  %>
+       <%= form.check_box :is_support_amd, id: :config_is_support_amd%>
+     </div>
+
    <% end %>
 
 <div class="mt-2 text-center">

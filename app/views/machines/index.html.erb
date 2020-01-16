@@ -1,31 +1,34 @@
 <div class="column col-10 col-mx-auto bg-gray">
-<% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "toast toast-success") %>
-      <% end %>
+  <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "toast toast-success") %>
+        <% end %>
 
-<h1>Автоответчики</h1>
+  <div class="text-center">
+    <h1>Автоответчики</h1>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Телефон</th>
-      <th>Статус</th>
-      <th>Причина</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @machines.each do |machine| %>
+  <table  class="table table-bordered">
+    <thead>
       <tr>
-        <td><%= machine.telephone %></td>
-        <td><%= machine.amdstatus %></td>
-        <td><%= machine.amdcause %></td>
-        <td><%= link_to 'Удалить', machine, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
+        <th>Телефон</th>
+        <th>Статус</th>
+        <th>Причина</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @machines.each do |machine| %>
+        <tr>
+          <td><%= machine.telephone %></td>
+          <td><%= machine.amdstatus %></td>
+          <td><%= machine.amdcause %></td>
+          <td><%= link_to 'Удалить', machine, method: :delete, data: { confirm: 'Подтвердить?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+</div>
 
