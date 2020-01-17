@@ -58,6 +58,8 @@ namespace AutoDialer
 
 				var configRepository = new ConfigRepository(session);
 
+				var groupRepository = new GroupRepository(session);
+
 				var setting = await Setting.Reload(settingRepository);
 
 				if (setting is null)
@@ -87,6 +89,11 @@ namespace AutoDialer
 				Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
 
 				var trunks = await Trunk.GetListAsync(trunkRepository);
+
+				var groups = await Group.GetListAsync(groupRepository);
+
+				Log($"MAIN: Groups: Count: {groups.Count}");
+				Log($"MAIN: Groups Enabled: Count: {groups.Count(x => x.Actived)}");
 
 				var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
 
@@ -151,65 +158,122 @@ namespace AutoDialer
 							continue;
 						}
 
-						activedTrunksCounter.Start();
-
-						var activedTrunks = trunks.Where(x => x.Actived == true);
-
-						var callCountTotal = activedTrunks.Sum(x => x.CallCount);
-
-						activedTrunksCounter.Stop();
-
-						Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
-
-						transactionCounter.Start();
-
-						session.BeginTransaction();
-
-						foreach (var trunk in activedTrunks)
+						if (groups.Count(x => x.Actived) > 0)
 						{
-							trunkCallCountCounter.Start();
+							Log("RUN: BGN: Обзваниваем по группам рабочих каналов");
 
-							Log($"RUN: BGN: TRUNK: {trunk.Title}");
+							var activedGroups = groups.Where(x => x.Actived);
 
-							int fileCount = 0;
+							session.BeginTransaction();
 
-							Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
-
-							if (fileCount > trunk.CallMax)
+							foreach(var groupActived in activedGroups)
 							{
-								Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
+								Log($"RUN: BGN: GROUP: {groupActived.Title}");
 
-								continue;
+								var groupTrunkCount = groupActived.Trunks.Count;
+
+								Log($"RUN: BGN: GROUP: {groupActived.Title} TRUNK COUNT: {groupTrunkCount}");
+
+								var groupCallCount = groupActived.CallCount;
+
+								Log($"RUN: BGN: GROUP: {groupActived.Title} CALL COUNT: {groupCallCount}");
+
+								for(int i = 0; i < groupCallCount; i++)
+								{
+									if (outgoingQueue.Count == 0)
+									{
+										Log($"RUN: BGN: GROUP: {groupActived.Title} CONTINUE: Пропускаем группу: Очередь исходящих пуста");
+
+										continue;
+									}
+
+									var outgoing = outgoingQueue.Dequeue();
+
+									Log($"RUN: BGN: GROUP: OUTGOING: {outgoing.Telephone}");
+
+									var trunk = groupActived.Trunks[outgoing.Id % groupTrunkCount];
+
+									OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
+								}
+
+								foreach (var trunk in groupActived.Trunks)
+								{
+									Log($"RUN: BGN: GROUP: {groupActived.Title}: TRUNK: {trunk.Title}");
+
+
+								}
 							}
 
-							for (int i = 0; i < trunk.CallCount; i++)
+							await session.FlushAsync();
+
+							await session.Transaction.CommitAsync();
+
+							commitTransactionCounter.Stop();
+						}
+						else
+						{
+							Log("RUN: BGN: Обзваниваем по рабочим каналам");
+
+							activedTrunksCounter.Start();
+
+							var activedTrunks = trunks.Where(x => x.Actived);
+
+							var callCountTotal = activedTrunks.Sum(x => x.CallCount);
+
+							activedTrunksCounter.Stop();
+
+							Log($"RUN: BGN: TotalCallCount: {callCountTotal}");
+
+							transactionCounter.Start();
+
+							session.BeginTransaction();
+
+							foreach (var trunk in activedTrunks)
 							{
-								if (outgoingQueue.Count == 0)
+								trunkCallCountCounter.Start();
+
+								Log($"RUN: BGN: TRUNK: {trunk.Title}");
+
+								int fileCount = 0;
+
+								Log($"RUN: BGN: TRUNK: {trunk.Title}: FileCount: {fileCount} / {trunk.CallMax}");
+
+								if (fileCount > trunk.CallMax)
 								{
-									Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
+									Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Количество одновременно обрабатываемых вызовов превышает установленное значение");
 
 									continue;
 								}
 
-								var outgoing = outgoingQueue.Dequeue();
+								for (int i = 0; i < trunk.CallCount; i++)
+								{
+									if (outgoingQueue.Count == 0)
+									{
+										Log($"RUN: BGN: TRUNK: {trunk.Title} CONTINUE: Пропускаем рабочий канал: Очередь исходящих пуста");
 
-								Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
+										continue;
+									}
 
-								OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
+									var outgoing = outgoingQueue.Dequeue();
+
+									Log($"RUN: BGN: TRUNK: Event: {outgoing.Telephone}");
+
+									OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
+								}
+
+								trunkCallCountCounter.Stop();
 							}
 
-							trunkCallCountCounter.Stop();
-						}
+							commitTransactionCounter.Start();
 
-						commitTransactionCounter.Start();
+							await session.FlushAsync();
 
-						await session.FlushAsync();
+							await session.Transaction.CommitAsync();
 
-						await session.Transaction.CommitAsync();
+							commitTransactionCounter.Stop();
 
-						commitTransactionCounter.Stop();
-
-						transactionCounter.Stop();
+							transactionCounter.Stop();
+						}						
 
 						Log("RUN: END");
 					}
