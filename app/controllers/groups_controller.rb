@@ -28,6 +28,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+         %x( sudo service Autodial restart )
         format.html { redirect_to @group, notice: 'Группа каналов успешна создана.' }
         format.json { render :show, status: :created, location: @group }
       else
@@ -42,6 +43,7 @@ class GroupsController < ApplicationController
   def update
     respond_to do |format|
       if @group.update(group_params)
+         %x( sudo service Autodial restart )
         format.html { redirect_to @group, notice: 'Группа каналов успешна обновлена.' }
         format.json { render :show, status: :ok, location: @group }
       else
@@ -55,6 +57,7 @@ class GroupsController < ApplicationController
   # DELETE /groups/1.json
   def destroy
     @group.destroy
+     %x( sudo service Autodial restart )
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Группа каналов успешна удалена.' }
       format.json { head :no_content }
@@ -66,6 +69,8 @@ class GroupsController < ApplicationController
       trunk.update_attributes(:enabled => true);
     end
 
+     %x( sudo service Autodial restart )
+
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Рабочие каналы в группе успешно активированы.' }
       format.json { head :no_content }
@@ -76,6 +81,8 @@ class GroupsController < ApplicationController
     @group.tranks.each do |trunk| 
       trunk.update_attributes(:enabled => false);
     end
+
+    %x( sudo service Autodial restart )
 
     respond_to do |format|
       format.html { redirect_to groups_url, notice: 'Рабочие каналы в группе успешно деактивированы.' }
