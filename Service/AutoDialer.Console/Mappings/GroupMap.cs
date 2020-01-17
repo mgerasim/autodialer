@@ -20,7 +20,8 @@ namespace AutoDialer.Console.Mappings
 			HasManyToMany(x => x.Trunks)
 				.Cascade.All()
 				.Inverse()
-				.Table("groups_tranks");
+				.Table("groups_tranks")
+				.ParentKeyColumn("trank_id");
 		}
 	}
 }
