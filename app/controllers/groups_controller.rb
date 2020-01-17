@@ -91,6 +91,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:title, trank_ids:[])
+      params.require(:group).permit(:waittime, :callcount, :is_enabled, :sleeptime, :callmax, :title, trank_ids:[])
     end
 end

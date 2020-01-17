@@ -16,6 +16,33 @@
     <%= form.text_field :title, id: :group_title %>
   </div>
 
+  <div class="field">
+    <%= form.label "Длительность вызова:", class: "form-label" %>
+    <%= form.number_field :waittime, id: :group_waittime, class: "form-input"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Интервал пополнения очереди:", class: "form-label" %>
+    <%= form.number_field :sleeptime, id: :group_sleeptime, class: "form-input"  %>
+  </div> 
+
+  <div class="field">
+    <%= form.label "Количество вызовов для пополнения очереди:", class: "form-label" %>
+    <%= form.number_field :callcount, id: :group_callcount, class: "form-input"  %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Максимальное количество вызовов в очереди:", class: "form-label" %>
+    <%= form.number_field :callmax, id: :group_callmax, class: "form-input"  %>
+  </div> 
+
+
+  <div class="field">
+    <%= form.label "Активное состояние:", class: "form-checkbox" %>
+    <%= form.check_box :is_enabled, id: :group_enabled  %>
+  </div>
+  
+
   <div class="form-group">
     <%= form.label "Рабочие каналы:", :class => "col-sm-3 control-label" %>
     <div class="col-sm-9">

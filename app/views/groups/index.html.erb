@@ -24,7 +24,11 @@
     <% @groups.each do |group| %>
       <tr>
         <td><%= group.title %></td>
-        <td><%= group.shown_tranks %></td>
+        <td>
+<span style="width:500px; word-wrap:break-word; display:inline-block;"> 
+   <%= group.shown_tranks %>
+</span>
+        </td>
         <td><%= link_to 'Активировать', active_group_path(group) %></td>
         <td><%= link_to 'Деактивировать', deactive_group_path(group) %></td>
         <td><%= link_to 'Показать', group %></td>

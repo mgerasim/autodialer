@@ -12,7 +12,9 @@
 
 <p>
   <strong>Рабочие каналы:</strong>
-  <%= @group.shown_tranks %>
+  <span style="width:600px; word-wrap:break-word; display:inline-block;"> 
+   <%= @group.shown_tranks %>
+ </span>
 </p>
 
 <%= link_to 'Редактировать', edit_group_path(@group) %> |

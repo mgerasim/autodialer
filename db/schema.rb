@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200110023615) do
+ActiveRecord::Schema.define(version: 20200117015024) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "employee_active_count"
@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(version: 20200110023615) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "waittime"
+    t.integer "callcount"
+    t.boolean "is_enabled"
+    t.integer "callmax"
+    t.integer "sleeptime"
   end
 
   create_table "groups_tranks", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
