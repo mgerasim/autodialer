@@ -21,7 +21,8 @@ namespace AutoDialer.Console.Mappings
 				.Cascade.All()
 				.Inverse()
 				.Table("groups_tranks")
-				.ParentKeyColumn("trank_id");
+				.ChildKeyColumn("trank_id")
+				.ParentKeyColumn("group_id");
 		}
 	}
 }
