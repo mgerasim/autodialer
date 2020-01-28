@@ -13,10 +13,10 @@ using NLog;
 
 namespace AutoDialer.Console.Models
 {
-    /// <summary>
-    /// Сценарий прохождения звонка
-    /// </summary>
-    public class Dialplan: Record
+	/// <summary>
+	/// Сценарий прохождения звонка
+	/// </summary>
+	public class Dialplan: Record
 	{
 		/// <summary>
 		/// Описание сценария
@@ -32,17 +32,17 @@ namespace AutoDialer.Console.Models
 		/// Конструктор
 		/// </summary>
 		public Dialplan()
-        {
-        }
+		{
+		}
 
-        /// <summary>
-        /// Получает список звуковых записей
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<IList<Dialplan>> GetListAsync(DialplanRepository repository)
-        {
-            return await repository.GetListAsync();
-        }
+		/// <summary>
+		/// Получает список звуковых записей
+		/// </summary>
+		/// <returns></returns>
+		public static async Task<IList<Dialplan>> GetListAsync(DialplanRepository repository)
+		{
+			return await repository.GetListAsync();
+		}
 
-    }
+	}
 }
