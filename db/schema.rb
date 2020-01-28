@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200117015024) do
+ActiveRecord::Schema.define(version: 20200128223227) do
 
   create_table "analyses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.integer "employee_active_count"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20200117015024) do
     t.boolean "is_enabled"
     t.integer "callmax"
     t.integer "sleeptime"
+    t.string "prefix"
+    t.integer "carousel_type"
   end
 
   create_table "groups_tranks", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
@@ -228,6 +230,7 @@ ActiveRecord::Schema.define(version: 20200117015024) do
     t.string "password"
     t.string "username"
     t.bigint "dialplan_incoming_id"
+    t.string "country_code"
     t.index ["dialplan_id"], name: "index_tranks_on_dialplan_id"
     t.index ["dialplan_incoming_id"], name: "index_tranks_on_dialplan_incoming_id"
     t.index ["vote_finish_id"], name: "index_tranks_on_vote_finish_id"

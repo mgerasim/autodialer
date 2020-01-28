@@ -41,6 +41,11 @@
     <%= form.label "Активное состояние:", class: "form-checkbox" %>
     <%= form.check_box :is_enabled, id: :group_enabled  %>
   </div>
+
+  <div class="field">
+     <%= form.label "Тип карусели:", class: "form-label" %>
+     <%= form.select :carousel_type, options_for_select([["Последовательный порядок транков", 1], ["Случайный порядок транков", 2]], form.object.carousel_type), {}, {:class =>"form-input"} %>
+   </div>
   
 
   <div class="form-group">
