@@ -36,6 +36,11 @@ namespace AutoDialer.Console.Models
 		public virtual int CallMax { get; set; }
 
 		/// <summary>
+		/// Тип карусели выбора рабочих каналов в группе
+		/// </summary>
+		public virtual CarouselTypeEnum CarouselType { get; set; } 
+
+		/// <summary>
 		/// Рабочие каналы в группе
 		/// </summary>
 		public virtual IList<Trunk> Trunks { get; set; }

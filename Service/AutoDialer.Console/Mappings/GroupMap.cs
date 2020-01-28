@@ -17,6 +17,7 @@ namespace AutoDialer.Console.Mappings
 			Map(x => x.CallCount).Not.Nullable().Column("callcount");
 			Map(x => x.WaitTime).Not.Nullable().Column("waittime");
 			Map(x => x.CallMax).Not.Nullable().Column("callmax");
+			Map(x => x.CarouselType).CustomType<CarouselTypeEnum>().Column("carousel_type");
 			HasManyToMany(x => x.Trunks)
 				.Cascade.All()
 				.Inverse()

@@ -191,7 +191,23 @@ namespace AutoDialer
 
 									Log($"RUN: BGN: GROUP: OUTGOING: {outgoing.Telephone}");
 
-									var trunk = groupActived.Trunks[outgoing.Id % groupTrunkCount];
+									Log($"RUN: BGN: GROUP: Carousel Type: {groupActived.CarouselType}");
+
+									Trunk trunk = null;
+
+									switch (groupActived.CarouselType)
+									{
+										case CarouselTypeEnum.Sequential:
+											trunk = groupActived.Trunks[outgoing.Id % groupTrunkCount];
+											break;
+
+										case CarouselTypeEnum.Random:
+											var rand = new Random();
+											trunk = groupActived.Trunks[rand.Next(0, groupTrunkCount - 1)];
+											break;
+										default:
+											throw new ArgumentOutOfRangeException(nameof(groupActived.CarouselType));
+									}									
 
 									OnDialing?.Invoke(trunk, outgoing, setting, config, outgoingRepository);
 								}
