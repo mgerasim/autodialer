@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
  
   before_action :require_login
 
-  def default_url_options(options)
-   { :only_path => false, :port => 24967 }
-  end
 
   private
  
