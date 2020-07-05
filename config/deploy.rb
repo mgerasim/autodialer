@@ -6,7 +6,7 @@ set :application,     'autodialer'
 set :user,            'rails'
 
 #set :repo_url,        'git@example.com:username/appname.git'
-set  :repo_url,        "file:///home/#{fetch(:user)}/repos/#{fetch(:application)}.git"
+set  :repo_url,        "git@github.com:mgerasim/autodialer.git"
 
 #set :scm, :none
 #set :repository, "."
@@ -80,7 +80,7 @@ puts "Run `git push` to sync changes."
 exit
 end
 
-unless `git rev-parse HEAD` == `git rev-parse local/master`
+unless `git rev-parse HEAD` == `git rev-parse HEAD`
 puts "WARNING: HEAD is not the same as local/master"
 puts "Run `git push` to sync changes."
 exit

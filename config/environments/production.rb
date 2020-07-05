@@ -88,6 +88,8 @@ Rails.application.configure do
 
   config.assets.js_compressor = Uglifier.new(harmony: true)
 
+  config.action_controller.forgery_protection_origin_check = false
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
