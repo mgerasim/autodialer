@@ -6,10 +6,13 @@ class ApplicationController < ActionController::Base
  
   before_action :require_login
 
-  def base_url
-	Rails.logger @base_url
+  def default_url_options
+    if Rails.env.production?
+      {:port => 24967}
+    else  
+      {}
+    end
   end
-
   private
  
   def require_login
