@@ -6,13 +6,10 @@ class ApplicationController < ActionController::Base
  
   before_action :require_login
 
-  def default_url_options
-    if Rails.env.production?
-      {:port => 24967}
-    else  
-      {}
-    end
+  def default_url_options(options)
+   { :only_path => false, :port => 24967 }
   end
+
   private
  
   def require_login
