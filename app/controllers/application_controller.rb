@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   include CabinetHelper
  
   before_action :require_login
- 
+
+
   private
  
   def require_login
