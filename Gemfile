@@ -89,3 +89,5 @@ gem 'plyr-rails'
 gem "google-cloud-speech"
 gem 'active_model_serializers'
 gem "rack-cors"
+
+gem 'capistrano-locally', require: false
