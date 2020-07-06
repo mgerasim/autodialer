@@ -45,7 +45,7 @@ namespace AutoDialer.Console
         public void CreateSessionFactory(string connectionString)
         {
             MySqlConnectionStringBuilder conn_string = new MySqlConnectionStringBuilder();
-            conn_string.Server = "ast11";
+            conn_string.Server = "localhost";
             conn_string.UserID = "avtodialer";
             conn_string.Password = "avtodialer";
 			conn_string.Port = 3306;
