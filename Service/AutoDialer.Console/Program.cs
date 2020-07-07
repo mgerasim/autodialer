@@ -39,7 +39,7 @@ namespace AutoDialer
 		delegate void MethodContainer(Trunk trunk, Outgoing outgoing, Setting setting, Config config, OutgoingRepository outgoingRepository);
 
 		static event MethodContainer OnDialing;
-						
+
 		static async Task Main()
 		{
 			OnDialing += Program_onDialing;
@@ -60,64 +60,9 @@ namespace AutoDialer
 
 				var groupRepository = new GroupRepository(session);
 
-				var setting = await Setting.Reload(settingRepository);
-
-				if (setting is null)
-				{
-					throw new ArgumentNullException(nameof(setting));
-				}
-
-				Log("MAIN: Setting: Reload");
-
-				Log($"MAIN: Setting: HourBgn: {setting.HourBgn}");
-				Log($"MAIN: Setting: HourEnd: {setting.HourEnd}");
-				Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
-				Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
-				Log($"MAIN: DialType: {setting.DialType}");
-
-				var config = await Config.Reload(configRepository);
-
-				if (config is null)
-				{
-					throw new ArgumentNullException(nameof(config));
-				}
-
-				Log("MAIN: Config: Reload");
-
-				Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
-				Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
-				Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
-
-				var trunks = await Trunk.GetListAsync(trunkRepository);
-
-				var groups = await Group.GetListAsync(groupRepository);
-
-				Log($"MAIN: Groups: Count: {groups.Count}");
-				Log($"MAIN: Groups Enabled: Count: {groups.Count(x => x.Actived)}");
-
 				var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
 
 				Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
-
-				var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
-
-				DateTime bgnRun = DateTime.Now;
-
-				DateTime endRun = DateTime.Now;
-
-				var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
-
-				ulong index = 0;
-
-				var delayCounter = new Counter("delay", "Ожидание между опросами", _logger);
-
-				var activedTrunksCounter = new Counter("activedTrunks", "Получение активных транков", _logger);
-
-				var transactionCounter = new Counter("beginTransaction", "Время жизни транзакции", _logger);
-
-				var trunkCallCountCounter = new Counter("trunkCallCount", "Время обработки транка", _logger);
-
-				var commitTransactionCounter = new Counter("commitTransaction", "Время подтверждения транзакции", _logger);
 
 				int seconds = 1;
 
@@ -125,6 +70,61 @@ namespace AutoDialer
 				{
 					try
 					{
+						var setting = await Setting.Reload(settingRepository);
+
+						if (setting is null)
+						{
+							throw new ArgumentNullException(nameof(setting));
+						}
+
+						Log("MAIN: Setting: Reload");
+
+						Log($"MAIN: Setting: HourBgn: {setting.HourBgn}");
+						Log($"MAIN: Setting: HourEnd: {setting.HourEnd}");
+						Log($"MAIN: CurrentTime Hour: {DateTime.Now.Hour}");
+						Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
+						Log($"MAIN: DialType: {setting.DialType}");
+
+						var config = await Config.Reload(configRepository);
+
+						if (config is null)
+						{
+							throw new ArgumentNullException(nameof(config));
+						}
+
+						Log("MAIN: Config: Reload");
+
+						Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
+						Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
+						Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
+
+						var trunks = await Trunk.GetListAsync(trunkRepository);
+
+						var groups = await Group.GetListAsync(groupRepository);
+
+						Log($"MAIN: Groups: Count: {groups.Count}");
+						Log($"MAIN: Groups Enabled: Count: {groups.Count(x => x.Actived)}");
+
+						var outgoingQueue = new Queue<Outgoing>(totalOutgoings);
+
+						DateTime bgnRun = DateTime.Now;
+
+						DateTime endRun = DateTime.Now;
+
+						var outgoingFiles = Directory.GetFiles(setting.OutgoingDir, $"*", SearchOption.TopDirectoryOnly);
+
+						ulong index = 0;
+
+						var delayCounter = new Counter("delay", "Ожидание между опросами", _logger);
+
+						var activedTrunksCounter = new Counter("activedTrunks", "Получение активных транков", _logger);
+
+						var transactionCounter = new Counter("beginTransaction", "Время жизни транзакции", _logger);
+
+						var trunkCallCountCounter = new Counter("trunkCallCount", "Время обработки транка", _logger);
+
+						var commitTransactionCounter = new Counter("commitTransaction", "Время подтверждения транзакции", _logger);
+
 						index++;
 
 						endRun = DateTime.Now;
