@@ -25,9 +25,18 @@ namespace AutoDialer.Console.Repositories
 
         public override async Task<IList<Setting>> GetListAsync()
         {
-            var criteria = _session.CreateCriteria<Setting>();
 
-            return await criteria.ListAsync<Setting>();
+            using (var tran = _session.BeginTransaction()) {
+
+                var criteria = _session.CreateCriteria<Setting>();
+
+                var list = await criteria.ListAsync<Setting>();
+
+                await tran.CommitAsync();
+
+                return list;
+            }
+    
         }
 
         public override Task SaveAsync(Setting entity)

@@ -25,7 +25,8 @@ namespace AutoDialer.Console.Repositories
 
 		public override async Task<IList<Trunk>> GetListAsync()
 		{
-			var criteria = _session.CreateCriteria<Trunk>();
+			var criteria = _session.CreateCriteria<Trunk>()
+				.SetCacheable(false);
 
 			return await criteria.ListAsync<Trunk>();
 		}

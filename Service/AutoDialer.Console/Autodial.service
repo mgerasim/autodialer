@@ -2,8 +2,8 @@
 Description=Example .NET Web API App running on Ubuntu
 
 [Service]
-WorkingDirectory=/home/asterisk/services/Autodial
-ExecStart=/usr/bin/dotnet /home/asterisk/services/Autodial/AutoDialer.Console.dll
+WorkingDirectory=/home/dotnet/apps/Autodial
+ExecStart=/usr/bin/dotnet /home/dotnet/apps/Autodial/AutoDialer.Console.dll
 Restart=always
 # Restart service after 10 seconds if the dotnet service crashes:
 RestartSec=10

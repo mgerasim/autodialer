@@ -46,36 +46,46 @@ namespace AutoDialer
 
 			try
 			{
-				var dataAccessLayer = new DataAccessLayer();
-
-				var session = dataAccessLayer.Open();
-
-				var settingRepository = new SettingRepository(session);
-
-				var trunkRepository = new TrunkRepository(session);
-
-				var outgoingRepository = new OutgoingRepository(session);
-
-				var configRepository = new ConfigRepository(session);
-
-				var groupRepository = new GroupRepository(session);
-
-				var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
-
-				Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
-
-				int seconds = 1;
 
 				while (true)
 				{
 					try
 					{
+						var dataAccessLayer = new DataAccessLayer();
+
+						var session = dataAccessLayer.Open();
+
+						var settingRepository = new SettingRepository(session);
+
+						var trunkRepository = new TrunkRepository(session);
+
+						var outgoingRepository = new OutgoingRepository(session);
+
+						var configRepository = new ConfigRepository(session);
+
+						var groupRepository = new GroupRepository(session);
+
+						var totalOutgoings = await Outgoing.GetInsertedListAsync(outgoingRepository);
+
+						Log($"MAIN: Outgoings: Count: {totalOutgoings.Count}");
+
+						int seconds = 1;
+
 						var setting = await Setting.Reload(settingRepository);
 
 						if (setting is null)
 						{
 							throw new ArgumentNullException(nameof(setting));
 						}
+
+						var config = await Config.Reload(configRepository);
+
+						if (config is null)
+						{
+							throw new ArgumentNullException(nameof(config));
+						}
+
+						await session.RefreshAsync(setting);
 
 						Log("MAIN: Setting: Reload");
 
@@ -85,18 +95,14 @@ namespace AutoDialer
 						Log($"MAIN: OutgoingDir: {setting.OutgoingDir}");
 						Log($"MAIN: DialType: {setting.DialType}");
 
-						var config = await Config.Reload(configRepository);
-
-						if (config is null)
-						{
-							throw new ArgumentNullException(nameof(config));
-						}
+						await session.RefreshAsync(config);
 
 						Log("MAIN: Config: Reload");
 
 						Log($"MAIN: Config: ContryPrefix: {config.ContryPrefix}");
 						Log($"MAIN: Config: DefaultTrunkContext: {config.DefaultTrunkContext}");
 						Log($"MAIN: Config: IsOutgoingDeleted: {config.IsOutgoingDeleted}");
+
 
 						var trunks = await Trunk.GetListAsync(trunkRepository);
 

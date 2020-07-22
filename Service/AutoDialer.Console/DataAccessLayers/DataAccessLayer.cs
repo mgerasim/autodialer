@@ -57,6 +57,8 @@ namespace AutoDialer.Console
 
        
             SessionFactory = Fluently.Configure()
+                .Cache(x => x.Not.UseSecondLevelCache())
+                .Cache(x => x.Not.UseQueryCache())
                 .Database(MySQLConfiguration.Standard 
                     .ConnectionString(conn_string.ToString())
                     .Driver<NHibernate.Driver.MySqlDataDriver>)
