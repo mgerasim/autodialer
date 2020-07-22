@@ -20,7 +20,7 @@ development:
  pool: 5
  username: avtodialer
  password: avtodialer
- #socket: /var/lib/mysql/mysql.sock
+ # socket: /var/lib/mysql/mysql.sock
  host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -43,7 +43,7 @@ production:
  pool: 5
  username: avtodialer
  password: avtodialer
- socket: /var/lib/mysql/mysql.sock
+ # socket: /var/lib/mysql/mysql.sock
  #host: ast05
 
 asteriskcdrdb:
