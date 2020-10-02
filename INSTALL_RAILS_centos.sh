@@ -322,3 +322,25 @@ source scl_source enable rh-dotnet20
 useradd dotnet
 echo 'kxJFqz' | passwd dotnet --stdin
 usermod -aG wheel dotnet 
+
+
+
+
+sudo usermod -a -G asterisk rails
+sudo usermod -a -G nginx rails
+sudo usermod -a -G mysql rails
+sudo chmod g+r /var/spool/asterisk/outgoing/
+sudo chmod g+w /var/spool/asterisk/outgoing/
+sudo usermod -a -G asterisk nginx
+sudo usermod -a -G mysql nginx
+sudo chmod g+w /var/lib/mysql/mysql/
+sudo chown rails:rails -R  /var/lib/nginx/tmp/client_body
+sudo chown nginx:nginx -R  /var/lib/nginx/
+sudo chown nginx:nginx -R  /var/lib/nginx/
+sudo chown nginx:nginx -R  /var/lib/nginx/
+sudo chown rails:rails -R  /var/lib/nginx/tmp/client_body
+sudo usermod -a -G rails nginx
+sudo chmod g+w /var/spool/asterisk/outgoing/
+sudo service nginx restart
+
+
