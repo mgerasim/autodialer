@@ -171,10 +171,14 @@ mkdir -p /home/rails/apps/autodialer/shared/
 mkdir -p /home/rails/apps/autodialer/shared/config
 cd ~/projects/autodialer
 cp config/* /home/rails/apps/autodialer/shared/config
+rbenv rehash
+gem install cap
+cap production deploy
+cp config/database.yml /home/rails/apps/autodialerold/shared/config/
 cap production deploy
 cd ~/apps/autodialer/current/
 gem install whenever
-whenver --update-crontab
+whenever --update-crontab
 
 ####
 ## Asterisk
@@ -341,6 +345,7 @@ sudo chown nginx:nginx -R  /var/lib/nginx/
 sudo chown rails:rails -R  /var/lib/nginx/tmp/client_body
 sudo usermod -a -G rails nginx
 sudo chmod g+w /var/spool/asterisk/outgoing/
+sudo chmod g+w /var/spool/asterisk/tmp/
 sudo service nginx restart
 
 
