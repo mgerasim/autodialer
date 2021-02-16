@@ -60,7 +60,7 @@ sudo firewall-cmd --reload
 
 
 #Then install the Node.js package:
-yum install -y nodejs
+sudo yum install -y nodejs
 
 # Install a Database MariaDB \ MySQL
 sudo yum install -y mariadb-server mariadb-devel
@@ -92,9 +92,9 @@ UserParameter=mysql.activetrunk, mysql --user=avtodialer --password=avtodialer  
 UserParameter=asterisk.outgoing, ls /var/spool/asterisk/outgoing/ | wc -l
 systemctl restart zabbix-agent
 
-useradd rails
+sudo useradd rails
 echo 'kxJFqz' | passwd rails --stdin
-usermod -aG wheel rails 
+sudo usermod -aG wheel rails 
 
 su - rails
 
@@ -173,6 +173,7 @@ cd ~/projects/autodialer
 cp config/* /home/rails/apps/autodialer/shared/config
 rbenv rehash
 gem install cap
+rbenv rehash
 cap production deploy
 cp config/database.yml /home/rails/apps/autodialerold/shared/config/
 cap production deploy
