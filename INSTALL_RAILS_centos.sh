@@ -134,6 +134,10 @@ cat ~/.ssh/id_rsa.pub
 cd ~/
 mkdir projects && cd projects
 git clone git@github.com:mgerasim/autodialer.git
+
+#fix Error gem install mimemagic
+apt-get install shared-mime-info
+
 cd autodialer && bundle install
 #  Установить Capistrano
 bundle install
