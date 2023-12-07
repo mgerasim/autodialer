@@ -96,6 +96,10 @@ sudo useradd rails
 echo 'kxJFqz' | passwd rails --stdin
 sudo usermod -aG wheel rails 
 
+mkdir /home/rails
+chown rails:rails -R  /home/rails/
+
+
 su - rails
 
 cd ~/
@@ -117,8 +121,15 @@ gem install bundler -v 1.16.1
 rbenv rehash
 gem install rails
 gem install whenever
+
+apt-get install software-properties-common
+apt-get install libmariadbclient-dev
+apt-get install libmariadb-dev-compat libmariadb-dev
+
 gem install mysql2
 rbenv rehash 
+
+
 
 #Git
 git config --global user.name "Mikhail Gerasimov"
