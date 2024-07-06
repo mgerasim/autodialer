@@ -159,8 +159,7 @@ gem install cap
 /bin/mysql -e "CREATE DATABASE avtodialerdevel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci"
 
 /bin/mysql -e "CREATE USER 'avtodialer'@'localhost' IDENTIFIED BY 'avtodialer'"
-/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdb_prod.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"    
-/bin/mysql -e "GRANT ALL PRIVILEGES ON avtodialerdevel.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"
+/bin/mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'avtodialer'@'localhost' identified by 'avtodialer'"    
 /bin/mysql -e "FLUSH PRIVILEGES"
 
 rake db:migrate
